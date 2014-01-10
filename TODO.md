@@ -12,9 +12,7 @@ Codebase
 --------
 
 General
-* Add features
 * Use smart pointers
-* Check for C++11
 * Check for Qt 5.1 or higher
 
 Packages
