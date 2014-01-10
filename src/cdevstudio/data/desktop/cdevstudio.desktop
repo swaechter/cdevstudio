@@ -3,6 +3,6 @@ Type=Application
 Name=CDevStudio
 GenericName=A cross compatible C/C++ IDE
 Exec=cdevstudio
-Version=0.0.3
+Version=0.0.4
 Terminal=false
 Categories=Development;Qt
