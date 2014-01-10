@@ -1,13 +1,11 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
+# Project
+*.kdev4
+.kdev4/
+build/
+doc/html
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
+# Packages
+*.deb
+*.rpm
+*.tar.xz
+*.exe
