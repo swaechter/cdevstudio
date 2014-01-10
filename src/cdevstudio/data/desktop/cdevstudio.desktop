@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=CDevStudio
-GenericName=A crosscompatible C/C++ IDE
+GenericName=A cross compatible C/C++ IDE
 Exec=cdevstudio
 Version=0.0.1
 Terminal=false
