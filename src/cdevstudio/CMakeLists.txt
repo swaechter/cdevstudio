@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 2.8.11)
 project(cdevstudio)
 
 find_package(C++Utils REQUIRED)
+find_package(Qt5Utils REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 

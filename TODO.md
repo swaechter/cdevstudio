@@ -13,7 +13,6 @@ Codebase
 
 General
 * Use smart pointers
-* Check for Qt 5.1 or higher
 
 Packages
 --------
