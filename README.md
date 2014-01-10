@@ -49,6 +49,11 @@ Packaging/Installing CDevStudio
 -------------------------------
 
 The following package systems are supported. For more information read the instructions.txt in each package system directory
+* Linux: Make for all distributions via a pure 'make install'
+* Linux: DEB for Debian via debuild
+* Linux: RPM for Fedora via rpmbuild
+* Linux: TAR.XZ for Arch Linux via makepkg
+* Windows: EXE for all systems via NSIS
 
 Notes
 -----
