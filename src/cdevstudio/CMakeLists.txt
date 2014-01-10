@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.11)
 project(cdevstudio)
 
+find_package(C++Utils REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
@@ -13,14 +14,41 @@ set(CMAKE_AUTOMOC ON)
 set(CDEVSTUDIO_SRC
   main.cpp
   CDevStudio.cpp
+  ProjectExplorerView.cpp
+  ObjectExplorerView.cpp
+  Utils.cpp
+  DialogCreateProject.cpp
+  DialogFindText.cpp
+  DialogReplaceText.cpp
+  DialogProjectSettings.cpp
+  DialogSettings.cpp
+  DialogHelp.cpp
+  DialogAbout.cpp
 )
 
 set(CDEVSTUDIO_HDR
   CDevStudio.h
+  ProjectExplorerView.h
+  ObjectExplorerView.h
+  Utils.h
+  DialogCreateProject.h
+  DialogFindText.h
+  DialogReplaceText.h
+  DialogProjectSettings.h
+  DialogSettings.h
+  DialogHelp.h
+  DialogAbout.h
 )
 
 set(CDEVSTUDIO_UI_IN
   CDevStudio.ui
+  DialogCreateProject.ui
+  DialogFindText.ui
+  DialogReplaceText.ui
+  DialogProjectSettings.ui
+  DialogSettings.ui
+  DialogHelp.ui
+  DialogAbout.ui
 )
 
 set(CDEVSTUDIO_TRANSLATION_IN

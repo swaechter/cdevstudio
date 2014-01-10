@@ -234,8 +234,177 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="56"/>
+        <location filename="../../CDevStudio.cpp" line="75"/>
         <source>Welcome</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="95"/>
+        <location filename="../../CDevStudio.cpp" line="136"/>
+        <source>Error</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="95"/>
+        <source>The platform cannot create the new project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="102"/>
+        <location filename="../../CDevStudio.cpp" line="122"/>
+        <location filename="../../CDevStudio.cpp" line="196"/>
+        <location filename="../../CDevStudio.cpp" line="215"/>
+        <location filename="../../CDevStudio.cpp" line="230"/>
+        <source>Information</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="102"/>
+        <source>Please close the current project before you create a new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="110"/>
+        <source>Select a project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="122"/>
+        <source>Please close the current project before you open a new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="136"/>
+        <source>The platform cannot close the current project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="187"/>
+        <source>Project build was succesful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="191"/>
+        <source>Project build was not successful</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="196"/>
+        <location filename="../../CDevStudio.cpp" line="215"/>
+        <location filename="../../CDevStudio.cpp" line="230"/>
+        <source>Please open an existing project or create a new one</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="206"/>
+        <source>Project started and exited without error codes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../CDevStudio.cpp" line="210"/>
+        <source>Project executable was not found or crashed during execution</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogAbout</name>
+    <message>
+        <location filename="../../DialogAbout.ui" line="14"/>
+        <location filename="../../DialogAbout.ui" line="24"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogAbout.ui" line="41"/>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogAbout.ui" line="58"/>
+        <source>Thanks to</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogCreateProject</name>
+    <message>
+        <location filename="../../DialogCreateProject.ui" line="14"/>
+        <source>Create Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogCreateProject.ui" line="29"/>
+        <source>Directory</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogCreateProject.ui" line="36"/>
+        <source>Name</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogCreateProject.ui" line="43"/>
+        <source>Navigate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogCreateProject.ui" line="53"/>
+        <source>Please enter a project directory and a project name and continue. The project will be created inside this directory.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogCreateProject.cpp" line="21"/>
+        <source>Select a project dir</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogFindText</name>
+    <message>
+        <location filename="../../DialogFindText.ui" line="14"/>
+        <source>Find Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogHelp</name>
+    <message>
+        <location filename="../../DialogHelp.ui" line="14"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogProjectSettings</name>
+    <message>
+        <location filename="../../DialogProjectSettings.ui" line="14"/>
+        <source>Project Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogProjectSettings.ui" line="26"/>
+        <source>General</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogReplaceText</name>
+    <message>
+        <location filename="../../DialogReplaceText.ui" line="14"/>
+        <source>Replace Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogSettings</name>
+    <message>
+        <location filename="../../DialogSettings.ui" line="14"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../DialogSettings.ui" line="24"/>
+        <source>General</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
