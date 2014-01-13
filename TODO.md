@@ -5,8 +5,6 @@ Documentation
 -------------
 
 General
-* Create a doxygen documentation
-* Create a developer guideline
 
 Codebase
 --------
@@ -26,3 +24,4 @@ OS X
 * Create a package
 
 Windows
+* Create menu entry
