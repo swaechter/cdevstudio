@@ -1,6 +1,6 @@
 ; ===== Defines =====
 !define APPLICATION_NAME "cdevstudio"
-!define APPLICATION_VERSION "0.0.4"
+!define APPLICATION_VERSION "0.0.5"
 !define PROJECT_ROOT "..\.."
 ;!define QT_BINARY_DIR "C:\Qt\Qt5.1.0\5.1.0\msvc2012\bin"
 ;!define QT_PLUGINS_DIR "C:\Qt\Qt5.1.0\5.1.0\msvc2012\plugins"

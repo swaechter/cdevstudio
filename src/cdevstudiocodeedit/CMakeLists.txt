@@ -23,7 +23,7 @@ add_definitions(-DCDEVSTUDIOCODEEDIT_EXPORT)
 add_library(cdevstudiocodeedit SHARED ${CDEVSTUDIOCODEEDIT_SRC} ${CDEVSTUDIOCODEEDIT_HDR})
 target_link_libraries(cdevstudiocodeedit Qt5::Widgets)
 
-set_target_properties(cdevstudiocodeedit PROPERTIES VERSION 0.0.4 SOVERSION 0)
+set_target_properties(cdevstudiocodeedit PROPERTIES VERSION 0.0.5 SOVERSION 0)
 
 install(TARGETS cdevstudiocodeedit RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
 install(FILES CDevStudioCodeEdit.h CDevStudioCodeEditExport.h DESTINATION include)

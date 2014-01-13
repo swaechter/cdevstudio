@@ -2,7 +2,7 @@
 
 # Defines
 email=waechter.simon@gmail.com
-version=0.0.4
+version=0.0.5
 
 # Create orig.tar.gz archive
 tar -czf cdevstudio_${version}.orig.tar.gz ../../../cdevstudio/

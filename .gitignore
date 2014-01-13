@@ -1,8 +1,14 @@
+# Documentation
+doc/html
+*.aux
+*.log
+*.toc
+*.synctex.gz
+
 # Project
 *.kdev4
 .kdev4/
 build/
-doc/html
 
 # Packages
 *.deb

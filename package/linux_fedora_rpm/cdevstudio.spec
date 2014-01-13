@@ -1,6 +1,6 @@
 Summary             : A C/C++ IDE
 Name                : cdevstudio
-Version             : 0.0.4
+Version             : 0.0.5
 Release             : 1
 License             : GPLv3
 Source              : %{name}-%{version}.tar.gz

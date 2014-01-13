@@ -1,8 +1,8 @@
 # Maintainer: Simon Wächter <waechter.simon@gmail.com>
 
 pkgname=cdevstudio
-pkgver=0.0.4
-pkgrel=4
+pkgver=0.0.5
+pkgrel=5
 pkgdesc="A C/C++ IDE based on the Qt5 framework"
 arch=('i686' 'x86_64')
 url="www.github.com/swaechter/cdevstudio"

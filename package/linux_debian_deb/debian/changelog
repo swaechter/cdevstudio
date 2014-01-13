@@ -1,4 +1,10 @@
-cdevstudio (0.0.4-1) UNRELEASED; urgency=low
+cdevstudio (0.0.5-1) UNRELEASED; urgency=low
+
+  * Added documentation
+
+ -- Simon Wächter <waechter.simon@gmail.com>  Sat, 11 Jan 2014 13:53:56 +0100
+
+cdevstudio (0.0.4-1) unstable; urgency=low
 
   * Added package systems
 
