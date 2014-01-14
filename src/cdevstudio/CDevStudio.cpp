@@ -31,6 +31,8 @@ void CDevStudio::initProjectDock()
 {
 	projectView = new ProjectExplorerView(this);
 	dockWidgetProject->setWidget(projectView);
+	
+	filesystemModel = new QFileSystemModel(this);
 }
 
 void CDevStudio::initObjectDock()
@@ -89,6 +91,10 @@ void CDevStudio::actionCreateProjectTrigger()
 				if(project)
 				{
 					cdevstudioProject = project;
+					filesystemModel->setRootPath(project->getProjectDirectory());
+					projectView->setModel(filesystemModel);
+					projectView->setRootIndex(filesystemModel->index(project->getProjectDirectory()));
+					projectView->updateView();
 				}
 				else
 				{
@@ -114,6 +120,10 @@ void CDevStudio::actionLoadProjectTrigger()
 			if(project)
 			{
 				cdevstudioProject = project;
+				filesystemModel->setRootPath(project->getProjectDirectory());
+				projectView->setModel(filesystemModel);
+				projectView->setRootIndex(filesystemModel->index(project->getProjectDirectory()));
+				projectView->updateView();
 			}
 		}
 	}
@@ -130,6 +140,7 @@ void CDevStudio::actionCloseProjectTrigger()
 		if(cdevstudioPlatform->closeProject(cdevstudioProject))
 		{
 			cdevstudioProject = nullptr;
+			projectView->setModel(nullptr);
 		}
 		else
 		{

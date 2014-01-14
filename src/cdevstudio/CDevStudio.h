@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QTreeView>
+#include <QtWidgets/QFileSystemModel>
 #include <QtWidgets/QMessageBox>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioProject.h>
@@ -32,6 +33,7 @@ private:
 	CDevStudioProject *cdevstudioProject;
 	ProjectExplorerView *projectView;
 	ObjectExplorerView *objectView;
+	QFileSystemModel *filesystemModel;
 	
 private slots:
 	void initPlatform();
