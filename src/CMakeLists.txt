@@ -1,4 +1,5 @@
 add_subdirectory(cdevstudiobackend)
-add_subdirectory(cdevstudioplatform)
+add_subdirectory(cdevstudiosystemplatform)
+add_subdirectory(cdevstudioprojectplatform)
 add_subdirectory(cdevstudiocodeedit)
 add_subdirectory(cdevstudio)

@@ -33,19 +33,22 @@ The code is documented with Doxygen. This documentation gives an overview about 
 As addition to the code documentation, there is a developer documentation. This documentation gives an overview about the design and implementation of the project. It does not contain code specific details.
 
 \section{Codebase}
-CDevStudio is based on a 3 layer structure. This means, the program is divided into a graphical (CDevStudio, CDevStudioCodeEdit), a business (CDevStudioPlatform) and a backend (CDevStudioBackend) layer.
+CDevStudio is based on a 3 layer structure. This means, the program is divided into a graphical (CDevStudio, CDevStudioCodeEdit), a business (CDevStudioSystemPlatform and CDevStudioProjectPlatform) and a backend (CDevStudioBackend) layer.
 
 \subsection{CDevStudio}
-CDevStudio is the main program. It contains the graphical user interface and uses CDevStudioCodeEdit to display code. It accesses CDevStudioPlatform for project creation, lading, saving, editing etc.
+CDevStudio is the main program. It contains the graphical user interface and uses CDevStudioCodeEdit to display code. It accesses CDevStudioProjectPlatform for project creation, lading, saving, editing etc.
 
 \subsection{CDevStudioCodeEdit}
 CDevStudioCodeEdit is able to display and highlight the code of a project.
 
-\subsection{CDevStudioPlatform}
-CDevStudioPlatform is the business layer of the project. The layer is able to create, load, delete and save projects. For file interaction, it uses the CDevStudioBackend layer.
+\subsection{CDevStudioSystemPlatform}
+CDevStudioSystemPlatform is one of the two business layer of the project. The layer is able to read files and translations. For I/O interactions, it uses the CDevStudioBackend layer.
+
+\subsection{CDevStudioProjectPlatform}
+CDevStudioProjectPlatform is one of the two business layer of the project. The layer is able to create, load, delete and save projects. For I/O interactions, it uses the CDevStudioBackend layer.
 
 \subsection{CDevStudioBackend}
-CDevStudioBackend is the backend layer. It is responsible for I/O interaction.
+CDevStudioBackend is the backend layer. It is responsible for I/O interactions.
 
 \section{Work flow}
 There are a few techniques that are needed for this project: A working toolchain and some Git knowledge.
@@ -122,7 +125,8 @@ There are a few things that have to be done for each new release:
 		\item Update src/cdevstudio/data/man/cdevstudio.1.gz
 		\item Update src/cdevstudio/data/text/about_about.html
 		\item Update src/cdevstudiocodeedit/CMakeLists.txt
-		\item Update src/cdevstudioplatform/CMakeLists.txt
+		\item Update src/cdevstudiosystemplatform/CMakeLists.txt
+		\item Update src/cdevstudioprojectplatform/CMakeLists.txt
 		\item Update src/cdevstudiobackend/CMakeLists.txt
 	\end{itemize}
 	\item Update Debian package

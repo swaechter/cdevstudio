@@ -3,7 +3,9 @@
 
 #include <QtCore/QString>
 
-class CDevStudioProject
+#include "CDevStudioProjectPlatformExport.h"
+
+class CDEVSTUDIOPROJECTPLATFORM_API CDevStudioProject
 {
 public:
 	CDevStudioProject(const QString &projectname, const QString &projectdirectory);

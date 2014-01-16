@@ -2,7 +2,8 @@
 
 CDevStudio::CDevStudio() : QMainWindow()
 {
-	initPlatform();
+	initSystemPlatform();
+	initProjectPlatform();
 	initWindow();
 	initProjectDock();
 	initObjectDock();
@@ -13,12 +14,18 @@ CDevStudio::CDevStudio() : QMainWindow()
 
 CDevStudio::~CDevStudio()
 {
-	delete cdevstudioPlatform;
+	delete cdevstudioSystemPlatform;
+	delete cdevstudioProjectPlatform;
 }
 
-void CDevStudio::initPlatform()
+void CDevStudio::initSystemPlatform()
 {
-	cdevstudioPlatform = new CDevStudioPlatform();
+	cdevstudioSystemPlatform = new CDevStudioSystemPlatform();
+}
+
+void CDevStudio::initProjectPlatform()
+{
+	cdevstudioProjectPlatform = new CDevStudioProjectPlatform();
 	cdevstudioProject = nullptr;
 }
 
@@ -31,8 +38,6 @@ void CDevStudio::initProjectDock()
 {
 	projectView = new ProjectExplorerView(this);
 	dockWidgetProject->setWidget(projectView);
-	
-	filesystemModel = new QFileSystemModel(this);
 }
 
 void CDevStudio::initObjectDock()
@@ -87,14 +92,10 @@ void CDevStudio::actionCreateProjectTrigger()
 		{
 			if(dialog->getProjectDirectory().length() && dialog->getProjectName().length())
 			{
-				CDevStudioProject *project = cdevstudioPlatform->createProject(dialog->getProjectName(), dialog->getProjectDirectory());
+				CDevStudioProject *project = cdevstudioProjectPlatform->createProject(dialog->getProjectName(), dialog->getProjectDirectory());
 				if(project)
 				{
 					cdevstudioProject = project;
-					filesystemModel->setRootPath(project->getProjectDirectory());
-					projectView->setModel(filesystemModel);
-					projectView->setRootIndex(filesystemModel->index(project->getProjectDirectory()));
-					projectView->updateView();
 				}
 				else
 				{
@@ -116,14 +117,10 @@ void CDevStudio::actionLoadProjectTrigger()
 		QString projectfile = QFileDialog::getOpenFileName(this, tr("Select a project"), QDir::homePath(), "CDevStudio (*.cdev)");
 		if(projectfile.length())
 		{
-			CDevStudioProject *project = cdevstudioPlatform->loadProject(projectfile);
+			CDevStudioProject *project = cdevstudioProjectPlatform->loadProject(projectfile);
 			if(project)
 			{
 				cdevstudioProject = project;
-				filesystemModel->setRootPath(project->getProjectDirectory());
-				projectView->setModel(filesystemModel);
-				projectView->setRootIndex(filesystemModel->index(project->getProjectDirectory()));
-				projectView->updateView();
 			}
 		}
 	}
@@ -137,10 +134,9 @@ void CDevStudio::actionCloseProjectTrigger()
 {
 	if(cdevstudioProject != nullptr)
 	{
-		if(cdevstudioPlatform->closeProject(cdevstudioProject))
+		if(cdevstudioProjectPlatform->closeProject(cdevstudioProject))
 		{
 			cdevstudioProject = nullptr;
-			projectView->setModel(nullptr);
 		}
 		else
 		{
@@ -193,7 +189,7 @@ void CDevStudio::actionBuildTrigger()
 {
 	if(cdevstudioProject != nullptr)
 	{
-		if(cdevstudioPlatform->buildProject(cdevstudioProject))
+		if(cdevstudioProjectPlatform->buildProject(cdevstudioProject))
 		{
 			textEditConsole->append(tr("Project build was succesful"));
 		}
@@ -212,7 +208,7 @@ void CDevStudio::actionRunTrigger()
 {
 	if(cdevstudioProject != nullptr)
 	{
-		if(cdevstudioPlatform->runProject(cdevstudioProject))
+		if(cdevstudioProjectPlatform->runProject(cdevstudioProject))
 		{
 			textEditConsole->append(tr("Project started and exited without error codes"));
 		}

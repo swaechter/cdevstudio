@@ -1,25 +1,25 @@
-#include "CDevStudioPlatform.h"
+#include "CDevStudioProjectPlatform.h"
 
-struct CDevStudioPlatform::Implementation
+struct CDevStudioProjectPlatform::Implementation
 {
 	CDevStudioBackend *backend;
 	QList<CDevStudioProject *> projects;
 };
 
-CDevStudioPlatform::CDevStudioPlatform() : QObject()
+CDevStudioProjectPlatform::CDevStudioProjectPlatform() : QObject()
 {
 	implementation = new Implementation();
 	implementation->backend = new CDevStudioBackend();
 }
 
-CDevStudioPlatform::~CDevStudioPlatform()
+CDevStudioProjectPlatform::~CDevStudioProjectPlatform()
 {
 	delete implementation->backend;
 	qDeleteAll<>(implementation->projects);
 	delete implementation;
 }
 
-CDevStudioProject *CDevStudioPlatform::createProject(const QString &projectname, const QString &projectdirectory)
+CDevStudioProject *CDevStudioProjectPlatform::createProject(const QString &projectname, const QString &projectdirectory)
 {
 	CDevStudioProject *project = new CDevStudioProject(projectname, projectdirectory + QString("/") + projectname);
 	implementation->projects.append(project);
@@ -28,7 +28,7 @@ CDevStudioProject *CDevStudioPlatform::createProject(const QString &projectname,
 	return project;
 }
 
-CDevStudioProject *CDevStudioPlatform::loadProject(const QString &projectfile)
+CDevStudioProject *CDevStudioProjectPlatform::loadProject(const QString &projectfile)
 {
 	QString projectname = implementation->backend->readFile(projectfile);
 	if(projectname.length())
@@ -43,7 +43,7 @@ CDevStudioProject *CDevStudioPlatform::loadProject(const QString &projectfile)
 	}
 }
 
-bool CDevStudioPlatform::closeProject(CDevStudioProject *project)
+bool CDevStudioProjectPlatform::closeProject(CDevStudioProject *project)
 {
 	if(implementation->projects.contains(project))
 	{
@@ -57,17 +57,17 @@ bool CDevStudioPlatform::closeProject(CDevStudioProject *project)
 	}
 }
 
-bool CDevStudioPlatform::buildProject(CDevStudioProject *project)
+bool CDevStudioProjectPlatform::buildProject(CDevStudioProject *project)
 {
 	return false;
 }
 
-bool CDevStudioPlatform::runProject(CDevStudioProject *project)
+bool CDevStudioProjectPlatform::runProject(CDevStudioProject *project)
 {
 	return false;
 }
 
-QList<CDevStudioProject *> CDevStudioPlatform::getProjects()
+QList<CDevStudioProject *> CDevStudioProjectPlatform::getProjects()
 {
 	return implementation->projects;
 }

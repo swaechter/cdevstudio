@@ -1,4 +1,10 @@
-cdevstudio (0.0.5-1) UNRELEASED; urgency=low
+cdevstudio (0.0.6-1) UNRELEASED; urgency=low
+
+  * Added a new system platform and renamed the old one
+
+ -- Simon Wächter <waechter.simon@gmail.com>  Thu, 16 Jan 2014 20:41:28 +0100
+
+cdevstudio (0.0.5-1) unstable; urgency=low
 
   * Added documentation
 

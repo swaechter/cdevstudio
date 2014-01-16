@@ -3,10 +3,10 @@
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QTreeView>
-#include <QtWidgets/QFileSystemModel>
 #include <QtWidgets/QMessageBox>
-#include <cdevstudioplatform/CDevStudioPlatform.h>
-#include <cdevstudioplatform/CDevStudioProject.h>
+#include <cdevstudiosystemplatform/CDevStudioSystemPlatform.h>
+#include <cdevstudioprojectplatform/CDevStudioProjectPlatform.h>
+#include <cdevstudioprojectplatform/CDevStudioProject.h>
 #include <cdevstudiocodeedit/CDevStudioCodeEdit.h>
 
 #include "ui_CDevStudio.h"
@@ -29,14 +29,15 @@ public:
 	~CDevStudio();
 	
 private:
-	CDevStudioPlatform *cdevstudioPlatform;
+	CDevStudioSystemPlatform *cdevstudioSystemPlatform;
+	CDevStudioProjectPlatform *cdevstudioProjectPlatform;
 	CDevStudioProject *cdevstudioProject;
 	ProjectExplorerView *projectView;
 	ObjectExplorerView *objectView;
-	QFileSystemModel *filesystemModel;
 	
 private slots:
-	void initPlatform();
+	void initSystemPlatform();
+	void initProjectPlatform();
 	void initWindow();
 	void initProjectDock();
 	void initObjectDock();

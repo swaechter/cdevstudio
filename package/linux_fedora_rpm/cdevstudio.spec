@@ -1,7 +1,7 @@
 Summary             : A C/C++ IDE
 Name                : cdevstudio
-Version             : 0.0.5
-Release             : 1
+Version             : 0.0.6
+Release             : 6
 License             : GPLv3
 Source              : %{name}-%{version}.tar.gz
 
@@ -23,16 +23,21 @@ make install DESTDIR="%{buildroot}"
 /usr/lib/libcdevstudiocodeedit.so
 /usr/lib/libcdevstudiocodeedit.so.0
 /usr/lib/libcdevstudiocodeedit.so.0.*
-/usr/lib/libcdevstudioplatform.so
-/usr/lib/libcdevstudioplatform.so.0
-/usr/lib/libcdevstudioplatform.so.0.*
+/usr/lib/libcdevstudiosystemplatform.so
+/usr/lib/libcdevstudiosystemplatform.so.0
+/usr/lib/libcdevstudiosystemplatform.so.0.*
+/usr/lib/libcdevstudioprojectplatform.so
+/usr/lib/libcdevstudioprojectplatform.so.0
+/usr/lib/libcdevstudioprojectplatform.so.0.*
 /usr/lib/libcdevstudiobackend.so
 /usr/lib/libcdevstudiobackend.so.0
 /usr/lib/libcdevstudiobackend.so.0.*
 /usr/include/CDevStudioCodeEdit.h
 /usr/include/CDevStudioCodeEditExport.h
-/usr/include/CDevStudioPlatform.h
-/usr/include/CDevStudioPlatformExport.h
+/usr/include/CDevStudioSystemPlatform.h
+/usr/include/CDevStudioSystemPlatformExport.h
+/usr/include/CDevStudioProjectPlatform.h
+/usr/include/CDevStudioProjectPlatformExport.h
 /usr/include/CDevStudioProject.h
 /usr/include/CDevStudioBackend.h
 /usr/include/CDevStudioBackendExport.h

@@ -1,21 +1,21 @@
-#ifndef CDEVSTUDIOPLATFORM_H
-#define CDEVSTUDIOPLATFORM_H
+#ifndef CDEVSTUDIOPROJECTPLATFORM_H
+#define CDEVSTUDIOPROJECTPLATFORM_H
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QList>
 #include <cdevstudiobackend/CDevStudioBackend.h>
 
-#include "CDevStudioPlatformExport.h"
+#include "CDevStudioProjectPlatformExport.h"
 #include "CDevStudioProject.h"
 
-class CDEVSTUDIOPLATFORM_API CDevStudioPlatform : public QObject
+class CDEVSTUDIOPROJECTPLATFORM_API CDevStudioProjectPlatform : public QObject
 {
 	Q_OBJECT
 	
 public:
-	CDevStudioPlatform();
-	~CDevStudioPlatform();
+	CDevStudioProjectPlatform();
+	~CDevStudioProjectPlatform();
 	CDevStudioProject *createProject(const QString &projectname, const QString &projectdirectory);
 	CDevStudioProject *loadProject(const QString &projectfile);
 	bool closeProject(CDevStudioProject *project);
@@ -28,4 +28,4 @@ private:
 	Implementation *implementation;
 };
 
-#endif // CDEVSTUDIOPLATFORM_H
+#endif // CDEVSTUDIOPROJECTPLATFORM_H
