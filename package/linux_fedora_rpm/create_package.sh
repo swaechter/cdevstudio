@@ -2,6 +2,7 @@
 
 # Defines
 version=0.0.6
+release=6
 platform=x86_64
 
 # Create rpmbuild directories
@@ -21,7 +22,7 @@ mv cdevstudio-${version}.tar.gz rpmbuild/SOURCES/cdevstudio-${version}.tar.gz
 rpmbuild --define "%_topdir $(pwd)/rpmbuild" -ba cdevstudio.spec
 
 # Copy rpm
-mv rpmbuild/RPMS/${platform}/cdevstudio-${version}-1.${platform}.rpm cdevstudio-${version}-1.${platform}.rpm
+mv rpmbuild/RPMS/${platform}/cdevstudio-${version}-${release}.${platform}.rpm cdevstudio-${version}-${release}.${platform}.rpm
 
 # Cleanup
 rm -rf rpmbuild
