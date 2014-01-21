@@ -11,6 +11,9 @@ class DialogSettings : public QDialog, Ui::DialogSettings
 	
 public:
 	DialogSettings(QWidget *parent);
+	void addLanguage(const QString &language);
+	void setSelectedLanguage(const QString &language);
+	QString getSelectedLanguage();
 };
 
 #endif // DIALOGSETTINGS_H

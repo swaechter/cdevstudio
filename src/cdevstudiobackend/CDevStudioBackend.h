@@ -5,6 +5,7 @@
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
+#include <QtCore/QStandardPaths>
 
 #include "CDevStudioBackendExport.h"
 
@@ -21,6 +22,8 @@ public:
 	bool writeFile(const QString &filepath, const QString &text);
 	QString readFile(const QString &filepath);
 	QString getDirectoryOfFile(const QString &filepath);
+	QStringList getFilesInDirectory(const QString &directorypath);
+	QStringList getTranslationDirectories();
 	
 private:
 	struct Implementation;

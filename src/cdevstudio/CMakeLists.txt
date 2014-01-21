@@ -71,4 +71,4 @@ add_executable(cdevstudio ${CDEVSTUDIO_SRC} ${CDEVSTUDIO_HDR} ${CDEVSTUDIO_UI_OU
 target_link_libraries(cdevstudio cdevstudiocodeedit cdevstudiosystemplatform cdevstudioprojectplatform Qt5::Widgets)
 
 install(TARGETS cdevstudio RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/translation_en.qm ${CMAKE_CURRENT_BINARY_DIR}/translation_de.qm DESTINATION share/cdevstudio)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/translation_en.qm ${CMAKE_CURRENT_BINARY_DIR}/translation_de.qm DESTINATION share/cdevstudio/translation)

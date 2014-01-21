@@ -79,3 +79,36 @@ QString CDevStudioBackend::getDirectoryOfFile(const QString &filepath)
 	QFileInfo fileinfo(filepath);
 	return fileinfo.absolutePath();
 }
+
+QStringList CDevStudioBackend::getFilesInDirectory(const QString &directorypath)
+{
+	QStringList files;
+	QDir directory(directorypath);
+	if(directory.exists())
+	{
+		files = directory.entryList();
+	}
+	return files;
+}
+
+QStringList CDevStudioBackend::getTranslationDirectories()
+{
+	QStringList directories = QStandardPaths::standardLocations(QStandardPaths::DataLocation);
+	directories.removeDuplicates();
+	
+	foreach(QString directory, directories)
+	{
+		QString newdirectory = directory.append(QString("/translation"));
+		directories.removeOne(newdirectory);
+		directories.append(newdirectory);
+	}
+	
+	QString windowsprogramfiles = qgetenv("PROGRAMFILES");
+	if(windowsprogramfiles.length() != 0)
+	{
+		windowsprogramfiles = windowsprogramfiles.append("/cdevstudio/share/cdevstudio/translation");
+		directories.append(windowsprogramfiles);
+	}
+	
+	return directories;
+}

@@ -6,304 +6,304 @@
     <message>
         <location filename="../../ui/CDevStudio.ui" line="14"/>
         <source>CDevStudio</source>
-        <translation type="unfinished"></translation>
+        <translation>CDevStudio</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="43"/>
         <source>Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="53"/>
         <source>File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="61"/>
         <source>Tools</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeuge</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="68"/>
         <source>Code</source>
-        <translation type="unfinished"></translation>
+        <translation>Kode</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="77"/>
         <location filename="../../ui/CDevStudio.ui" line="279"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="83"/>
         <location filename="../../ui/CDevStudio.ui" line="287"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilfe</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="90"/>
         <source>View</source>
-        <translation type="unfinished"></translation>
+        <translation>Ansicht</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="110"/>
         <location filename="../../ui/CDevStudio.ui" line="309"/>
         <source>Project Explorer</source>
-        <translation type="unfinished"></translation>
+        <translation>Projektansicht</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="128"/>
         <location filename="../../ui/CDevStudio.ui" line="323"/>
         <source>Object Explorer</source>
-        <translation type="unfinished"></translation>
+        <translation>Objektansicht</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="146"/>
         <location filename="../../ui/CDevStudio.ui" line="337"/>
         <source>Console</source>
-        <translation type="unfinished"></translation>
+        <translation>Konsole</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="164"/>
         <source>Create Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt erstellen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="167"/>
         <source>Ctrl+Shift+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+N</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="172"/>
         <source>Load Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt laden</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="175"/>
         <source>Ctrl+Shift+O</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="180"/>
         <source>Close Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt schliessen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="183"/>
         <source>Ctrl+Shift+C</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+C</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="188"/>
         <source>Exit</source>
-        <translation type="unfinished"></translation>
+        <translation>Beenden</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="191"/>
         <source>Ctrl+Shift+X</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+X</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="196"/>
         <source>Create File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei erstellen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="199"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="204"/>
         <source>Delete File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei löschen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="209"/>
         <source>Rename File</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei umbenennen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="214"/>
         <source>Cut</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausschneiden</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="219"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopieren</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="224"/>
         <source>Paste</source>
-        <translation type="unfinished"></translation>
+        <translation>Einfügen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="229"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Undo</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="234"/>
         <source>Redo</source>
-        <translation type="unfinished"></translation>
+        <translation>Redo</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="239"/>
         <source>Find Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text finden</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="242"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+F</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="247"/>
         <source>Replace Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text ersetzten</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="250"/>
         <source>Ctrl+R</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+R</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="255"/>
         <source>Build</source>
-        <translation type="unfinished"></translation>
+        <translation>Erstellen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="258"/>
         <source>F5</source>
-        <translation type="unfinished"></translation>
+        <translation>F5</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="263"/>
         <source>Run</source>
-        <translation type="unfinished"></translation>
+        <translation>Starten</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="266"/>
         <source>F6</source>
-        <translation type="unfinished"></translation>
+        <translation>F6</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="271"/>
         <source>Project Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekteinstellungen</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="274"/>
         <source>F7</source>
-        <translation type="unfinished"></translation>
+        <translation>F7</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="282"/>
         <source>F10</source>
-        <translation type="unfinished"></translation>
+        <translation>F10</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="290"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="295"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über das Projekt</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="298"/>
         <source>F2</source>
-        <translation type="unfinished"></translation>
+        <translation>F2</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="312"/>
         <source>Ctrl+1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+1</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="326"/>
         <source>Ctrl+2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+2</translation>
     </message>
     <message>
         <location filename="../../ui/CDevStudio.ui" line="340"/>
         <source>Ctrl+3</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+3</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="82"/>
+        <location filename="../../CDevStudio.cpp" line="83"/>
         <source>Welcome</source>
-        <translation type="unfinished"></translation>
+        <translation>Willkommen</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="102"/>
-        <location filename="../../CDevStudio.cpp" line="143"/>
+        <location filename="../../CDevStudio.cpp" line="103"/>
+        <location filename="../../CDevStudio.cpp" line="144"/>
         <source>Error</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="102"/>
+        <location filename="../../CDevStudio.cpp" line="103"/>
         <source>The platform cannot create the new project</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Plattform kann das Projekt nicht erstellen</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="109"/>
-        <location filename="../../CDevStudio.cpp" line="129"/>
-        <location filename="../../CDevStudio.cpp" line="203"/>
-        <location filename="../../CDevStudio.cpp" line="222"/>
-        <location filename="../../CDevStudio.cpp" line="237"/>
+        <location filename="../../CDevStudio.cpp" line="110"/>
+        <location filename="../../CDevStudio.cpp" line="130"/>
+        <location filename="../../CDevStudio.cpp" line="204"/>
+        <location filename="../../CDevStudio.cpp" line="223"/>
+        <location filename="../../CDevStudio.cpp" line="238"/>
         <source>Information</source>
-        <translation type="unfinished"></translation>
+        <translation>Information</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="109"/>
+        <location filename="../../CDevStudio.cpp" line="110"/>
         <source>Please close the current project before you create a new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte schliessen Sie das aktuelle Projekt, um ein Neues erstellen zu können</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="117"/>
+        <location filename="../../CDevStudio.cpp" line="118"/>
         <source>Select a project</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie ein Projekt</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="129"/>
+        <location filename="../../CDevStudio.cpp" line="130"/>
         <source>Please close the current project before you open a new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte schliessen Sie das aktuelle Projekt, um ein Neues öffnen zu können</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="143"/>
+        <location filename="../../CDevStudio.cpp" line="144"/>
         <source>The platform cannot close the current project</source>
-        <translation type="unfinished"></translation>
+        <translation>Die Platform kann das Projekt nicht schliessen</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="194"/>
+        <location filename="../../CDevStudio.cpp" line="195"/>
         <source>Project build was succesful</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Projekt wurde erfolgreich erstellt</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="198"/>
+        <location filename="../../CDevStudio.cpp" line="199"/>
         <source>Project build was not successful</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Projekt konnte nicht erfolgreich erstellt werden</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="203"/>
-        <location filename="../../CDevStudio.cpp" line="222"/>
-        <location filename="../../CDevStudio.cpp" line="237"/>
+        <location filename="../../CDevStudio.cpp" line="204"/>
+        <location filename="../../CDevStudio.cpp" line="223"/>
+        <location filename="../../CDevStudio.cpp" line="238"/>
         <source>Please open an existing project or create a new one</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitte öffnen Sie ein existierendes Projekt oder erstellen Sie ein Neues</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="213"/>
+        <location filename="../../CDevStudio.cpp" line="214"/>
         <source>Project started and exited without error codes</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Projekt lief ohnen Fehlercodes</translation>
     </message>
     <message>
-        <location filename="../../CDevStudio.cpp" line="217"/>
+        <location filename="../../CDevStudio.cpp" line="218"/>
         <source>Project executable was not found or crashed during execution</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Projektprogramm konnte nicht gefunden werden oder ist während der Ausführung abgestürzt</translation>
     </message>
 </context>
 <context>
@@ -312,17 +312,17 @@
         <location filename="../../ui/DialogAbout.ui" line="14"/>
         <location filename="../../ui/DialogAbout.ui" line="24"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>Über</translation>
     </message>
     <message>
         <location filename="../../ui/DialogAbout.ui" line="41"/>
         <source>License</source>
-        <translation type="unfinished"></translation>
+        <translation>Lizenz</translation>
     </message>
     <message>
         <location filename="../../ui/DialogAbout.ui" line="58"/>
         <source>Thanks to</source>
-        <translation type="unfinished"></translation>
+        <translation>Danke</translation>
     </message>
 </context>
 <context>
@@ -330,32 +330,32 @@
     <message>
         <location filename="../../ui/DialogCreateProject.ui" line="14"/>
         <source>Create Project</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt erstellen</translation>
     </message>
     <message>
         <location filename="../../ui/DialogCreateProject.ui" line="29"/>
         <source>Directory</source>
-        <translation type="unfinished"></translation>
+        <translation>Verzeichnis</translation>
     </message>
     <message>
         <location filename="../../ui/DialogCreateProject.ui" line="36"/>
         <source>Name</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../../ui/DialogCreateProject.ui" line="43"/>
         <source>Navigate</source>
-        <translation type="unfinished"></translation>
+        <translation>Navigieren</translation>
     </message>
     <message>
         <location filename="../../ui/DialogCreateProject.ui" line="53"/>
-        <source>Please enter a project directory and a project name and continue. The project will be created inside this directory.</source>
-        <translation type="unfinished"></translation>
+        <source>Please enter a project directory and a project name and continue. The project will be created inside this directory</source>
+        <translation>Bitte geben Sie ein Projektverzeichnis und ein Name an, um weiterfahren zu können. Das Projekt wird innerhalb dieses Verzeichnisses erstellt</translation>
     </message>
     <message>
         <location filename="../../DialogCreateProject.cpp" line="21"/>
         <source>Select a project dir</source>
-        <translation type="unfinished"></translation>
+        <translation>Wählen Sie ein Verzeichnis aus</translation>
     </message>
 </context>
 <context>
@@ -363,7 +363,7 @@
     <message>
         <location filename="../../ui/DialogFindText.ui" line="14"/>
         <source>Find Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text finden</translation>
     </message>
 </context>
 <context>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../../ui/DialogHelp.ui" line="14"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>Hilfe</translation>
     </message>
 </context>
 <context>
@@ -379,12 +379,12 @@
     <message>
         <location filename="../../ui/DialogProjectSettings.ui" line="14"/>
         <source>Project Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekteinstellungen</translation>
     </message>
     <message>
         <location filename="../../ui/DialogProjectSettings.ui" line="26"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemein</translation>
     </message>
 </context>
 <context>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../../ui/DialogReplaceText.ui" line="14"/>
         <source>Replace Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text ersetzten</translation>
     </message>
 </context>
 <context>
@@ -400,12 +400,17 @@
     <message>
         <location filename="../../ui/DialogSettings.ui" line="14"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../../ui/DialogSettings.ui" line="24"/>
+        <location filename="../../ui/DialogSettings.ui" line="34"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>Allgemein</translation>
+    </message>
+    <message>
+        <location filename="../../ui/DialogSettings.ui" line="42"/>
+        <source>Language</source>
+        <translation>Sprache</translation>
     </message>
 </context>
 </TS>

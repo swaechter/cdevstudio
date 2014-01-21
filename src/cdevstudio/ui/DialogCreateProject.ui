@@ -50,7 +50,7 @@
      <item row="0" column="0" colspan="3">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>Please enter a project directory and a project name and continue. The project will be created inside this directory.</string>
+        <string>Please enter a project directory and a project name and continue. The project will be created inside this directory</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>

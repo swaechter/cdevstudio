@@ -8,7 +8,7 @@ CDevStudio::CDevStudio() : QMainWindow()
 	initProjectDock();
 	initObjectDock();
 	initConnections();
-	initTranslation();
+	initTranslator();
 	initWelcomeWidget();
 }
 
@@ -68,8 +68,9 @@ void CDevStudio::initConnections()
 	connect(actionAbout, SIGNAL(triggered(bool)), this, SLOT(actionAboutTrigger()));
 }
 
-void CDevStudio::initTranslation()
+void CDevStudio::initTranslator()
 {
+	qApp->installTranslator(&instanceTranslator);
 	retranslateUi(this);
 }
 
@@ -241,8 +242,34 @@ void CDevStudio::actionProjectSettingsTrigger()
 void CDevStudio::actionSettingsTrigger()
 {
 	DialogSettings *dialog = new DialogSettings(this);
+	
+	QStringList locales = cdevstudioSystemPlatform->getAvailableLocales();
+	foreach(QString locale, locales)
+	{
+		QString language = QLocale::languageToString(QLocale(locale).language());
+		dialog->addLanguage(language);
+		if(language.compare(QString("English")) == 0)
+		{
+			dialog->setSelectedLanguage(language);
+		}
+	}
+	
 	if(dialog->exec() == QDialog::Accepted)
 	{
+		QString language = dialog->getSelectedLanguage();
+		if(language.length() != 0)
+		{
+			foreach(QString locale, locales)
+			{
+				if(language.compare(QLocale::languageToString(QLocale(locale).language())) == 0)
+				{
+					if(instanceTranslator.load(cdevstudioSystemPlatform->getLocalePath(locale)))
+					{
+						retranslateUi(this);
+					}
+				}
+			}
+		}
 	}
 }
 

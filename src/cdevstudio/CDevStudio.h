@@ -4,6 +4,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QMessageBox>
+#include <QtCore/QTranslator>
 #include <cdevstudiosystemplatform/CDevStudioSystemPlatform.h>
 #include <cdevstudioprojectplatform/CDevStudioProjectPlatform.h>
 #include <cdevstudioprojectplatform/CDevStudioProject.h>
@@ -34,6 +35,7 @@ private:
 	CDevStudioProject *cdevstudioProject;
 	ProjectExplorerView *projectView;
 	ObjectExplorerView *objectView;
+	QTranslator instanceTranslator;
 	
 private slots:
 	void initSystemPlatform();
@@ -42,7 +44,7 @@ private slots:
 	void initProjectDock();
 	void initObjectDock();
 	void initConnections();
-	void initTranslation();
+	void initTranslator();
 	void initWelcomeWidget();
 	void actionCreateProjectTrigger();
 	void actionLoadProjectTrigger();
