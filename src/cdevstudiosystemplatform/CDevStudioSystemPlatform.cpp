@@ -20,19 +20,17 @@ CDevStudioSystemPlatform::~CDevStudioSystemPlatform()
 QStringList CDevStudioSystemPlatform::getAvailableLocales()
 {
 	QStringList locales;
-	foreach(QString path, implementation->backend->getTranslationDirectories())
+	foreach(QString filepath, implementation->backend->getTranslationFiles())
 	{
-		foreach(QString file, implementation->backend->getFilesInDirectory(path))
+		if(filepath.endsWith(QString(".qm")))
 		{
-			if(file.endsWith(QString(".qm")))
+			QString filename = implementation->backend->getNameOfFile(filepath);
+			QStringList params = filename.split(QString("."));
+			QString locale = params.at(0);
+			locale = locale.remove(QString("translation_"));
+			if(!locales.contains(locale))
 			{
-				QStringList params = file.split(QString("."));
-				QString locale = params.at(0);
-				locale.remove(QString("translation_"));
-				if(!locales.contains(locale))
-				{
-					locales.append(locale);
-				}
+				locales.append(locale);
 			}
 		}
 	}
@@ -41,15 +39,12 @@ QStringList CDevStudioSystemPlatform::getAvailableLocales()
 
 QString CDevStudioSystemPlatform::getLocalePath(const QString &locale)
 {
-	foreach(QString path, implementation->backend->getTranslationDirectories())
+	foreach(QString filepath, implementation->backend->getTranslationFiles())
 	{
-		foreach(QString file, implementation->backend->getFilesInDirectory(path))
+		QString filename = QString("translation_") + locale + QString(".qm");
+		if(filepath.endsWith(filename))
 		{
-			QString localefile = QString("translation_") + locale + QString(".qm");
-			if(file.compare(localefile) == 0)
-			{
-				return path + QString("/") + localefile;
-			}
+			return filepath;
 		}
 	}
 	return QString();

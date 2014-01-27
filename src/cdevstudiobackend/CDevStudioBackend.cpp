@@ -80,6 +80,12 @@ QString CDevStudioBackend::getDirectoryOfFile(const QString &filepath)
 	return fileinfo.absolutePath();
 }
 
+QString CDevStudioBackend::getNameOfFile(const QString &filepath)
+{
+	QFileInfo fileinfo(filepath);
+	return fileinfo.fileName();
+}
+
 QStringList CDevStudioBackend::getFilesInDirectory(const QString &directorypath)
 {
 	QStringList files;
@@ -91,24 +97,14 @@ QStringList CDevStudioBackend::getFilesInDirectory(const QString &directorypath)
 	return files;
 }
 
-QStringList CDevStudioBackend::getTranslationDirectories()
+QStringList CDevStudioBackend::getTranslationFiles()
 {
-	QStringList directories = QStandardPaths::standardLocations(QStandardPaths::DataLocation);
-	directories.removeDuplicates();
-	
-	foreach(QString directory, directories)
+	QString path(":/data/translation/");
+	QStringList translations;
+	QStringList files = QDir(path).entryList();
+	foreach(QString file, files)
 	{
-		QString newdirectory = directory.append(QString("/translation"));
-		directories.removeOne(newdirectory);
-		directories.append(newdirectory);
+		translations.append(file.prepend(path));
 	}
-	
-	QString windowsprogramfiles = qgetenv("PROGRAMFILES");
-	if(windowsprogramfiles.length() != 0)
-	{
-		windowsprogramfiles = windowsprogramfiles.append("/cdevstudio/share/cdevstudio/translation");
-		directories.append(windowsprogramfiles);
-	}
-	
-	return directories;
+	return translations;
 }

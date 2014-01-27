@@ -4,8 +4,6 @@
 #include <QtCore/QObject>
 #include <QtCore/QString>
 #include <QtCore/QList>
-#include <QtCore/QStandardPaths>
-#include <QtCore/QDebug>
 #include <cdevstudiobackend/CDevStudioBackend.h>
 
 #include "CDevStudioSystemPlatformExport.h"

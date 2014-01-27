@@ -5,7 +5,7 @@ email=waechter.simon@gmail.com
 version=0.0.6
 
 # Create orig.tar.gz archive
-tar -czf cdevstudio_${version}.orig.tar.gz ../../../cdevstudio/
+tar -czf cdevstudio_${version}.orig.tar.gz ../../../cdevstudio
 tar -xf cdevstudio_${version}.orig.tar.gz
 
 # Rename directory
@@ -24,6 +24,7 @@ cd ..
 rm -rf cdevstudio
 rm -rf cdevstudio-${version}
 rm *.dsc
-rm *.gz
+rm *.tar.gz
+rm *.tar.xz
 rm *.build
 rm *.changes
