@@ -41,5 +41,7 @@ make install DESTDIR="%{buildroot}"
 /usr/include/CDevStudioProject.h
 /usr/include/CDevStudioBackend.h
 /usr/include/CDevStudioBackendExport.h
+/usr/share/cdevstudio/translation/translation_en.qm
+/usr/share/cdevstudio/translation/translation_de.qm
 /usr/share/applications/cdevstudio.desktop
 /usr/share/man/man1/cdevstudio.1.gz

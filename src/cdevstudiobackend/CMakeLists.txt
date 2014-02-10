@@ -1,8 +1,7 @@
-cmake_minimum_required(VERSION 2.8.11)
+cmake_minimum_required(VERSION 2.8.9)
 project(cdevstudiobackend)
 
 find_package(C++Utils REQUIRED)
-find_package(Qt5Utils REQUIRED)
 find_package(Qt5Core REQUIRED)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -21,9 +20,9 @@ set(CDEVSTUDIOBACKEND_HDR
 add_definitions(-DCDEVSTUDIOBACKEND_EXPORT)
 
 add_library(cdevstudiobackend SHARED ${CDEVSTUDIOBACKEND_SRC} ${CDEVSTUDIOBACKEND_HDR})
-target_link_libraries(cdevstudiobackend Qt5::Core)
+set_target_properties(cdevstudiobackend PROPERTIES VERSION ${VERSION_NUMBER} SOVERSION ${VERSION_SONUMBER})
 
-set_target_properties(cdevstudiobackend PROPERTIES VERSION 0.0.6 SOVERSION 0)
+qt5_use_modules(cdevstudiobackend Core)
 
 install(TARGETS cdevstudiobackend RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
 install(FILES CDevStudioBackend.h CDevStudioBackendExport.h DESTINATION include)
