@@ -39,4 +39,5 @@ set_target_properties(cdevstudioplatform PROPERTIES VERSION ${VERSION_NUMBER} SO
 target_link_libraries(cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudioplatform RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES CDevStudioProjectPlatform.h CDevStudioProjectPlatformExport.h CDevStudioProject.h DESTINATION include)
+install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioProject.h CDevStudioWindow.h CDevStudioMenuBar.h CDevStudioStatusBar.h CDevStudioMenu.h CDevStudioAction.h CDevStudioBackend.h DESTINATION include/cdevstudioplatform)
+install(FILES ICDevStudioPlugin.h DESTINATION include/cdevstudioplatform)
