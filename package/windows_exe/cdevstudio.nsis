@@ -2,8 +2,8 @@
 !define APPLICATION_NAME "cdevstudio"
 !define APPLICATION_VERSION "0.0.6"
 !define PROJECT_ROOT "..\.."
-!define QT_BINARY_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\bin"
-!define QT_PLUGINS_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\plugins"
+;!define QT_BINARY_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\bin"
+;!define QT_PLUGINS_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\plugins"
 
 !ifndef QT_BINARY_DIR
 	!error "QT_BINARY_DIR is not defined"
@@ -49,7 +49,7 @@ Section ""
 	
 	!ifdef MINGW-MAKE
 		File ${PROJECT_ROOT}\build\src\cdevstudio\cdevstudio.exe
-		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\cdevstudioplatform.dll
+		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\libcdevstudioplatform.dll
 		File ${PROJECT_ROOT}\build\src\pluginhelp\libpluginhelp.dll
 		File ${QT_BINARY_DIR}\libgcc_s_dw2-1.dll
 		File ${QT_BINARY_DIR}\libstdc++-6.dll
