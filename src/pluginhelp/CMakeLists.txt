@@ -10,15 +10,11 @@ set(CMAKE_AUTOMOC ON)
 
 set(PLUGINHELP_SRC
   PluginHelp.cpp
-  DialogHelp.cpp
-  DialogAbout.cpp
 )
 
 set(PLUGINHELP_HDR
   PluginHelpExport.h
   PluginHelp.h
-  DialogHelp.h
-  DialogAbout.h
 )
 
 set(PLUGINHELP_RESOURCE_IN
