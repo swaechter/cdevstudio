@@ -5,15 +5,12 @@
 
 #include "ui_DialogSettings.h"
 
-class DialogSettings : public QDialog, Ui::DialogSettings
+class DialogSettings : public QDialog, private Ui::DialogSettings
 {
 	Q_OBJECT
 	
 public:
 	DialogSettings(QWidget *parent);
-	void addLanguage(const QString &language);
-	void setSelectedLanguage(const QString &language);
-	QString getSelectedLanguage();
 };
 
 #endif // DIALOGSETTINGS_H

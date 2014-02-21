@@ -8,7 +8,7 @@ Install build environment
 
 Required
 * Setup a C/C++ toolchain and add it to the system path. C++11 features are required
-* Setup Qt5 and add it to the system path. Version 5.0.0 or higher is required
+* Setup Qt5 and add it to the system path. Version 5.2.0 or higher is required
 * Setup CMake and add it to the system path. Version 2.8.11 or higher is required
 
 Optional

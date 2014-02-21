@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 2.8.9)
-project(cdevstudio)
+cmake_minimum_required(VERSION 2.8.11)
+project(cdevstudio-workspace)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/")
 

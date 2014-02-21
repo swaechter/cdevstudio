@@ -6,7 +6,7 @@
 
 #include "ui_DialogCreateProject.h"
 
-class DialogCreateProject : public QDialog, Ui::DialogCreateProject
+class DialogCreateProject : public QDialog, private Ui::DialogCreateProject
 {
 	Q_OBJECT
 	

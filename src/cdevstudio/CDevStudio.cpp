@@ -1,49 +1,62 @@
 #include "CDevStudio.h"
 
-CDevStudio::CDevStudio() : QMainWindow()
+CDevStudio::CDevStudio() : CDevStudioWindow()
 {
-	initSystemPlatform();
-	initProjectPlatform();
+	initPlatform();
 	initWindow();
-	initProjectDock();
-	initObjectDock();
+	initMenubar();
+	initStatusbar();
 	initConnections();
-	initTranslator();
 	initWelcomeWidget();
+	initPlugins();
 }
 
 CDevStudio::~CDevStudio()
 {
-	delete cdevstudioSystemPlatform;
-	delete cdevstudioProjectPlatform;
+	delete cdevstudioPlatform;
 }
 
-void CDevStudio::initSystemPlatform()
+void CDevStudio::initPlatform()
 {
-	cdevstudioSystemPlatform = new CDevStudioSystemPlatform();
-}
-
-void CDevStudio::initProjectPlatform()
-{
-	cdevstudioProjectPlatform = new CDevStudioProjectPlatform();
-	cdevstudioProject = nullptr;
+	cdevstudioPlatform = CDevStudioPlatform::getInstance();
 }
 
 void CDevStudio::initWindow()
 {
-	setupUi(this);
+	cdevstudioPlatform->setWindow(this);
+	cdevstudioPlatform->getWindow()->setMinimumSize(800, 500);
+	cdevstudioPlatform->getWindow()->setWindowTitle(tr("CDevStudio"));
 }
 
-void CDevStudio::initProjectDock()
+void CDevStudio::initMenubar()
 {
-	projectView = new ProjectExplorerView(this);
-	dockWidgetProject->setWidget(projectView);
+	CDevStudioMenuBar *menubar = cdevstudioPlatform->getWindow()->getMenuBar();
+	
+	menuProject = new CDevStudioMenu(tr("Project"), menubar);
+	menuSettings = new CDevStudioMenu(tr("Settings"), menubar);
+	actionCreateProject = new CDevStudioAction(tr("Create Project"), menuProject);
+	actionLoadProject = new CDevStudioAction(tr("Load Project"), menuProject);
+	actionCloseProject = new CDevStudioAction(tr("Close Project"), menuProject);
+	actionExit = new CDevStudioAction(tr("Exit"), menuProject);
+	actionSettings = new CDevStudioAction(tr("Settings"), menuSettings);
+	actionPlugins = new CDevStudioAction(tr("Plugins"), menuSettings);
+	
+	menuProject->addAction(actionCreateProject);
+	menuProject->addAction(actionLoadProject);
+	menuProject->addAction(actionCloseProject);
+	menuProject->addSeparator();
+	menuProject->addAction(actionExit);
+	menuSettings->addAction(actionSettings);
+	menuSettings->addAction(actionPlugins);
+	
+	menubar->addMenu(menuProject);
+	menubar->addMenu(menuSettings);
 }
 
-void CDevStudio::initObjectDock()
+void CDevStudio::initStatusbar()
 {
-	objectView = new ObjectExplorerView(this);
-	dockWidgetObject->setWidget(objectView);
+	CDevStudioStatusBar *statusbar = cdevstudioPlatform->getWindow()->getStatusBar();
+	statusbar->clearMessage();
 }
 
 void CDevStudio::initConnections()
@@ -52,98 +65,66 @@ void CDevStudio::initConnections()
 	connect(actionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionLoadProjectTrigger()));
 	connect(actionCloseProject, SIGNAL(triggered(bool)), this, SLOT(actionCloseProjectTrigger()));
 	connect(actionExit, SIGNAL(triggered(bool)), this, SLOT(actionExitTrigger()));
-	connect(actionCreateFile, SIGNAL(triggered(bool)), this, SLOT(actionCreateFileTrigger()));
-	connect(actionDeleteFile, SIGNAL(triggered(bool)), this, SLOT(actionDeleteFileTrigger()));
-	connect(actionRenameFile, SIGNAL(triggered(bool)), this, SLOT(actionRenameFileTrigger()));
-	connect(actionFindText, SIGNAL(triggered(bool)), this, SLOT(actionFindTextTrigger()));
-	connect(actionReplaceText, SIGNAL(triggered(bool)), this, SLOT(actionReplaceTextTrigger()));
-	connect(actionBuild, SIGNAL(triggered(bool)), this, SLOT(actionBuildTrigger()));
-	connect(actionRun, SIGNAL(triggered(bool)), this, SLOT(actionRunTrigger()));
-	connect(actionProjectSettings, SIGNAL(triggered(bool)), this, SLOT(actionProjectSettingsTrigger()));
 	connect(actionSettings, SIGNAL(triggered(bool)), this, SLOT(actionSettingsTrigger()));
-	connect(actionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTrigger()));
-	connect(actionObjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionObjectExplorerTrigger()));
-	connect(actionConsole, SIGNAL(triggered(bool)), this, SLOT(actionConsoleTrigger()));
-	connect(actionHelp, SIGNAL(triggered(bool)), this, SLOT(actionHelpTrigger()));
-	connect(actionAbout, SIGNAL(triggered(bool)), this, SLOT(actionAboutTrigger()));
-}
-
-void CDevStudio::initTranslator()
-{
-	qApp->installTranslator(&instanceTranslator);
-	retranslateUi(this);
+	connect(actionPlugins, SIGNAL(triggered(bool)), this, SLOT(actionPluginsTrigger()));
 }
 
 void CDevStudio::initWelcomeWidget()
 {
-	CDevStudioCodeEdit *codeedit = new CDevStudioCodeEdit(this);
-	QWidget *widget = dynamic_cast<QWidget *>(codeedit);
-	if(widget != nullptr)
+	QTextEdit *textedit = new QTextEdit(this);
+	textedit->setText("Welcome to CDevStudio. This is an early alpha version");
+	textedit->setReadOnly(true);
+	setCentralWidget(textedit);
+}
+
+void CDevStudio::initPlugins()
+{
+	QStringList paths;
+	paths << "/home/simon/Workspace_C++/cdevstudio/build/src/pluginhelp/";
+	foreach(QString path, paths)
 	{
-		tabWidget->addTab(widget, tr("Welcome"));
+		QDir directory(path);
+		QStringList filter;
+		filter << "*plugin*.so" << "*plugin*.dll";
+		QStringList files = directory.entryList(filter);
+		foreach(QString file, files)
+		{
+			QPluginLoader loader(path + QString("/") + file, this);
+			QObject *object = loader.instance();
+			if(object != nullptr)
+			{
+				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
+				if(plugin != nullptr)
+				{
+					qDebug() << "CDevStudio: Loaded:" << plugin->getPluginName();
+				}
+				else
+				{
+					qDebug() << "CDevStudio: Cannot cast plugin" << file;
+				}
+			}
+			else
+			{
+				qDebug() << "CDevStudio: Loader error:" << loader.errorString();
+			}
+		}
 	}
 }
 
 void CDevStudio::actionCreateProjectTrigger()
 {
-	if(cdevstudioProject == nullptr)
+	DialogCreateProject *dialog = new DialogCreateProject(this);
+	if(dialog->exec() == QDialog::Accepted)
 	{
-		DialogCreateProject *dialog = new DialogCreateProject(this);
-		if(dialog->exec() == QDialog::Accepted)
-		{
-			if(dialog->getProjectDirectory().length() && dialog->getProjectName().length())
-			{
-				CDevStudioProject *project = cdevstudioProjectPlatform->createProject(dialog->getProjectName(), dialog->getProjectDirectory());
-				if(project)
-				{
-					cdevstudioProject = project;
-				}
-				else
-				{
-					QMessageBox::critical(this, tr("Error"), tr("The platform cannot create the new project"));
-				}
-			}
-		}
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Information"), tr("Please close the current project before you create a new one"));
 	}
 }
 
 void CDevStudio::actionLoadProjectTrigger()
 {
-	if(cdevstudioProject == nullptr)
-	{
-		QString projectfile = QFileDialog::getOpenFileName(this, tr("Select a project"), QDir::homePath(), "CDevStudio (*.cdev)");
-		if(projectfile.length())
-		{
-			CDevStudioProject *project = cdevstudioProjectPlatform->loadProject(projectfile);
-			if(project)
-			{
-				cdevstudioProject = project;
-			}
-		}
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Information"), tr("Please close the current project before you open a new one"));
-	}
 }
 
 void CDevStudio::actionCloseProjectTrigger()
 {
-	if(cdevstudioProject != nullptr)
-	{
-		if(cdevstudioProjectPlatform->closeProject(cdevstudioProject))
-		{
-			cdevstudioProject = nullptr;
-		}
-		else
-		{
-			QMessageBox::critical(this, tr("Error"), tr("The platform cannot close the current project"));
-		}
-	}
 }
 
 void CDevStudio::actionExitTrigger()
@@ -151,172 +132,15 @@ void CDevStudio::actionExitTrigger()
 	exit(EXIT_SUCCESS);
 }
 
-void CDevStudio::actionCreateFileTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-	}
-}
-
-void CDevStudio::actionDeleteFileTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-	}
-}
-
-void CDevStudio::actionRenameFileTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-	}
-}
-
-void CDevStudio::actionFindTextTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-	}
-}
-
-void CDevStudio::actionReplaceTextTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-	}
-}
-
-void CDevStudio::actionBuildTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-		if(cdevstudioProjectPlatform->buildProject(cdevstudioProject))
-		{
-			textEditConsole->append(tr("Project build was succesful"));
-		}
-		else
-		{
-			textEditConsole->append(tr("Project build was not successful"));
-		}
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Information"), tr("Please open an existing project or create a new one"));
-	}
-}
-
-void CDevStudio::actionRunTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-		if(cdevstudioProjectPlatform->runProject(cdevstudioProject))
-		{
-			textEditConsole->append(tr("Project started and exited without error codes"));
-		}
-		else
-		{
-			textEditConsole->append(tr("Project executable was not found or crashed during execution"));
-		}
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Information"), tr("Please open an existing project or create a new one"));
-	}
-}
-
-void CDevStudio::actionProjectSettingsTrigger()
-{
-	if(cdevstudioProject != nullptr)
-	{
-		DialogProjectSettings *dialog = new DialogProjectSettings(this);
-		if(dialog->exec() == QDialog::Accepted)
-		{
-		}
-	}
-	else
-	{
-		QMessageBox::information(this, tr("Information"), tr("Please open an existing project or create a new one"));
-	}
-}
-
 void CDevStudio::actionSettingsTrigger()
 {
-	DialogSettings *dialog = new DialogSettings(this);
-	
-	QStringList locales = cdevstudioSystemPlatform->getAvailableLocales();
-	foreach(QString locale, locales)
-	{
-		QString language = QLocale::languageToString(QLocale(locale).language());
-		dialog->addLanguage(language);
-		if(language.compare(QString("English")) == 0)
-		{
-			dialog->setSelectedLanguage(language);
-		}
-	}
-	
+ 	DialogSettings *dialog = new DialogSettings(this);
 	if(dialog->exec() == QDialog::Accepted)
 	{
-		QString language = dialog->getSelectedLanguage();
-		if(language.length() != 0)
-		{
-			foreach(QString locale, locales)
-			{
-				if(language.compare(QLocale::languageToString(QLocale(locale).language())) == 0)
-				{
-					if(instanceTranslator.load(cdevstudioSystemPlatform->getLocalePath(locale)))
-					{
-						retranslateUi(this);
-					}
-				}
-			}
-		}
 	}
 }
 
-void CDevStudio::actionProjectExplorerTrigger()
+void CDevStudio::actionPluginsTrigger()
 {
-	if(actionProjectExplorer->isChecked())
-	{
-		dockWidgetProject->show();
-	}
-	else
-	{
-		dockWidgetProject->hide();
-	}
-}
 
-void CDevStudio::actionObjectExplorerTrigger()
-{
-	if(actionObjectExplorer->isChecked())
-	{
-		dockWidgetObject->show();
-	}
-	else
-	{
-		dockWidgetObject->hide();
-	}
-}
-
-void CDevStudio::actionConsoleTrigger()
-{
-	if(actionConsole->isChecked())
-	{
-		dockWidgetConsole->show();
-	}
-	else
-	{
-		dockWidgetConsole->hide();
-	}
-}
-
-void CDevStudio::actionHelpTrigger()
-{
-	DialogHelp *dialog = new DialogHelp(this);
-	dialog->exec();
-}
-
-void CDevStudio::actionAboutTrigger()
-{
-	DialogAbout *dialog = new DialogAbout(this);
-	dialog->exec();
 }
