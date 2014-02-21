@@ -2,8 +2,8 @@
 !define APPLICATION_NAME "cdevstudio"
 !define APPLICATION_VERSION "0.0.6"
 !define PROJECT_ROOT "..\.."
-;!define QT_BINARY_DIR "C:\Qt\Qt5.1.0\5.1.0\msvc2012\bin"
-;!define QT_PLUGINS_DIR "C:\Qt\Qt5.1.0\5.1.0\msvc2012\plugins"
+!define QT_BINARY_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\bin"
+!define QT_PLUGINS_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\plugins"
 
 !ifndef QT_BINARY_DIR
 	!error "QT_BINARY_DIR is not defined"
@@ -49,19 +49,15 @@ Section ""
 	
 	!ifdef MINGW-MAKE
 		File ${PROJECT_ROOT}\build\src\cdevstudio\cdevstudio.exe
-		File ${PROJECT_ROOT}\build\src\cdevstudiocodeedit\libcdevstudiocodeedit.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudiosystemplatform\libcdevstudiosystemplatform.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudioprojectplatform\libcdevstudioprojectplatform.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudiobackend\libcdevstudiobackend.dll
+		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\cdevstudioplatform.dll
+		File ${PROJECT_ROOT}\build\src\pluginhelp\libpluginhelp.dll
 		File ${QT_BINARY_DIR}\libgcc_s_dw2-1.dll
 		File ${QT_BINARY_DIR}\libstdc++-6.dll
 		File ${QT_BINARY_DIR}\libwinpthread-1.dll
 	!else ifdef MSVC-MSBUILD
 		File ${PROJECT_ROOT}\build\src\cdevstudio\Release\cdevstudio.exe
-		File ${PROJECT_ROOT}\build\src\cdevstudiocodeedit\Release\cdevstudiocodeedit.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudiosystemplatform\Release\cdevstudiosystemplatform.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudioprojectplatform\Release\cdevstudioprojectplatform.dll
-		File ${PROJECT_ROOT}\build\src\cdevstudiobackend\Release\cdevstudiobackend.dll
+		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\Release\cdevstudioplatform.dll
+		File ${PROJECT_ROOT}\build\src\pluginhelp\Release\pluginhelp.dll
 	!else
 		!error "The compiler platform is not defined. Please run the batch file for your compiler platform"
 	!endif

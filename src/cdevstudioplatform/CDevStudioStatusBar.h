@@ -3,7 +3,9 @@
 
 #include <QtWidgets/QStatusBar>
 
-class CDevStudioStatusBar : public QStatusBar
+#include "CDevStudioPlatformExport.h"
+
+class CDEVSTUDIOPLATFORM_API CDevStudioStatusBar : public QStatusBar
 {
 	Q_OBJECT
 	

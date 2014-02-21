@@ -3,7 +3,9 @@
 
 #include <QtWidgets/QAction>
 
-class CDevStudioAction : public QAction
+#include "CDevStudioPlatformExport.h"
+
+class CDEVSTUDIOPLATFORM_API CDevStudioAction : public QAction
 {
 	Q_OBJECT
 	

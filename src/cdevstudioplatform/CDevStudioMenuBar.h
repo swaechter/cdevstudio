@@ -4,9 +4,10 @@
 #include <QtWidgets/QMenuBar>
 #include <QtCore/QList>
 
+#include "CDevStudioPlatformExport.h"
 #include "CDevStudioMenu.h"
 
-class CDevStudioMenuBar : public QMenuBar
+class CDEVSTUDIOPLATFORM_API CDevStudioMenuBar : public QMenuBar
 {
 	Q_OBJECT
 	

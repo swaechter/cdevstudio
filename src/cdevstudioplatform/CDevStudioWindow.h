@@ -3,10 +3,11 @@
 
 #include <QtWidgets/QMainWindow>
 
+#include "CDevStudioPlatformExport.h"
 #include "CDevStudioMenuBar.h"
 #include "CDevStudioStatusBar.h"
 
-class CDevStudioWindow : public QMainWindow
+class CDEVSTUDIOPLATFORM_API CDevStudioWindow : public QMainWindow
 {
 	Q_OBJECT
 	

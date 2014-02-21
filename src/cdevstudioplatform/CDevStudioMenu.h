@@ -3,7 +3,9 @@
 
 #include <QtWidgets/QMenu>
 
-class CDevStudioMenu : public QMenu
+#include "CDevStudioPlatformExport.h"
+
+class CDEVSTUDIOPLATFORM_API CDevStudioMenu : public QMenu
 {
 	Q_OBJECT
 	
