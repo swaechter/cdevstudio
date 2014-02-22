@@ -18,6 +18,7 @@
 
 #include "DialogCreateProject.h"
 #include "DialogSettings.h"
+#include "DialogPlugins.h"
 
 class CDevStudio : public CDevStudioWindow
 {
