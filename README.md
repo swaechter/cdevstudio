@@ -1,7 +1,7 @@
 CDevStudio
 ==========
 
-A C/C++ IDE based on Qt5. CDevStudio is cross compatible and runs under Linux, Unix, OS X and Windows
+A C/C++ IDE based on Qt5. CDevStudio is cross compatible and runs under Linux, Unix, OS X and Windows. The functionality is given by a plugin system.
 
 Install build environment
 -------------------------
@@ -23,27 +23,16 @@ Download and prepare CDevStudio
 * mkdir build
 * cd build
 
+For development switch to the develop branch. A typical Git workflow (master/develop/feature/bugfix) is used
+* git checkout -b develop origin/develop
+
 Compile CDevStudio
 ------------------
 
-Linux/Unix gcc/clang - Build
-* cmake .. && make
+Normal build
+* cmake ..
+* make
 * ./src/cdevstudio/cdevstudio
-
-Mac OS X clang - Build
-* cmake .. && make
-* Copy the dylib libraries to the cdevstudio directory
-* ./src/cdevstudio/cdevstudio
-
-Windows MinGW - Build
-* cmake .. -G"MinGW Makefiles" && mingw32-make
-* Copy the dll libraries to the cdevstudio directory
-* .\src\cdevstudio\cdevstudio
-
-Windows MSVC - Build
-* cmake .. && msbuild Project.sln
-* Copy the dll libraries to the cdevstudio directory
-* .\src\cdevstudio\buildtype\cdevstudio.exe
 
 Packaging/Installing CDevStudio
 -------------------------------
@@ -53,9 +42,10 @@ The following package systems are supported. For more information read the instr
 * Linux: DEB for Debian via debuild
 * Linux: RPM for Fedora via rpmbuild
 * Linux: TAR.XZ for Arch Linux via makepkg
-* Windows: EXE for all systems via NSIS
+* Windows: EXE for Windows Vista, 7 and 8 via NSIS
 
 Notes
 -----
 
 Important notes
+* The platform API is not binary compatible
