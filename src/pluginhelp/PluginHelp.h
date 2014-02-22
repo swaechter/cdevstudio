@@ -2,11 +2,6 @@
 #define PLUGINHELP_H
 
 #include <QtCore/QObject>
-#include <QtWidgets/QDialog>
-#include <QtWidgets/QDialogButtonBox>
-#include <QtWidgets/QTabWidget>
-#include <QtWidgets/QTextBrowser>
-#include <QtWidgets/QGridLayout>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioMenuBar.h>
@@ -15,6 +10,8 @@
 #include <cdevstudioplatform/CDevStudioBackend.h>
 
 #include "PluginHelpExport.h"
+#include "DialogHelp.h"
+#include "DialogAbout.h"
 
 class PLUGINHELP_API PluginHelp : public QObject, private ICDevStudioPlugin
 {
