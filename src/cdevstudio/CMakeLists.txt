@@ -16,17 +16,20 @@ set(CDEVSTUDIO_SRC
   CDevStudio.cpp
   DialogCreateProject.cpp
   DialogSettings.cpp
+  DialogPlugins.cpp
 )
 
 set(CDEVSTUDIO_HDR
   CDevStudio.h
   DialogCreateProject.h
   DialogSettings.h
+  DialogPlugins.h
 )
 
 set(CDEVSTUDIO_UI_IN
   DialogCreateProject.ui
   DialogSettings.ui
+  DialogPlugins.ui
 )
 
 qt5_wrap_ui(CDEVSTUDIO_UI_OUT ${CDEVSTUDIO_UI_IN})
