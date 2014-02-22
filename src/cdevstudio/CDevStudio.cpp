@@ -80,7 +80,7 @@ void CDevStudio::initWelcomeWidget()
 void CDevStudio::initPlugins()
 {
 	QStringList paths;
-	paths << "/home/simon/Workspace_C++/cdevstudio/build/src/pluginhelp/";
+	paths << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginhelp/";
 	foreach(QString path, paths)
 	{
 		QDir directory(path);
@@ -116,6 +116,13 @@ void CDevStudio::actionCreateProjectTrigger()
 	DialogCreateProject *dialog = new DialogCreateProject(this);
 	if(dialog->exec() == QDialog::Accepted)
 	{
+		if(!dialog->getProjectDirectory().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectTemplate().isEmpty())
+		{
+		}
+		else
+		{
+			QMessageBox::critical(this, tr("Error"), tr("Project cannot be created because some important information are missing"));
+		}
 	}
 }
 

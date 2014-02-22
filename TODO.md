@@ -8,6 +8,7 @@ General
 
 Codebase
 --------
+* Dialog Create Project: Add  a navigate button to select a directory and validate input on the fly
 
 General
 * Use smart pointers

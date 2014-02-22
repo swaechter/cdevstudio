@@ -2,7 +2,6 @@
 #define DIALOGCREATEPROJECT_H
 
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QFileDialog>
 
 #include "ui_DialogCreateProject.h"
 
@@ -14,9 +13,7 @@ public:
 	DialogCreateProject(QWidget *parent);
 	QString getProjectDirectory();
 	QString getProjectName();
-	
-private slots:
-	void actionNavigateClick();
+	QString getProjectTemplate();
 };
 
 #endif
