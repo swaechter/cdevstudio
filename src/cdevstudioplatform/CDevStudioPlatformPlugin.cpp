@@ -1,19 +1,15 @@
 #include "CDevStudioPlatformPlugin.h"
 
-CDevStudioPlatformPlugin::CDevStudioPlatformPlugin(CDevStudioWindow *window, CDevStudioBackend *backend)
+CDevStudioPlatformPlugin::CDevStudioPlatformPlugin(CDevStudioWindow *window, QList<ICDevStudioPlugin *> plugins, CDevStudioBackend *backend)
 {
 	parentWindow = window;
+	parentPlugins = plugins;
 	parentBackend = backend;
 }
 
 CDevStudioWindow *CDevStudioPlatformPlugin::getWindow()
 {
 	return parentWindow;
-}
-
-void CDevStudioPlatformPlugin::setPlugins(QList< ICDevStudioPlugin * > plugins)
-{
-	parentPlugins = plugins;
 }
 
 QList<ICDevStudioPlugin *> CDevStudioPlatformPlugin::getPlugins()

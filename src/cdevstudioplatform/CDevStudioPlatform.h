@@ -19,7 +19,7 @@ class CDEVSTUDIOPLATFORM_API CDevStudioPlatform : public QObject
 public:
 	CDevStudioPlatform(CDevStudioWindow *window);
 	~CDevStudioPlatform();
-	void loadPlugins();
+	void initPlugins();
 	CDevStudioPlatformPlugin *getPluginPlatform();
 	
 private:

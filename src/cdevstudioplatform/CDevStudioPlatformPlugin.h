@@ -12,9 +12,8 @@
 class CDEVSTUDIOPLATFORM_API CDevStudioPlatformPlugin
 {
 public:
-	CDevStudioPlatformPlugin(CDevStudioWindow *window, CDevStudioBackend *backend);
+	CDevStudioPlatformPlugin(CDevStudioWindow *window, QList<ICDevStudioPlugin *> plugins, CDevStudioBackend *backend);
 	CDevStudioWindow *getWindow();
-	void setPlugins(QList<ICDevStudioPlugin *> plugins);
 	QList<ICDevStudioPlugin *> getPlugins();
 	CDevStudioBackend *getBackend();
 	

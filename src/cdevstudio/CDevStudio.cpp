@@ -78,7 +78,7 @@ void CDevStudio::initWelcomeWidget()
 
 void CDevStudio::initPlugins()
 {
-	cdevstudioPlatform->loadPlugins();
+	cdevstudioPlatform->initPlugins();
 }
 
 void CDevStudio::actionCreateProjectTrigger()

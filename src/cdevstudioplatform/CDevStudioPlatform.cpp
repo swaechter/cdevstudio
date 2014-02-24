@@ -13,19 +13,7 @@ CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 	implementation = new Implementation();
 	implementation->window = window;
 	implementation->backend = new CDevStudioBackend();
-	implementation->platformplugin = new CDevStudioPlatformPlugin(implementation->window, implementation->backend);
-}
-
-CDevStudioPlatform::~CDevStudioPlatform()
-{
-	qDeleteAll<>(implementation->plugins);
-	delete implementation->platformplugin;
-	delete implementation->backend;
-	delete implementation;
-}
-
-void CDevStudioPlatform::loadPlugins()
-{
+	
 	foreach(QString path, implementation->backend->getPluginDirectories())
 	{
 		QStringList files = QDir(path).entryList(implementation->backend->getPluginFilter());
@@ -53,7 +41,19 @@ void CDevStudioPlatform::loadPlugins()
 		}
 	}
 	
-	implementation->platformplugin->setPlugins(implementation->plugins);
+	implementation->platformplugin = new CDevStudioPlatformPlugin(implementation->window, implementation->plugins, implementation->backend);
+}
+
+CDevStudioPlatform::~CDevStudioPlatform()
+{
+	qDeleteAll<>(implementation->plugins);
+	delete implementation->platformplugin;
+	delete implementation->backend;
+	delete implementation;
+}
+
+void CDevStudioPlatform::initPlugins()
+{
 	foreach(ICDevStudioPlugin *plugin, implementation->plugins)
 	{
 		plugin->init(implementation->platformplugin);
