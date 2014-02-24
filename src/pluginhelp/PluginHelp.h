@@ -1,11 +1,11 @@
 #ifndef PLUGINHELP_H
 #define PLUGINHELP_H
 
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
-#include <cdevstudioplatform/CDevStudioMenuBar.h>
-#include <cdevstudioplatform/CDevStudioMenu.h>
-#include <cdevstudioplatform/CDevStudioAction.h>
 #include <cdevstudioplatform/CDevStudioBackend.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 

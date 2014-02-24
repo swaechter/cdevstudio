@@ -4,8 +4,6 @@
 #include <QtWidgets/QMainWindow>
 
 #include "CDevStudioPlatformExport.h"
-#include "CDevStudioMenuBar.h"
-#include "CDevStudioStatusBar.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioWindow : public QMainWindow
 {
@@ -14,12 +12,6 @@ class CDEVSTUDIOPLATFORM_API CDevStudioWindow : public QMainWindow
 public:
 	CDevStudioWindow();
 	~CDevStudioWindow();
-	CDevStudioMenuBar *getMenuBar();
-	CDevStudioStatusBar *getStatusBar();
-	
-private:
-	CDevStudioMenuBar *widgetMenuBar;
-	CDevStudioStatusBar *widgetStatusBar;
 };
 
 #endif // CDEVSTUDIOWINDOW_H

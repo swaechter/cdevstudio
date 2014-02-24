@@ -12,11 +12,11 @@ void PluginHelp::init(CDevStudioPlatformPlugin *platformplugin)
 {
 	dataPlatformPlugin = platformplugin;
 	
-	CDevStudioMenuBar *menubar = dataPlatformPlugin->getWindow()->getMenuBar();
+	QMenuBar *menubar = dataPlatformPlugin->getWindow()->menuBar();
 	
-	CDevStudioMenu *menuhelp = new CDevStudioMenu(tr("Help"), menubar);
-	CDevStudioAction *actionhelp = new CDevStudioAction(tr("Help"), menuhelp);
-	CDevStudioAction *actionabout = new CDevStudioAction(tr("About"), menuhelp);
+	QMenu *menuhelp = new QMenu(tr("Help"), menubar);
+	QAction *actionhelp = new QAction(tr("Help"), menuhelp);
+	QAction *actionabout = new QAction(tr("About"), menuhelp);
 	
 	menuhelp->addAction(actionhelp);
 	menuhelp->addAction(actionabout);

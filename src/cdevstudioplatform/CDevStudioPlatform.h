@@ -10,7 +10,6 @@
 #include "CDevStudioPlatformPlugin.h"
 #include "CDevStudioWindow.h"
 #include "CDevStudioProject.h"
-#include "CDevStudioBackend.h"
 #include "ICDevStudioPlugin.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioPlatform : public QObject
@@ -22,7 +21,6 @@ public:
 	~CDevStudioPlatform();
 	void loadPlugins();
 	CDevStudioPlatformPlugin *getPluginPlatform();
-// 	QList<ICDevStudioPlugin *> getPlugins();
 	
 private:
 	struct Implementation;

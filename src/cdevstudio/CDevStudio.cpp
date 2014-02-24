@@ -4,8 +4,8 @@ CDevStudio::CDevStudio() : CDevStudioWindow()
 {
 	initPlatform();
 	initWindow();
-	initMenubar();
 	initStatusbar();
+	initMenubar();
 	initConnections();
 	initWelcomeWidget();
 	initPlugins();
@@ -27,18 +27,24 @@ void CDevStudio::initWindow()
 	cdevstudioPlatform->getPluginPlatform()->getWindow()->setWindowTitle(tr("CDevStudio"));
 }
 
+void CDevStudio::initStatusbar()
+{
+	QStatusBar *statusbar = cdevstudioPlatform->getPluginPlatform()->getWindow()->statusBar();
+	statusbar->clearMessage();
+}
+
 void CDevStudio::initMenubar()
 {
-	CDevStudioMenuBar *menubar = cdevstudioPlatform->getPluginPlatform()->getWindow()->getMenuBar();
+	QMenuBar *menubar = cdevstudioPlatform->getPluginPlatform()->getWindow()->menuBar();
 	
-	menuProject = new CDevStudioMenu(tr("Project"), menubar);
-	menuSettings = new CDevStudioMenu(tr("Settings"), menubar);
-	actionCreateProject = new CDevStudioAction(tr("Create Project"), menuProject);
-	actionLoadProject = new CDevStudioAction(tr("Load Project"), menuProject);
-	actionCloseProject = new CDevStudioAction(tr("Close Project"), menuProject);
-	actionExit = new CDevStudioAction(tr("Exit"), menuProject);
-	actionSettings = new CDevStudioAction(tr("Settings"), menuSettings);
-	actionPlugins = new CDevStudioAction(tr("Plugins"), menuSettings);
+	menuProject = new QMenu(tr("Project"), menubar);
+	menuSettings = new QMenu(tr("Settings"), menubar);
+	actionCreateProject = new QAction(tr("Create Project"), menuProject);
+	actionLoadProject = new QAction(tr("Load Project"), menuProject);
+	actionCloseProject = new QAction(tr("Close Project"), menuProject);
+	actionExit = new QAction(tr("Exit"), menuProject);
+	actionSettings = new QAction(tr("Settings"), menuSettings);
+	actionPlugins = new QAction(tr("Plugins"), menuSettings);
 	
 	menuProject->addAction(actionCreateProject);
 	menuProject->addAction(actionLoadProject);
@@ -50,12 +56,6 @@ void CDevStudio::initMenubar()
 	
 	menubar->addMenu(menuProject);
 	menubar->addMenu(menuSettings);
-}
-
-void CDevStudio::initStatusbar()
-{
-	CDevStudioStatusBar *statusbar = cdevstudioPlatform->getPluginPlatform()->getWindow()->getStatusBar();
-	statusbar->clearMessage();
 }
 
 void CDevStudio::initConnections()

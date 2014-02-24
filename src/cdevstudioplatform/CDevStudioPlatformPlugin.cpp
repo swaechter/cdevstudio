@@ -11,13 +11,17 @@ CDevStudioWindow *CDevStudioPlatformPlugin::getWindow()
 	return parentWindow;
 }
 
-CDevStudioBackend *CDevStudioPlatformPlugin::getBackend()
+void CDevStudioPlatformPlugin::setPlugins(QList< ICDevStudioPlugin * > plugins)
 {
-	return parentBackend;
+	parentPlugins = plugins;
 }
 
 QList<ICDevStudioPlugin *> CDevStudioPlatformPlugin::getPlugins()
 {
-	QList<ICDevStudioPlugin *> list; // TODO
-	return list;
+	return parentPlugins;
+}
+
+CDevStudioBackend *CDevStudioPlatformPlugin::getBackend()
+{
+	return parentBackend;
 }

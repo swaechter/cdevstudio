@@ -2,13 +2,14 @@
 #define CDEVSTUDIO_H
 
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QMessageBox>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioWindow.h>
-#include <cdevstudioplatform/CDevStudioMenuBar.h>
-#include <cdevstudioplatform/CDevStudioMenu.h>
-#include <cdevstudioplatform/CDevStudioAction.h>
 #include <cdevstudioplatform/CDevStudioProject.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 
@@ -26,14 +27,14 @@ public:
 	
 private:
 	CDevStudioPlatform *cdevstudioPlatform;
-	CDevStudioMenu *menuProject;
-	CDevStudioMenu *menuSettings;
-	CDevStudioAction *actionCreateProject;
-	CDevStudioAction *actionLoadProject;
-	CDevStudioAction *actionCloseProject;
-	CDevStudioAction *actionExit;
-	CDevStudioAction *actionSettings;
-	CDevStudioAction *actionPlugins;
+	QMenu *menuProject;
+	QMenu *menuSettings;
+	QAction *actionCreateProject;
+	QAction *actionLoadProject;
+	QAction *actionCloseProject;
+	QAction *actionExit;
+	QAction *actionSettings;
+	QAction *actionPlugins;
 	
 private slots:
 	void initPlatform();

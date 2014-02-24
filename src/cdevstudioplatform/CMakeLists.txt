@@ -12,10 +12,6 @@ set(CDEVSTUDIOPLATFORM_SRC
   CDevStudioPlatform.cpp
   CDevStudioPlatformPlugin.cpp
   CDevStudioWindow.cpp
-  CDevStudioMenuBar.cpp
-  CDevStudioStatusBar.cpp
-  CDevStudioMenu.cpp
-  CDevStudioAction.cpp
   CDevStudioProject.cpp
   CDevStudioBackend.cpp
 )
@@ -25,10 +21,6 @@ set(CDEVSTUDIOPLATFORM_HDR
   CDevStudioPlatform.h
   CDevStudioPlatformPlugin.h
   CDevStudioWindow.h
-  CDevStudioMenuBar.h
-  CDevStudioStatusBar.h
-  CDevStudioMenu.h
-  CDevStudioAction.h
   CDevStudioProject.h
   CDevStudioBackend.h
   ICDevStudioPlugin.h
@@ -41,5 +33,5 @@ set_target_properties(cdevstudioplatform PROPERTIES VERSION ${VERSION_NUMBER} SO
 target_link_libraries(cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudioplatform RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioProject.h CDevStudioWindow.h CDevStudioMenuBar.h CDevStudioStatusBar.h CDevStudioMenu.h CDevStudioAction.h CDevStudioBackend.h DESTINATION include/cdevstudioplatform)
+install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioProject.h CDevStudioWindow.h CDevStudioBackend.h DESTINATION include/cdevstudioplatform)
 install(FILES ICDevStudioPlugin.h DESTINATION include/cdevstudioplatform)

@@ -53,6 +53,7 @@ void CDevStudioPlatform::loadPlugins()
 		}
 	}
 	
+	implementation->platformplugin->setPlugins(implementation->plugins);
 	foreach(ICDevStudioPlugin *plugin, implementation->plugins)
 	{
 		plugin->init(implementation->platformplugin);
