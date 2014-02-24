@@ -2,7 +2,17 @@
 
 PluginHelp::PluginHelp()
 {
-	CDevStudioMenuBar *menubar = CDevStudioPlatform::getInstance()->getWindow()->getMenuBar();
+}
+
+PluginHelp::~PluginHelp()
+{
+}
+
+void PluginHelp::init(CDevStudioPlatformPlugin *platformplugin)
+{
+	dataPlatformPlugin = platformplugin;
+	
+	CDevStudioMenuBar *menubar = dataPlatformPlugin->getWindow()->getMenuBar();
 	
 	CDevStudioMenu *menuhelp = new CDevStudioMenu(tr("Help"), menubar);
 	CDevStudioAction *actionhelp = new CDevStudioAction(tr("Help"), menuhelp);
@@ -15,10 +25,6 @@ PluginHelp::PluginHelp()
 	
 	connect(actionhelp, SIGNAL(triggered(bool)), this, SLOT(actionHelpTriggered()));
 	connect(actionabout, SIGNAL(triggered(bool)), this, SLOT(actionAboutTriggered()));
-}
-
-PluginHelp::~PluginHelp()
-{
 }
 
 QString PluginHelp::getPluginName()
@@ -43,12 +49,12 @@ QStringList PluginHelp::getPluginDependencies()
 
 void PluginHelp::actionHelpTriggered()
 {
-	DialogHelp *dialog = new DialogHelp(CDevStudioPlatform::getInstance()->getWindow());
+	DialogHelp *dialog = new DialogHelp(dataPlatformPlugin->getWindow());
 	dialog->exec();
 }
 
 void PluginHelp::actionAboutTriggered()
 {
-	DialogAbout *dialog = new DialogAbout(CDevStudioPlatform::getInstance()->getWindow());
+	DialogAbout *dialog = new DialogAbout(dataPlatformPlugin->getWindow());
 	dialog->exec();
 }

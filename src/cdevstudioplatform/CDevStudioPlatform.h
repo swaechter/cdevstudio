@@ -1,29 +1,30 @@
 #ifndef CDEVSTUDIOPLATFORM_H
 #define CDEVSTUDIOPLATFORM_H
 
+#include <QtCore/QObject>
+#include <QtCore/QPluginLoader>
+#include <QtCore/QList>
+#include <QtCore/QDebug>
+
 #include "CDevStudioPlatformExport.h"
+#include "CDevStudioPlatformPlugin.h"
 #include "CDevStudioWindow.h"
 #include "CDevStudioProject.h"
 #include "CDevStudioBackend.h"
+#include "ICDevStudioPlugin.h"
 
-class CDEVSTUDIOPLATFORM_API CDevStudioPlatform
+class CDEVSTUDIOPLATFORM_API CDevStudioPlatform : public QObject
 {
-private:
-	CDevStudioPlatform(); // Singleton
+	Q_OBJECT
 	
 public:
+	CDevStudioPlatform(CDevStudioWindow *window);
 	~CDevStudioPlatform();
-	
-	static CDevStudioPlatform *getInstance();
-	void setWindow(CDevStudioWindow *window);
-	CDevStudioWindow *getWindow();
-	CDevStudioBackend *getBackend();
+	void loadPlugins();
+	CDevStudioPlatformPlugin *getPluginPlatform();
+// 	QList<ICDevStudioPlugin *> getPlugins();
 	
 private:
-	// Singleton
-	static CDevStudioPlatform *instance;
-	
-	// Private implementation
 	struct Implementation;
 	Implementation *implementation;
 };

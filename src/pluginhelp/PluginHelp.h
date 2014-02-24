@@ -2,12 +2,12 @@
 #define PLUGINHELP_H
 
 #include <QtCore/QObject>
-#include <cdevstudioplatform/ICDevStudioPlugin.h>
-#include <cdevstudioplatform/CDevStudioPlatform.h>
+#include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
 #include <cdevstudioplatform/CDevStudioMenuBar.h>
 #include <cdevstudioplatform/CDevStudioMenu.h>
 #include <cdevstudioplatform/CDevStudioAction.h>
 #include <cdevstudioplatform/CDevStudioBackend.h>
+#include <cdevstudioplatform/ICDevStudioPlugin.h>
 
 #include "PluginHelpExport.h"
 #include "DialogHelp.h"
@@ -22,10 +22,14 @@ class PLUGINHELP_API PluginHelp : public QObject, private ICDevStudioPlugin
 public:
 	PluginHelp();
 	~PluginHelp();
+	void init(CDevStudioPlatformPlugin *platformplugin);
 	QString getPluginName();
 	QString getPluginVersion();
 	QString getPluginDescription();
 	QStringList getPluginDependencies();
+	
+private:
+	CDevStudioPlatformPlugin *dataPlatformPlugin;
 	
 private slots:
 	void actionHelpTriggered();

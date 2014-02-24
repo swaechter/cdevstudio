@@ -10,6 +10,7 @@ set(CMAKE_AUTOMOC ON)
 
 set(CDEVSTUDIOPLATFORM_SRC
   CDevStudioPlatform.cpp
+  CDevStudioPlatformPlugin.cpp
   CDevStudioWindow.cpp
   CDevStudioMenuBar.cpp
   CDevStudioStatusBar.cpp
@@ -22,6 +23,7 @@ set(CDEVSTUDIOPLATFORM_SRC
 set(CDEVSTUDIOPLATFORM_HDR
   CDevStudioPlatformExport.h
   CDevStudioPlatform.h
+  CDevStudioPlatformPlugin.h
   CDevStudioWindow.h
   CDevStudioMenuBar.h
   CDevStudioStatusBar.h

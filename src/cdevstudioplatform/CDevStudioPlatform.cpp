@@ -1,45 +1,66 @@
 #include "CDevStudioPlatform.h"
 
-CDevStudioPlatform *CDevStudioPlatform::instance = nullptr;
-
 struct CDevStudioPlatform::Implementation
 {
 	CDevStudioWindow *window;
+	CDevStudioPlatformPlugin *platformplugin;
 	CDevStudioBackend *backend;
+	QList<ICDevStudioPlugin *> plugins;
 };
 
-CDevStudioPlatform::CDevStudioPlatform()
+CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 {
 	implementation = new Implementation();
+	implementation->window = window;
 	implementation->backend = new CDevStudioBackend();
+	implementation->platformplugin = new CDevStudioPlatformPlugin(implementation->window, implementation->backend);
 }
 
 CDevStudioPlatform::~CDevStudioPlatform()
 {
+	qDeleteAll<>(implementation->plugins);
+	delete implementation->platformplugin;
 	delete implementation->backend;
 	delete implementation;
 }
 
-CDevStudioPlatform *CDevStudioPlatform::getInstance()
+void CDevStudioPlatform::loadPlugins()
 {
-	if(instance == nullptr)
+	foreach(QString path, implementation->backend->getPluginDirectories())
 	{
-		instance = new CDevStudioPlatform();
+		QStringList files = QDir(path).entryList(implementation->backend->getPluginFilter());
+		foreach(QString file, files)
+		{
+			QPluginLoader loader(path + QString("/") + file, this);
+			QObject *object = loader.instance();
+			if(object != nullptr)
+			{
+				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
+				if(plugin != nullptr)
+				{
+					implementation->plugins.append(plugin);
+					qDebug() << "CDevStudioPlatform loaed:" << plugin->getPluginName();
+				}
+				else
+				{
+					qDebug() << "CDevStudioPlatform: Cannot cast plugin" << file;
+				}
+			}
+			else
+			{
+				qDebug() << "CDevStudioPlatform: Loader error:" << loader.errorString();
+			}
+		}
 	}
-	return instance;
+	
+	foreach(ICDevStudioPlugin *plugin, implementation->plugins)
+	{
+		plugin->init(implementation->platformplugin);
+	}
 }
 
-void CDevStudioPlatform::setWindow(CDevStudioWindow *window)
-{
-	implementation->window = window;
-}
 
-CDevStudioWindow *CDevStudioPlatform::getWindow()
+CDevStudioPlatformPlugin *CDevStudioPlatform::getPluginPlatform()
 {
-	return implementation->window;
-}
-
-CDevStudioBackend *CDevStudioPlatform::getBackend()
-{
-	return implementation->backend;
+	return implementation->platformplugin;
 }

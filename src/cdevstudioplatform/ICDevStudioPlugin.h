@@ -4,10 +4,15 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
+#include "CDevStudioPlatformPlugin.h"
+
+class CDevStudioPlatformPlugin;
+
 class ICDevStudioPlugin
 {
 public:
 	virtual ~ICDevStudioPlugin() {}
+	virtual void init(CDevStudioPlatformPlugin *platformplugin) = 0;
 	virtual QString getPluginName() = 0;
 	virtual QString getPluginVersion() = 0;
 	virtual QString getPluginDescription() = 0;

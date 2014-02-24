@@ -4,8 +4,6 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QMessageBox>
-#include <QtCore/QPluginLoader>
-#include <QtCore/QDir>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioWindow.h>
 #include <cdevstudioplatform/CDevStudioMenuBar.h>
@@ -13,8 +11,6 @@
 #include <cdevstudioplatform/CDevStudioAction.h>
 #include <cdevstudioplatform/CDevStudioProject.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
-
-#include <QtCore/QDebug>
 
 #include "DialogCreateProject.h"
 #include "DialogSettings.h"

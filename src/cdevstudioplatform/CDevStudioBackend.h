@@ -1,6 +1,7 @@
 #ifndef CDEVSTUDIOBACKEND_H
 #define CDEVSTUDIOBACKEND_H
 
+#include <QtCore/QStringList>
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
@@ -10,6 +11,8 @@
 class CDEVSTUDIOPLATFORM_API CDevStudioBackend
 {
 public:
+	QStringList getPluginDirectories();
+	QStringList getPluginFilter();
 	void createDirectory(const QString &directorypath);
 	bool createFile(const QString &filepath);
 	bool deleteFile(const QString &filepath);

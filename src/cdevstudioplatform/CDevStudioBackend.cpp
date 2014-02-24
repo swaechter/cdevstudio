@@ -1,5 +1,21 @@
 #include "CDevStudioBackend.h"
 
+QStringList CDevStudioBackend::getPluginDirectories()
+{
+	QStringList directories;
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginhelp/";
+	directories << "/home/simon/Workspace_C++/cdevstudio/build/src/pluginhelp/";
+	return directories;
+}
+
+QStringList CDevStudioBackend::getPluginFilter()
+{
+	QStringList filter;
+	filter << "*plugin*.so";
+	filter << "*plugin*.dll";
+	return filter;
+}
+
 void CDevStudioBackend::createDirectory(const QString &directorypath)
 {
 	QDir directory(directorypath);

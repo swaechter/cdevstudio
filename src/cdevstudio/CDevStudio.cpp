@@ -18,19 +18,18 @@ CDevStudio::~CDevStudio()
 
 void CDevStudio::initPlatform()
 {
-	cdevstudioPlatform = CDevStudioPlatform::getInstance();
+	cdevstudioPlatform = new CDevStudioPlatform(this);
 }
 
 void CDevStudio::initWindow()
 {
-	cdevstudioPlatform->setWindow(this);
-	cdevstudioPlatform->getWindow()->setMinimumSize(800, 500);
-	cdevstudioPlatform->getWindow()->setWindowTitle(tr("CDevStudio"));
+	cdevstudioPlatform->getPluginPlatform()->getWindow()->setMinimumSize(900, 600);
+	cdevstudioPlatform->getPluginPlatform()->getWindow()->setWindowTitle(tr("CDevStudio"));
 }
 
 void CDevStudio::initMenubar()
 {
-	CDevStudioMenuBar *menubar = cdevstudioPlatform->getWindow()->getMenuBar();
+	CDevStudioMenuBar *menubar = cdevstudioPlatform->getPluginPlatform()->getWindow()->getMenuBar();
 	
 	menuProject = new CDevStudioMenu(tr("Project"), menubar);
 	menuSettings = new CDevStudioMenu(tr("Settings"), menubar);
@@ -55,7 +54,7 @@ void CDevStudio::initMenubar()
 
 void CDevStudio::initStatusbar()
 {
-	CDevStudioStatusBar *statusbar = cdevstudioPlatform->getWindow()->getStatusBar();
+	CDevStudioStatusBar *statusbar = cdevstudioPlatform->getPluginPlatform()->getWindow()->getStatusBar();
 	statusbar->clearMessage();
 }
 
@@ -79,36 +78,7 @@ void CDevStudio::initWelcomeWidget()
 
 void CDevStudio::initPlugins()
 {
-	QStringList paths;
-	paths << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginhelp/";
-	foreach(QString path, paths)
-	{
-		QDir directory(path);
-		QStringList filter;
-		filter << "*plugin*.so" << "*plugin*.dll";
-		QStringList files = directory.entryList(filter);
-		foreach(QString file, files)
-		{
-			QPluginLoader loader(path + QString("/") + file, this);
-			QObject *object = loader.instance();
-			if(object != nullptr)
-			{
-				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
-				if(plugin != nullptr)
-				{
-					qDebug() << "CDevStudio: Loaded:" << plugin->getPluginName();
-				}
-				else
-				{
-					qDebug() << "CDevStudio: Cannot cast plugin" << file;
-				}
-			}
-			else
-			{
-				qDebug() << "CDevStudio: Loader error:" << loader.errorString();
-			}
-		}
-	}
+	cdevstudioPlatform->loadPlugins();
 }
 
 void CDevStudio::actionCreateProjectTrigger()
