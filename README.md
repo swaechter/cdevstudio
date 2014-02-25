@@ -18,7 +18,7 @@ Prepare CDevStudio
 ------------------
 
 Download and prepare CDevStudio
-* git clone https://github.com/swaechter/cdevstudio.git
+* git clone https://github.com/swaechter/cdevstudio
 * cd cdevstudio
 * mkdir build
 * cd build
