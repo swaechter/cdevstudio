@@ -4,7 +4,7 @@ QStringList CDevStudioBackend::getPluginDirectories()
 {
 	QStringList directories;
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginhelp/";
-	directories << "/home/simon/Workspace_C++/cdevstudio/build/src/pluginhelp/";
+        directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojects/";
 	return directories;
 }
 
