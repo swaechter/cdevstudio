@@ -27,7 +27,7 @@ CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 				if(plugin != nullptr)
 				{
 					implementation->plugins.append(plugin);
-					qDebug() << "CDevStudioPlatform loaed:" << plugin->getPluginName();
+					qDebug() << "CDevStudioPlatform loaded:" << plugin->getPluginName();
 				}
 				else
 				{
