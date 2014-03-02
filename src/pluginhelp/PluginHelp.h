@@ -6,7 +6,6 @@
 #include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
-#include <cdevstudioplatform/CDevStudioBackend.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 
 #include "PluginHelpExport.h"
@@ -17,7 +16,7 @@ class PLUGINHELP_API PluginHelp : public QObject, private ICDevStudioPlugin
 {
 	Q_OBJECT
 	Q_INTERFACES(ICDevStudioPlugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin" FILE "PluginHelp.json")
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin")
 	
 public:
 	PluginHelp();

@@ -3,7 +3,6 @@
 
 #include <QtCore/QObject>
 #include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
-#include <cdevstudioplatform/CDevStudioBackend.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 
 #include "PluginProjectsExport.h"
@@ -12,7 +11,7 @@ class PLUGINPROJECTS_API PluginProjects : public QObject, private ICDevStudioPlu
 {
         Q_OBJECT
         Q_INTERFACES(ICDevStudioPlugin)
-        Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin" FILE "PluginProjects.json")
+        Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin")
         
 public:
         PluginProjects();
