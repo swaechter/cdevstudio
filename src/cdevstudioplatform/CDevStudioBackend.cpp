@@ -10,10 +10,30 @@ QStringList CDevStudioBackend::getPluginDirectories()
 
 QStringList CDevStudioBackend::getPluginFilter()
 {
-	QStringList filter;
-	filter << "*plugin*.so";
-	filter << "*plugin*.dll";
-	return filter;
+	return QStringList() << "*plugin*.so" << "*plugin*.dll";
+}
+
+QList<ICDevStudioPlugin *> CDevStudioBackend::loadPlugins()
+{
+	QList<ICDevStudioPlugin *> plugins;
+	foreach(QString path, getPluginDirectories())
+	{
+		QStringList files = QDir(path).entryList(getPluginFilter());
+		foreach(QString file, files)
+		{
+			QPluginLoader loader(path + QString("/") + file);
+			QObject *object = loader.instance();
+			if(object != nullptr)
+			{
+				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
+				if(plugin != nullptr)
+				{
+					plugins.append(plugin);
+				}
+			}
+		}
+	}
+	return plugins;
 }
 
 void CDevStudioBackend::createDirectory(const QString &directorypath)

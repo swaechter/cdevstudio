@@ -18,7 +18,7 @@ set(PLUGINPROJECTS_HDR
 )
 
 set(PLUGINPROJECTS_RESOURCE_IN
-#   Resource.qrc
+  Resource.qrc
 )
 
 add_definitions(-DPLUGINPROJECTS_EXPORT)

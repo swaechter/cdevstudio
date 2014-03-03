@@ -13,6 +13,7 @@ set(CDEVSTUDIOPLATFORM_SRC
   CDevStudioPlatformPlugin.cpp
   CDevStudioWindow.cpp
   CDevStudioProject.cpp
+  CDevStudioProjectTemplate.cpp
   CDevStudioBackend.cpp
 )
 
@@ -22,6 +23,7 @@ set(CDEVSTUDIOPLATFORM_HDR
   CDevStudioPlatformPlugin.h
   CDevStudioWindow.h
   CDevStudioProject.h
+  CDevStudioProjectTemplate.h
   CDevStudioBackend.h
   ICDevStudioPlugin.h
 )

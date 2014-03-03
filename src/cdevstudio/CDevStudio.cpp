@@ -83,25 +83,65 @@ void CDevStudio::initPlugins()
 
 void CDevStudio::actionCreateProjectTrigger()
 {
-	DialogCreateProject *dialog = new DialogCreateProject(this);
-	if(dialog->exec() == QDialog::Accepted)
+	if(cdevstudioPlatform->getProject() == nullptr)
 	{
-		if(!dialog->getProjectDirectory().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectTemplate().isEmpty())
+		DialogCreateProject *dialog = new DialogCreateProject(cdevstudioPlatform->getProjectTemplates(), this);
+		if(dialog->exec() == QDialog::Accepted)
 		{
+			if(!dialog->getProjectDirectory().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectTemplate().isEmpty())
+			{
+				if(cdevstudioPlatform->createProject(dialog->getProjectDirectory(), dialog->getProjectName(), dialog->getProjectTemplate()) != nullptr)
+				{
+				}
+				else
+				{
+					QMessageBox::critical(this, tr("Error"), tr("Cannot create the project"));
+				}
+			}
+			else
+			{
+				QMessageBox::critical(this, tr("Error"), tr("Project cannot be created because some important information are missing"));
+			}
 		}
-		else
-		{
-			QMessageBox::critical(this, tr("Error"), tr("Project cannot be created because some important information are missing"));
-		}
+	}
+	else
+	{
+		QMessageBox::information(this, tr("Information"), tr("Please close your current project before you create a new one"));
 	}
 }
 
 void CDevStudio::actionLoadProjectTrigger()
 {
+	if(cdevstudioPlatform->getProject() == nullptr)
+	{
+		QString projectfile = QFileDialog::getOpenFileName(this, tr("Select a project"), QDir::homePath(), "CDevStudio (*.cdev)");
+		if(!projectfile.isEmpty())
+		{
+			if(cdevstudioPlatform->loadProject(projectfile) != nullptr)
+			{
+			}
+			else
+			{
+				QMessageBox::critical(this, tr("Error"), tr("Cannot load the project"));
+			}
+		}
+	}
+	else
+	{
+		QMessageBox::information(this, tr("Information"), tr("Please close your current project before you load a new one"));
+	}
 }
 
 void CDevStudio::actionCloseProjectTrigger()
 {
+	if(cdevstudioPlatform->getProject() != nullptr)
+	{
+		cdevstudioPlatform->closeProject();
+	}
+	else
+	{
+		QMessageBox::information(this, tr("Information"), tr("There is no open project to close"));
+	}
 }
 
 void CDevStudio::actionExitTrigger()

@@ -1,8 +1,15 @@
 #include "DialogCreateProject.h"
 
-DialogCreateProject::DialogCreateProject(QWidget *parent) : QDialog(parent)
+DialogCreateProject::DialogCreateProject(QList<CDevStudioProjectTemplate> projecttemplates, QWidget *parent): QDialog(parent)
 {
 	setupUi(this);
+	
+	lineEditDirectory->setText(QDir::homePath());
+	
+	foreach(CDevStudioProjectTemplate projecttemplate, projecttemplates)
+	{
+		comboBoxTemplate->addItem(projecttemplate.getTemplateName());
+	}
 }
 
 QString DialogCreateProject::getProjectDirectory()

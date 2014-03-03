@@ -2,14 +2,13 @@
 #define CDEVSTUDIOPLATFORM_H
 
 #include <QtCore/QObject>
-#include <QtCore/QPluginLoader>
 #include <QtCore/QList>
-#include <QtCore/QDebug>
 
 #include "CDevStudioPlatformExport.h"
 #include "CDevStudioPlatformPlugin.h"
 #include "CDevStudioWindow.h"
 #include "CDevStudioProject.h"
+#include "CDevStudioProjectTemplate.h"
 #include "ICDevStudioPlugin.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioPlatform : public QObject
@@ -21,13 +20,24 @@ public:
 	~CDevStudioPlatform();
 	void initPlugins();
 	CDevStudioWindow *getWindow();
+	QList<CDevStudioProjectTemplate> getProjectTemplates();
 	QList<ICDevStudioPlugin *> getPlugins();
+	
+	CDevStudioProject *createProject(QString projectdirectory, QString projectname, QString projecttemplatestring);
+	CDevStudioProject *loadProject(QString projectfile);
+	CDevStudioProject *getProject();
+	void closeProject();
 	
 private:
 	CDevStudioWindow *cdevstudioWindow;
 	CDevStudioPlatformPlugin *cdevstudioPlatformPlugins;;
 	CDevStudioBackend *cdevstudioBackend;
+	CDevStudioProject *cdevstudioProject;
+	QList<CDevStudioProjectTemplate> cdevstudioProjectTemplates;
 	QList<ICDevStudioPlugin *> cdevstudioPlugins;
+	
+private slots:
+	void addProjectTemplate(CDevStudioProjectTemplate projecttemplate);
 };
 
 #endif // CDEVSTUDIOPLATFORM_H

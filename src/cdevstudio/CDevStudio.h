@@ -8,6 +8,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioWindow.h>
 #include <cdevstudioplatform/CDevStudioProject.h>

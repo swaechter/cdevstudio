@@ -5,14 +5,17 @@
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
+#include <QtCore/QPluginLoader>
 
 #include "CDevStudioPlatformExport.h"
+#include "ICDevStudioPlugin.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioBackend
 {
 public:
 	QStringList getPluginDirectories();
 	QStringList getPluginFilter();
+	QList<ICDevStudioPlugin *> loadPlugins();
 	void createDirectory(const QString &directorypath);
 	bool createFile(const QString &filepath);
 	bool deleteFile(const QString &filepath);

@@ -18,5 +18,5 @@ QString CDevStudioProject::getProjectDirectory()
 
 QString CDevStudioProject::getProjectFile()
 {
-	return QString(getProjectDirectory() + QString("/") + getProjectName() + QString(".cdev"));
+	return QString(getProjectDirectory() + QString("Project.cdev"));
 }
