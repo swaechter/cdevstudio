@@ -1,4 +1,10 @@
-cdevstudio (0.0.6-1) UNRELEASED; urgency=low
+cdevstudio (0.0.7-1) UNRELEASED; urgency=low
+
+  * First release with the new plugin based structure
+
+ -- Simon Wächter <waechter.simon@gmail.com>  Mon, 03 Mar 2014 14:01:39 +0100
+
+cdevstudio (0.0.6-1) unstable; urgency=low
 
   * Added a new system platform and renamed the old one
 

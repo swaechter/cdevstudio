@@ -28,7 +28,7 @@ QString PluginProjects::getPluginName()
 
 QString PluginProjects::getPluginVersion()
 {
-    return QString(tr("0.0.6"));
+    return QString(tr("0.0.7"));
 }
 
 QString PluginProjects::getPluginDescription()

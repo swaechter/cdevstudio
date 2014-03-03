@@ -117,14 +117,15 @@ There are a few things that have to be done for each new release:
 	\begin{itemize}
 		\item Update src/cdevstudio/data/desktop/cdevstudio.desktop
 		\item Update src/cdevstudio/data/man/cdevstudio.1.gz
-		\item Update src/cdevstudio/data/text/about_about.html
-		\item Update src/pluginhelp/PluginHelp.h
-		\item Update src/pluginprojects/PluginProjects.h
+		\item Update src/pluginhelp/data/about_about.html
+		\item Update src/pluginhelp/PluginHelp.cpp
+		\item Update src/pluginprojects/PluginProjects.cpp
 		\item Update src/CMakeLists.txt
 	\end{itemize}
 	\item Update Debian package
 	\begin{itemize}
 		\item Add new changelog entry
+		\item Update the Lintian overrides
 		\item Update package/linux_debian_deb/create_package.sh
 	\end{itemize}
 	\item Update Fedora package
@@ -132,12 +133,17 @@ There are a few things that have to be done for each new release:
 		\item Update package/linux_fedora_rpm/cdevstudio.spec
 		\item Update package/linux_fedora_rpm/create_package.sh
 	\end{itemize}
+	\item Update Arch Linux package
+	\begin{itemize}
+		\item Update package/linux_archlinux_tarxz/PKGBUILD
+	\end{itemize}
 	\item Update Windows package
 	\begin{itemize}
 		\item Update package/windows_exe/cdevstudio.nsis
 	\end{itemize}
 	\item Integrate the new release
 	\begin{itemize}
+		\item git commit -m "Releasemessage"
 		\item git checkout master
 		\item git merge release-x.x.x
 		\item git push

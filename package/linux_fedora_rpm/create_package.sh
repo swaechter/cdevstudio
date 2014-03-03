@@ -1,8 +1,8 @@
 #! /bin/bash
 
 # Defines
-version=0.0.6
-release=6
+version=0.0.7
+release=7
 platform=x86_64
 
 # Create rpmbuild directories
