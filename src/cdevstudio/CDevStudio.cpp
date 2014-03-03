@@ -23,19 +23,19 @@ void CDevStudio::initPlatform()
 
 void CDevStudio::initWindow()
 {
-	cdevstudioPlatform->getPluginPlatform()->getWindow()->setMinimumSize(900, 600);
-	cdevstudioPlatform->getPluginPlatform()->getWindow()->setWindowTitle(tr("CDevStudio"));
+	cdevstudioPlatform->getWindow()->setMinimumSize(900, 600);
+	cdevstudioPlatform->getWindow()->setWindowTitle(tr("CDevStudio"));
 }
 
 void CDevStudio::initStatusbar()
 {
-	QStatusBar *statusbar = cdevstudioPlatform->getPluginPlatform()->getWindow()->statusBar();
+	QStatusBar *statusbar = cdevstudioPlatform->getWindow()->statusBar();
 	statusbar->clearMessage();
 }
 
 void CDevStudio::initMenubar()
 {
-	QMenuBar *menubar = cdevstudioPlatform->getPluginPlatform()->getWindow()->menuBar();
+	QMenuBar *menubar = cdevstudioPlatform->getWindow()->menuBar();
 	
 	menuProject = new QMenu(tr("Project"), menubar);
 	menuSettings = new QMenu(tr("Settings"), menubar);

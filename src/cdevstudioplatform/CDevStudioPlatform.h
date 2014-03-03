@@ -20,11 +20,14 @@ public:
 	CDevStudioPlatform(CDevStudioWindow *window);
 	~CDevStudioPlatform();
 	void initPlugins();
-	CDevStudioPlatformPlugin *getPluginPlatform();
+	CDevStudioWindow *getWindow();
+	QList<ICDevStudioPlugin *> getPlugins();
 	
 private:
-	struct Implementation;
-	Implementation *implementation;
+	CDevStudioWindow *cdevstudioWindow;
+	CDevStudioPlatformPlugin *cdevstudioPlatformPlugins;;
+	CDevStudioBackend *cdevstudioBackend;
+	QList<ICDevStudioPlugin *> cdevstudioPlugins;
 };
 
 #endif // CDEVSTUDIOPLATFORM_H

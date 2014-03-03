@@ -1,22 +1,14 @@
 #include "CDevStudioPlatform.h"
 
-struct CDevStudioPlatform::Implementation
-{
-	CDevStudioWindow *window;
-	CDevStudioPlatformPlugin *platformplugin;
-	CDevStudioBackend *backend;
-	QList<ICDevStudioPlugin *> plugins;
-};
 
 CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 {
-	implementation = new Implementation();
-	implementation->window = window;
-	implementation->backend = new CDevStudioBackend();
+	cdevstudioWindow = window;
+	cdevstudioBackend = new CDevStudioBackend();
 	
-	foreach(QString path, implementation->backend->getPluginDirectories())
+	foreach(QString path, cdevstudioBackend->getPluginDirectories())
 	{
-		QStringList files = QDir(path).entryList(implementation->backend->getPluginFilter());
+		QStringList files = QDir(path).entryList(cdevstudioBackend->getPluginFilter());
 		foreach(QString file, files)
 		{
 			QPluginLoader loader(path + QString("/") + file, this);
@@ -26,7 +18,7 @@ CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
 				if(plugin != nullptr)
 				{
-					implementation->plugins.append(plugin);
+					cdevstudioPlugins.append(plugin);
 					qDebug() << "CDevStudioPlatform loaded:" << plugin->getPluginName();
 				}
 				else
@@ -41,27 +33,30 @@ CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 		}
 	}
 	
-	implementation->platformplugin = new CDevStudioPlatformPlugin(implementation->window, implementation->plugins, implementation->backend);
+	cdevstudioPlatformPlugins = new CDevStudioPlatformPlugin(cdevstudioWindow, cdevstudioPlugins, cdevstudioBackend);
 }
 
 CDevStudioPlatform::~CDevStudioPlatform()
 {
-	qDeleteAll<>(implementation->plugins);
-	delete implementation->platformplugin;
-	delete implementation->backend;
-	delete implementation;
+	qDeleteAll<>(cdevstudioPlugins);
+	delete cdevstudioPlatformPlugins;
+	delete cdevstudioBackend;
 }
 
 void CDevStudioPlatform::initPlugins()
 {
-	foreach(ICDevStudioPlugin *plugin, implementation->plugins)
+	foreach(ICDevStudioPlugin *plugin, cdevstudioPlugins)
 	{
-		plugin->init(implementation->platformplugin);
+		plugin->init(cdevstudioPlatformPlugins);
 	}
 }
 
-
-CDevStudioPlatformPlugin *CDevStudioPlatform::getPluginPlatform()
+CDevStudioWindow *CDevStudioPlatform::getWindow()
 {
-	return implementation->platformplugin;
+	return cdevstudioWindow;
+}
+
+QList<ICDevStudioPlugin *> CDevStudioPlatform::getPlugins()
+{
+	return cdevstudioPlugins;
 }
