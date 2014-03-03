@@ -119,6 +119,6 @@ void CDevStudio::actionSettingsTrigger()
 
 void CDevStudio::actionPluginsTrigger()
 {
-	DialogPlugins *dialog = new DialogPlugins(this);
+	DialogPlugins *dialog = new DialogPlugins(cdevstudioPlatform->getPlugins(), this);
 	dialog->exec();
 }

@@ -4,8 +4,6 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-#include "CDevStudioPlatformPlugin.h"
-
 class CDevStudioPlatformPlugin;
 
 class ICDevStudioPlugin
