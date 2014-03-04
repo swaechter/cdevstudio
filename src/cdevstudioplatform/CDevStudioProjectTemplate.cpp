@@ -1,6 +1,5 @@
 #include "CDevStudioProjectTemplate.h"
 
-
 CDevStudioProjectTemplate::CDevStudioProjectTemplate(QString name, QString description, QStringList files)
 {
 	dataTemplateName = name;

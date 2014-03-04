@@ -39,7 +39,7 @@ QString PluginHelp::getPluginVersion()
 
 QString PluginHelp::getPluginDescription()
 {
-	return QString(tr("PluginHelp provides the help and about dialogues."));
+	return QString(tr("PluginHelp provides the help and about dialogues"));
 }
 
 QStringList PluginHelp::getPluginDependencies()
