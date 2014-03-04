@@ -4,25 +4,21 @@
 CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
 {
 	cdevstudioWindow = window;
-	cdevstudioBackend = new CDevStudioBackend();
-	cdevstudioProject = nullptr;
-	cdevstudioPlugins = cdevstudioBackend->loadPlugins();
-	cdevstudioPlatformPlugins = new CDevStudioPlatformPlugin(cdevstudioWindow, cdevstudioPlugins, cdevstudioBackend);
-	
+	cdevstudioData.setPlugins(cdevstudioBackend.loadPlugins());
+	cdevstudioData.clearProject();
+	cdevstudioPlatformPlugins = new CDevStudioPlatformPlugin(cdevstudioWindow, &cdevstudioBackend, &cdevstudioData);
 	connect(cdevstudioPlatformPlugins, SIGNAL(addPlatformProjectTemplate(CDevStudioProjectTemplate)), this, SLOT(addProjectTemplate(CDevStudioProjectTemplate)));
 }
 
 CDevStudioPlatform::~CDevStudioPlatform()
 {
-	qDeleteAll<>(cdevstudioPlugins);
+	cdevstudioData.clearProject();
 	delete cdevstudioPlatformPlugins;
-	delete cdevstudioBackend;
-	delete cdevstudioProject;
 }
 
 void CDevStudioPlatform::initPlugins()
 {
-	foreach(ICDevStudioPlugin *plugin, cdevstudioPlugins)
+	foreach(ICDevStudioPlugin *plugin, cdevstudioData.getPlugins())
 	{
 		plugin->init(cdevstudioPlatformPlugins);
 	}
@@ -33,42 +29,44 @@ CDevStudioWindow *CDevStudioPlatform::getWindow()
 	return cdevstudioWindow;
 }
 
-QList<CDevStudioProjectTemplate> CDevStudioPlatform::getProjectTemplates()
+CDevStudioBackend *CDevStudioPlatform::getBackend()
 {
-	return cdevstudioProjectTemplates;
+	return &cdevstudioBackend;
 }
 
-QList<ICDevStudioPlugin *> CDevStudioPlatform::getPlugins()
+CDevStudioData *CDevStudioPlatform::getData()
 {
-	return cdevstudioPlugins;
+	return &cdevstudioData;
 }
 
 CDevStudioProject *CDevStudioPlatform::createProject(QString projectdirectory, QString projectname, QString projecttemplatestring)
 {
-	if(cdevstudioProject == nullptr)
+	if(cdevstudioData.getProject() == nullptr)
 	{
-		projectdirectory = projectdirectory.append(QString("/") + projectname + QString("/"));
-		cdevstudioBackend->createDirectory(projectdirectory);
-		cdevstudioBackend->createFile(projectdirectory + QString("Project.cdev"));
-		cdevstudioBackend->writeFile(projectdirectory + QString("Project.cdev"), projectname);
+		QString realprojectdirectory = realprojectdirectory.append(QString("/") + projectname + QString("/"));
+		cdevstudioBackend.createDirectory(realprojectdirectory);
+		cdevstudioBackend.createFile(realprojectdirectory + QString("Project.cdev"));
+		cdevstudioBackend.writeFile(realprojectdirectory + QString("Project.cdev"), projectname);
 		
-		cdevstudioProject = new CDevStudioProject(projectname, projectdirectory);
+		CDevStudioProject *project = new CDevStudioProject(projectname, realprojectdirectory);
+		cdevstudioData.clearProject();
+		cdevstudioData.setProject(project);
 		
-		foreach(CDevStudioProjectTemplate projecttemplate, cdevstudioProjectTemplates)
+		foreach(CDevStudioProjectTemplate projecttemplate, cdevstudioData.getProjectTemplates())
 		{
 			if(projecttemplatestring.compare(projecttemplate.getTemplateName()) == 0)
 			{
 				foreach(QString file, projecttemplate.getTemplateFiles())
 				{
-					QString filepath = projectdirectory + cdevstudioBackend->getNameOfFile(file);
-					cdevstudioBackend->createFile(filepath);
-					cdevstudioBackend->writeFile(filepath, cdevstudioBackend->readFile(file));
+					QString filepath = realprojectdirectory + cdevstudioBackend.getNameOfFile(file);
+					cdevstudioBackend.createFile(filepath);
+					cdevstudioBackend.writeFile(filepath, cdevstudioBackend.readFile(file));
 				}
 				break;
 			}
 		}
 		
-		return cdevstudioProject;
+		return cdevstudioData.getProject();
 	}
 	else
 	{
@@ -80,10 +78,14 @@ CDevStudioProject *CDevStudioPlatform::loadProject(QString projectfile)
 {
 	if(!projectfile.isEmpty())
 	{
-		QString projectdirectory = cdevstudioBackend->getDirectoryOfFile(projectfile) + QString("/");
-		QString projectname = cdevstudioBackend->readFile(projectfile);
-		cdevstudioProject = new CDevStudioProject(projectname, projectdirectory);
-		return cdevstudioProject;
+		QString projectdirectory = cdevstudioBackend.getDirectoryOfFile(projectfile) + QString("/");
+		QString projectname = cdevstudioBackend.readFile(projectfile);
+		
+		CDevStudioProject *project = new CDevStudioProject(projectname, projectdirectory);
+		cdevstudioData.clearProject();
+		cdevstudioData.setProject(project);
+		
+		return cdevstudioData.getProject();
 	}
 	else
 	{
@@ -91,21 +93,12 @@ CDevStudioProject *CDevStudioPlatform::loadProject(QString projectfile)
 	}
 }
 
-CDevStudioProject *CDevStudioPlatform::getProject()
-{
-	return cdevstudioProject;
-}
-
 void CDevStudioPlatform::closeProject()
 {
-	if(cdevstudioProject != nullptr)
-	{
-		delete cdevstudioProject;
-		cdevstudioProject = nullptr;
-	}
+	cdevstudioData.clearProject();
 }
 
 void CDevStudioPlatform::addProjectTemplate(CDevStudioProjectTemplate projecttemplate)
 {
-	cdevstudioProjectTemplates.append(projecttemplate);
+	cdevstudioData.addProjectTemplate(projecttemplate);
 }

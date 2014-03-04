@@ -12,9 +12,10 @@ set(CDEVSTUDIOPLATFORM_SRC
   CDevStudioPlatform.cpp
   CDevStudioPlatformPlugin.cpp
   CDevStudioWindow.cpp
+  CDevStudioBackend.cpp
+  CDevStudioData.cpp
   CDevStudioProject.cpp
   CDevStudioProjectTemplate.cpp
-  CDevStudioBackend.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDR
@@ -22,9 +23,10 @@ set(CDEVSTUDIOPLATFORM_HDR
   CDevStudioPlatform.h
   CDevStudioPlatformPlugin.h
   CDevStudioWindow.h
+  CDevStudioBackend.h
+  CDevStudioData.h
   CDevStudioProject.h
   CDevStudioProjectTemplate.h
-  CDevStudioBackend.h
   ICDevStudioPlugin.h
 )
 
@@ -35,5 +37,5 @@ set_target_properties(cdevstudioplatform PROPERTIES VERSION ${VERSION_NUMBER} SO
 target_link_libraries(cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudioplatform RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioProject.h CDevStudioProjectTemplate.h CDevStudioWindow.h CDevStudioBackend.h DESTINATION include/cdevstudioplatform)
+install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioWindow.h CDevStudioBackend.h CDevStudioData.h CDevStudioProject.h CDevStudioProjectTemplate.h DESTINATION include/cdevstudioplatform)
 install(FILES ICDevStudioPlugin.h DESTINATION include/cdevstudioplatform)

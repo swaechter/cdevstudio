@@ -11,6 +11,8 @@
 #include <QtWidgets/QFileDialog>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
 #include <cdevstudioplatform/CDevStudioWindow.h>
+#include <cdevstudioplatform/CDevStudioBackend.h>
+#include <cdevstudioplatform/CDevStudioData.h>
 #include <cdevstudioplatform/CDevStudioProject.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 

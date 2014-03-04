@@ -1,10 +1,10 @@
 #include "CDevStudioPlatformPlugin.h"
 
-CDevStudioPlatformPlugin::CDevStudioPlatformPlugin(CDevStudioWindow *window, QList<ICDevStudioPlugin *> plugins, CDevStudioBackend *backend) : QObject()
+CDevStudioPlatformPlugin::CDevStudioPlatformPlugin(CDevStudioWindow *window, CDevStudioBackend *backend, CDevStudioData *data) : QObject()
 {
 	parentWindow = window;
-	parentPlugins = plugins;
 	parentBackend = backend;
+	parentData = data;
 }
 
 CDevStudioWindow *CDevStudioPlatformPlugin::getWindow()
@@ -12,14 +12,14 @@ CDevStudioWindow *CDevStudioPlatformPlugin::getWindow()
 	return parentWindow;
 }
 
-QList<ICDevStudioPlugin *> CDevStudioPlatformPlugin::getPlugins()
-{
-	return parentPlugins;
-}
-
 CDevStudioBackend *CDevStudioPlatformPlugin::getBackend()
 {
 	return parentBackend;
+}
+
+CDevStudioData *CDevStudioPlatformPlugin::getData()
+{
+	return parentData;
 }
 
 void CDevStudioPlatformPlugin::addProjectTemplate(CDevStudioProjectTemplate projecttemplate)

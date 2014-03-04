@@ -7,8 +7,9 @@
 
 #include "CDevStudioPlatformExport.h"
 #include "CDevStudioWindow.h"
-#include "CDevStudioProjectTemplate.h"
 #include "CDevStudioBackend.h"
+#include "CDevStudioData.h"
+#include "CDevStudioProjectTemplate.h"
 #include "ICDevStudioPlugin.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioPlatformPlugin : public QObject
@@ -16,16 +17,16 @@ class CDEVSTUDIOPLATFORM_API CDevStudioPlatformPlugin : public QObject
 	Q_OBJECT
 	
 public:
-	CDevStudioPlatformPlugin(CDevStudioWindow *window, QList<ICDevStudioPlugin *> plugins, CDevStudioBackend *backend);
+	CDevStudioPlatformPlugin(CDevStudioWindow *window, CDevStudioBackend *backend, CDevStudioData *data);
 	CDevStudioWindow *getWindow();
-	QList<ICDevStudioPlugin *> getPlugins();
 	CDevStudioBackend *getBackend();
+	CDevStudioData *getData();
 	void addProjectTemplate(CDevStudioProjectTemplate projecttemplate);
 	
 private:
 	CDevStudioWindow *parentWindow;
-	QList<ICDevStudioPlugin *> parentPlugins;
 	CDevStudioBackend *parentBackend;
+	CDevStudioData *parentData;
 	
 signals:
 	void addPlatformProjectTemplate(CDevStudioProjectTemplate projecttemplate);

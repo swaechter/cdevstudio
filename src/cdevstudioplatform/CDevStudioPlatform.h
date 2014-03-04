@@ -7,6 +7,8 @@
 #include "CDevStudioPlatformExport.h"
 #include "CDevStudioPlatformPlugin.h"
 #include "CDevStudioWindow.h"
+#include "CDevStudioBackend.h"
+#include "CDevStudioData.h"
 #include "CDevStudioProject.h"
 #include "CDevStudioProjectTemplate.h"
 #include "ICDevStudioPlugin.h"
@@ -20,21 +22,18 @@ public:
 	~CDevStudioPlatform();
 	void initPlugins();
 	CDevStudioWindow *getWindow();
-	QList<CDevStudioProjectTemplate> getProjectTemplates();
-	QList<ICDevStudioPlugin *> getPlugins();
+	CDevStudioBackend *getBackend();
+	CDevStudioData *getData();
 	
 	CDevStudioProject *createProject(QString projectdirectory, QString projectname, QString projecttemplatestring);
 	CDevStudioProject *loadProject(QString projectfile);
-	CDevStudioProject *getProject();
 	void closeProject();
 	
 private:
+	CDevStudioPlatformPlugin *cdevstudioPlatformPlugins;
 	CDevStudioWindow *cdevstudioWindow;
-	CDevStudioPlatformPlugin *cdevstudioPlatformPlugins;;
-	CDevStudioBackend *cdevstudioBackend;
-	CDevStudioProject *cdevstudioProject;
-	QList<CDevStudioProjectTemplate> cdevstudioProjectTemplates;
-	QList<ICDevStudioPlugin *> cdevstudioPlugins;
+	CDevStudioBackend cdevstudioBackend;
+	CDevStudioData cdevstudioData;
 	
 private slots:
 	void addProjectTemplate(CDevStudioProjectTemplate projecttemplate);

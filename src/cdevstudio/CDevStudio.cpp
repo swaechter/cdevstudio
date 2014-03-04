@@ -83,9 +83,9 @@ void CDevStudio::initPlugins()
 
 void CDevStudio::actionCreateProjectTrigger()
 {
-	if(cdevstudioPlatform->getProject() == nullptr)
+	if(cdevstudioPlatform->getData()->getProject() == nullptr)
 	{
-		DialogCreateProject *dialog = new DialogCreateProject(cdevstudioPlatform->getProjectTemplates(), this);
+		DialogCreateProject *dialog = new DialogCreateProject(cdevstudioPlatform->getData()->getProjectTemplates(), this);
 		if(dialog->exec() == QDialog::Accepted)
 		{
 			if(!dialog->getProjectDirectory().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectTemplate().isEmpty())
@@ -112,7 +112,7 @@ void CDevStudio::actionCreateProjectTrigger()
 
 void CDevStudio::actionLoadProjectTrigger()
 {
-	if(cdevstudioPlatform->getProject() == nullptr)
+	if(cdevstudioPlatform->getData()->getProject() == nullptr)
 	{
 		QString projectfile = QFileDialog::getOpenFileName(this, tr("Select a project"), QDir::homePath(), "CDevStudio (*.cdev)");
 		if(!projectfile.isEmpty())
@@ -134,7 +134,7 @@ void CDevStudio::actionLoadProjectTrigger()
 
 void CDevStudio::actionCloseProjectTrigger()
 {
-	if(cdevstudioPlatform->getProject() != nullptr)
+	if(cdevstudioPlatform->getData()->getProject() != nullptr)
 	{
 		cdevstudioPlatform->closeProject();
 	}
@@ -159,6 +159,6 @@ void CDevStudio::actionSettingsTrigger()
 
 void CDevStudio::actionPluginsTrigger()
 {
-	DialogPlugins *dialog = new DialogPlugins(cdevstudioPlatform->getPlugins(), this);
+	DialogPlugins *dialog = new DialogPlugins(cdevstudioPlatform->getData()->getPlugins(), this);
 	dialog->exec();
 }
