@@ -14,8 +14,8 @@ class DialogCreateProject : public QDialog, private Ui::DialogCreateProject
 	
 public:
 	DialogCreateProject(QList<CDevStudioProjectTemplate> projecttemplates, QWidget *parent);
-	QString getProjectDirectory();
 	QString getProjectName();
+	QString getProjectDirectory();
 	QString getProjectTemplate();
 };
 

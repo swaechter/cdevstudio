@@ -12,14 +12,14 @@ DialogCreateProject::DialogCreateProject(QList<CDevStudioProjectTemplate> projec
 	}
 }
 
-QString DialogCreateProject::getProjectDirectory()
-{
-	return lineEditDirectory->text();
-}
-
 QString DialogCreateProject::getProjectName()
 {
 	return lineEditName->text();
+}
+
+QString DialogCreateProject::getProjectDirectory()
+{
+	return lineEditDirectory->text();
 }
 
 QString DialogCreateProject::getProjectTemplate()

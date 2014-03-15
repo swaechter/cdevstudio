@@ -14,9 +14,9 @@ public:
 	QStringList getTemplateFiles();
 	
 private:
-	QString dataTemplateName;
-	QString dataTemplateDescription;
-	QStringList dataTemplateFiles;
+	QString m_TemplateName;
+	QString m_TemplateDescription;
+	QStringList m_TemplateFiles;
 };
 
 #endif // CDEVSTUDIOPROJECTTEMPLATE_H

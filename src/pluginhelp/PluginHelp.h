@@ -28,7 +28,7 @@ public:
 	QStringList getPluginDependencies();
 	
 private:
-	CDevStudioPlatformPlugin *dataPlatformPlugin;
+	CDevStudioPlatformPlugin *m_PlatformPlugin;
 	
 private slots:
 	void actionHelpTriggered();

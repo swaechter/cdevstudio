@@ -16,9 +16,9 @@ void PluginProjects::init(CDevStudioPlatformPlugin* platformplugin)
 	CDevStudioProjectTemplate templatec(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c");
 	CDevStudioProjectTemplate templatecplusplus(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp");
 	
-	platformplugin->addProjectTemplate(templateempty);
-	platformplugin->addProjectTemplate(templatec);
-	platformplugin->addProjectTemplate(templatecplusplus);
+	platformplugin->getProjectManager()->addProjectTemplate(templateempty);
+	platformplugin->getProjectManager()->addProjectTemplate(templatec);
+	platformplugin->getProjectManager()->addProjectTemplate(templatecplusplus);
 }
 
 QString PluginProjects::getPluginName()

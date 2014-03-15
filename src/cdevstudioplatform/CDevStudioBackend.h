@@ -8,22 +8,20 @@
 #include <QtCore/QPluginLoader>
 
 #include "CDevStudioPlatformExport.h"
-#include "ICDevStudioPlugin.h"
 
 class CDEVSTUDIOPLATFORM_API CDevStudioBackend
 {
 public:
 	QStringList getPluginDirectories();
 	QStringList getPluginFilter();
-	QList<ICDevStudioPlugin *> loadPlugins();
-	void createDirectory(const QString &directorypath);
-	bool createFile(const QString &filepath);
-	bool deleteFile(const QString &filepath);
-	bool writeFile(const QString &filepath, const QString &text);
-	QString readFile(const QString &filepath);
-	QString getDirectoryOfFile(const QString &filepath);
-	QString getNameOfFile(const QString &filepath);
-	QStringList getFilesInDirectory(const QString &directorypath);
+	void createDirectory(QString directorypath);
+	bool createFile(QString filepath);
+	bool deleteFile(QString filepath);
+	bool writeFile(QString filepath, QString text);
+	QString readFile(QString filepath);
+	QString getDirectoryOfFile(QString filepath);
+	QString getNameOfFile(QString filepath);
+	QStringList getFilesInDirectory(QString directorypath);
 	QStringList getTranslationFiles();
 };
 

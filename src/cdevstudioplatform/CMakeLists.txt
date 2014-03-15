@@ -11,22 +11,26 @@ set(CMAKE_AUTOMOC ON)
 set(CDEVSTUDIOPLATFORM_SRC
   CDevStudioPlatform.cpp
   CDevStudioPlatformPlugin.cpp
+  CDevStudioWindowManager.cpp
   CDevStudioWindow.cpp
-  CDevStudioBackend.cpp
-  CDevStudioData.cpp
-  CDevStudioProject.cpp
+  CDevStudioPluginManager.cpp
+  CDevStudioProjectManager.cpp
   CDevStudioProjectTemplate.cpp
+  CDevStudioProject.cpp
+  CDevStudioBackend.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDR
   CDevStudioPlatformExport.h
   CDevStudioPlatform.h
   CDevStudioPlatformPlugin.h
+  CDevStudioWindowManager.h
   CDevStudioWindow.h
-  CDevStudioBackend.h
-  CDevStudioData.h
-  CDevStudioProject.h
+  CDevStudioPluginManager.h
+  CDevStudioProjectManager.h
   CDevStudioProjectTemplate.h
+  CDevStudioProject.h
+  CDevStudioBackend.h
   ICDevStudioPlugin.h
 )
 
@@ -37,5 +41,4 @@ set_target_properties(cdevstudioplatform PROPERTIES VERSION ${VERSION_NUMBER} SO
 target_link_libraries(cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudioplatform RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES CDevStudioPlatformExport.h CDevStudioPlatform.h CDevStudioWindow.h CDevStudioBackend.h CDevStudioData.h CDevStudioProject.h CDevStudioProjectTemplate.h DESTINATION include/cdevstudioplatform)
-install(FILES ICDevStudioPlugin.h DESTINATION include/cdevstudioplatform)
+install(FILES ${CDEVSTUDIOPLATFORM_HDR} DESTINATION include/cdevstudioplatform)

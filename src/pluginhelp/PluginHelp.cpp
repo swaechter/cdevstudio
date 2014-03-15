@@ -10,9 +10,9 @@ PluginHelp::~PluginHelp()
 
 void PluginHelp::init(CDevStudioPlatformPlugin *platformplugin)
 {
-	dataPlatformPlugin = platformplugin;
+	m_PlatformPlugin = platformplugin;
 	
-	QMenuBar *menubar = dataPlatformPlugin->getWindow()->menuBar();
+	QMenuBar *menubar = m_PlatformPlugin->getWindowManager()->getWindow()->menuBar();
 	
 	QMenu *menuhelp = new QMenu(tr("Help"), menubar);
 	QAction *actionhelp = new QAction(tr("Help"), menuhelp);
@@ -49,12 +49,12 @@ QStringList PluginHelp::getPluginDependencies()
 
 void PluginHelp::actionHelpTriggered()
 {
-	DialogHelp *dialog = new DialogHelp(dataPlatformPlugin->getWindow());
+	DialogHelp *dialog = new DialogHelp(m_PlatformPlugin->getWindowManager()->getWindow());
 	dialog->exec();
 }
 
 void PluginHelp::actionAboutTriggered()
 {
-	DialogAbout *dialog = new DialogAbout(dataPlatformPlugin->getWindow());
+	DialogAbout *dialog = new DialogAbout(m_PlatformPlugin->getWindowManager()->getWindow());
 	dialog->exec();
 }

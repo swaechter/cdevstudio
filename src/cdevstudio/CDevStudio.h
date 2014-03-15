@@ -10,9 +10,9 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
 #include <cdevstudioplatform/CDevStudioPlatform.h>
+#include <cdevstudioplatform/CDevStudioWindowManager.h>
 #include <cdevstudioplatform/CDevStudioWindow.h>
-#include <cdevstudioplatform/CDevStudioBackend.h>
-#include <cdevstudioplatform/CDevStudioData.h>
+#include <cdevstudioplatform/CDevStudioProjectManager.h>
 #include <cdevstudioplatform/CDevStudioProject.h>
 #include <cdevstudioplatform/ICDevStudioPlugin.h>
 
@@ -29,15 +29,15 @@ public:
 	~CDevStudio();
 	
 private:
-	CDevStudioPlatform *cdevstudioPlatform;
-	QMenu *menuProject;
-	QMenu *menuSettings;
-	QAction *actionCreateProject;
-	QAction *actionLoadProject;
-	QAction *actionCloseProject;
-	QAction *actionExit;
-	QAction *actionSettings;
-	QAction *actionPlugins;
+	CDevStudioPlatform *m_Platform;
+	QMenu *m_MenuProject;
+	QMenu *m_MenuSettings;
+	QAction *m_ActionCreateProject;
+	QAction *m_ActionLoadProject;
+	QAction *m_ActionCloseProject;
+	QAction *m_ActionExit;
+	QAction *m_ActionSettings;
+	QAction *m_ActionPlugins;
 	
 private slots:
 	void initPlatform();

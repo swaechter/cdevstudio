@@ -1,104 +1,36 @@
 #include "CDevStudioPlatform.h"
 
-
-CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window) : QObject()
+CDevStudioPlatform::CDevStudioPlatform(CDevStudioWindow *window)
 {
-	cdevstudioWindow = window;
-	cdevstudioData.setPlugins(cdevstudioBackend.loadPlugins());
-	cdevstudioData.clearProject();
-	cdevstudioPlatformPlugins = new CDevStudioPlatformPlugin(cdevstudioWindow, &cdevstudioBackend, &cdevstudioData);
-	connect(cdevstudioPlatformPlugins, SIGNAL(addPlatformProjectTemplate(CDevStudioProjectTemplate)), this, SLOT(addProjectTemplate(CDevStudioProjectTemplate)));
+	m_WindowManager = new CDevStudioWindowManager(window);
+	m_PluginManager = new CDevStudioPluginManager();
+	m_ProjectManager = new CDevStudioProjectManager();
+	m_PlatformPlugins = new CDevStudioPlatformPlugin(m_WindowManager, m_ProjectManager);
 }
 
 CDevStudioPlatform::~CDevStudioPlatform()
 {
-	cdevstudioData.clearProject();
-	delete cdevstudioPlatformPlugins;
+	delete m_PlatformPlugins;
+	delete m_PluginManager;
+	delete m_ProjectManager;
 }
 
 void CDevStudioPlatform::initPlugins()
 {
-	foreach(ICDevStudioPlugin *plugin, cdevstudioData.getPlugins())
-	{
-		plugin->init(cdevstudioPlatformPlugins);
-	}
+	m_PluginManager->initPlugins(m_PlatformPlugins);
 }
 
-CDevStudioWindow *CDevStudioPlatform::getWindow()
+CDevStudioWindowManager *CDevStudioPlatform::getWindowManager()
 {
-	return cdevstudioWindow;
+	return m_WindowManager;
 }
 
-CDevStudioBackend *CDevStudioPlatform::getBackend()
+CDevStudioPluginManager *CDevStudioPlatform::getPluginManager()
 {
-	return &cdevstudioBackend;
+	return m_PluginManager;
 }
 
-CDevStudioData *CDevStudioPlatform::getData()
+CDevStudioProjectManager *CDevStudioPlatform::getProjectManager()
 {
-	return &cdevstudioData;
-}
-
-CDevStudioProject *CDevStudioPlatform::createProject(QString projectdirectory, QString projectname, QString projecttemplatestring)
-{
-	if(cdevstudioData.getProject() == nullptr)
-	{
-		QString realprojectdirectory = realprojectdirectory.append(QString("/") + projectname + QString("/"));
-		cdevstudioBackend.createDirectory(realprojectdirectory);
-		cdevstudioBackend.createFile(realprojectdirectory + QString("Project.cdev"));
-		cdevstudioBackend.writeFile(realprojectdirectory + QString("Project.cdev"), projectname);
-		
-		CDevStudioProject *project = new CDevStudioProject(projectname, realprojectdirectory);
-		cdevstudioData.clearProject();
-		cdevstudioData.setProject(project);
-		
-		foreach(CDevStudioProjectTemplate projecttemplate, cdevstudioData.getProjectTemplates())
-		{
-			if(projecttemplatestring.compare(projecttemplate.getTemplateName()) == 0)
-			{
-				foreach(QString file, projecttemplate.getTemplateFiles())
-				{
-					QString filepath = realprojectdirectory + cdevstudioBackend.getNameOfFile(file);
-					cdevstudioBackend.createFile(filepath);
-					cdevstudioBackend.writeFile(filepath, cdevstudioBackend.readFile(file));
-				}
-				break;
-			}
-		}
-		
-		return cdevstudioData.getProject();
-	}
-	else
-	{
-		return nullptr;
-	}
-}
-
-CDevStudioProject *CDevStudioPlatform::loadProject(QString projectfile)
-{
-	if(!projectfile.isEmpty())
-	{
-		QString projectdirectory = cdevstudioBackend.getDirectoryOfFile(projectfile) + QString("/");
-		QString projectname = cdevstudioBackend.readFile(projectfile);
-		
-		CDevStudioProject *project = new CDevStudioProject(projectname, projectdirectory);
-		cdevstudioData.clearProject();
-		cdevstudioData.setProject(project);
-		
-		return cdevstudioData.getProject();
-	}
-	else
-	{
-		return nullptr;
-	}
-}
-
-void CDevStudioPlatform::closeProject()
-{
-	cdevstudioData.clearProject();
-}
-
-void CDevStudioPlatform::addProjectTemplate(CDevStudioProjectTemplate projecttemplate)
-{
-	cdevstudioData.addProjectTemplate(projecttemplate);
+	return m_ProjectManager;
 }

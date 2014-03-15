@@ -2,22 +2,22 @@
 
 CDevStudioProjectTemplate::CDevStudioProjectTemplate(QString name, QString description, QStringList files)
 {
-	dataTemplateName = name;
-	dataTemplateDescription = description;
-	dataTemplateFiles = files;
+	m_TemplateName = name;
+	m_TemplateDescription = description;
+	m_TemplateFiles = files;
 }
 
 QString CDevStudioProjectTemplate::getTemplateName()
 {
-	return dataTemplateName;
+	return m_TemplateName;
 }
 
 QString CDevStudioProjectTemplate::getTemplateDescription()
 {
-	return dataTemplateDescription;
+	return m_TemplateDescription;
 }
 
 QStringList CDevStudioProjectTemplate::getTemplateFiles()
 {
-	return dataTemplateFiles;
+	return m_TemplateFiles;
 }

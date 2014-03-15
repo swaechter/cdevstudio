@@ -2,21 +2,21 @@
 
 CDevStudioProject::CDevStudioProject(const QString &projectname, const QString &projectdirectory)
 {
-	dataProjectName = projectname;
-	dataProjectDirectory = projectdirectory;
+	m_ProjectName = projectname;
+	m_ProjectDirectory = projectdirectory;
 }
 
 QString CDevStudioProject::getProjectName()
 {
-	return dataProjectName;
+	return m_ProjectName;
 }
 
 QString CDevStudioProject::getProjectDirectory()
 {
-	return dataProjectDirectory;
+	return m_ProjectDirectory;
 }
 
 QString CDevStudioProject::getProjectFile()
 {
-	return QString(getProjectDirectory() + QString("Project.cdev"));
+	return QString(m_ProjectDirectory + QString("Project.cdev"));
 }

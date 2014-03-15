@@ -1,5 +1,6 @@
 #include "CDevStudioBackend.h"
 
+
 QStringList CDevStudioBackend::getPluginDirectories()
 {
 	QStringList directories;
@@ -13,30 +14,7 @@ QStringList CDevStudioBackend::getPluginFilter()
 	return QStringList() << "*plugin*.so" << "*plugin*.dll";
 }
 
-QList<ICDevStudioPlugin *> CDevStudioBackend::loadPlugins()
-{
-	QList<ICDevStudioPlugin *> plugins;
-	foreach(QString path, getPluginDirectories())
-	{
-		QStringList files = QDir(path).entryList(getPluginFilter());
-		foreach(QString file, files)
-		{
-			QPluginLoader loader(path + QString("/") + file);
-			QObject *object = loader.instance();
-			if(object != nullptr)
-			{
-				ICDevStudioPlugin *plugin = qobject_cast<ICDevStudioPlugin *>(object);
-				if(plugin != nullptr)
-				{
-					plugins.append(plugin);
-				}
-			}
-		}
-	}
-	return plugins;
-}
-
-void CDevStudioBackend::createDirectory(const QString &directorypath)
+void CDevStudioBackend::createDirectory(QString directorypath)
 {
 	QDir directory(directorypath);
 	if(!directory.exists())
@@ -45,12 +23,12 @@ void CDevStudioBackend::createDirectory(const QString &directorypath)
 	}
 }
 
-bool CDevStudioBackend::createFile(const QString &filepath)
+bool CDevStudioBackend::createFile(QString filepath)
 {
 	return writeFile(filepath, QString());
 }
 
-bool CDevStudioBackend::deleteFile(const QString &filepath)
+bool CDevStudioBackend::deleteFile(QString filepath)
 {
 	QFile file(filepath);
 	if(file.exists())
@@ -64,7 +42,7 @@ bool CDevStudioBackend::deleteFile(const QString &filepath)
 	}
 }
 
-bool CDevStudioBackend::writeFile(const QString &filepath, const QString &text)
+bool CDevStudioBackend::writeFile(QString filepath, QString text)
 {
 	QFile file(filepath);
 	if(file.open(QFile::WriteOnly))
@@ -80,7 +58,7 @@ bool CDevStudioBackend::writeFile(const QString &filepath, const QString &text)
 	}
 }
 
-QString CDevStudioBackend::readFile(const QString &filepath)
+QString CDevStudioBackend::readFile(QString filepath)
 {
 	QFile file(filepath);
 	if(file.open(QFile::ReadOnly))
@@ -96,19 +74,19 @@ QString CDevStudioBackend::readFile(const QString &filepath)
 	}
 }
 
-QString CDevStudioBackend::getDirectoryOfFile(const QString &filepath)
+QString CDevStudioBackend::getDirectoryOfFile(QString filepath)
 {
 	QFileInfo fileinfo(filepath);
 	return fileinfo.absolutePath();
 }
 
-QString CDevStudioBackend::getNameOfFile(const QString &filepath)
+QString CDevStudioBackend::getNameOfFile(QString filepath)
 {
 	QFileInfo fileinfo(filepath);
 	return fileinfo.fileName();
 }
 
-QStringList CDevStudioBackend::getFilesInDirectory(const QString &directorypath)
+QStringList CDevStudioBackend::getFilesInDirectory(QString directorypath)
 {
 	QStringList files;
 	QDir directory(directorypath);

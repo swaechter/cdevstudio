@@ -14,8 +14,8 @@ public:
 	QString getProjectFile();
 	
 private:
-	QString dataProjectName;
-	QString dataProjectDirectory;
+	QString m_ProjectName;
+	QString m_ProjectDirectory;
 };
 
 #endif // CDEVSTUDIOPROJECT_H

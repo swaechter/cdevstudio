@@ -1,35 +1,23 @@
 #ifndef CDEVSTUDIOPLATFORMPLUGIN_H
 #define CDEVSTUDIOPLATFORMPLUGIN_H
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtCore/QList>
-
 #include "CDevStudioPlatformExport.h"
-#include "CDevStudioWindow.h"
+#include "CDevStudioWindowManager.h"
+#include "CDevStudioProjectManager.h"
 #include "CDevStudioBackend.h"
-#include "CDevStudioData.h"
-#include "CDevStudioProjectTemplate.h"
-#include "ICDevStudioPlugin.h"
 
-class CDEVSTUDIOPLATFORM_API CDevStudioPlatformPlugin : public QObject
+class CDEVSTUDIOPLATFORM_API CDevStudioPlatformPlugin
 {
-	Q_OBJECT
-	
 public:
-	CDevStudioPlatformPlugin(CDevStudioWindow *window, CDevStudioBackend *backend, CDevStudioData *data);
-	CDevStudioWindow *getWindow();
+	CDevStudioPlatformPlugin(CDevStudioWindowManager *windowmanager, CDevStudioProjectManager *projectmanager);
+	CDevStudioWindowManager *getWindowManager();
+	CDevStudioProjectManager *getProjectManager();
 	CDevStudioBackend *getBackend();
-	CDevStudioData *getData();
-	void addProjectTemplate(CDevStudioProjectTemplate projecttemplate);
 	
 private:
-	CDevStudioWindow *parentWindow;
-	CDevStudioBackend *parentBackend;
-	CDevStudioData *parentData;
-	
-signals:
-	void addPlatformProjectTemplate(CDevStudioProjectTemplate projecttemplate);
+	CDevStudioWindowManager *m_WindowManager;
+	CDevStudioProjectManager *m_ProjectManager;
+	CDevStudioBackend m_Backend;
 };
 
 #endif // CDEVSTUDIOPLATFORMPLUGIN_H
