@@ -5,7 +5,9 @@
 #include <QtCore/QStringList>
 #include <QtCore/QFile>
 
-class CDevStudioProjectTemplate
+#include "CDevStudioPlatformExport.h"
+
+class CDEVSTUDIOPLATFORM_API CDevStudioProjectTemplate
 {
 public:
 	CDevStudioProjectTemplate(QString name, QString description, QStringList files);
