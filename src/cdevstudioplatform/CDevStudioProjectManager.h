@@ -1,6 +1,7 @@
 #ifndef CDEVSTUDIOPROJECTMANAGER_H
 #define CDEVSTUDIOPROJECTMANAGER_H
 
+#include <QtCore/QObject>
 #include <QtCore/QList>
 
 #include "CDevStudioPlatformExport.h"
@@ -8,8 +9,10 @@
 #include "CDevStudioProject.h"
 #include "CDevStudioBackend.h"
 
-class CDEVSTUDIOPLATFORM_API CDevStudioProjectManager
+class CDEVSTUDIOPLATFORM_API CDevStudioProjectManager : public QObject
 {
+	Q_OBJECT
+	
 public:
 	CDevStudioProjectManager();
 	~CDevStudioProjectManager();
@@ -25,7 +28,12 @@ private:
 	CDevStudioProject *m_Project;
 	CDevStudioBackend m_Backend;
 	
+	void setProject(CDevStudioProject *project);
 	void closePossibleProject();
+	
+signals:
+	void projectOpen(CDevStudioProject *project);
+	void projectClose(CDevStudioProject *project);
 };
 
 #endif // CDEVSTUDIOPROJECTMANAGER_H

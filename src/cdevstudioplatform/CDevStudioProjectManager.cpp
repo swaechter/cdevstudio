@@ -1,6 +1,6 @@
 #include "CDevStudioProjectManager.h"
 
-CDevStudioProjectManager::CDevStudioProjectManager()
+CDevStudioProjectManager::CDevStudioProjectManager() : QObject()
 {
 	m_Project = nullptr;
 }
@@ -29,8 +29,7 @@ CDevStudioProject *CDevStudioProjectManager::createProject(QString projectname, 
 		m_Backend.createFile(projectdirectory + QString("Project.cdev"));
 		m_Backend.writeFile(projectdirectory + QString("Project.cdev"), projectname);
 		
-		closePossibleProject();
-		m_Project = new CDevStudioProject(projectname, projectdirectory);
+		setProject(new CDevStudioProject(projectname, projectdirectory));
 		
 		foreach(CDevStudioProjectTemplate projecttemplate, m_ProjectTemplates)
 		{
@@ -59,7 +58,7 @@ CDevStudioProject *CDevStudioProjectManager::loadProject(QString projectfile)
 	{
 		QString projectdirectory = m_Backend.getDirectoryOfFile(projectfile) + QString("/");
 		QString projectname = m_Backend.readFile(projectfile);
-		m_Project = new CDevStudioProject(projectname, projectdirectory);
+		setProject(new CDevStudioProject(projectname, projectdirectory));
 		return m_Project;
 	}
 	else
@@ -78,10 +77,18 @@ void CDevStudioProjectManager::closeProject()
 	closePossibleProject();
 }
 
+void CDevStudioProjectManager::setProject(CDevStudioProject *project)
+{
+	closePossibleProject();
+	m_Project = project;
+	emit projectOpen(m_Project);
+}
+
 void CDevStudioProjectManager::closePossibleProject()
 {
 	if(m_Project != nullptr)
 	{
+		emit projectClose(m_Project);
 		delete m_Project;
 		m_Project = nullptr;
 	}
