@@ -50,7 +50,6 @@ Section ""
 	!ifdef MINGW-MAKE
 		File ${PROJECT_ROOT}\build\src\cdevstudio\cdevstudio.exe
 		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\libcdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\src\pluginhelp\libpluginhelp.dll
 		File ${PROJECT_ROOT}\build\src\pluginprojects\libpluginprojects.dll
 		File ${QT_BINARY_DIR}\libgcc_s_dw2-1.dll
 		File ${QT_BINARY_DIR}\libstdc++-6.dll
@@ -58,7 +57,6 @@ Section ""
 	!else ifdef MSVC-MSBUILD
 		File ${PROJECT_ROOT}\build\src\cdevstudio\Release\cdevstudio.exe
 		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\Release\cdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\src\pluginhelp\Release\pluginhelp.dll
 		File ${PROJECT_ROOT}\build\src\pluginprojects\Release\pluginprojects.dll
 	!else
 		!error "The compiler platform is not defined. Please run the batch file for your compiler platform"

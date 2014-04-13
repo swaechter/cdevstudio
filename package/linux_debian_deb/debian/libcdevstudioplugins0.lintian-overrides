@@ -1,3 +1,2 @@
-libcdevstudioplugins0: package-name-doesnt-match-sonames libpluginhelp0 libpluginprojects0
-libcdevstudioplugins0: non-dev-pkg-with-shlib-symlink usr/lib/libpluginhelp.so.0.0.7 usr/lib/libpluginhelp.so
+libcdevstudioplugins0: package-name-doesnt-match-sonames libpluginprojects0
 libcdevstudioplugins0: non-dev-pkg-with-shlib-symlink usr/lib/libpluginprojects.so.0.0.7 usr/lib/libpluginprojects.so

@@ -38,9 +38,6 @@ CDevStudio is the main program. It contains the graphical user interface and use
 \subsection{CDevStudioPlatform}
 CDevStudioPlatform is the platform for the main application. It is responsible for loading plugins, for the plugin communication and the backend (I/O interaction). The plugin API is accessible over CDevStudioPlatformPlugin.
 
-\subsection{Plugin Help}
-The plugin 'Help' provides a basic help and about dialog
-
 \subsection{Plugin Projects}
 The Plugin 'Projects' provides some basic project templates
 
@@ -86,7 +83,7 @@ Now the project is initialized and you can start with a first build. CDevStudio 
 	\item cd build
 	\item cmake ..
 	\item make (or the build command of your toolchain)
-	\item Copy the library (Depends on the platform)
+	\item Copy the libraries to the application directory (Depends on the platform)
 \end{itemize}
 
 \subsection{Create a new feature}
@@ -95,6 +92,9 @@ Now it's the time to create a new feature branch, add your feature and push it b
 \begin{itemize}
 	\item git pull origin develop
 	\item git checkout develop
+	\item git checkout -b feature-new-stuff develop
+	\item Do your stuff
+	\item git commit -m "Feature"
 	\item git merge feature-new-stuff
 	\item git push
 	\item git branch -d feature-new-stuff
@@ -117,8 +117,7 @@ There are a few things that have to be done for each new release:
 	\begin{itemize}
 		\item Update src/cdevstudio/data/desktop/cdevstudio.desktop
 		\item Update src/cdevstudio/data/man/cdevstudio.1.gz
-		\item Update src/pluginhelp/data/about_about.html
-		\item Update src/pluginhelp/PluginHelp.cpp
+		\item Update src/cdevstudio/data/about_about.html
 		\item Update src/pluginprojects/PluginProjects.cpp
 		\item Update src/CMakeLists.txt
 	\end{itemize}
@@ -143,7 +142,7 @@ There are a few things that have to be done for each new release:
 	\end{itemize}
 	\item Integrate the new release
 	\begin{itemize}
-		\item git commit -m "Releasemessage"
+		\item git commit -m "Release"
 		\item git checkout master
 		\item git merge release-x.x.x
 		\item git push

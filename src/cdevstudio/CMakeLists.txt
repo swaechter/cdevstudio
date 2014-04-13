@@ -17,6 +17,8 @@ set(CDEVSTUDIO_SRC
   DialogCreateProject.cpp
   DialogSettings.cpp
   DialogPlugins.cpp
+  DialogHelp.cpp
+  DialogAbout.cpp
 )
 
 set(CDEVSTUDIO_HDR
@@ -24,17 +26,27 @@ set(CDEVSTUDIO_HDR
   DialogCreateProject.h
   DialogSettings.h
   DialogPlugins.h
+  DialogHelp.h
+  DialogAbout.h
 )
 
 set(CDEVSTUDIO_UI_IN
   DialogCreateProject.ui
   DialogSettings.ui
   DialogPlugins.ui
+  DialogHelp.ui
+  DialogAbout.ui
+)
+
+set(CDEVSTUDIO_RESOURCE_IN
+  Resource.qrc
 )
 
 qt5_wrap_ui(CDEVSTUDIO_UI_OUT ${CDEVSTUDIO_UI_IN})
 
-add_executable(cdevstudio ${CDEVSTUDIO_SRC} ${CDEVSTUDIO_HDR} ${CDEVSTUDIO_UI_OUT})
+qt5_add_resources(CDEVSTUDIO_RESOURCE_OUT ${CDEVSTUDIO_RESOURCE_IN})
+
+add_executable(cdevstudio ${CDEVSTUDIO_SRC} ${CDEVSTUDIO_HDR} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
 target_link_libraries(cdevstudio cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudio RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)

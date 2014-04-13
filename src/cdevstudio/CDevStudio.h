@@ -19,6 +19,8 @@
 #include "DialogCreateProject.h"
 #include "DialogSettings.h"
 #include "DialogPlugins.h"
+#include "DialogHelp.h"
+#include "DialogAbout.h"
 
 class CDevStudio : public CDevStudioWindow
 {
@@ -32,12 +34,15 @@ private:
 	CDevStudioPlatform *m_Platform;
 	QMenu *m_MenuProject;
 	QMenu *m_MenuSettings;
+	QMenu *m_MenuHelp;
 	QAction *m_ActionCreateProject;
 	QAction *m_ActionLoadProject;
 	QAction *m_ActionCloseProject;
 	QAction *m_ActionExit;
 	QAction *m_ActionSettings;
 	QAction *m_ActionPlugins;
+	QAction *m_ActionHelp;
+	QAction *m_ActionAbout;
 	
 private slots:
 	void initPlatform();
@@ -53,6 +58,8 @@ private slots:
 	void actionExitTrigger();
 	void actionSettingsTrigger();
 	void actionPluginsTrigger();
+	void actionHelpTrigger();
+	void actionAboutTrigger();
 };
 
 #endif // CDEVSTUDIO_H

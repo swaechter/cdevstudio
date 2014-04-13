@@ -39,12 +39,15 @@ void CDevStudio::initMenubar()
 	
 	m_MenuProject = new QMenu(tr("Project"), menubar);
 	m_MenuSettings = new QMenu(tr("Settings"), menubar);
+	m_MenuHelp = new QMenu(tr("Help"), menubar);
 	m_ActionCreateProject = new QAction(tr("Create Project"), m_MenuProject);
 	m_ActionLoadProject = new QAction(tr("Load Project"), m_MenuProject);
 	m_ActionCloseProject = new QAction(tr("Close Project"), m_MenuProject);
 	m_ActionExit = new QAction(tr("Exit"), m_MenuProject);
 	m_ActionSettings = new QAction(tr("Settings"), m_MenuSettings);
 	m_ActionPlugins = new QAction(tr("Plugins"), m_MenuSettings);
+	m_ActionHelp = new QAction(tr("Help"), m_MenuHelp);
+	m_ActionAbout = new QAction(tr("About"), m_MenuHelp);
 	
 	m_MenuProject->addAction(m_ActionCreateProject);
 	m_MenuProject->addAction(m_ActionLoadProject);
@@ -53,9 +56,12 @@ void CDevStudio::initMenubar()
 	m_MenuProject->addAction(m_ActionExit);
 	m_MenuSettings->addAction(m_ActionSettings);
 	m_MenuSettings->addAction(m_ActionPlugins);
+	m_MenuHelp->addAction(m_ActionHelp);
+	m_MenuHelp->addAction(m_ActionAbout);
 	
 	menubar->addMenu(m_MenuProject);
 	menubar->addMenu(m_MenuSettings);
+	menubar->addMenu(m_MenuHelp);
 }
 
 void CDevStudio::initConnections()
@@ -66,6 +72,8 @@ void CDevStudio::initConnections()
 	connect(m_ActionExit, SIGNAL(triggered(bool)), this, SLOT(actionExitTrigger()));
 	connect(m_ActionSettings, SIGNAL(triggered(bool)), this, SLOT(actionSettingsTrigger()));
 	connect(m_ActionPlugins, SIGNAL(triggered(bool)), this, SLOT(actionPluginsTrigger()));
+	connect(m_ActionHelp, SIGNAL(triggered(bool)), this, SLOT(actionHelpTrigger()));
+	connect(m_ActionAbout, SIGNAL(triggered(bool)), this, SLOT(actionAboutTrigger()));
 }
 
 void CDevStudio::initWelcomeWidget()
@@ -160,5 +168,17 @@ void CDevStudio::actionSettingsTrigger()
 void CDevStudio::actionPluginsTrigger()
 {
 	DialogPlugins *dialog = new DialogPlugins(m_Platform->getPluginManager()->getPlugins(), this);
+	dialog->exec();
+}
+
+void CDevStudio::actionHelpTrigger()
+{
+	DialogHelp *dialog = new DialogHelp(this);
+	dialog->exec();
+}
+
+void CDevStudio::actionAboutTrigger()
+{
+	DialogAbout *dialog = new DialogAbout(this);
 	dialog->exec();
 }

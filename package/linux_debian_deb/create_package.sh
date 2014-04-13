@@ -8,6 +8,11 @@ version=0.0.7
 tar -czf cdevstudio_${version}.orig.tar.gz ../../../cdevstudio
 tar -xf cdevstudio_${version}.orig.tar.gz
 
+# Remove a possible build directory and repack the archive
+rm -rf cdevstudio/build
+rm cdevstudio_${version}.orig.tar.gz
+tar -czf cdevstudio_${version}.orig.tar.gz cdevstudio
+
 # Rename directory
 mv cdevstudio cdevstudio-${version}
 
