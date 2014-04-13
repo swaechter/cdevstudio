@@ -39,7 +39,10 @@ CDevStudio is the main program. It contains the graphical user interface and use
 CDevStudioPlatform is the platform for the main application. It is responsible for loading plugins, for the plugin communication and the backend (I/O interaction). The plugin API is accessible over CDevStudioPlatformPlugin.
 
 \subsection{Plugin Projects}
-The Plugin 'Projects' provides some basic project templates
+The Plugin 'Projects' provides some basic project templates.
+
+\subsection{Plugin Project Explorer}
+The Plugin 'Project Explorer' provides a basic project explorer view for the current project.
 
 \section{Workflow}
 There are a few techniques that are needed for this project: A working toolchain and some Git knowledge.
@@ -119,6 +122,7 @@ There are a few things that have to be done for each new release:
 		\item Update src/cdevstudio/data/man/cdevstudio.1.gz
 		\item Update src/cdevstudio/data/about_about.html
 		\item Update src/pluginprojects/PluginProjects.cpp
+		\item Update src/pluginprojectexplorer/PluginProjectExplorer.cpp
 		\item Update src/CMakeLists.txt
 	\end{itemize}
 	\item Update Debian package

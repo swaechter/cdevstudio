@@ -31,3 +31,4 @@ make install DESTDIR="%{buildroot}"
 /usr/include/cdevstudioplatform/CDevStudioBackend.h
 /usr/include/cdevstudioplatform/ICDevStudioPlugin.h
 /usr/lib/libpluginprojects.so*
+/usr/lib/libpluginprojectexplorer.so*
