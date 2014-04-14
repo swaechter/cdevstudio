@@ -20,6 +20,7 @@ void PluginProjectExplorer::init(CDevStudioPlatformPlugin* platformplugin)
 	m_FileSystemModel = new QFileSystemModel(m_TreeView);
 	
 	m_TreeView->setModel(m_FileSystemModel);
+	m_TreeView->header()->hide();
 	m_DockWidget->setWidget(m_TreeView);
 	hideColumns();
 	
