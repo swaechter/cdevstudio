@@ -22,7 +22,6 @@ public:
 	
 private:
 	QList<IPlugin *> m_Plugins;
-	Backend m_Backend;
 };
 
 #endif // PLUGINMANAGER_H

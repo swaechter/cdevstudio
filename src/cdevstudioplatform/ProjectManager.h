@@ -26,7 +26,6 @@ public:
 private:
 	QList<ProjectTemplate> m_ProjectTemplates;
 	Project *m_Project;
-	Backend m_Backend;
 	
 	void setProject(Project *project);
 	void closePossibleProject();

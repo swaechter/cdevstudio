@@ -10,9 +10,9 @@ PluginManager::~PluginManager()
 
 void PluginManager::loadPlugins()
 {
-	foreach(QString path, m_Backend.getPluginDirectories())
+	foreach(QString path, Backend::getPluginDirectories())
 	{
-		QStringList files = QDir(path).entryList(m_Backend.getPluginFilter());
+		QStringList files = QDir(path).entryList(Backend::getPluginFilter());
 		foreach(QString file, files)
 		{
 			QPluginLoader loader(path + QString("/") + file, this);

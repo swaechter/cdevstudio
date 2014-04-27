@@ -26,9 +26,9 @@ Project *ProjectManager::createProject(QString name, QString directory, QString 
 	if(m_Project == nullptr)
 	{
 		directory = directory.append(QString("/") + name + QString("/"));
-		m_Backend.createDirectory(directory);
-		m_Backend.createFile(directory + QString("Project.cdev"));
-		m_Backend.writeFile(directory + QString("Project.cdev"), name);
+		Backend::createDirectory(directory);
+		Backend::createFile(directory + QString("Project.cdev"));
+		Backend::writeFile(directory + QString("Project.cdev"), name);
 		
 		setProject(new Project(name, directory));
 		
@@ -38,9 +38,9 @@ Project *ProjectManager::createProject(QString name, QString directory, QString 
 			{
 				foreach(QString file, projecttemplate.getFiles())
 				{
-					QString filepath = directory + m_Backend.getNameOfFile(file);
-					m_Backend.createFile(filepath);
-					m_Backend.writeFile(filepath, m_Backend.readFile(file));
+					QString filepath = directory + Backend::getNameOfFile(file);
+					Backend::createFile(filepath);
+					Backend::writeFile(filepath, Backend::readFile(file));
 				}
 				break;
 			}
@@ -57,8 +57,8 @@ Project *ProjectManager::loadProject(QString projectfile)
 {
 	if(!projectfile.isEmpty())
 	{
-		QString projectdirectory = m_Backend.getDirectoryOfFile(projectfile) + QString("/");
-		QString projectname = m_Backend.readFile(projectfile);
+		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QString("/");
+		QString projectname = Backend::readFile(projectfile);
 		setProject(new Project(projectname, projectdirectory));
 		return m_Project;
 	}

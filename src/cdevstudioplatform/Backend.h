@@ -7,11 +7,8 @@
 #include <QtCore/QTextStream>
 #include <QtCore/QPluginLoader>
 
-#include "PlatformExport.h"
-
-class CDEVSTUDIOPLATFORM_EXPORT Backend
+namespace Backend
 {
-public:
 	QStringList getPluginDirectories();
 	QStringList getPluginFilter();
 	void createDirectory(QString directorypath);
@@ -23,6 +20,6 @@ public:
 	QString getNameOfFile(QString filepath);
 	QStringList getFilesInDirectory(QString directorypath);
 	QStringList getTranslationFiles();
-};
+}
 
 #endif // BACKEND_H
