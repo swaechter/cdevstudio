@@ -6,39 +6,38 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QFileSystemModel>
 #include <QtCore/QObject>
-#include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
-#include <cdevstudioplatform/CDevStudioProjectManager.h>
-#include <cdevstudioplatform/CDevStudioProject.h>
-#include <cdevstudioplatform/ICDevStudioPlugin.h>
+#include <cdevstudioplatform/interfaces/IPlugin.h>
+#include <cdevstudioplatform/interfaces/IPlatform.h>
+#include <cdevstudioplatform/ProjectManager.h>
+#include <cdevstudioplatform/ProjectTemplate.h>
+#include <cdevstudioplatform/Project.h>
 
 #include "PluginProjectExplorerExport.h"
 
-class PLUGINPROJECTEXPLORER_API PluginProjectExplorer : public QObject, private ICDevStudioPlugin
+class PLUGINPROJECTEXPLORER_API PluginProjectExplorer : public QObject, private IPlugin
 {
 	Q_OBJECT
-	Q_INTERFACES(ICDevStudioPlugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin")
+	Q_INTERFACES(IPlugin)
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
 	
 public:
 	PluginProjectExplorer();
 	~PluginProjectExplorer();
-	void init(CDevStudioPlatformPlugin *platformplugin);
-	QString getPluginName();
-	QString getPluginVersion();
-	QString getPluginDescription();
-	QStringList getPluginDependencies();
+	QString getName();
+	QString getVersion();
+	QString getDescription();
 	
 private:
 	QDockWidget *m_DockWidget;
 	QTreeView *m_TreeView;
 	QFileSystemModel *m_FileSystemModel;
-	CDevStudioProject *m_Project;
+	Project *m_Project;
 	
 	void hideColumns();
 	
 private slots:
-	void openProject(CDevStudioProject *project);
-	void closeProject(CDevStudioProject *project);
+	void openProject(Project *project);
+	void closeProject(Project *project);
 };
 
 #endif // PLUGINPROJECTEXPLORER_H

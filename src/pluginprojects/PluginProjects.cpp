@@ -2,41 +2,27 @@
 
 PluginProjects::PluginProjects()
 {
-
+	ProjectManager *manager = IPlatform::getInstance()->getProjectManager();
+	manager->addProjectTemplate(tr("Empty Project"), tr("An empty project"), QStringList());
+	manager->addProjectTemplate(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c");
+	manager->addProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp");
 }
 
 PluginProjects::~PluginProjects()
 {
-
 }
 
-void PluginProjects::init(CDevStudioPlatformPlugin* platformplugin)
+QString PluginProjects::getName()
 {
-	CDevStudioProjectTemplate templateempty(tr("Empty Project"), tr("An empty project"), QStringList());
-	CDevStudioProjectTemplate templatec(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c");
-	CDevStudioProjectTemplate templatecplusplus(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp");
-	
-	platformplugin->getProjectManager()->addProjectTemplate(templateempty);
-	platformplugin->getProjectManager()->addProjectTemplate(templatec);
-	platformplugin->getProjectManager()->addProjectTemplate(templatecplusplus);
+	return QString(tr("Projects"));
 }
 
-QString PluginProjects::getPluginName()
+QString PluginProjects::getVersion()
 {
-    return QString(tr("Projects"));
+	return QString(tr("0.0.7"));
 }
 
-QString PluginProjects::getPluginVersion()
+QString PluginProjects::getDescription()
 {
-    return QString(tr("0.0.7"));
-}
-
-QString PluginProjects::getPluginDescription()
-{
-    return QString(tr("PluginProjects provides some basic project templates"));
-}
-
-QStringList PluginProjects::getPluginDependencies()
-{
-    return QStringList();
+	return QString(tr("PluginProjects provides some basic project templates"));
 }

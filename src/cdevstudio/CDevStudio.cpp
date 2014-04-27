@@ -1,6 +1,6 @@
 #include "CDevStudio.h"
 
-CDevStudio::CDevStudio() : CDevStudioWindow()
+CDevStudio::CDevStudio() : Window()
 {
 	initPlatform();
 	initWindow();
@@ -18,7 +18,7 @@ CDevStudio::~CDevStudio()
 
 void CDevStudio::initPlatform()
 {
-	m_Platform = new CDevStudioPlatform(this);
+	m_Platform = new Platform(this);
 }
 
 void CDevStudio::initWindow()
@@ -86,7 +86,7 @@ void CDevStudio::initWelcomeWidget()
 
 void CDevStudio::initPlugins()
 {
-	m_Platform->initPlugins();
+	m_Platform->getPluginManager()->loadPlugins();
 }
 
 void CDevStudio::actionCreateProjectTrigger()

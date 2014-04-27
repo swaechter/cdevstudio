@@ -9,12 +9,12 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
-#include <cdevstudioplatform/CDevStudioPlatform.h>
-#include <cdevstudioplatform/CDevStudioWindowManager.h>
-#include <cdevstudioplatform/CDevStudioWindow.h>
-#include <cdevstudioplatform/CDevStudioProjectManager.h>
-#include <cdevstudioplatform/CDevStudioProject.h>
-#include <cdevstudioplatform/ICDevStudioPlugin.h>
+#include <cdevstudioplatform/Platform.h>
+#include <cdevstudioplatform/WindowManager.h>
+#include <cdevstudioplatform/Window.h>
+#include <cdevstudioplatform/ProjectManager.h>
+#include <cdevstudioplatform/Project.h>
+#include <cdevstudioplatform/interfaces/IPlugin.h>
 
 #include "DialogCreateProject.h"
 #include "DialogSettings.h"
@@ -22,7 +22,7 @@
 #include "DialogHelp.h"
 #include "DialogAbout.h"
 
-class CDevStudio : public CDevStudioWindow
+class CDevStudio : public Window
 {
 	Q_OBJECT
 	
@@ -31,7 +31,7 @@ public:
 	~CDevStudio();
 	
 private:
-	CDevStudioPlatform *m_Platform;
+	Platform *m_Platform;
 	QMenu *m_MenuProject;
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;

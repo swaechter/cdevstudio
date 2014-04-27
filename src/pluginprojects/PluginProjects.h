@@ -2,25 +2,25 @@
 #define PLUGINPROJECTS_H
 
 #include <QtCore/QObject>
-#include <cdevstudioplatform/CDevStudioPlatformPlugin.h>
-#include <cdevstudioplatform/ICDevStudioPlugin.h>
+#include <cdevstudioplatform/interfaces/IPlugin.h>
+#include <cdevstudioplatform/Platform.h>
 
 #include "PluginProjectsExport.h"
 
-class PLUGINPROJECTS_API PluginProjects : public QObject, private ICDevStudioPlugin
+#include <QtCore/QDebug>
+
+class PLUGINPROJECTS_API PluginProjects : public QObject, private IPlugin
 {
-        Q_OBJECT
-        Q_INTERFACES(ICDevStudioPlugin)
-        Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.ICDevStudioPlugin")
-        
+	Q_OBJECT
+	Q_INTERFACES(IPlugin)
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
+	
 public:
-        PluginProjects();
-        ~PluginProjects();
-        void init(CDevStudioPlatformPlugin *platformplugin);
-        QString getPluginName();
-        QString getPluginVersion();
-        QString getPluginDescription();
-        QStringList getPluginDependencies();
+	PluginProjects();
+	~PluginProjects();
+	QString getName();
+	QString getVersion();
+	QString getDescription();
 };
 
 #endif // PLUGINPROJECTS_H

@@ -11,7 +11,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CM
 
 set(CMAKE_AUTOMOC ON)
 
-set(CDEVSTUDIO_SRC
+set(CDEVSTUDIO_SRCS
   main.cpp
   CDevStudio.cpp
   DialogCreateProject.cpp
@@ -21,7 +21,7 @@ set(CDEVSTUDIO_SRC
   DialogAbout.cpp
 )
 
-set(CDEVSTUDIO_HDR
+set(CDEVSTUDIO_HDRS
   CDevStudio.h
   DialogCreateProject.h
   DialogSettings.h
@@ -46,7 +46,7 @@ qt5_wrap_ui(CDEVSTUDIO_UI_OUT ${CDEVSTUDIO_UI_IN})
 
 qt5_add_resources(CDEVSTUDIO_RESOURCE_OUT ${CDEVSTUDIO_RESOURCE_IN})
 
-add_executable(cdevstudio ${CDEVSTUDIO_SRC} ${CDEVSTUDIO_HDR} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
+add_executable(cdevstudio ${CDEVSTUDIO_SRCS} ${CDEVSTUDIO_HDRS} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
 target_link_libraries(cdevstudio cdevstudioplatform Qt5::Widgets)
 
 install(TARGETS cdevstudio RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)

@@ -8,18 +8,18 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR} ${CM
 
 set(CMAKE_AUTOMOC ON)
 
-set(PLUGINPROJECTEXPLORER_SRC
+set(PLUGINPROJECTEXPLORER_SRCS
   PluginProjectExplorer.cpp
 )
 
-set(PLUGINPROJECTEXPLORER_HDR
+set(PLUGINPROJECTEXPLORER_HDRS
   PluginProjectExplorerExport.h
   PluginProjectExplorer.h
 )
 
 add_definitions(-DPLUGINPROJECTEXPLORER_EXPORT)
 
-add_library(pluginprojectexplorer SHARED ${PLUGINPROJECTEXPLORER_SRC} ${PLUGINPROJECTEXPLORER_HDR})
+add_library(pluginprojectexplorer SHARED ${PLUGINPROJECTEXPLORER_SRCS} ${PLUGINPROJECTEXPLORER_HDRS})
 set_target_properties(pluginprojectexplorer PROPERTIES VERSION ${VERSION_NUMBER} SOVERSION ${VERSION_SONUMBER})
 target_link_libraries(pluginprojectexplorer cdevstudioplatform Qt5::Widgets)
 

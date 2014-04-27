@@ -2,19 +2,9 @@
 
 PluginProjectExplorer::PluginProjectExplorer()
 {
-
-}
-
-PluginProjectExplorer::~PluginProjectExplorer()
-{
-
-}
-
-void PluginProjectExplorer::init(CDevStudioPlatformPlugin* platformplugin)
-{
-	m_DockWidget = new QDockWidget(tr("Project Explorer"), platformplugin->getWindowManager()->getWindow());
+	m_DockWidget = new QDockWidget(tr("Project Explorer"), IPlatform::getInstance()->getWindowManager()->getWindow());
 	m_DockWidget->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
-	platformplugin->getWindowManager()->getWindow()->addDockWidget(Qt::LeftDockWidgetArea, m_DockWidget);
+	IPlatform::getInstance()->getWindowManager()->getWindow()->addDockWidget(Qt::LeftDockWidgetArea, m_DockWidget);
 	
 	m_TreeView = new QTreeView(m_DockWidget);
 	m_FileSystemModel = new QFileSystemModel(m_TreeView);
@@ -24,39 +14,39 @@ void PluginProjectExplorer::init(CDevStudioPlatformPlugin* platformplugin)
 	m_DockWidget->setWidget(m_TreeView);
 	hideColumns();
 	
-	connect(platformplugin->getProjectManager(), SIGNAL(projectOpen(CDevStudioProject*)), this, SLOT(openProject(CDevStudioProject*)));
-	connect(platformplugin->getProjectManager(), SIGNAL(projectClose(CDevStudioProject*)), this, SLOT(closeProject(CDevStudioProject*)));
+	connect(IPlatform::getInstance()->getProjectManager(), SIGNAL(projectOpen(Project *)), this, SLOT(openProject(Project *)));
+	connect(IPlatform::getInstance()->getProjectManager(), SIGNAL(projectClose(Project *)), this, SLOT(closeProject(Project *)));
 }
 
-QString PluginProjectExplorer::getPluginName()
+PluginProjectExplorer::~PluginProjectExplorer()
+{
+
+}
+
+QString PluginProjectExplorer::getName()
 {
 	return QString(tr("ProjectExplorer"));
 }
 
-QString PluginProjectExplorer::getPluginVersion()
+QString PluginProjectExplorer::getVersion()
 {
 	return QString(tr("0.0.7"));
 }
 
-QString PluginProjectExplorer::getPluginDescription()
+QString PluginProjectExplorer::getDescription()
 {
 	return QString(tr("PluginProjectExplorer provides a basic project view"));
 }
 
-QStringList PluginProjectExplorer::getPluginDependencies()
+void PluginProjectExplorer::openProject(Project *project)
 {
-	return QStringList();
-}
-
-void PluginProjectExplorer::openProject(CDevStudioProject *project)
-{
-	m_FileSystemModel->setRootPath(project->getProjectDirectory());
+	m_FileSystemModel->setRootPath(project->getDirectory());
 	m_TreeView->setModel(m_FileSystemModel);
-	m_TreeView->setRootIndex(m_FileSystemModel->index(project->getProjectDirectory()));
+	m_TreeView->setRootIndex(m_FileSystemModel->index(project->getDirectory()));
 	hideColumns();
 }
 
-void PluginProjectExplorer::closeProject(CDevStudioProject *project)
+void PluginProjectExplorer::closeProject(Project *project)
 {
 	m_TreeView->setModel(nullptr);
 }

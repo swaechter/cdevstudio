@@ -1,5 +1,5 @@
-#ifndef CDEVSTUDIOBACKEND_H
-#define CDEVSTUDIOBACKEND_H
+#ifndef BACKEND_H
+#define BACKEND_H
 
 #include <QtCore/QStringList>
 #include <QtCore/QFile>
@@ -7,9 +7,9 @@
 #include <QtCore/QTextStream>
 #include <QtCore/QPluginLoader>
 
-#include "CDevStudioPlatformExport.h"
+#include "PlatformExport.h"
 
-class CDEVSTUDIOPLATFORM_API CDevStudioBackend
+class CDEVSTUDIOPLATFORM_EXPORT Backend
 {
 public:
 	QStringList getPluginDirectories();
@@ -25,4 +25,4 @@ public:
 	QStringList getTranslationFiles();
 };
 
-#endif // CDEVSTUDIOBACKEND_H
+#endif // BACKEND_H
