@@ -9,7 +9,7 @@ PluginCore::PluginCore()
 
 PluginCore::~PluginCore()
 {
-	delete m_Window;
+	m_Window->deleteLater();
 }
 
 QString PluginCore::getName()
