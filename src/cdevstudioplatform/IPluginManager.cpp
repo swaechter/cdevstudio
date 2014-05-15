@@ -54,11 +54,11 @@ QStringList IPluginManager::getPluginFilter()
 	QStringList filter;
 	
 #ifdef Q_OS_
-	filter << QString("plugin*.dylib");
+	filter << QString("*plugin*.dylib");
 #elseif Q_OS_WIN
-	filter << QString("plugin*.dll");
+	filter << QString("*plugin*.dll");
 #else
-	filter <<  QString("plugin*.so");
+	filter <<  QString("*plugin*.so");
 #endif
 	
 	return filter;
