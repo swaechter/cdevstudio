@@ -9,7 +9,6 @@ set(CDEVSTUDIOPLATFORM_SRCS
   IPlatform.cpp
   IPluginManager.cpp
   IPlugin.cpp
-  Backend.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDRS
@@ -18,7 +17,6 @@ set(CDEVSTUDIOPLATFORM_HDRS
   IPlatform.h
   IPluginManager.h
   IPlugin.h
-  Backend.cpp
 )
 
 add_definitions(-DCDEVSTUDIOPLATFORM_MAKE_LIBRARY)

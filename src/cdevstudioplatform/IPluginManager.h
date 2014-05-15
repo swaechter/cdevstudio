@@ -4,11 +4,12 @@
 #include <QtCore/QObject>
 #include <QtCore/QList>
 #include <QtCore/QString>
+#include <QtCore/QStringList>
+#include <QtCore/QDir>
 #include <QtCore/QPluginLoader>
 
 #include "PlatformExport.h"
 #include "IPlugin.h"
-#include "Backend.h"
 
 #include <QDebug>
 
@@ -25,6 +26,9 @@ public:
 	
 private:
 	QList<IPlugin *> m_Plugins;
+	
+	QStringList getPluginFilter();
+	QStringList getPluginDirectories();
 };
 
 #endif // IPLUGINMANAGER_H
