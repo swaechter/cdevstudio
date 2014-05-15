@@ -2,6 +2,10 @@
 #define WINDOW_H
 
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QMenuBar>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QAction>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTextEdit>
 
@@ -14,6 +18,14 @@ class PLUGINCORE_EXPORT Window : public QMainWindow
 public:
 	Window();
 	~Window();
+	QMenu *getProjectMenu();
+	QMenu *getSettingsMenu();
+	QMenu *getHelpMenu();
+	
+private:
+	QMenu *m_MenuProject;
+	QMenu *m_MenuSettings;
+	QMenu *m_MenuHelp;
 };
 
 #endif // WINDOW_H

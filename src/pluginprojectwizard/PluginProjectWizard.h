@@ -1,6 +1,7 @@
 #ifndef PLUGINPROJECTWIZARD_H
 #define PLUGINPROJECTWIZARD_H
 
+#include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPluginManager.h>
@@ -28,6 +29,14 @@ public:
 private:
 	PluginCore *m_PluginCore;
 	PluginProjects *m_PluginProjects;
+	QAction *m_CreateProject;
+	QAction *m_LoadProject;
+	QAction *m_CloseProject;
+	
+private slots:
+	void actionCreateProject();
+	void actionLoadProject();
+	void actionCloseProject();
 };
 
 #endif // PLUGINPROJECTWIZARD_H
