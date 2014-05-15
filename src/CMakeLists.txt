@@ -1,4 +1,6 @@
-add_subdirectory(cdevstudioplatform)
 add_subdirectory(cdevstudio)
-add_subdirectory(pluginprojects)
+add_subdirectory(cdevstudioplatform)
+add_subdirectory(plugincore)
+add_subdirectory(pluginproject)
+add_subdirectory(pluginprojectwizard)
 add_subdirectory(pluginprojectexplorer)

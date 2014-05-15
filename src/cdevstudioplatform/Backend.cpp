@@ -3,8 +3,19 @@
 QStringList Backend::getPluginDirectories()
 {
 	QStringList directories;
-	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojects/";
+	
+#ifdef Q_OS_WIN
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/plugincore/";
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojects/";
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectwizard/";
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
+#else
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/plugincore/";
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginproject/";
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectwizard/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectexplorer/";
+#endif
+	
 	return directories;
 }
 
@@ -94,16 +105,4 @@ QStringList Backend::getFilesInDirectory(QString directorypath)
 		files = directory.entryList();
 	}
 	return files;
-}
-
-QStringList Backend::getTranslationFiles()
-{
-	QString path(":/data/translation/");
-	QStringList translations;
-	QStringList files = QDir(path).entryList();
-	foreach(QString file, files)
-	{
-		translations.append(file.prepend(path));
-	}
-	return translations;
 }

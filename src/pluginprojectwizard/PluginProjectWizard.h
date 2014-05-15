@@ -1,25 +1,26 @@
-#ifndef PLUGINPROJECTEXPLORER_H
-#define PLUGINPROJECTEXPLORER_H
+#ifndef PLUGINPROJECTWIZARD_H
+#define PLUGINPROJECTWIZARD_H
 
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPluginManager.h>
 #include <cdevstudioplatform/IPlugin.h>
 #include <plugincore/PluginCore.h>
-#include <plugincore/Window.h>
 #include <pluginproject/PluginProjects.h>
 
-#include "PluginProjectExplorerExport.h"
+#include "PluginProjectWizardExport.h"
 
-class PLUGINPROJECTEXPLORER_EXPORT PluginProjectExplorer : public IPlugin
+#include <QtCore/QDebug>
+
+class PLUGINPROJECTWIZARD_EXPORT PluginProjectWizard : public IPlugin
 {
 	Q_OBJECT
 	Q_INTERFACES(IPlugin)
 	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
 	
 public:
-	PluginProjectExplorer();
-	~PluginProjectExplorer();
+	PluginProjectWizard();
+	~PluginProjectWizard();
 	QString getName();
 	QString getVersion();
 	QString getDescription();
@@ -29,4 +30,4 @@ private:
 	PluginProjects *m_PluginProjects;
 };
 
-#endif // PLUGINPROJECTEXPLORER_H
+#endif // PLUGINPROJECTWIZARD_H

@@ -19,7 +19,6 @@ namespace Backend
 	QString getDirectoryOfFile(QString filepath);
 	QString getNameOfFile(QString filepath);
 	QStringList getFilesInDirectory(QString directorypath);
-	QStringList getTranslationFiles();
 }
 
 #endif // BACKEND_H

@@ -1,30 +1,24 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
+#include <QtCore/QObject>
 #include <QtCore/QList>
-#include <QtCore/QDebug>
 
 #include "PlatformExport.h"
-#include "WindowManager.h"
-#include "PluginManager.h"
-#include "ProjectManager.h"
-#include "interfaces/IPlatform.h"
+#include "IPlatform.h"
+#include "IPluginManager.h"
 
 class CDEVSTUDIOPLATFORM_EXPORT Platform : public IPlatform
 {
 	Q_OBJECT
 	
 public:
-	Platform(Window *window);
+	Platform(QObject *parent);
 	~Platform();
-	virtual WindowManager *getWindowManager();
-	virtual PluginManager *getPluginManager();
-	virtual ProjectManager *getProjectManager();
+	IPluginManager *getPluginManager();
 	
 private:
-	WindowManager *m_WindowManager;
-	PluginManager *m_PluginManager;
-	ProjectManager *m_ProjectManager;
+	IPluginManager *m_PluginManager;
 };
 
 #endif // PLATFORM_H
