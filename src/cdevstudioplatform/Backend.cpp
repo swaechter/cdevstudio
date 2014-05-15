@@ -6,7 +6,7 @@ QStringList Backend::getPluginDirectories()
 	
 #ifdef Q_OS_WIN
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/plugincore/";
-	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojects/";
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginproject/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectwizard/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
 #else

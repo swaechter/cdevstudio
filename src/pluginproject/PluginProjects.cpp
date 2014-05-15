@@ -3,7 +3,6 @@
 PluginProjects::PluginProjects()
 {
 	m_PluginCore = (PluginCore *) IPlatform::getInstance()->getPluginManager()->getPlugin("Core");
-	m_PluginCore->getWindow()->setWindowTitle("Projects");
 	qDebug() << "PluginProjects";
 }
 
