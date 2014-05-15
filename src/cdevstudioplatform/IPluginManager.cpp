@@ -29,19 +29,6 @@ void IPluginManager::loadPlugins()
 			}
 		}
 	}
-	
-// 	QPluginLoader loader("/home/swaechter/Workspace_C++/cdevstudio_new/build/src/plugincore/libplugincore.so");
-// // 	QPluginLoader *loader = new QPluginLoader("/home/swaechter/Workspace_C++/cdevstudio_new/build/src/plugincore/libplugincore.so");
-// 	IPlugin *plugin = qobject_cast< IPlugin* >(loader.instance());
-// 	if(plugin)
-// 	{
-// 		qDebug() << "Success";
-// 		m_Plugins.append(plugin);
-// 	}
-// 	else
-// 	{
-// // 		delete loader;
-// 	}
 }
 
 QList<IPlugin *> IPluginManager::getPlugins()
