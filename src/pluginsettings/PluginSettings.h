@@ -9,6 +9,7 @@
 #include <plugincore/PluginCore.h>
 
 #include "PluginSettingsExport.h"
+#include "DialogSettings.h"
 
 #include <QtCore/QDebug>
 

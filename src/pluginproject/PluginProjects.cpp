@@ -24,3 +24,13 @@ QString PluginProjects::getDescription()
 {
 	return QString(tr("PluginProjects provides some basic project templates"));
 }
+
+void PluginProjects::addTemplate(QString name, QString description, QStringList files)
+{
+	m_Templates.append(ProjectTemplate(name, description, files));
+}
+
+QList< ProjectTemplate > PluginProjects::getTemplates()
+{
+	return m_Templates;
+}

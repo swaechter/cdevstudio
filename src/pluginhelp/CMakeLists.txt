@@ -6,11 +6,15 @@ set(CMAKE_AUTOMOC ON)
 
 set(PLUGINHELP_SRCS
   PluginHelp.cpp
+  DialogHelp.cpp
+  DialogAbout.cpp
 )
 
 set(PLUGINHELP_HDRS
   PluginHelpExport.h
   PluginHelp.h
+  DialogHelp.h
+  DialogAbout.h
 )
 
 add_definitions(-DPLUGINHELP_MAKE_LIBRARY)

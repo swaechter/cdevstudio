@@ -1,6 +1,7 @@
 #ifndef PLUGINPROJECTWIZARD_H
 #define PLUGINPROJECTWIZARD_H
 
+#include <QtWidgets/QFileDialog>
 #include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
@@ -10,6 +11,7 @@
 #include <pluginproject/PluginProjects.h>
 
 #include "PluginProjectWizardExport.h"
+#include "DialogCreateProject.h"
 
 #include <QtCore/QDebug>
 

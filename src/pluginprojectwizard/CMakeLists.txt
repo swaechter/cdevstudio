@@ -6,11 +6,13 @@ set(CMAKE_AUTOMOC ON)
 
 set(PLUGINPROJECTWIZARD_SRCS
   PluginProjectWizard.cpp
+  DialogCreateProject.cpp
 )
 
 set(PLUGINPROJECTWIZARD_HDRS
   PluginProjectWizardExport.h
   PluginProjectWizard.h
+  DialogCreateProject.h
 )
 
 add_definitions(-DPLUGINPROJECTWIZARD_MAKE_LIBRARY)

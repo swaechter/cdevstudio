@@ -34,5 +34,8 @@ QString PluginSettings::getDescription()
 
 void PluginSettings::actionSettings()
 {
-	qDebug() << "TODO Settings";
+	DialogSettings *dialog = new DialogSettings(m_PluginCore->getWindow());
+	if(dialog->exec() == QDialog::Accepted)
+	{
+	}
 }

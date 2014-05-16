@@ -8,6 +8,8 @@
 #include <plugincore/PluginCore.h>
 
 #include "PluginProjectsExport.h"
+#include "ProjectTemplate.h"
+#include "Project.h"
 
 #include <QtCore/QDebug>
 
@@ -23,9 +25,12 @@ public:
 	QString getName();
 	QString getVersion();
 	QString getDescription();
+	void addTemplate(QString name, QString description, QStringList files);
+	QList<ProjectTemplate> getTemplates();
 	
 private:
 	PluginCore *m_PluginCore;
+	QList<ProjectTemplate> m_Templates;
 };
 
 #endif // PLUGINPROJECTS_H

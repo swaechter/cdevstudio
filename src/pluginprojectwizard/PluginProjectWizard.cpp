@@ -41,12 +41,21 @@ QString PluginProjectWizard::getDescription()
 
 void PluginProjectWizard::actionCreateProject()
 {
-	qDebug() << "TODO Create Project";
+	DialogCreateProject *dialog = new DialogCreateProject(m_PluginProjects->getTemplates(), m_PluginCore->getWindow());
+	if(dialog->exec())
+	{
+		if(!dialog->getTemplateName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())
+		{
+		}
+	}
 }
 
 void PluginProjectWizard::actionLoadProject()
 {
-	qDebug() << "TODO Load Project";
+	QString filename = QFileDialog::getOpenFileName(m_PluginCore->getWindow(), tr("Load Project"), QDir::homePath(), tr("Project File (*.cdev)"));
+	if(!filename.isEmpty())
+	{
+	}
 }
 
 void PluginProjectWizard::actionCloseProject()

@@ -37,10 +37,12 @@ QString PluginHelp::getDescription()
 
 void PluginHelp::actionHelp()
 {
-	qDebug() << "TODO Help";
+	DialogHelp *dialog = new DialogHelp(m_PluginCore->getWindow());
+	dialog->exec();
 }
 
 void PluginHelp::actionAbout()
 {
-qDebug() << "TODO About";
+	DialogAbout *dialog = new DialogAbout(m_PluginCore->getWindow());
+	dialog->exec();
 }

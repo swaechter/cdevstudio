@@ -6,11 +6,13 @@ set(CMAKE_AUTOMOC ON)
 
 set(PLUGINSETTINGS_SRCS
   PluginSettings.cpp
+  DialogSettings.cpp
 )
 
 set(PLUGINSETTINGS_HDRS
   PluginSettingsExport.h
   PluginSettings.h
+  DialogSettings.h
 )
 
 add_definitions(-DPLUGINSETTINGS_MAKE_LIBRARY)

@@ -1,40 +1,31 @@
-#ifndef PLUGINHELP_H
-#define PLUGINHELP_H
+#ifndef PLUGINPROJECTDATA_H
+#define PLUGINPROJECTDATA_H
 
-#include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPluginManager.h>
 #include <cdevstudioplatform/IPlugin.h>
 #include <plugincore/PluginCore.h>
+#include <pluginproject/PluginProjects.h>
 
-#include "PluginHelpExport.h"
-#include "DialogHelp.h"
-#include "DialogAbout.h"
+#include "PluginProjectDataExport.h"
 
-#include <QtCore/QDebug>
-
-class PLUGINHELP_EXPORT PluginHelp : public IPlugin
+class PLUGINPROJECTDATA_EXPORT PluginProjectData : public IPlugin
 {
 	Q_OBJECT
 	Q_INTERFACES(IPlugin)
 	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
 	
 public:
-	PluginHelp();
-	~PluginHelp();
+	PluginProjectData();
+	~PluginProjectData();
 	QString getName();
 	QString getVersion();
 	QString getDescription();
 	
 private:
 	PluginCore *m_PluginCore;
-	QAction *m_Help;
-	QAction *m_About;
-	
-private slots:
-	void actionHelp();
-	void actionAbout();
+	PluginProjects *m_PluginProjects;
 };
 
-#endif // PLUGINHELP_H
+#endif // PLUGINPROJECTDATA_H

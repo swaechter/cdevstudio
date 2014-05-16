@@ -71,6 +71,7 @@ QStringList IPluginManager::getPluginDirectories()
 #ifdef Q_OS_WIN
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/plugincore/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginproject/";
+	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectdata/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectwizard/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
 	directories << "C:/Users/User/Downloads/cdevstudio/build/src/pluginsettings/";
@@ -78,6 +79,7 @@ QStringList IPluginManager::getPluginDirectories()
 #else
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/plugincore/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginproject/";
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectdata/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectwizard/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectexplorer/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginsettings/";
