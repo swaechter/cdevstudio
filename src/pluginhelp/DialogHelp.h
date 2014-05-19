@@ -11,7 +11,7 @@ class DialogHelp : public QDialog
 	Q_OBJECT
 	
 public:
-	DialogHelp(QWidget *parent);
+	DialogHelp(QString helptext, QWidget *parent);
 };
 
 #endif // DIALOGHELP_H

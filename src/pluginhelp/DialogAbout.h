@@ -12,7 +12,7 @@ class DialogAbout : public QDialog
 	Q_OBJECT
 	
 public:
-	DialogAbout(QWidget *parent);
+	DialogAbout(QString abouttext, QString licensetext, QString thankstotext, QWidget *parent);
 };
 
 #endif // DIALOGABOUT_H

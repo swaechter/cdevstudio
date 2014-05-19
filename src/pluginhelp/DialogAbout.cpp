@@ -1,6 +1,6 @@
 #include "DialogAbout.h"
 
-DialogAbout::DialogAbout(QWidget *parent) : QDialog(parent)
+DialogAbout::DialogAbout(QString abouttext, QString licensetext, QString thankstotext, QWidget *parent) : QDialog(parent)
 {
 	QTabWidget *tabwidget = new QTabWidget(this);
 	QDialogButtonBox *buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
@@ -13,6 +13,10 @@ DialogAbout::DialogAbout(QWidget *parent) : QDialog(parent)
 	QTextBrowser *textbrowserabout = new QTextBrowser(tabwidget);
 	QTextBrowser *textbrowserlicense = new QTextBrowser(tabwidget);
 	QTextBrowser *textbrowserthanksto = new QTextBrowser(tabwidget);
+	
+	textbrowserabout->setText(abouttext);
+	textbrowserlicense->setText(licensetext);
+	textbrowserthanksto->setText(thankstotext);
 	
 	tabwidget->addTab(textbrowserabout, tr("About"));
 	tabwidget->addTab(textbrowserlicense, tr("License"));

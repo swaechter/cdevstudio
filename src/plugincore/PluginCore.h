@@ -6,6 +6,7 @@
 
 #include "PluginCoreExport.h"
 #include "Window.h"
+#include "Backend.h"
 
 #include <QtDebug>
 
@@ -22,9 +23,11 @@ public:
 	QString getVersion();
 	QString getDescription();
 	Window *getWindow();
+	Backend *getBackend();
 	
 private:
 	Window *m_Window;
+	Backend *m_Backend;
 };
 
 #endif // PLUGINPROJECT_H

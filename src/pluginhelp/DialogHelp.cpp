@@ -1,6 +1,6 @@
 #include "DialogHelp.h"
 
-DialogHelp::DialogHelp(QWidget *parent) : QDialog(parent)
+DialogHelp::DialogHelp(QString helptext, QWidget *parent) : QDialog(parent)
 {
 	QTextBrowser *textbrowser = new QTextBrowser(this);
 	QDialogButtonBox *buttonbox = new QDialogButtonBox(QDialogButtonBox::Ok, Qt::Horizontal, this);
@@ -9,6 +9,8 @@ DialogHelp::DialogHelp(QWidget *parent) : QDialog(parent)
 	gridlayout->addWidget(textbrowser, 0, 0, 1, 1);
 	gridlayout->addWidget(buttonbox, 1, 0, 1, 1);
 	setLayout(gridlayout);
+	
+	textbrowser->setText(helptext);
 	
 	connect(buttonbox, SIGNAL(accepted()), this, SLOT(accept()));
 	connect(buttonbox, SIGNAL(rejected()), this, SLOT(reject()));

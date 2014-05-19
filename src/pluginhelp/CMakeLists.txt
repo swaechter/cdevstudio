@@ -17,9 +17,15 @@ set(PLUGINHELP_HDRS
   DialogAbout.h
 )
 
+set(PLUGINHELP_RESOURCE_IN
+  Resource.qrc
+)
+
 add_definitions(-DPLUGINHELP_MAKE_LIBRARY)
 
-add_library(pluginhelp SHARED ${PLUGINHELP_SRCS})
+qt5_add_resources(PLUGINHELP_RESOURCE_OUT ${PLUGINHELP_RESOURCE_IN})
+
+add_library(pluginhelp SHARED ${PLUGINHELP_SRCS} ${PLUGINHELP_RESOURCE_OUT})
 set_target_properties(pluginhelp PROPERTIES VERSION ${VERSION_NUMBER} SOVERSION ${VERSION_SONUMBER})
 target_link_libraries(pluginhelp plugincore cdevstudioplatform)
 

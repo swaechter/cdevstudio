@@ -7,12 +7,14 @@ set(CMAKE_AUTOMOC ON)
 set(PLUGINCORE_SRCS
   PluginCore.cpp
   Window.cpp
+  Backend.cpp
 )
 
 set(PLUGINCORE_HDRS
   PluginCoreExport.h
   PluginCore.h
   Window.h
+  Backend.h
 )
 
 add_definitions(-DPLUGINCORE_MAKE_LIBRARY)

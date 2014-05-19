@@ -2,6 +2,7 @@
 
 PluginCore::PluginCore()
 {
+	m_Backend = new Backend();
 	m_Window = new Window();
 	m_Window->show();
 	qDebug() << "PluginCore";
@@ -10,6 +11,7 @@ PluginCore::PluginCore()
 PluginCore::~PluginCore()
 {
 	m_Window->deleteLater();
+	delete m_Backend;
 }
 
 QString PluginCore::getName()
@@ -30,4 +32,9 @@ QString PluginCore::getDescription()
 Window *PluginCore::getWindow()
 {
 	return m_Window;
+}
+
+Backend *PluginCore::getBackend()
+{
+	return m_Backend;
 }

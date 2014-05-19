@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="/">
+    <file>data/help.html</file>
+    <file>data/about_about.html</file>
+    <file>data/about_license.html</file>
+    <file>data/about_thanksto.html</file>
+  </qresource>
+</RCC>

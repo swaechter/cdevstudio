@@ -37,12 +37,16 @@ QString PluginHelp::getDescription()
 
 void PluginHelp::actionHelp()
 {
-	DialogHelp *dialog = new DialogHelp(m_PluginCore->getWindow());
+	QString helptext = m_PluginCore->getBackend()->readFile(":/data/help.html");
+	DialogHelp *dialog = new DialogHelp(helptext, m_PluginCore->getWindow());
 	dialog->exec();
 }
 
 void PluginHelp::actionAbout()
 {
-	DialogAbout *dialog = new DialogAbout(m_PluginCore->getWindow());
+	QString abouttext = m_PluginCore->getBackend()->readFile(":/data/about_about.html");
+	QString licensetext = m_PluginCore->getBackend()->readFile(":/data/about_license.html");
+	QString thankstotext = m_PluginCore->getBackend()->readFile(":/data/about_thanksto.html");
+	DialogAbout *dialog = new DialogAbout(abouttext, licensetext, thankstotext,m_PluginCore->getWindow());
 	dialog->exec();
 }
