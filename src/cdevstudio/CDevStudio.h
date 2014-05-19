@@ -6,8 +6,6 @@
 #include <cdevstudioplatform/Platform.h>
 #include <cdevstudioplatform/IPluginManager.h>
 
-#include <QDebug>
-
 class CDevStudio : public QObject
 {
 	Q_OBJECT
