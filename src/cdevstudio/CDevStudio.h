@@ -1,11 +1,10 @@
 #ifndef CDEVSTUDIO_H
 #define CDEVSTUDIO_H
 
-#include <QtWidgets/QMainWindow>
-
 #include <cdevstudioplatform/Platform.h>
+#include <cdevstudioplatform/Window.h>
 
-class CDevStudio : public QMainWindow
+class CDevStudio : public Window
 {
 	Q_OBJECT
 	
@@ -15,6 +14,8 @@ public:
 	
 private:
 	void initPlatform();
+	void initWindow();
+	void loadPlugins();
 	
 	Platform *m_Platform;
 };

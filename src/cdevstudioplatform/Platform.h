@@ -8,20 +8,24 @@
 #include "PluginPlatform.h"
 #include "PluginManager.h"
 #include "ProjectManager.h"
+#include "WindowManager.h"
+#include "Window.h"
 
 class CDEVSTUDIOPLATFORM_EXPORT Platform : public PluginPlatform
 {
 	Q_OBJECT
 	
 public:
-	Platform(QObject *parent);
+	Platform(Window *window);
 	~Platform();
 	PluginManager *getPluginManager();
 	ProjectManager *getProjectManager();
+        WindowManager *getWindowManager();
 	
 private:
 	PluginManager *m_PluginManager;
 	ProjectManager *m_ProjectManager;
+        WindowManager *m_WindowManager;
 };
 
 #endif // PLATFORM_H

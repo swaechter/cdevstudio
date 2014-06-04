@@ -11,6 +11,8 @@ set(CDEVSTUDIOPLATFORM_SRCS
   Plugin.cpp
   ProjectManager.cpp
   Project.cpp
+  WindowManager.cpp
+  Window.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDRS
@@ -21,6 +23,8 @@ set(CDEVSTUDIOPLATFORM_HDRS
   Plugin.h
   ProjectManager.h
   Project.h
+  WindowManager.h
+  Window.h
 )
 
 add_definitions(-DCDEVSTUDIOPLATFORM_MAKE_LIBRARY)

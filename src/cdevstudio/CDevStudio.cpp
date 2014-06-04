@@ -1,8 +1,10 @@
 #include "CDevStudio.h"
 
-CDevStudio::CDevStudio() : QMainWindow()
+CDevStudio::CDevStudio() : Window()
 {
 	initPlatform();
+	initWindow();
+	loadPlugins();
 }
 
 CDevStudio::~CDevStudio()
@@ -13,4 +15,15 @@ CDevStudio::~CDevStudio()
 void CDevStudio::initPlatform()
 {
 	m_Platform = new Platform(this);
+}
+
+void CDevStudio::initWindow()
+{
+	setWindowTitle(tr("CDevStudio"));
+	resize(1000, 600);
+}
+
+void CDevStudio::loadPlugins()
+{
+	m_Platform->getPluginManager()->loadPlugins();
 }
