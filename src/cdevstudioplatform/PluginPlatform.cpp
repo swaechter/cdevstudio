@@ -1,6 +1,6 @@
 #include "PluginPlatform.h"
 
-PluginPlatform *PluginPlatform::m_PluginPlatform = 0;
+PluginPlatform *PluginPlatform::m_PluginPlatform = nullptr;
 
 PluginPlatform::PluginPlatform(QObject *parent) : QObject(parent)
 {
