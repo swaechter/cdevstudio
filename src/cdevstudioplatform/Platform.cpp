@@ -7,11 +7,6 @@ Platform::Platform(Window *window): PluginPlatform(window)
 	m_WindowManager = new WindowManager(window, this);
 }
 
-Platform::~Platform()
-{
-	delete m_PluginManager;
-}
-
 PluginManager *Platform::getPluginManager()
 {
 	return m_PluginManager;

@@ -17,7 +17,6 @@ class CDEVSTUDIOPLATFORM_EXPORT Platform : public PluginPlatform
 	
 public:
 	Platform(Window *window);
-	~Platform();
 	PluginManager *getPluginManager();
 	ProjectManager *getProjectManager();
         WindowManager *getWindowManager();
