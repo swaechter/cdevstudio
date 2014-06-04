@@ -22,12 +22,10 @@ public:
 	~PluginManager();
 	void loadPlugins();
 	QList<Plugin *> getPlugins();
-	Plugin *getPlugin(QString name);
 	
 private:
 	QList<Plugin *> m_Plugins;
 	
-	QStringList getPluginFilter();
 	QStringList getPluginDirectories();
 };
 
