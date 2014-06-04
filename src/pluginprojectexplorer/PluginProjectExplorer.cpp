@@ -2,8 +2,6 @@
 
 PluginProjectExplorer::PluginProjectExplorer()
 {
-	m_PluginCore = (PluginCore *) IPlatform::getInstance()->getPluginManager()->getPlugin("Core");
-	m_PluginProjects = (PluginProjects *) IPlatform::getInstance()->getPluginManager()->getPlugin("Projects");
 	qDebug() << "PluginProjectExplorer";
 }
 

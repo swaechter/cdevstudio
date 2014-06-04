@@ -5,20 +5,23 @@
 #include <QtCore/QList>
 
 #include "PlatformExport.h"
-#include "IPlatform.h"
-#include "IPluginManager.h"
+#include "PluginPlatform.h"
+#include "PluginManager.h"
+#include "ProjectManager.h"
 
-class CDEVSTUDIOPLATFORM_EXPORT Platform : public IPlatform
+class CDEVSTUDIOPLATFORM_EXPORT Platform : public PluginPlatform
 {
 	Q_OBJECT
 	
 public:
 	Platform(QObject *parent);
 	~Platform();
-	IPluginManager *getPluginManager();
+	PluginManager *getPluginManager();
+	ProjectManager *getProjectManager();
 	
 private:
-	IPluginManager *m_PluginManager;
+	PluginManager *m_PluginManager;
+	ProjectManager *m_ProjectManager;
 };
 
 #endif // PLATFORM_H

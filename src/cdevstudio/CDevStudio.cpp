@@ -1,6 +1,6 @@
 #include "CDevStudio.h"
 
-CDevStudio::CDevStudio()
+CDevStudio::CDevStudio() : QMainWindow()
 {
 	initPlatform();
 }

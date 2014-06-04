@@ -1,8 +1,9 @@
 #include "Platform.h"
 
-Platform::Platform(QObject *parent): IPlatform(parent)
+Platform::Platform(QObject *parent): PluginPlatform(parent)
 {
-	m_PluginManager = new IPluginManager();
+	m_PluginManager = new PluginManager(this);
+	m_ProjectManager = new ProjectManager(this);
 	m_PluginManager->loadPlugins();
 }
 
@@ -11,7 +12,12 @@ Platform::~Platform()
 	delete m_PluginManager;
 }
 
-IPluginManager *Platform::getPluginManager()
+PluginManager *Platform::getPluginManager()
 {
 	return m_PluginManager;
+}
+
+ProjectManager *Platform::getProjectManager()
+{
+	return m_ProjectManager;
 }

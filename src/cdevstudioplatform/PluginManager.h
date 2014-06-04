@@ -1,5 +1,5 @@
-#ifndef IPLUGINMANAGER_H
-#define IPLUGINMANAGER_H
+#ifndef PLUGINMANAGER_H
+#define PLUGINMANAGER_H
 
 #include <QtCore/QObject>
 #include <QtCore/QList>
@@ -9,26 +9,26 @@
 #include <QtCore/QPluginLoader>
 
 #include "PlatformExport.h"
-#include "IPlugin.h"
+#include "Plugin.h"
 
 #include <QDebug>
 
-class CDEVSTUDIOPLATFORM_EXPORT IPluginManager : public QObject
+class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 {
 	Q_OBJECT
 	
 public:
-	IPluginManager();
-	~IPluginManager();
+	PluginManager(QObject *parent);
+	~PluginManager();
 	void loadPlugins();
-	QList<IPlugin *> getPlugins();
-	IPlugin *getPlugin(QString name);
+	QList<Plugin *> getPlugins();
+	Plugin *getPlugin(QString name);
 	
 private:
-	QList<IPlugin *> m_Plugins;
+	QList<Plugin *> m_Plugins;
 	
 	QStringList getPluginFilter();
 	QStringList getPluginDirectories();
 };
 
-#endif // IPLUGINMANAGER_H
+#endif // PLUGINMANAGER_H

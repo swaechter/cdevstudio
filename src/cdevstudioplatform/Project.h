@@ -3,9 +3,9 @@
 
 #include <QtCore/QString>
 
-#include "PluginProjectsExport.h"
+#include "PlatformExport.h"
 
-class PLUGINPROJECTS_EXPORT Project
+class CDEVSTUDIOPLATFORM_EXPORT Project
 {
 public:
 	Project(QString name, QString location);

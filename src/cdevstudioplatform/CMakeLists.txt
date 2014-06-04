@@ -6,17 +6,21 @@ set(CMAKE_AUTOMOC ON)
 
 set(CDEVSTUDIOPLATFORM_SRCS
   Platform.cpp
-  IPlatform.cpp
-  IPluginManager.cpp
-  IPlugin.cpp
+  PluginPlatform.cpp
+  PluginManager.cpp
+  Plugin.cpp
+  ProjectManager.cpp
+  Project.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDRS
   PlatformExport.h
   Platform.h
-  IPlatform.h
-  IPluginManager.h
-  IPlugin.h
+  PluginPlatform.h
+  PluginManager.h
+  Plugin.h
+  ProjectManager.h
+  Project.h
 )
 
 add_definitions(-DCDEVSTUDIOPLATFORM_MAKE_LIBRARY)

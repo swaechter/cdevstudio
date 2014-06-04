@@ -9,7 +9,8 @@
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtCore/QList>
-#include <pluginproject/ProjectTemplate.h>
+
+#include "ProjectTemplate.h"
 
 class DialogCreateProject : public QWizard
 {

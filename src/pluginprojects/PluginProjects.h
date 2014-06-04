@@ -2,22 +2,20 @@
 #define PLUGINPROJECTS_H
 
 #include <QtCore/QObject>
-#include <cdevstudioplatform/IPlatform.h>
-#include <cdevstudioplatform/IPluginManager.h>
-#include <cdevstudioplatform/IPlugin.h>
-#include <plugincore/PluginCore.h>
+#include <cdevstudioplatform/PluginPlatform.h>
+#include <cdevstudioplatform/PluginManager.h>
+#include <cdevstudioplatform/Plugin.h>
 
 #include "PluginProjectsExport.h"
 #include "ProjectTemplate.h"
-#include "Project.h"
 
 #include <QtCore/QDebug>
 
-class PLUGINPROJECTS_EXPORT PluginProjects : public IPlugin
+class PLUGINPROJECTS_EXPORT PluginProjects : public Plugin
 {
 	Q_OBJECT
-	Q_INTERFACES(IPlugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
+	Q_INTERFACES(Plugin)
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.Plugin")
 	
 public:
 	PluginProjects();
@@ -29,7 +27,6 @@ public:
 	QList<ProjectTemplate> getTemplates();
 	
 private:
-	PluginCore *m_PluginCore;
 	QList<ProjectTemplate> m_Templates;
 };
 

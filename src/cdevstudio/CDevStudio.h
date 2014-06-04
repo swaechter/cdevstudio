@@ -1,12 +1,11 @@
 #ifndef CDEVSTUDIO_H
 #define CDEVSTUDIO_H
 
-#include <QtCore/QObject>
+#include <QtWidgets/QMainWindow>
 
 #include <cdevstudioplatform/Platform.h>
-#include <cdevstudioplatform/IPluginManager.h>
 
-class CDevStudio : public QObject
+class CDevStudio : public QMainWindow
 {
 	Q_OBJECT
 	
@@ -18,7 +17,6 @@ private:
 	void initPlatform();
 	
 	Platform *m_Platform;
-	IPluginManager *manager;
 };
 
 #endif // CDEVSTUDIO_H
