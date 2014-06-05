@@ -4,7 +4,6 @@
 #include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/PluginPlatform.h>
-#include <cdevstudioplatform/PluginManager.h>
 #include <cdevstudioplatform/Plugin.h>
 #include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>

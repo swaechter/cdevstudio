@@ -1,15 +1,16 @@
 #ifndef PLUGINPROJECTS_H
 #define PLUGINPROJECTS_H
 
+#include <QtWidgets/QAction>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/PluginPlatform.h>
-#include <cdevstudioplatform/PluginManager.h>
 #include <cdevstudioplatform/Plugin.h>
+#include <cdevstudioplatform/WindowManager.h>
+#include <cdevstudioplatform/Window.h>
 
 #include "PluginProjectsExport.h"
 #include "ProjectTemplate.h"
-
-#include <QtCore/QDebug>
+#include "DialogCreateProject.h"
 
 class PLUGINPROJECTS_EXPORT PluginProjects : public Plugin
 {
@@ -23,11 +24,18 @@ public:
 	QString getName();
 	QString getVersion();
 	QString getDescription();
-	void addTemplate(QString name, QString description, QStringList files);
-	QList<ProjectTemplate> getTemplates();
 	
 private:
-	QList<ProjectTemplate> m_Templates;
+	QAction *m_ActionCreateProject;
+	QAction *m_ActionLoadProject;
+	QAction *m_ActionCloseProject;
+	QAction *m_ActionProjectSettings;
+	
+private slots:
+	void actionProjectCreateTrigger();
+	void actionProjectLoadTrigger();
+	void actionProjectCloseTrigger();
+	void actionProjectSettingsTrigger();
 };
 
 #endif // PLUGINPROJECTS_H
