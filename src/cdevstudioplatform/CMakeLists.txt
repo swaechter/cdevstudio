@@ -13,6 +13,7 @@ set(CDEVSTUDIOPLATFORM_SRCS
   Project.cpp
   WindowManager.cpp
   Window.cpp
+  Backend.cpp
 )
 
 set(CDEVSTUDIOPLATFORM_HDRS
@@ -25,6 +26,7 @@ set(CDEVSTUDIOPLATFORM_HDRS
   Project.h
   WindowManager.h
   Window.h
+  Backend.h
 )
 
 add_definitions(-DCDEVSTUDIOPLATFORM_MAKE_LIBRARY)
