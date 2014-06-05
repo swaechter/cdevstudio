@@ -20,7 +20,7 @@ void CDevStudio::initPlatform()
 void CDevStudio::initWindow()
 {
 	setWindowTitle(tr("CDevStudio"));
-	resize(1000, 600);
+	resize(1100, 700);
 }
 
 void CDevStudio::loadPlugins()
