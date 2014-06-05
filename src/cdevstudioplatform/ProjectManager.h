@@ -15,7 +15,7 @@ public:
 	ProjectManager(QObject *parent);
 	~ProjectManager();
 	Project *createProject(QString name, QString directory, QStringList files);
-	Project  *loadProject(QString projectfile);
+	Project *loadProject(QString projectfile);
 	void closeProject();
 	Project *getProject();
 	

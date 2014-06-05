@@ -12,15 +12,13 @@ ProjectManager::~ProjectManager()
 
 Project *ProjectManager::createProject(QString name, QString directory, QStringList files)
 {
-	if(!m_Project)
+	if(m_Project == nullptr)
 	{
+		setProject(new Project(name, directory));
 		directory = directory.append(QString("/") + name + QString("/"));
 		Backend::createDirectory(directory);
 		Backend::createFile(directory + QString("Project.cdev"));
 		Backend::writeFile(directory + QString("Project.cdev"), name);
-		
-		setProject(new Project(name, directory));
-		
 		foreach(QString file, files)
 		{
 			QString filepath = directory + Backend::getNameOfFile(file);

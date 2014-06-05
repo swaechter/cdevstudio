@@ -2,6 +2,8 @@
 #define PLUGINPROJECTS_H
 
 #include <QtWidgets/QAction>
+#include <QtWidgets/QMessageBox>
+#include <QtWidgets/QFileDialog>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/PluginPlatform.h>
 #include <cdevstudioplatform/Plugin.h>
