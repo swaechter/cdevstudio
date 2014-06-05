@@ -10,6 +10,7 @@
 
 #include "PlatformExport.h"
 #include "Plugin.h"
+#include "Backend.h"
 
 #include <QDebug>
 
@@ -24,8 +25,6 @@ public:
 	
 private:
 	QList<Plugin *> m_Plugins;
-	
-	QStringList getPluginDirectories();
 };
 
 #endif // PLUGINMANAGER_H

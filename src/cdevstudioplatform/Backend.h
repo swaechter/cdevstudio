@@ -10,7 +10,6 @@
 namespace Backend
 {
 	QStringList getPluginDirectories();
-	QStringList getPluginFilter();
 	void createDirectory(QString directorypath);
 	bool createFile(QString filepath);
 	bool deleteFile(QString filepath);

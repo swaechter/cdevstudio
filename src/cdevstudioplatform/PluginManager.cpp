@@ -9,9 +9,9 @@ void PluginManager::loadPlugins()
 {
 	if(m_Plugins.count() == 0)
 	{
-		foreach(QString path, getPluginDirectories())
+		foreach(QString path, Backend::getPluginDirectories())
 		{
-			foreach(QString file, QDir(path).entryList())
+			foreach(QString file, Backend::getFilesInDirectory(path))
 			{
 				QString filepath = path + file;
 				if(QLibrary::isLibrary(filepath))
@@ -35,19 +35,4 @@ void PluginManager::loadPlugins()
 QList<Plugin *> PluginManager::getPlugins()
 {
 	return m_Plugins;
-}
-
-QStringList PluginManager::getPluginDirectories()
-{
-	QStringList directories;
-	
-#ifdef Q_OS_WIN
-	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojects/";
-	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
-#else
-	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojects/";
-	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectexplorer/";
-#endif
-	
-	return directories;
 }

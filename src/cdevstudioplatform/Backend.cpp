@@ -3,14 +3,16 @@
 QStringList Backend::getPluginDirectories()
 {
 	QStringList directories;
+	
+#ifdef Q_OS_WIN
+	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojects/";
+	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
+#else
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojects/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectexplorer/";
+#endif
+	
 	return directories;
-}
-
-QStringList Backend::getPluginFilter()
-{
-	return QStringList() << "*plugin*.so" << "*plugin*.dll";
 }
 
 void Backend::createDirectory(QString directorypath)
