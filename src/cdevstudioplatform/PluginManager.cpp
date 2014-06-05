@@ -5,11 +5,6 @@ PluginManager::PluginManager(QObject *parent) : QObject(parent)
 
 }
 
-PluginManager::~PluginManager()
-{
-	qDeleteAll<>(m_Plugins);
-}
-
 void PluginManager::loadPlugins()
 {
 	if(m_Plugins.count() == 0)

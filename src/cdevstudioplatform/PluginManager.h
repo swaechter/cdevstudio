@@ -19,7 +19,6 @@ class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 	
 public:
 	PluginManager(QObject *parent);
-	~PluginManager();
 	void loadPlugins();
 	QList<Plugin *> getPlugins();
 	
