@@ -14,8 +14,8 @@ PluginProjectExplorer::PluginProjectExplorer()
 	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
 	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
-	connect(pluginplatform->getProjectManager(), SIGNAL(projectOpen()), this, SLOT(projectOpen()));
-	connect(pluginplatform->getProjectManager(), SIGNAL(projectClose()), this, SLOT(projectClose()));
+	connect(pluginplatform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
+	connect(pluginplatform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
 }
 
 PluginProjectExplorer::~PluginProjectExplorer()

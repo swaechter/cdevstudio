@@ -26,8 +26,8 @@ private:
 	void closePossibleProject();
 	
 signals:
-	void projectOpen();
-	void projectClose();
+	void projectOpened();
+	void projectClosed();
 };
 
 #endif // PROJECTMANAGER_H

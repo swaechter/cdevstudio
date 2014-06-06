@@ -54,14 +54,14 @@ void ProjectManager::setProject(Project *project)
 {
 	closePossibleProject();
 	m_Project = project;
-	emit projectOpen();
+	emit projectOpened();
 }
 
 void ProjectManager::closePossibleProject()
 {
 	if(m_Project)
 	{
-		emit projectClose();
+		emit projectClosed();
 		delete m_Project;
 		m_Project = nullptr;
 	}
