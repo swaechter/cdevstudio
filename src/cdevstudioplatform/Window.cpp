@@ -14,19 +14,19 @@ QMenu *Window::getMenu(MenuTypes type)
 {
 	switch(type)
 	{
-		case Project:
+		case MenuProject:
 		{
 			return m_MenuProject;
 		}
-		case View:
+		case MenuView:
 		{
 			return m_MenuView;
 		}
-		case Settings:
+		case MenuSettings:
 		{
 			return m_MenuSettings;
 		}
-		case Help:
+		case MenuHelp:
 		{
 			return m_MenuHelp;
 		}

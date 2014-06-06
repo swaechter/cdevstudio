@@ -12,10 +12,10 @@
 
 enum MenuTypes
 {
-	Project,
-	View,
-	Settings,
-	Help
+	MenuProject,
+	MenuView,
+	MenuSettings,
+	MenuHelp
 };
 
 class CDEVSTUDIOPLATFORM_EXPORT Window : public QMainWindow

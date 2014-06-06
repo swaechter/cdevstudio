@@ -10,10 +10,10 @@ PluginProjects::PluginProjects()
 	m_ActionCloseProject = new QAction(tr("Close Project"), window);
 	m_ActionProjectSettings = new QAction(tr("Project Settings"), window);
 	
-	window->getMenu(Project)->addAction(m_ActionCreateProject);
-	window->getMenu(Project)->addAction(m_ActionLoadProject);
-	window->getMenu(Project)->addAction(m_ActionCloseProject);
-	window->getMenu(Settings)->addAction(m_ActionProjectSettings);
+	window->getMenu(MenuProject)->addAction(m_ActionCreateProject);
+	window->getMenu(MenuProject)->addAction(m_ActionLoadProject);
+	window->getMenu(MenuProject)->addAction(m_ActionCloseProject);
+	window->getMenu(MenuSettings)->addAction(m_ActionProjectSettings);
 	
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCreateTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectLoadTrigger()));

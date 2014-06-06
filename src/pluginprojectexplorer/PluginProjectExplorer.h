@@ -5,6 +5,7 @@
 #include <QtCore/QObject>
 #include <cdevstudioplatform/PluginPlatform.h>
 #include <cdevstudioplatform/Plugin.h>
+#include <cdevstudioplatform/Project.h>
 #include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
 
@@ -23,13 +24,15 @@ public:
 	QString getName();
 	QString getVersion();
 	QString getDescription();
-        
+	
 private:
 	ProjectExplorer *m_ProjectExplorer;
 	QAction *m_ActionProjectExplorer;
 	
 private slots:
 	void actionProjectExplorerTriggered();
+	void projectOpen();
+	void projectClose();
 };
 
 #endif // PLUGINPROJECTEXPLORER_H

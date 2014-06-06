@@ -8,17 +8,18 @@ PluginProjectExplorer::PluginProjectExplorer()
 	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window);
 	m_ActionProjectExplorer->setCheckable(true);
 	m_ActionProjectExplorer->setChecked(true);
-	window->getMenu(View)->addAction(m_ActionProjectExplorer);
+	window->getMenu(MenuView)->addAction(m_ActionProjectExplorer);
 	
 	m_ProjectExplorer = new ProjectExplorer(window);
 	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
 	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
+	connect(pluginplatform->getProjectManager(), SIGNAL(projectOpen()), this, SLOT(projectOpen()));
+	connect(pluginplatform->getProjectManager(), SIGNAL(projectClose()), this, SLOT(projectClose()));
 }
 
 PluginProjectExplorer::~PluginProjectExplorer()
 {
-
 }
 
 QString PluginProjectExplorer::getName()
@@ -46,4 +47,15 @@ void PluginProjectExplorer::actionProjectExplorerTriggered()
 	{
 		m_ProjectExplorer->hide();
 	}
+}
+
+void PluginProjectExplorer::projectOpen()
+{
+	Project *project = PluginPlatform::getInstance()->getProjectManager()->getProject();
+	m_ProjectExplorer->openView(project->getLocation());
+}
+
+void PluginProjectExplorer::projectClose()
+{
+	m_ProjectExplorer->clearView();
 }

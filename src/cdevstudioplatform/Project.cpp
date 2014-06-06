@@ -20,3 +20,19 @@ QString Project::getProjectFile()
 {
 	return m_Location + QString("Project.cdev");
 }
+
+void Project::addFile(QString file)
+{
+	m_Files.append(file);
+	m_Files.removeDuplicates();
+}
+
+void Project::removeFile(QString file)
+{
+	m_Files.removeOne(file);
+}
+
+QStringList Project::getFiles()
+{
+	return m_Files;
+}
