@@ -34,13 +34,18 @@ QMenu *Window::getMenu(MenuTypes type)
 	return nullptr;
 }
 
+QTabWidget *Window::getTabWidget()
+{
+	return m_TabWidget;
+}
+
 void Window::initWindow()
 {
-	QTabWidget *tabwidget = new QTabWidget(this);
-	setCentralWidget(tabwidget);
+	m_TabWidget = new QTabWidget(this);
+	setCentralWidget(m_TabWidget);
 	
-	QTextEdit *textedit = new QTextEdit(tabwidget);
-	tabwidget->addTab(textedit, "Welcome");
+	QTextEdit *textedit = new QTextEdit(m_TabWidget);
+	m_TabWidget->addTab(textedit, "Welcome");
 }
 
 void Window::initMenues()

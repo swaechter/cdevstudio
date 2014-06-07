@@ -26,12 +26,14 @@ public:
 	Window();
 	virtual ~Window();
 	QMenu *getMenu(MenuTypes type);
+	QTabWidget *getTabWidget();
 	
 private:
 	QMenu *m_MenuProject;
 	QMenu *m_MenuView;
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;
+	QTabWidget *m_TabWidget;
 	
 	void initWindow();
 	void initMenues();
