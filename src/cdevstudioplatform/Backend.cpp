@@ -7,9 +7,11 @@ QStringList Backend::getPluginDirectories()
 #ifdef Q_OS_WIN
 	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojects/";
 	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/pluginprojectexplorer/";
+	directories << "C:/Users/swaechter/Downloads/cdevstudio/build/src/plugintexteditor/";
 #else
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojects/";
 	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/pluginprojectexplorer/";
+	directories << "/home/swaechter/Workspace_C++/cdevstudio/build/src/plugintexteditor/";
 #endif
 	
 	return directories;
