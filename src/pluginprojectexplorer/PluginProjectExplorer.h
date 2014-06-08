@@ -33,6 +33,7 @@ private slots:
 	void actionProjectExplorerTriggered();
 	void projectOpen();
 	void projectClose();
+	void fileOpen(QString file);
 };
 
 #endif // PLUGINPROJECTEXPLORER_H

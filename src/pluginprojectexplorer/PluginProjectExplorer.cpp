@@ -13,6 +13,7 @@ PluginProjectExplorer::PluginProjectExplorer()
 	m_ProjectExplorer = new ProjectExplorer(window);
 	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
+	connect(m_ProjectExplorer, SIGNAL(fileClicked(QString)), this, SLOT(fileOpen(QString)));
 	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
 	connect(pluginplatform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
 	connect(pluginplatform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
@@ -58,4 +59,12 @@ void PluginProjectExplorer::projectOpen()
 void PluginProjectExplorer::projectClose()
 {
 	m_ProjectExplorer->clearView();
+}
+
+void PluginProjectExplorer::fileOpen(QString file)
+{
+	if(!file.isEmpty())
+	{
+		PluginPlatform::getInstance()->getProjectManager()->getProject()->addFile(file);
+	}
 }

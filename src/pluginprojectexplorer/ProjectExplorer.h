@@ -5,6 +5,7 @@
 #include <QtWidgets/QTreeView>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QFileSystemModel>
+#include <QtCore/QModelIndex>
 
 #include "PluginProjectExplorerExport.h"
 
@@ -17,9 +18,15 @@ public:
 	void openView(QString directory);
 	void clearView();
 	
+private slots:
+    void fileClick(QModelIndex modelindex);
+	
 private:
 	QTreeView *m_TreeView;
 	QFileSystemModel *m_FileSystemModel;
+	
+signals:
+	void fileClicked(QString file);
 };
 
 #endif // PROJECTEXPLORER_H
