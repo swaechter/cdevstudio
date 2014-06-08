@@ -23,9 +23,11 @@ QString Project::getProjectFile()
 
 void Project::addFile(QString file)
 {
-	m_Files.append(file);
-	m_Files.removeDuplicates();
-	emit fileAdded(file);
+	if(!m_Files.contains(file))
+	{
+		m_Files.append(file);
+		emit fileAdded(file);
+	}
 }
 
 void Project::removeFile(QString file)
