@@ -1,5 +1,5 @@
-#ifndef PLUGINPLATFORM
-#define PLUGINPLATFORM
+#ifndef PLUGINPLATFORM_H
+#define PLUGINPLATFORM_H
 
 #include <QtCore/QObject>
 
@@ -22,4 +22,4 @@ protected:
 	static PluginPlatform *m_PluginPlatform;
 };
 
-#endif // PLUGINPLATFORM
+#endif // PLUGINPLATFORM_H
