@@ -25,5 +25,5 @@ void CDevStudio::initWindow()
 
 void CDevStudio::loadPlugins()
 {
-	m_Platform->getPluginManager()->loadPlugins();
+	m_Platform->getPluginManager()->getPlugins();
 }

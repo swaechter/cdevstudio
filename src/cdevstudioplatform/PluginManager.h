@@ -7,12 +7,12 @@
 #include <QtCore/QStringList>
 #include <QtCore/QDir>
 #include <QtCore/QPluginLoader>
+#include <QtCore/QCoreApplication>
+#include <QtCore/QDebug>
 
 #include "PlatformExport.h"
 #include "Plugin.h"
 #include "Backend.h"
-
-#include <QDebug>
 
 class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 {
@@ -20,7 +20,6 @@ class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 	
 public:
 	PluginManager(QObject *parent);
-	void loadPlugins();
 	QList<Plugin *> getPlugins();
 	
 private:

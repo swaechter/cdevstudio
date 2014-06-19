@@ -2,37 +2,34 @@
 
 PluginManager::PluginManager(QObject *parent) : QObject(parent)
 {
-
+#ifdef Q_OS_WIN
+	QCoreApplication::addLibraryPath("C:/Program Files/cdevstudio-workspace/bin");
+#else
+	QCoreApplication::addLibraryPath("/usr/bin");
+#endif
 }
 
-void PluginManager::loadPlugins()
+QList<Plugin *> PluginManager::getPlugins()
 {
 	if(m_Plugins.count() == 0)
 	{
-		foreach(QString path, Backend::getPluginDirectories())
+		foreach(QString path, QCoreApplication::libraryPaths())
 		{
-			foreach(QString file, Backend::getFilesInDirectory(path))
+			foreach(QString filename, Backend::getFilesInDirectory(path))
 			{
-				QString filepath = path + file;
-				if(QLibrary::isLibrary(filepath))
+				QString file = path + QString("/") + filename;
+				if(QLibrary::isLibrary(file))
 				{
-					QPluginLoader loader(filepath, this);
+					QPluginLoader loader(file, this);
 					Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
-					if(plugin != nullptr)
+					if(plugin != nullptr && !m_Plugins.contains(plugin))
 					{
-							m_Plugins.append(plugin);
-					}
-					else
-					{
-						qDebug() << "Error:" << loader.errorString();
+						m_Plugins.append(plugin);
+						qDebug() << "[PluginManager] Plugin loaded:" << plugin->getName();
 					}
 				}
 			}
 		}
 	}
-}
-
-QList<Plugin *> PluginManager::getPlugins()
-{
 	return m_Plugins;
 }

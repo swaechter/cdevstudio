@@ -5,11 +5,9 @@
 #include <QtCore/QFile>
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
-#include <QtCore/QPluginLoader>
 
 namespace Backend
 {
-	QStringList getPluginDirectories();
 	void createDirectory(QString directorypath);
 	bool createFile(QString filepath);
 	bool deleteFile(QString filepath);
