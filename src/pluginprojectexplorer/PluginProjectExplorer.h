@@ -3,8 +3,8 @@
 
 #include <QtWidgets/QAction>
 #include <QtCore/QObject>
-#include <cdevstudioplatform/PluginPlatform.h>
-#include <cdevstudioplatform/Plugin.h>
+#include <cdevstudioplatform/IPlatform.h>
+#include <cdevstudioplatform/IPlugin.h>
 #include <cdevstudioplatform/Project.h>
 #include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
@@ -12,11 +12,11 @@
 #include "PluginProjectExplorerExport.h"
 #include "ProjectExplorer.h"
 
-class PLUGINPROJECTEXPLORER_EXPORT PluginProjectExplorer : public Plugin
+class PLUGINPROJECTEXPLORER_EXPORT PluginProjectExplorer : public IPlugin
 {
 	Q_OBJECT
-	Q_INTERFACES(Plugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.Plugin")
+	Q_INTERFACES(IPlugin)
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
 	
 public:
 	PluginProjectExplorer();

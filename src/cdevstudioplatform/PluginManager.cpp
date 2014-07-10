@@ -9,7 +9,7 @@ PluginManager::PluginManager(QObject *parent) : QObject(parent)
 #endif
 }
 
-QList<Plugin *> PluginManager::getPlugins()
+QList<IPlugin *> PluginManager::getPlugins()
 {
 	if(m_Plugins.count() == 0)
 	{
@@ -21,7 +21,7 @@ QList<Plugin *> PluginManager::getPlugins()
 				if(QLibrary::isLibrary(file))
 				{
 					QPluginLoader loader(file, this);
-					Plugin *plugin = qobject_cast<Plugin *>(loader.instance());
+					IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
 					if(plugin != nullptr && !m_Plugins.contains(plugin))
 					{
 						m_Plugins.append(plugin);

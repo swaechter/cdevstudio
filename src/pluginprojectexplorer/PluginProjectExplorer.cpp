@@ -2,8 +2,8 @@
 
 PluginProjectExplorer::PluginProjectExplorer()
 {
-	PluginPlatform *pluginplatform = PluginPlatform::getInstance();
-	Window *window = pluginplatform->getWindowManager()->getWindow();
+	IPlatform *platform = IPlatform::getInstance();
+	Window *window = platform->getWindowManager()->getWindow();
 	
 	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window);
 	m_ActionProjectExplorer->setCheckable(true);
@@ -15,8 +15,8 @@ PluginProjectExplorer::PluginProjectExplorer()
 	
 	connect(m_ProjectExplorer, SIGNAL(fileClicked(QString)), this, SLOT(fileOpen(QString)));
 	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
-	connect(pluginplatform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
-	connect(pluginplatform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
+	connect(platform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
+	connect(platform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
 }
 
 PluginProjectExplorer::~PluginProjectExplorer()
@@ -52,7 +52,7 @@ void PluginProjectExplorer::actionProjectExplorerTriggered()
 
 void PluginProjectExplorer::projectOpen()
 {
-	Project *project = PluginPlatform::getInstance()->getProjectManager()->getProject();
+	Project *project = IPlatform::getInstance()->getProjectManager()->getProject();
 	m_ProjectExplorer->openView(project->getLocation());
 }
 
@@ -65,6 +65,6 @@ void PluginProjectExplorer::fileOpen(QString file)
 {
 	if(!file.isEmpty())
 	{
-		PluginPlatform::getInstance()->getProjectManager()->getProject()->addFile(file);
+		IPlatform::getInstance()->getProjectManager()->getProject()->addFile(file);
 	}
 }

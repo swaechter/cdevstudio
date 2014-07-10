@@ -5,8 +5,8 @@
 #include <QtWidgets/QMessageBox>
 #include <QtWidgets/QFileDialog>
 #include <QtCore/QObject>
-#include <cdevstudioplatform/PluginPlatform.h>
-#include <cdevstudioplatform/Plugin.h>
+#include <cdevstudioplatform/IPlatform.h>
+#include <cdevstudioplatform/IPlugin.h>
 #include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
 
@@ -14,11 +14,11 @@
 #include "ProjectTemplate.h"
 #include "DialogCreateProject.h"
 
-class PLUGINPROJECTS_EXPORT PluginProjects : public Plugin
+class PLUGINPROJECTS_EXPORT PluginProjects : public IPlugin
 {
 	Q_OBJECT
-	Q_INTERFACES(Plugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.Plugin")
+	Q_INTERFACES(IPlugin)
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin")
 	
 public:
 	PluginProjects();

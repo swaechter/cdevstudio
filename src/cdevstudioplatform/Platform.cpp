@@ -1,6 +1,6 @@
 #include "Platform.h"
 
-Platform::Platform(Window *window): PluginPlatform(window)
+Platform::Platform(Window *window): IPlatform(window)
 {
 	m_PluginManager = new PluginManager(this);
 	m_ProjectManager = new ProjectManager(this);

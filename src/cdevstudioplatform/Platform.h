@@ -5,13 +5,13 @@
 #include <QtCore/QList>
 
 #include "PlatformExport.h"
-#include "PluginPlatform.h"
+#include "IPlatform.h"
 #include "PluginManager.h"
 #include "ProjectManager.h"
 #include "WindowManager.h"
 #include "Window.h"
 
-class CDEVSTUDIOPLATFORM_EXPORT Platform : public PluginPlatform
+class CDEVSTUDIOPLATFORM_EXPORT Platform : public IPlatform
 {
 	Q_OBJECT
 	

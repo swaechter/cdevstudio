@@ -1,5 +1,5 @@
-#ifndef PLUGINPLATFORM_H
-#define PLUGINPLATFORM_H
+#ifndef IPLATFORM_H
+#define IPLATFORM_H
 
 #include <QtCore/QObject>
 
@@ -7,19 +7,19 @@
 #include "ProjectManager.h"
 #include "WindowManager.h"
 
-class CDEVSTUDIOPLATFORM_EXPORT PluginPlatform : public QObject
+class CDEVSTUDIOPLATFORM_EXPORT IPlatform : public QObject
 {
 	Q_OBJECT
 	
 public:
-	static PluginPlatform *getInstance();
+	static IPlatform *getInstance();
 	virtual PluginManager *getPluginManager() = 0;
 	virtual ProjectManager *getProjectManager() = 0;
         virtual WindowManager *getWindowManager() = 0;
 	
 protected:
-	PluginPlatform(QObject *parent);
-	static PluginPlatform *m_PluginPlatform;
+	IPlatform(QObject *parent);
+	static IPlatform *m_IPlatform;
 };
 
-#endif // PLUGINPLATFORM_H
+#endif // IPLATFORM_H

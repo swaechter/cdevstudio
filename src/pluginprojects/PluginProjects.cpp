@@ -2,8 +2,8 @@
 
 PluginProjects::PluginProjects()
 {
-	PluginPlatform *pluginplatform = PluginPlatform::getInstance();
-	Window *window = pluginplatform->getWindowManager()->getWindow();
+	IPlatform *platform = IPlatform::getInstance();
+	Window *window = platform->getWindowManager()->getWindow();
 	
 	m_ActionCreateProject = new QAction(tr("Create Project"), window);
 	m_ActionLoadProject = new QAction(tr("Load Project"), window);
@@ -47,8 +47,8 @@ void PluginProjects::actionProjectCreateTrigger()
 	templates.append(ProjectTemplate(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c"));
 	templates.append(ProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp"));
 	
-	PluginPlatform *pluginplatform = PluginPlatform::getInstance();
-	DialogCreateProject *dialog = new DialogCreateProject(templates, pluginplatform->getWindowManager()->getWindow());
+	IPlatform *platform = IPlatform::getInstance();
+	DialogCreateProject *dialog = new DialogCreateProject(templates, platform->getWindowManager()->getWindow());
 	if(dialog->exec() == QDialog::Accepted)
 	{
 		if(!dialog->getProjectName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())
@@ -57,7 +57,7 @@ void PluginProjects::actionProjectCreateTrigger()
 			{
 				if(projecttemplate.getName().compare(dialog->getTemplateName()) == 0)
 				{
-					if(pluginplatform->getProjectManager()->createProject(dialog->getProjectName(), dialog->getProjectLocation(), projecttemplate.getFiles()))
+					if(platform->getProjectManager()->createProject(dialog->getProjectName(), dialog->getProjectLocation(), projecttemplate.getFiles()))
 					{
 					}
 					break;
@@ -69,10 +69,10 @@ void PluginProjects::actionProjectCreateTrigger()
 
 void PluginProjects::actionProjectLoadTrigger()
 {
-	QString projectfile = QFileDialog::getOpenFileName(PluginPlatform::getInstance()->getWindowManager()->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
+	QString projectfile = QFileDialog::getOpenFileName(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
 	if(!projectfile.isEmpty())
 	{
-		if(PluginPlatform::getInstance()->getProjectManager()->loadProject(projectfile))
+		if(IPlatform::getInstance()->getProjectManager()->loadProject(projectfile))
 		{
 		}
 	}
@@ -80,7 +80,7 @@ void PluginProjects::actionProjectLoadTrigger()
 
 void PluginProjects::actionProjectCloseTrigger()
 {
-	PluginPlatform::getInstance()->getProjectManager()->closeProject();
+	IPlatform::getInstance()->getProjectManager()->closeProject();
 }
 
 void PluginProjects::actionProjectSettingsTrigger()

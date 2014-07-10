@@ -6,9 +6,9 @@ set(CMAKE_AUTOMOC ON)
 
 set(CDEVSTUDIOPLATFORM_SRCS
   Platform.cpp
-  PluginPlatform.cpp
+  IPlatform.cpp
   PluginManager.cpp
-  Plugin.cpp
+  IPlugin.cpp
   ProjectManager.cpp
   Project.cpp
   WindowManager.cpp
@@ -19,9 +19,9 @@ set(CDEVSTUDIOPLATFORM_SRCS
 set(CDEVSTUDIOPLATFORM_HDRS
   PlatformExport.h
   Platform.h
-  PluginPlatform.h
+  IPlatform.h
   PluginManager.h
-  Plugin.h
+  IPlugin.h
   ProjectManager.h
   Project.h
   WindowManager.h
