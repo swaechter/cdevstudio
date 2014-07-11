@@ -15,7 +15,7 @@ public:
 	static IPlatform *getInstance();
 	virtual PluginManager *getPluginManager() = 0;
 	virtual ProjectManager *getProjectManager() = 0;
-        virtual WindowManager *getWindowManager() = 0;
+	virtual WindowManager *getWindowManager() = 0;
 	
 protected:
 	IPlatform(QObject *parent);
