@@ -16,9 +16,6 @@ class PLUGINTEXTEDITOR_EXPORT PluginTextEditor : public IPlugin
 public:
 	PluginTextEditor();
 	~PluginTextEditor();
-	QString getName();
-	QString getVersion();
-	QString getDescription();
 };
 
 #endif // PLUGINTEXTEDITOR_H

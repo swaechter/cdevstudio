@@ -21,9 +21,6 @@ class PLUGINPROJECTEXPLORER_EXPORT PluginProjectExplorer : public IPlugin
 public:
 	PluginProjectExplorer();
 	~PluginProjectExplorer();
-	QString getName();
-	QString getVersion();
-	QString getDescription();
 	
 private:
 	ProjectExplorer *m_ProjectExplorer;

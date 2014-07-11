@@ -23,9 +23,6 @@ class PLUGINPROJECTS_EXPORT PluginProjects : public IPlugin
 public:
 	PluginProjects();
 	~PluginProjects();
-	QString getName();
-	QString getVersion();
-	QString getDescription();
 	
 private:
 	QAction *m_ActionCreateProject;

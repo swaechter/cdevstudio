@@ -25,7 +25,7 @@ QList<IPlugin *> PluginManager::getPlugins()
 					if(plugin != nullptr && !m_Plugins.contains(plugin))
 					{
 						m_Plugins.append(plugin);
-						qDebug() << "[PluginManager] Plugin loaded:" << plugin->getName();
+						qDebug() << "[PluginManager] Plugin loaded";
 					}
 				}
 			}

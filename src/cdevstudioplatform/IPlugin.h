@@ -12,9 +12,6 @@ class CDEVSTUDIOPLATFORM_EXPORT IPlugin : public QObject
 public:
 	IPlugin();
 	virtual ~IPlugin();
-	virtual QString getName() = 0;
-	virtual QString getVersion() = 0;
-	virtual QString getDescription() = 0;
 };
 
 Q_DECLARE_INTERFACE(IPlugin, "ch.swaechter.cdevstudio.IPlugin")
