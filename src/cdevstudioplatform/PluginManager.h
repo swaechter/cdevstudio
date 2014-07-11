@@ -11,7 +11,7 @@
 #include <QtCore/QDebug>
 
 #include "PlatformExport.h"
-#include "IPlugin.h"
+#include "PluginContainer.h"
 #include "Backend.h"
 
 class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
@@ -20,10 +20,10 @@ class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 	
 public:
 	PluginManager(QObject *parent);
-	QList<IPlugin *> getPlugins();
+	QList<PluginContainer *> getPluginContainers();
 	
 private:
-	QList<IPlugin *> m_Plugins;
+	QList<PluginContainer *> m_PluginContainers;
 };
 
 #endif // PLUGINMANAGER_H

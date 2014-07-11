@@ -8,6 +8,7 @@ set(CDEVSTUDIOPLATFORM_SRCS
   Platform.cpp
   IPlatform.cpp
   PluginManager.cpp
+  PluginContainer.cpp
   IPlugin.cpp
   ProjectManager.cpp
   Project.cpp
@@ -21,6 +22,7 @@ set(CDEVSTUDIOPLATFORM_HDRS
   Platform.h
   IPlatform.h
   PluginManager.h
+  PluginContainer.h
   IPlugin.h
   ProjectManager.h
   Project.h

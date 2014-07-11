@@ -9,9 +9,9 @@ PluginManager::PluginManager(QObject *parent) : QObject(parent)
 #endif
 }
 
-QList<IPlugin *> PluginManager::getPlugins()
+QList<PluginContainer *> PluginManager::getPluginContainers()
 {
-	if(m_Plugins.count() == 0)
+	if(m_PluginContainers.count() == 0)
 	{
 		foreach(QString path, QCoreApplication::libraryPaths())
 		{
@@ -22,14 +22,28 @@ QList<IPlugin *> PluginManager::getPlugins()
 				{
 					QPluginLoader loader(file, this);
 					IPlugin *plugin = qobject_cast<IPlugin *>(loader.instance());
-					if(plugin != nullptr && !m_Plugins.contains(plugin))
+					if(plugin)
 					{
-						m_Plugins.append(plugin);
-						qDebug() << "[PluginManager] Plugin loaded";
+						bool existing = false;
+						foreach(PluginContainer *container, m_PluginContainers)
+						{
+							if(container->getPlugin() == plugin)
+							{
+								existing = true;
+							}
+						}
+						
+						if(!existing)
+						{
+							QString name = loader.metaData().value("MetaData").toObject().value("name").toString();
+							QString description = loader.metaData().value("MetaData").toObject().value("description").toString();
+							PluginContainer *container = new PluginContainer(this, plugin, name, description);
+							m_PluginContainers.append(container);
+						}
 					}
 				}
 			}
 		}
 	}
-	return m_Plugins;
+	return m_PluginContainers;
 }
