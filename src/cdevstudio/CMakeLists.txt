@@ -20,9 +20,15 @@ set(CDEVSTUDIO_UI_IN
   DialogAbout.ui
 )
 
+set(CDEVSTUDIO_RESOURCE_IN
+  Resource.qrc
+)
+
 qt5_wrap_ui(CDEVSTUDIO_UI_OUT ${CDEVSTUDIO_UI_IN})
 
-add_executable(cdevstudio ${CDEVSTUDIO_SRCS} ${CDEVSTUDIO_UI_OUT})
+qt5_add_resources(CDEVSTUDIO_RESOURCE_OUT ${CDEVSTUDIO_RESOURCE_IN})
+
+add_executable(cdevstudio ${CDEVSTUDIO_SRCS} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
 
 target_link_libraries(cdevstudio cdevstudioplatform)
 

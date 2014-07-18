@@ -33,7 +33,7 @@
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="tab_1">
       <attribute name="title">
@@ -44,8 +44,11 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QTextEdit" name="textEdit">
+        <widget class="QTextBrowser" name="textBrowserAbout">
          <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
           <bool>true</bool>
          </property>
         </widget>
@@ -61,8 +64,11 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QTextEdit" name="textEdit_2">
+        <widget class="QTextBrowser" name="textBrowserLicense">
          <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
           <bool>true</bool>
          </property>
         </widget>
@@ -78,8 +84,11 @@
         <number>0</number>
        </property>
        <item row="0" column="0">
-        <widget class="QTextEdit" name="textEdit_3">
+        <widget class="QTextBrowser" name="textBrowserThanksTo">
          <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="openExternalLinks">
           <bool>true</bool>
          </property>
         </widget>

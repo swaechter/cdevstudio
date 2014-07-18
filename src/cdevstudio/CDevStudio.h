@@ -3,6 +3,7 @@
 
 #include <cdevstudioplatform/Platform.h>
 #include <cdevstudioplatform/Window.h>
+#include <cdevstudioplatform/Backend.h>
 
 #include "DialogPlugins.h"
 #include "DialogHelp.h"

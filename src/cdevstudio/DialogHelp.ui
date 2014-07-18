@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="textEditHelp">
      <property name="minimumSize">
       <size>
        <width>640</width>
