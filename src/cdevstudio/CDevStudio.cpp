@@ -55,20 +55,23 @@ void CDevStudio::actionExitTrigger()
 
 void CDevStudio::actionSettingsTrigger()
 {
-
+	// TODO Implement a DialogSettings with a setting pages mechanism
 }
 
 void CDevStudio::actionPluginsTrigger()
 {
-
+	DialogPlugins dialog(this, m_Platform->getPluginManager()->getPluginContainers());
+	dialog.exec();
 }
 
 void CDevStudio::actionHelpTrigger()
 {
-
+	DialogHelp dialog(this, QString());
+	dialog.exec();
 }
 
 void CDevStudio::actionAboutTrigger()
 {
-
+	DialogAbout dialog(this, QString(), QString(), QString());
+	dialog.exec();
 }

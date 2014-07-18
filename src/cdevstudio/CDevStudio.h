@@ -4,6 +4,10 @@
 #include <cdevstudioplatform/Platform.h>
 #include <cdevstudioplatform/Window.h>
 
+#include "DialogPlugins.h"
+#include "DialogHelp.h"
+#include "DialogAbout.h"
+
 class CDevStudio : public Window
 {
 	Q_OBJECT
