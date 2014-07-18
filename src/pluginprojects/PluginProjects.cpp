@@ -5,15 +5,16 @@ PluginProjects::PluginProjects()
 	IPlatform *platform = IPlatform::getInstance();
 	Window *window = platform->getWindowManager()->getWindow();
 	
-	m_ActionCreateProject = new QAction(tr("Create Project"), window);
-	m_ActionLoadProject = new QAction(tr("Load Project"), window);
-	m_ActionCloseProject = new QAction(tr("Close Project"), window);
-	m_ActionProjectSettings = new QAction(tr("Project Settings"), window);
+	m_ActionCreateProject = new QAction(tr("Create Project"), window->menuBar());
+	m_ActionLoadProject = new QAction(tr("Load Project"), window->menuBar());
+	m_ActionCloseProject = new QAction(tr("Close Project"), window->menuBar());
+	m_ActionProjectSettings = new QAction(tr("Settings"), window->menuBar());
 	
 	window->getMenu(MenuProject)->addAction(m_ActionCreateProject);
 	window->getMenu(MenuProject)->addAction(m_ActionLoadProject);
 	window->getMenu(MenuProject)->addAction(m_ActionCloseProject);
-	window->getMenu(MenuSettings)->addAction(m_ActionProjectSettings);
+	window->getMenu(MenuProject)->addSeparator();
+	window->getMenu(MenuProject)->addAction(m_ActionProjectSettings);
 	
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCreateTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectLoadTrigger()));

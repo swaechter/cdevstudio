@@ -5,7 +5,7 @@ PluginProjectExplorer::PluginProjectExplorer()
 	IPlatform *platform = IPlatform::getInstance();
 	Window *window = platform->getWindowManager()->getWindow();
 	
-	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window);
+	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window->menuBar());
 	m_ActionProjectExplorer->setCheckable(true);
 	m_ActionProjectExplorer->setChecked(true);
 	window->getMenu(MenuView)->addAction(m_ActionProjectExplorer);
