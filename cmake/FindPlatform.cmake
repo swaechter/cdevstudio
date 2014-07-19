@@ -5,6 +5,6 @@ if(WIN32)
   set(PLATFORM WIN32)
 elseif(APPLE)
   set(PLATFORM MACOSX_BUNDLE)
-else() # Linux/Unix or 
+else() # Linux/Unix
   set(PLATFORM "")
 endif()
