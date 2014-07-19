@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QHeaderView.h>
 #include <QtCore/QList>
 #include <cdevstudioplatform/PluginContainer.h>
 #include <cdevstudioplatform/IPlugin.h>

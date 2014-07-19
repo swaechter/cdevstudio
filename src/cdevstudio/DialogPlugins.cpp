@@ -4,6 +4,8 @@ DialogPlugins::DialogPlugins(QWidget *parent, QList<PluginContainer *> plugincon
 {
 	setupUi(this);
 	
+	tableWidgetPlugins->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+	
 	foreach(PluginContainer *plugincontainer, plugincontainers)
 	{
 		int rows = tableWidgetPlugins->rowCount();
