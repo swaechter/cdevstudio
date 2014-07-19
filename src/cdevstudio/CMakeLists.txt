@@ -28,7 +28,7 @@ qt5_wrap_ui(CDEVSTUDIO_UI_OUT ${CDEVSTUDIO_UI_IN})
 
 qt5_add_resources(CDEVSTUDIO_RESOURCE_OUT ${CDEVSTUDIO_RESOURCE_IN})
 
-add_executable(cdevstudio ${CDEVSTUDIO_SRCS} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
+add_executable(cdevstudio ${PLATFORM} ${CDEVSTUDIO_SRCS} ${CDEVSTUDIO_UI_OUT} ${CDEVSTUDIO_RESOURCE_OUT})
 
 target_link_libraries(cdevstudio cdevstudioplatform)
 
