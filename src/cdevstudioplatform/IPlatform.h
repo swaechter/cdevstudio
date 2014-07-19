@@ -3,6 +3,7 @@
 
 #include <QtCore/QObject>
 
+#include "PlatformExport.h"
 #include "PluginManager.h"
 #include "ProjectManager.h"
 #include "WindowManager.h"
