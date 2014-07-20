@@ -19,8 +19,9 @@ public:
 	
 private:
 	void initPlatform();
-	void initWindow();
+	void preinitWindow();
 	void loadPlugins();
+	void initWindow();
 	
 	Platform *m_Platform;
 	QAction *m_ActionExit;
