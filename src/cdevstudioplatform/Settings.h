@@ -13,7 +13,7 @@ class CDEVSTUDIOPLATFORM_EXPORT Settings : public QDialog
 public:
 	Settings(QWidget *parent);
 	void addSettingsPage(SettingsPage *settingspage);
-
+	
 private:
 	QList<SettingsPage *> m_SettingsPages;
 };
