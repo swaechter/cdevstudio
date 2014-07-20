@@ -28,13 +28,11 @@ private:
 	QAction *m_ActionCreateProject;
 	QAction *m_ActionLoadProject;
 	QAction *m_ActionCloseProject;
-	QAction *m_ActionProjectSettings;
 	
 private slots:
 	void actionProjectCreateTrigger();
 	void actionProjectLoadTrigger();
 	void actionProjectCloseTrigger();
-	void actionProjectSettingsTrigger();
 };
 
 #endif // PLUGINPROJECTS_H

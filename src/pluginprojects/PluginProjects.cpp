@@ -8,18 +8,14 @@ PluginProjects::PluginProjects()
 	m_ActionCreateProject = new QAction(tr("Create Project"), window->menuBar());
 	m_ActionLoadProject = new QAction(tr("Load Project"), window->menuBar());
 	m_ActionCloseProject = new QAction(tr("Close Project"), window->menuBar());
-	m_ActionProjectSettings = new QAction(tr("Settings"), window->menuBar());
 	
 	window->getMenu(MenuProject)->addAction(m_ActionCreateProject);
 	window->getMenu(MenuProject)->addAction(m_ActionLoadProject);
 	window->getMenu(MenuProject)->addAction(m_ActionCloseProject);
-	window->getMenu(MenuProject)->addSeparator();
-	window->getMenu(MenuProject)->addAction(m_ActionProjectSettings);
 	
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCreateTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectLoadTrigger()));
 	connect(m_ActionCloseProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCloseTrigger()));
-	connect(m_ActionProjectSettings, SIGNAL(triggered(bool)), this, SLOT(actionProjectSettingsTrigger()));
 }
 
 PluginProjects::~PluginProjects()
@@ -67,9 +63,4 @@ void PluginProjects::actionProjectLoadTrigger()
 void PluginProjects::actionProjectCloseTrigger()
 {
 	IPlatform::getInstance()->getProjectManager()->closeProject();
-}
-
-void PluginProjects::actionProjectSettingsTrigger()
-{
-
 }
