@@ -64,7 +64,10 @@ void CDevStudio::actionExitTrigger()
 
 void CDevStudio::actionSettingsTrigger()
 {
-	// TODO Implement a DialogSettings with a setting pages mechanism
+	Settings *settings = m_Platform->getWindowManager()->getWindow()->getSettingsDialog();
+	if(settings->exec() == QDialog::Accepted)
+	{
+	}
 }
 
 void CDevStudio::actionPluginsTrigger()

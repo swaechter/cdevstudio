@@ -34,6 +34,12 @@ QMenu *Window::getMenu(MenuTypes type)
 	return nullptr;
 }
 
+Settings *Window::getSettingsDialog()
+{
+	Settings *settings = new Settings(this);
+	return settings;
+}
+
 QTabWidget *Window::getTabWidget()
 {
 	return m_TabWidget;

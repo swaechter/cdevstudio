@@ -14,6 +14,8 @@ set(CDEVSTUDIOPLATFORM_SRCS
   Project.cpp
   WindowManager.cpp
   Window.cpp
+  Settings.cpp
+  SettingsPage.cpp
   Backend.cpp
 )
 
@@ -28,6 +30,8 @@ set(CDEVSTUDIOPLATFORM_HDRS
   Project.h
   WindowManager.h
   Window.h
+  Settings.h
+  SettingsPage.h
   Backend.h
 )
 
