@@ -1,11 +1,5 @@
 #include "Project.h"
 
-Project::Project(QString name, QString location) : QObject()
-{
-	m_Name = name;
-	m_Location = location;
-}
-
 QString Project::getName()
 {
 	return m_Name;
@@ -21,22 +15,12 @@ QString Project::getProjectFile()
 	return m_Location + QString("Project.cdev");
 }
 
-void Project::addFile(QString file)
+void Project::setName(QString name)
 {
-	if(!m_Files.contains(file))
-	{
-		m_Files.append(file);
-		emit fileAdded(file);
-	}
+	m_Name = name;
 }
 
-void Project::removeFile(QString file)
+void Project::setLocation(QString location)
 {
-	m_Files.removeOne(file);
-	emit fileRemoved(file);
-}
-
-QStringList Project::getFiles()
-{
-	return m_Files;
+	m_Location = location;
 }

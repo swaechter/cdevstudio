@@ -22,9 +22,6 @@ public:
 private:
 	Project *m_Project;
 	
-	void setProject(Project *project);
-	void closePossibleProject();
-	
 signals:
 	void projectOpened();
 	void projectClosed();

@@ -2,19 +2,21 @@
 
 ProjectManager::ProjectManager(QObject *parent): QObject(parent)
 {
-	m_Project = nullptr;
+	m_Project = new Project();
 }
 
 ProjectManager::~ProjectManager()
 {
-	closePossibleProject();
+	delete m_Project;
 }
 
 Project *ProjectManager::createProject(QString name, QString directory, QStringList files)
 {
-	if(m_Project == nullptr)
+	if(m_Project->getName().isEmpty() && m_Project->getLocation().isEmpty())
 	{
-		setProject(new Project(name, directory));
+		m_Project->setName(name);
+		m_Project->setLocation(directory);
+		
 		directory = directory.append(QString("/") + name + QString("/"));
 		Backend::createDirectory(directory);
 		Backend::createFile(directory + QString("Project.cdev"));
@@ -25,44 +27,51 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 			Backend::createFile(filepath);
 			Backend::writeFile(filepath, Backend::readFile(file));
 		}
+		
+		emit projectOpened();
+		
+		return m_Project;
 	}
-	return m_Project;
+	else
+	{
+		return nullptr;
+	}
 }
 
 Project *ProjectManager::loadProject(QString projectfile)
 {
-	if(!projectfile.isEmpty())
+	if(m_Project->getName().isEmpty() && m_Project->getLocation().isEmpty())
 	{
 		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QString("/");
 		QString projectname = Backend::readFile(projectfile);
-		setProject(new Project(projectname, projectdirectory));
+		m_Project->setName(projectname);
+		m_Project->setLocation(projectdirectory);
+		
+		emit projectOpened();
+		
+		return m_Project;
 	}
-	return m_Project;
+	else
+	{
+		return nullptr;
+	}
 }
 
 Project *ProjectManager::getProject()
 {
-	return m_Project;
+	if(!m_Project->getName().isEmpty() && !m_Project->getLocation().isEmpty())
+	{
+		return m_Project;
+	}
+	else
+	{
+		return nullptr;
+	}
 }
 
 void ProjectManager::closeProject()
 {
-	closePossibleProject();
-}
-
-void ProjectManager::setProject(Project *project)
-{
-	closePossibleProject();
-	m_Project = project;
-	emit projectOpened();
-}
-
-void ProjectManager::closePossibleProject()
-{
-	if(m_Project)
-	{
-		emit projectClosed();
-		delete m_Project;
-		m_Project = nullptr;
-	}
+	m_Project->setName(QString());
+	m_Project->setLocation(QString());
+	emit projectClosed();
 }

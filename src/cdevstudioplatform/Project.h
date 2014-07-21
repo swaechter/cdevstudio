@@ -11,23 +11,19 @@ class CDEVSTUDIOPLATFORM_EXPORT Project : public QObject
 {
 	Q_OBJECT
 	
+	friend class ProjectManager;
+	
 public:
-	Project(QString name, QString location);
 	QString getName();
 	QString getLocation();
 	QString getProjectFile();
-	void addFile(QString file);
-	void removeFile(QString file);
-	QStringList getFiles();
 	
 private:
+	void setName(QString name);
+	void setLocation(QString location);
+	
 	QString m_Name;
 	QString m_Location;
-	QStringList m_Files;
-	
-signals:
-	void fileAdded(QString file);
-	void fileRemoved(QString file);
 };
 
 #endif // PROJECT_H
