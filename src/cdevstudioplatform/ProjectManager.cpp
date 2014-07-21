@@ -12,7 +12,7 @@ ProjectManager::~ProjectManager()
 
 Project *ProjectManager::createProject(QString name, QString directory, QStringList files)
 {
-	if(m_Project->getName().isEmpty() && m_Project->getLocation().isEmpty())
+	if(!getProject())
 	{
 		m_Project->setName(name);
 		m_Project->setLocation(directory);
@@ -40,7 +40,7 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 
 Project *ProjectManager::loadProject(QString projectfile)
 {
-	if(m_Project->getName().isEmpty() && m_Project->getLocation().isEmpty())
+	if(!getProject())
 	{
 		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QString("/");
 		QString projectname = Backend::readFile(projectfile);
@@ -89,7 +89,14 @@ void ProjectManager::closeFile(QString file)
 
 void ProjectManager::closeProject()
 {
-	m_Project->setName(QString());
-	m_Project->setLocation(QString());
-	emit projectClosed();
+	if(getProject())
+	{
+		foreach(QString file, m_Project->getFiles())
+		{
+			closeFile(file);
+		}
+		m_Project->setName(QString());
+		m_Project->setLocation(QString());
+		emit projectClosed();
+	}
 }
