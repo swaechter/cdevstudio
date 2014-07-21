@@ -28,43 +28,64 @@ PluginProjects::~PluginProjects()
 
 void PluginProjects::actionProjectCreateTrigger()
 {
-	QList<ProjectTemplate> templates;
-	templates.append(ProjectTemplate(tr("Empty Project"), tr("An empty project"), QStringList()));
-	templates.append(ProjectTemplate(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c"));
-	templates.append(ProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp"));
-	
-	IPlatform *platform = IPlatform::getInstance();
-	DialogCreateProject *dialog = new DialogCreateProject(templates, platform->getWindowManager()->getWindow());
-	if(dialog->exec() == QDialog::Accepted)
+	if(!IPlatform::getInstance()->getProjectManager()->getProject())
 	{
-		if(!dialog->getProjectName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())
+		QList<ProjectTemplate> templates;
+		templates.append(ProjectTemplate(tr("Empty Project"), tr("An empty project"), QStringList()));
+		templates.append(ProjectTemplate(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c"));
+		templates.append(ProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp"));
+		
+		IPlatform *platform = IPlatform::getInstance();
+		DialogCreateProject *dialog = new DialogCreateProject(templates, platform->getWindowManager()->getWindow());
+		if(dialog->exec() == QDialog::Accepted)
 		{
-			foreach(ProjectTemplate projecttemplate, templates)
+			if(!dialog->getProjectName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())
 			{
-				if(projecttemplate.getName().compare(dialog->getTemplateName()) == 0)
+				foreach(ProjectTemplate projecttemplate, templates)
 				{
-					if(platform->getProjectManager()->createProject(dialog->getProjectName(), dialog->getProjectLocation(), projecttemplate.getFiles()))
+					if(projecttemplate.getName().compare(dialog->getTemplateName()) == 0)
 					{
+						if(platform->getProjectManager()->createProject(dialog->getProjectName(), dialog->getProjectLocation(), projecttemplate.getFiles()))
+						{
+						}
+						break;
 					}
-					break;
 				}
 			}
 		}
+	}
+	else
+	{
+		QMessageBox::information(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Information"), tr("Please close the current project before you create a new one."));
 	}
 }
 
 void PluginProjects::actionProjectLoadTrigger()
 {
-	QString projectfile = QFileDialog::getOpenFileName(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
-	if(!projectfile.isEmpty())
+	if(!IPlatform::getInstance()->getProjectManager()->getProject())
 	{
-		if(IPlatform::getInstance()->getProjectManager()->loadProject(projectfile))
+		QString projectfile = QFileDialog::getOpenFileName(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
+		if(!projectfile.isEmpty())
 		{
+			if(IPlatform::getInstance()->getProjectManager()->loadProject(projectfile))
+			{
+			}
 		}
+	}
+	else
+	{
+		QMessageBox::information(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Information"), tr("Please close the current project before you open a new one."));
 	}
 }
 
 void PluginProjects::actionProjectCloseTrigger()
 {
-	IPlatform::getInstance()->getProjectManager()->closeProject();
+	if(IPlatform::getInstance()->getProjectManager()->getProject())
+	{
+		IPlatform::getInstance()->getProjectManager()->closeProject();
+	}
+	else
+	{
+		QMessageBox::information(IPlatform::getInstance()->getWindowManager()->getWindow(), tr("Information"), tr("There is no active project to close."));
+	}
 }
