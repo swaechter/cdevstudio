@@ -69,6 +69,24 @@ Project *ProjectManager::getProject()
 	}
 }
 
+void ProjectManager::openFile(QString file)
+{
+	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
+	{
+		m_Project->addFile(file);
+		emit fileOpened(file);
+	}
+}
+
+void ProjectManager::closeFile(QString file)
+{
+	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
+	{
+		m_Project->removeFile(file);
+		emit fileClosed(file);
+	}
+}
+
 void ProjectManager::closeProject()
 {
 	m_Project->setName(QString());

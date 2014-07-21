@@ -17,6 +17,10 @@ class PLUGINTEXTEDITOR_EXPORT PluginTextEditor : public IPlugin
 public:
 	PluginTextEditor();
 	~PluginTextEditor();
+	
+private slots:
+	void openFile(QString file);
+	void closeFile(QString file);
 };
 
 #endif // PLUGINTEXTEDITOR_H

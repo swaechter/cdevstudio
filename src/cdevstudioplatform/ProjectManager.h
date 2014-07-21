@@ -16,8 +16,10 @@ public:
 	~ProjectManager();
 	Project *createProject(QString name, QString directory, QStringList files);
 	Project *loadProject(QString projectfile);
-	void closeProject();
 	Project *getProject();
+	void openFile(QString file);
+	void closeFile(QString file);
+	void closeProject();
 	
 private:
 	Project *m_Project;
@@ -25,6 +27,8 @@ private:
 signals:
 	void projectOpened();
 	void projectClosed();
+	void fileOpened(QString file);
+	void fileClosed(QString file);
 };
 
 #endif // PROJECTMANAGER_H
