@@ -5,16 +5,13 @@
 
 #include "PlatformExport.h"
 
-class CDEVSTUDIOPLATFORM_EXPORT SettingsPage : public QWidget
+class SettingsPage : public QWidget
 {
 	Q_OBJECT
 	
 public:
-	SettingsPage(QWidget *parent, QString name);
-	QString getName();
-	
-private:
-	QString m_Name;
+	SettingsPage(QWidget *parent);
+	virtual QString getName() = 0;
 };
 
 #endif // SETTINGSPAGE_H

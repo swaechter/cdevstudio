@@ -11,6 +11,7 @@
 
 #include "PluginProjectExplorerExport.h"
 #include "ProjectExplorer.h"
+#include "PluginPage.h"
 
 class PLUGINPROJECTEXPLORER_EXPORT PluginProjectExplorer : public IPlugin
 {

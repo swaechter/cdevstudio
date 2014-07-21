@@ -12,6 +12,7 @@ set(CDEVSTUDIO_SRCS
   DialogPlugins.cpp
   DialogHelp.cpp
   DialogAbout.cpp
+  GeneralPage.cpp
 )
 
 set(CDEVSTUDIO_UI_IN

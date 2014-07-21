@@ -6,11 +6,13 @@ set(CMAKE_AUTOMOC ON)
 
 set(PLUGINTEXTEDITOR_SRCS
   PluginTextEditor.cpp
+  PluginPage.cpp
 )
 
 set(PLUGINTEXTEDITOR_HDRS
   PluginTextEditorExport.h
   PluginTextEditor.h
+  PluginPage.h
 )
 
 add_definitions(-DPLUGINTEXTEDITOR_MAKE_LIBRARY)

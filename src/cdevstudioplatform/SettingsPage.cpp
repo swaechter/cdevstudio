@@ -1,11 +1,5 @@
 #include "SettingsPage.h"
 
-SettingsPage::SettingsPage(QWidget *parent, QString name)
+SettingsPage::SettingsPage(QWidget *parent): QWidget(parent)
 {
-	m_Name = name;
-}
-
-QString SettingsPage::getName()
-{
-	return m_Name;
 }

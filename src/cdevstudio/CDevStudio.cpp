@@ -4,6 +4,7 @@ CDevStudio::CDevStudio() : Window()
 {
 	initPlatform();
 	preinitWindow();
+	initSettings();
 	loadPlugins();
 	initWindow();
 }
@@ -41,6 +42,13 @@ void CDevStudio::preinitWindow()
 	resize(1100, 700);
 }
 
+void CDevStudio::initSettings()
+{
+	Settings *settings = m_Platform->getWindowManager()->getWindow()->getSettingsDialog();
+	GeneralPage *generalpage = new GeneralPage(settings);
+	settings->addSettingsPage(generalpage);
+}
+
 void CDevStudio::loadPlugins()
 {
 	m_Platform->getPluginManager()->getPluginContainers();
@@ -56,7 +64,6 @@ void CDevStudio::initWindow()
 	
 	connect(m_ActionExit, SIGNAL(triggered(bool)), this, SLOT(actionExitTrigger()));
 }
-
 void CDevStudio::actionExitTrigger()
 {
 	exit(EXIT_SUCCESS);

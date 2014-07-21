@@ -9,6 +9,7 @@
 #include "DialogPlugins.h"
 #include "DialogHelp.h"
 #include "DialogAbout.h"
+#include "GeneralPage.h"
 
 class CDevStudio : public Window
 {
@@ -21,6 +22,7 @@ public:
 private:
 	void initPlatform();
 	void preinitWindow();
+	void initSettings();
 	void loadPlugins();
 	void initWindow();
 	

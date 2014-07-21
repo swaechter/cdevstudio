@@ -17,6 +17,10 @@ PluginProjectExplorer::PluginProjectExplorer()
 	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
 	connect(platform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
 	connect(platform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
+	
+	Settings *settings = window->getSettingsDialog();
+	PluginPage *pluginpage = new PluginPage(settings);
+	settings->addSettingsPage(pluginpage);
 }
 
 PluginProjectExplorer::~PluginProjectExplorer()

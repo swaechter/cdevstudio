@@ -6,6 +6,7 @@
 #include <cdevstudioplatform/IPlugin.h>
 
 #include "PluginTextEditorExport.h"
+#include "PluginPage.h"
 
 class PLUGINTEXTEDITOR_EXPORT PluginTextEditor : public IPlugin
 {

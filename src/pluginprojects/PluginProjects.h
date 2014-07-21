@@ -12,6 +12,7 @@
 
 #include "PluginProjectsExport.h"
 #include "ProjectTemplate.h"
+#include "PluginPage.h"
 #include "DialogCreateProject.h"
 
 class PLUGINPROJECTS_EXPORT PluginProjects : public IPlugin

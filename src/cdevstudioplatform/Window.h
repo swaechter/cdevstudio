@@ -36,6 +36,7 @@ private:
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;
 	QTabWidget *m_TabWidget;
+	Settings *m_Settings;
 	
 	void initWindow();
 	void initMenues();

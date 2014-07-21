@@ -2,6 +2,10 @@
 #define SETTINGS_H
 
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QListWidget>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QGridLayout>
 
 #include "PlatformExport.h"
 #include "SettingsPage.h"
@@ -15,7 +19,14 @@ public:
 	void addSettingsPage(SettingsPage *settingspage);
 	
 private:
+	QListWidget *m_ListWidget;
+	QStackedWidget *m_StackedWidget;
 	QList<SettingsPage *> m_SettingsPages;
+	
+private slots:
+	void changePage(QListWidgetItem *currentitem, QListWidgetItem *olditem);
+	void acceptTrigger();
+	void rejectTrigger();
 };
 
 #endif // SETTINGS_H

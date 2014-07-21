@@ -16,6 +16,10 @@ PluginProjects::PluginProjects()
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCreateTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectLoadTrigger()));
 	connect(m_ActionCloseProject, SIGNAL(triggered(bool)), this, SLOT(actionProjectCloseTrigger()));
+	
+	Settings *settings = window->getSettingsDialog();
+	PluginPage *pluginpage = new PluginPage(settings);
+	settings->addSettingsPage(pluginpage);
 }
 
 PluginProjects::~PluginProjects()

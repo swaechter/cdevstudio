@@ -36,8 +36,7 @@ QMenu *Window::getMenu(MenuTypes type)
 
 Settings *Window::getSettingsDialog()
 {
-	Settings *settings = new Settings(this);
-	return settings;
+	return m_Settings;
 }
 
 QTabWidget *Window::getTabWidget()
@@ -65,4 +64,7 @@ void Window::initMenues()
 	menuBar()->addMenu(m_MenuView);
 	menuBar()->addMenu(m_MenuSettings);
 	menuBar()->addMenu(m_MenuHelp);
+	
+	m_Settings = new Settings(this);
+	m_Settings->hide();
 }

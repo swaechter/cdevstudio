@@ -7,6 +7,7 @@ set(CMAKE_AUTOMOC ON)
 set(PLUGINPROJECTS_SRCS
   PluginProjects.cpp
   ProjectTemplate.cpp
+  PluginPage.cpp
   DialogCreateProject.cpp
 )
 
@@ -14,6 +15,7 @@ set(PLUGINPROJECTS_HDRS
   PluginProjectsExport.h
   PluginProjects.h
   ProjectTemplate.h
+  PluginPage.h
   DialogCreateProject.h
 )
 

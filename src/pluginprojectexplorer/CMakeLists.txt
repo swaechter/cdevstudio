@@ -7,12 +7,14 @@ set(CMAKE_AUTOMOC ON)
 set(PLUGINPROJECTEXPLORER_SRCS
   PluginProjectExplorer.cpp
   ProjectExplorer.cpp
+  PluginPage.cpp
 )
 
 set(PLUGINPROJECTEXPLORER_HDRS
   PluginProjectExplorerExport.h
   PluginProjectExplorer.h
   ProjectExplorer.h
+  PluginPage.h
 )
 
 add_definitions(-DPLUGINPROJECTEXPLORER_MAKE_LIBRARY)
