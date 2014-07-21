@@ -5,7 +5,7 @@
 
 #include "PlatformExport.h"
 
-class SettingsPage : public QWidget
+class CDEVSTUDIOPLATFORM_EXPORT SettingsPage : public QWidget
 {
 	Q_OBJECT
 	

@@ -4,10 +4,11 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QGridLayout>
-
 #include <cdevstudioplatform/SettingsPage.h>
 
-class PluginPage : public SettingsPage
+#include "PluginProjectsExport.h"
+
+class PLUGINPROJECTS_EXPORT PluginPage : public SettingsPage
 {
 	Q_OBJECT
 	
