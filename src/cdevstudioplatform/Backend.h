@@ -10,7 +10,7 @@
 
 namespace Backend
 {
-	CDEVSTUDIOPLATFORM_EXPORT void createDirectory(QString directorypath);
+	CDEVSTUDIOPLATFORM_EXPORT bool createDirectory(QString directorypath);
 	CDEVSTUDIOPLATFORM_EXPORT bool createFile(QString filepath);
 	CDEVSTUDIOPLATFORM_EXPORT bool deleteFile(QString filepath);
 	CDEVSTUDIOPLATFORM_EXPORT bool writeFile(QString filepath, QString text);

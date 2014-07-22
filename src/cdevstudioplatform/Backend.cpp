@@ -1,12 +1,14 @@
 #include "Backend.h"
 
-void Backend::createDirectory(QString directorypath)
+bool Backend::createDirectory(QString directorypath)
 {
+	bool flag = false;
 	QDir directory(directorypath);
 	if(!directory.exists())
 	{
-		directory.mkpath(directorypath);
+		flag = directory.mkpath(directorypath);
 	}
+	return flag;
 }
 
 bool Backend::createFile(QString filepath)
