@@ -9,16 +9,16 @@ set(CMAKE_AUTOMOC ON)
 set(CDEVSTUDIO_SRCS
   main.cpp
   CDevStudio.cpp
-  DialogPlugins.cpp
-  DialogHelp.cpp
-  DialogAbout.cpp
+  PluginDialog.cpp
+  HelpDialog.cpp
+  AboutDialog.cpp
   GeneralPage.cpp
 )
 
 set(CDEVSTUDIO_UI_IN
-  DialogPlugins.ui
-  DialogHelp.ui
-  DialogAbout.ui
+  PluginDialog.ui
+  HelpDialog.ui
+  AboutDialog.ui
 )
 
 set(CDEVSTUDIO_RESOURCE_IN

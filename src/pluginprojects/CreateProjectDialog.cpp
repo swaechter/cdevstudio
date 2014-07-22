@@ -1,6 +1,6 @@
-#include "DialogCreateProject.h"
+#include "CreateProjectDialog.h"
 
-DialogCreateProject::DialogCreateProject(QList<ProjectTemplate> templates, QWidget *parent) : QWizard(parent)
+CreateProjectDialog::CreateProjectDialog(QList<ProjectTemplate> templates, QWidget *parent) : QWizard(parent)
 {
 	addPage(getWelcomePage());
 	addPage(getTemplatePage(templates));
@@ -11,22 +11,22 @@ DialogCreateProject::DialogCreateProject(QList<ProjectTemplate> templates, QWidg
 	setWindowTitle(tr("Create Project"));
 }
 
-QString DialogCreateProject::getTemplateName()
+QString CreateProjectDialog::getTemplateName()
 {
 	return m_Template->currentText();
 }
 
-QString DialogCreateProject::getProjectName()
+QString CreateProjectDialog::getProjectName()
 {
 	return m_Name->text();
 }
 
-QString DialogCreateProject::getProjectLocation()
+QString CreateProjectDialog::getProjectLocation()
 {
 	return m_Location->text();
 }
 
-QWizardPage *DialogCreateProject::getWelcomePage()
+QWizardPage *CreateProjectDialog::getWelcomePage()
 {
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Create Project");
@@ -41,7 +41,7 @@ QWizardPage *DialogCreateProject::getWelcomePage()
 	return wizardpage;
 }
 
-QWizardPage *DialogCreateProject::getTemplatePage(QList<ProjectTemplate> templates)
+QWizardPage *CreateProjectDialog::getTemplatePage(QList<ProjectTemplate> templates)
 {
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Select a Template");
@@ -63,7 +63,7 @@ QWizardPage *DialogCreateProject::getTemplatePage(QList<ProjectTemplate> templat
 	return wizardpage;
 }
 
-QWizardPage *DialogCreateProject::getNamePage()
+QWizardPage *CreateProjectDialog::getNamePage()
 {
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Select a Name");
@@ -80,7 +80,7 @@ QWizardPage *DialogCreateProject::getNamePage()
 	return wizardpage;
 }
 
-QWizardPage *DialogCreateProject::getLocationPage()
+QWizardPage *CreateProjectDialog::getLocationPage()
 {
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Select a Location");
@@ -97,7 +97,7 @@ QWizardPage *DialogCreateProject::getLocationPage()
 	return wizardpage;
 }
 
-QWizardPage *DialogCreateProject::getFinishPage()
+QWizardPage *CreateProjectDialog::getFinishPage()
 {
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Create Project");

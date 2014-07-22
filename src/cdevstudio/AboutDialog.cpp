@@ -1,6 +1,6 @@
-#include "DialogAbout.h"
+#include "AboutDialog.h"
 
-DialogAbout::DialogAbout(QWidget *parent, QString abouttext, QString licensetext, QString thankstotext) : QDialog(parent)
+AboutDialog::AboutDialog(QWidget *parent, QString abouttext, QString licensetext, QString thankstotext) : QDialog(parent)
 {
 	setupUi(this);
 	

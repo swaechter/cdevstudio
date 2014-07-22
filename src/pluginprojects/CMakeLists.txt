@@ -8,7 +8,7 @@ set(PLUGINPROJECTS_SRCS
   PluginProjects.cpp
   ProjectTemplate.cpp
   PluginPage.cpp
-  DialogCreateProject.cpp
+  CreateProjectDialog.cpp
 )
 
 set(PLUGINPROJECTS_HDRS
@@ -16,7 +16,7 @@ set(PLUGINPROJECTS_HDRS
   PluginProjects.h
   ProjectTemplate.h
   PluginPage.h
-  DialogCreateProject.h
+  CreateProjectDialog.h
 )
 
 set(PLUGINPROJECTS_RESOURCE_IN

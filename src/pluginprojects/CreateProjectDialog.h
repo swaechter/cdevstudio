@@ -1,5 +1,5 @@
-#ifndef DIALOGCREATEPROJECT_H
-#define DIALOGCREATEPROJECT_H
+#ifndef CREATEPROJECTDIALOG_H
+#define CREATEPROJECTDIALOG_H
 
 #include <QtWidgets/QWizard>
 #include <QtWidgets/QWizardPage>
@@ -12,12 +12,12 @@
 
 #include "ProjectTemplate.h"
 
-class DialogCreateProject : public QWizard
+class CreateProjectDialog : public QWizard
 {
 	Q_OBJECT
 	
 public:
-	DialogCreateProject(QList<ProjectTemplate> templates, QWidget *parent);
+	CreateProjectDialog(QList<ProjectTemplate> templates, QWidget *parent);
 	QString getTemplateName();
 	QString getProjectName();
 	QString getProjectLocation();
@@ -34,4 +34,4 @@ private:
 	QWizardPage *getFinishPage();
 };
 
-#endif // DIALOGCREATEPROJECT_H
+#endif // CREATEPROJECTDIALOG_H

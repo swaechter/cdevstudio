@@ -36,7 +36,7 @@ void PluginProjects::actionProjectCreateTrigger()
 		templates.append(ProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp"));
 		
 		IPlatform *platform = IPlatform::getInstance();
-		DialogCreateProject *dialog = new DialogCreateProject(templates, platform->getWindowManager()->getWindow());
+		CreateProjectDialog *dialog = new CreateProjectDialog(templates, platform->getWindowManager()->getWindow());
 		if(dialog->exec() == QDialog::Accepted)
 		{
 			if(!dialog->getProjectName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())

@@ -79,14 +79,14 @@ void CDevStudio::actionSettingsTrigger()
 
 void CDevStudio::actionPluginsTrigger()
 {
-	DialogPlugins dialog(this, m_Platform->getPluginManager()->getPluginContainers());
+	PluginDialog dialog(this, m_Platform->getPluginManager()->getPluginContainers());
 	dialog.exec();
 }
 
 void CDevStudio::actionHelpTrigger()
 {
 	QString helptext = Backend::readFile(":/data/text_help.html");
-	DialogHelp dialog(this, helptext);
+	HelpDialog dialog(this, helptext);
 	dialog.exec();
 }
 
@@ -95,6 +95,6 @@ void CDevStudio::actionAboutTrigger()
 	QString abouttext = Backend::readFile(":/data/text_about.html");
 	QString licensetext = Backend::readFile(":/data/text_license.html");
 	QString thankstotext = Backend::readFile(":/data/text_thanksto.html");
-	DialogAbout dialog(this, abouttext, licensetext, thankstotext);
+	AboutDialog dialog(this, abouttext, licensetext, thankstotext);
 	dialog.exec();
 }

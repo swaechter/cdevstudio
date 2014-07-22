@@ -6,9 +6,9 @@
 #include <cdevstudioplatform/Settings.h>
 #include <cdevstudioplatform/Backend.h>
 
-#include "DialogPlugins.h"
-#include "DialogHelp.h"
-#include "DialogAbout.h"
+#include "PluginDialog.h"
+#include "HelpDialog.h"
+#include "AboutDialog.h"
 #include "GeneralPage.h"
 
 class CDevStudio : public Window

@@ -1,6 +1,6 @@
-#include "DialogPlugins.h"
+#include "PluginDialog.h"
 
-DialogPlugins::DialogPlugins(QWidget *parent, QList<PluginContainer *> plugincontainers) : QDialog(parent)
+PluginDialog::PluginDialog(QWidget *parent, QList<PluginContainer *> plugincontainers) : QDialog(parent)
 {
 	setupUi(this);
 	
