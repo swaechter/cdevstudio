@@ -1,7 +1,7 @@
 Summary             : A C/C++ IDE
 Name                : cdevstudio
-Version             : 0.0.7
-Release             : 7
+Version             : 0.0.8
+Release             : 8
 License             : GPLv3
 Source              : %{name}-%{version}.tar.gz
 
@@ -23,12 +23,19 @@ make install DESTDIR="%{buildroot}"
 /usr/share/applications/cdevstudio.desktop
 /usr/share/man/man1/cdevstudio.1.gz
 /usr/lib/libcdevstudioplatform.so*
-/usr/include/cdevstudioplatform/CDevStudioPlatformExport.h
-/usr/include/cdevstudioplatform/CDevStudioPlatform.h
-/usr/include/cdevstudioplatform/CDevStudioProject.h
-/usr/include/cdevstudioplatform/CDevStudioProjectTemplate.h
-/usr/include/cdevstudioplatform/CDevStudioWindow.h
-/usr/include/cdevstudioplatform/CDevStudioBackend.h
-/usr/include/cdevstudioplatform/ICDevStudioPlugin.h
+/usr/include/cdevstudioplatform/PlatformExport.h
+/usr/include/cdevstudioplatform/Platform.h
+/usr/include/cdevstudioplatform/IPlatform.h
+/usr/include/cdevstudioplatform/PluginManager.h
+/usr/include/cdevstudioplatform/PluginContainer.h
+/usr/include/cdevstudioplatform/IPlugin.h
+/usr/include/cdevstudioplatform/ProjectManager.h
+/usr/include/cdevstudioplatform/Project.h
+/usr/include/cdevstudioplatform/WindowManager.h
+/usr/include/cdevstudioplatform/Window.h
+/usr/include/cdevstudioplatform/Settings.h
+/usr/include/cdevstudioplatform/SettingsPage.h
+/usr/include/cdevstudioplatform/Backend.h
 /usr/lib/libpluginprojects.so*
 /usr/lib/libpluginprojectexplorer.so*
+/usr/lib/libplugintexteditor.so*

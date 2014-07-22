@@ -11,14 +11,6 @@ set(PLUGINPROJECTS_SRCS
   CreateProjectDialog.cpp
 )
 
-set(PLUGINPROJECTS_HDRS
-  PluginProjectsExport.h
-  PluginProjects.h
-  ProjectTemplate.h
-  PluginPage.h
-  CreateProjectDialog.h
-)
-
 set(PLUGINPROJECTS_RESOURCE_IN
   PluginProjectsResource.qrc
 )
@@ -32,4 +24,3 @@ set_target_properties(pluginprojects PROPERTIES VERSION ${VERSION_NUMBER} SOVERS
 target_link_libraries(pluginprojects cdevstudioplatform)
 
 install(TARGETS pluginprojects RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES ${PLUGINPROJECTS_HDRS} DESTINATION include/pluginprojects)

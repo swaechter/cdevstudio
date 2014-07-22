@@ -30,7 +30,7 @@ The Doxygen documentation gives an overview about the whole codebase of the proj
 As addition to the code documentation, there is a developer documentation. This documentation (The document you are reading) gives an overview about the design and implementation of the project. It does not contain code specific details.
 
 \section{Codebase}
-CDevStudio is based on a main application (CDevStudio), a platform (CDevStudioPlatform) with a plugin API and the loaded plugins. These plugins have access to the API provided by the platform (CDevStudioPlatformPlugin).
+CDevStudio is based on a main application (CDevStudio), a platform (CDevStudioPlatform) with a plugin API and the loaded plugins. These plugins have access to the API provided by the platform (IPlugin).
 
 \subsection{CDevStudio}
 CDevStudio is the main program. It contains the graphical user interface and uses CDevStudioPlatform for UI creation, plugin loading and interaction.
@@ -39,10 +39,13 @@ CDevStudio is the main program. It contains the graphical user interface and use
 CDevStudioPlatform is the platform for the main application. It is responsible for loading plugins, for the plugin communication and the backend (I/O interaction). The plugin API is accessible over CDevStudioPlatformPlugin.
 
 \subsection{Plugin Projects}
-The Plugin 'Projects' provides some basic project templates.
+The plugin 'Projects' provides some basic project templates.
 
 \subsection{Plugin Project Explorer}
-The Plugin 'Project Explorer' provides a basic project explorer view for the current project.
+The plugin 'Project Explorer' provides a basic project explorer view for the current project.
+
+\subsection{Plugin Text Editor}
+The plugin 'Text Editor' provides the possibility to open, see and close files.
 
 \section{Workflow}
 There are a few techniques that are needed for this project: A working toolchain and some Git knowledge.
@@ -118,12 +121,10 @@ There are a few things that have to be done for each new release:
 	\end{itemize}
 	\item Update codebase
 	\begin{itemize}
-		\item Update src/cdevstudio/data/desktop/cdevstudio.desktop
-		\item Update src/cdevstudio/data/man/cdevstudio.1.gz
-		\item Update src/cdevstudio/data/about_about.html
-		\item Update src/pluginprojects/PluginProjects.cpp
-		\item Update src/pluginprojectexplorer/PluginProjectExplorer.cpp
-		\item Update src/CMakeLists.txt
+		\item Update CMakeLists.txt
+		\item Update src/cdevstudio/data/cdevstudio.desktop
+		\item Update src/cdevstudio/data/cdevstudio.1.gz
+		\item Update src/cdevstudio/data/text_about.html
 	\end{itemize}
 	\item Update Debian package
 	\begin{itemize}

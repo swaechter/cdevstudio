@@ -7,6 +7,7 @@ PluginTextEditor::PluginTextEditor()
 	Window *window = IPlatform::getInstance()->getWindowManager()->getWindow();
 	QTabWidget *tabwidget = window->getTabWidget();
 	QTextEdit *textedit = new QTextEdit(tr("Welcome!"), tabwidget);
+	textedit->setReadOnly(true);
 	tabwidget->addTab(textedit, tr("Welcome"));
 	
 	Settings *settings = window->getSettingsDialog();

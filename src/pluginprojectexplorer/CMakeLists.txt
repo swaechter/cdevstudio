@@ -10,13 +10,6 @@ set(PLUGINPROJECTEXPLORER_SRCS
   PluginPage.cpp
 )
 
-set(PLUGINPROJECTEXPLORER_HDRS
-  PluginProjectExplorerExport.h
-  PluginProjectExplorer.h
-  ProjectExplorer.h
-  PluginPage.h
-)
-
 add_definitions(-DPLUGINPROJECTEXPLORER_MAKE_LIBRARY)
 
 add_library(pluginprojectexplorer SHARED ${PLUGINPROJECTEXPLORER_SRCS})
@@ -24,4 +17,3 @@ set_target_properties(pluginprojectexplorer PROPERTIES VERSION ${VERSION_NUMBER}
 target_link_libraries(pluginprojectexplorer cdevstudioplatform)
 
 install(TARGETS pluginprojectexplorer RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES ${PLUGINPROJECTEXPLORER_HDRS} DESTINATION include/pluginprojectexplorer)

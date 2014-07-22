@@ -9,12 +9,6 @@ set(PLUGINTEXTEDITOR_SRCS
   PluginPage.cpp
 )
 
-set(PLUGINTEXTEDITOR_HDRS
-  PluginTextEditorExport.h
-  PluginTextEditor.h
-  PluginPage.h
-)
-
 add_definitions(-DPLUGINTEXTEDITOR_MAKE_LIBRARY)
 
 add_library(plugintexteditor SHARED ${PLUGINTEXTEDITOR_SRCS})
@@ -22,4 +16,3 @@ set_target_properties(plugintexteditor PROPERTIES VERSION ${VERSION_NUMBER} SOVE
 target_link_libraries(plugintexteditor cdevstudioplatform)
 
 install(TARGETS plugintexteditor RUNTIME DESTINATION bin LIBRARY DESTINATION lib ARCHIVE DESTINATION lib)
-install(FILES ${PLUGINTEXTEDITOR_HDRS} DESTINATION include/plugintexteditor)

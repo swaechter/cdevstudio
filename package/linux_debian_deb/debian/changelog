@@ -1,3 +1,9 @@
+cdevstudio (0.0.8-1) UNRELEASED; urgency=low
+
+  * First usable release with the new plugin based structure
+
+ -- Simon Wächter <waechter.simon@gmail.com>  Tue, 22 Jul 2014 14:40:05 +0200
+
 cdevstudio (0.0.7-1) UNRELEASED; urgency=low
 
   * First release with the new plugin based structure

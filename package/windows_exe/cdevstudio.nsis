@@ -1,16 +1,16 @@
 ; ===== Defines =====
-!define APPLICATION_NAME "cdevstudio"
-!define APPLICATION_VERSION "0.0.7"
+!define APPLICATION_VERSION "0.0.8"
+!define APPLICATION_NAME "CDevStudio"
+!define GENERIC_APPLICATION_NAME "cdevstudio"
+!define WORKSPACE_NAME "cdevstudio-workspace"
 !define PROJECT_ROOT "..\.."
-;!define QT_BINARY_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\bin"
-;!define QT_PLUGINS_DIR "C:\Qt\Qt5.2.0\5.2.0\msvc2012\plugins"
+;!define QT_ROOT_DIR "C:\Qt\Qt5.3.1\5.3\msvc2012_opengl"
+!define QT_BINARY_DIR "${QT_ROOT_DIR}\bin"
+!define QT_PLUGINS_DIR "${QT_ROOT_DIR}\plugins"
 
-!ifndef QT_BINARY_DIR
-	!error "QT_BINARY_DIR is not defined"
-!endif
-
-!ifndef QT_PLUGINS_DIR
-	!error "QT_PLUGINS_DIR is not defined"
+; ===== Qt check =====
+!ifndef QT_ROOT_DIR
+	!error "QT_ROOT_DIR is not defined. You have to define it in the cdevstudio.nsis file!"
 !endif
 
 ; ===== Includes =====
@@ -18,8 +18,9 @@
 
 ; ===== General =====
 Name "${APPLICATION_NAME} ${APPLICATION_VERSION}"
-OutFile "${APPLICATION_NAME}-${APPLICATION_VERSION}-installer.exe"
-InstallDir "$PROGRAMFILES\${APPLICATION_NAME}"
+BrandingText "${APPLICATION_NAME} ${APPLICATION_VERSION}"
+OutFile "${GENERIC_APPLICATION_NAME}-${APPLICATION_VERSION}-installer.exe"
+InstallDir "$PROGRAMFILES\${WORKSPACE_NAME}"
 SetCompressor "lzma"
 
 ; ===== Pages =====
@@ -45,34 +46,35 @@ SetCompressor "lzma"
 Section ""
 	SetOutPath $INSTDIR
 	
-	CreateDirectory $INSTDIR\platforms
+	File ${PROJECT_ROOT}\LICENSE.txt
 	
 	!ifdef MINGW-MAKE
-		File ${PROJECT_ROOT}\build\src\cdevstudio\cdevstudio.exe
-		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\libcdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\src\pluginprojects\libpluginprojects.dll
-		File ${PROJECT_ROOT}\build\src\pluginprojectexplorer\libpluginprojectexplorer.dll
+		File ${PROJECT_ROOT}\build\output\cdevstudio.exe
+		File ${PROJECT_ROOT}\build\output\libcdevstudioplatform.dll
+		File ${PROJECT_ROOT}\build\output\libpluginprojects.dll
+		File ${PROJECT_ROOT}\build\output\libpluginprojectexplorer.dll
+		File ${PROJECT_ROOT}\build\output\libplugintexteditor.dll
 		File ${QT_BINARY_DIR}\libgcc_s_dw2-1.dll
 		File ${QT_BINARY_DIR}\libstdc++-6.dll
 		File ${QT_BINARY_DIR}\libwinpthread-1.dll
 	!else ifdef MSVC-MSBUILD
-		File ${PROJECT_ROOT}\build\src\cdevstudio\Release\cdevstudio.exe
-		File ${PROJECT_ROOT}\build\src\cdevstudioplatform\Release\cdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\src\pluginprojects\Release\pluginprojects.dll
-		File ${PROJECT_ROOT}\build\src\pluginprojectexplorer\Release\pluginprojectexplorer.dll
+		File ${PROJECT_ROOT}\build\output\Release\cdevstudio.exe
+		File ${PROJECT_ROOT}\build\output\Release\cdevstudioplatform.dll
+		File ${PROJECT_ROOT}\build\output\Release\pluginprojects.dll
+		File ${PROJECT_ROOT}\build\output\Release\pluginprojectexplorer.dll
+		File ${PROJECT_ROOT}\build\output\Release\plugintexteditor.dll
 	!else
 		!error "The compiler platform is not defined. Please run the batch file for your compiler platform"
 	!endif
 	
-	File ${PROJECT_ROOT}\LICENSE.txt
-	
 	File ${QT_BINARY_DIR}\Qt5Widgets.dll
 	File ${QT_BINARY_DIR}\Qt5Gui.dll
 	File ${QT_BINARY_DIR}\Qt5Core.dll
-	File ${QT_BINARY_DIR}\icudt51.dll
-	File ${QT_BINARY_DIR}\icuin51.dll
-	File ${QT_BINARY_DIR}\icuuc51.dll
+	File ${QT_BINARY_DIR}\icudt52.dll
+	File ${QT_BINARY_DIR}\icuin52.dll
+	File ${QT_BINARY_DIR}\icuuc52.dll
 	
+	CreateDirectory $INSTDIR\platforms
 	SetOutPath $INSTDIR\platforms
 	File ${QT_PLUGINS_DIR}\platforms\qminimal.dll
 	File ${QT_PLUGINS_DIR}\platforms\qwindows.dll

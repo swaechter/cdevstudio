@@ -5,7 +5,8 @@ PluginManager::PluginManager(QObject *parent) : QObject(parent)
 #ifdef Q_OS_WIN
 	QCoreApplication::addLibraryPath("C:/Program Files/cdevstudio-workspace/bin");
 #else
-	QCoreApplication::addLibraryPath("/usr/bin");
+	QCoreApplication::addLibraryPath("/usr/lib");
+	QCoreApplication::addLibraryPath("/usr/lib64");
 #endif
 }
 

@@ -7,7 +7,7 @@ find_package(C++Utils REQUIRED)
 find_package(Platform REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
-set(VERSION_NUMBER 0.0.7)
+set(VERSION_NUMBER 0.0.8)
 set(VERSION_SONUMBER 0)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output)
