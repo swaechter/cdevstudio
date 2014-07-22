@@ -47,10 +47,10 @@ QTabWidget *Window::getTabWidget()
 void Window::initWindow()
 {
 	m_TabWidget = new QTabWidget(this);
+	m_TabWidget->setTabsClosable(true);
 	setCentralWidget(m_TabWidget);
 	
-	QTextEdit *textedit = new QTextEdit(m_TabWidget);
-	m_TabWidget->addTab(textedit, "Welcome");
+	connect(m_TabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 }
 
 void Window::initMenues()
@@ -67,4 +67,12 @@ void Window::initMenues()
 	
 	m_Settings = new Settings(this);
 	m_Settings->hide();
+}
+
+void Window::closeTab(int index)
+{
+	if(index >= 0)
+	{
+		emit closeTabRequested(m_TabWidget->tabText(index));
+	}
 }

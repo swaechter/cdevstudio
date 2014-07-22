@@ -21,6 +21,7 @@ public:
 private slots:
 	void openFile(QString file);
 	void closeFile(QString file);
+	void closeFileRequest(QString file);
 };
 
 #endif // PLUGINTEXTEDITOR_H
