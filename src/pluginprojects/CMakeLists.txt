@@ -20,7 +20,7 @@ set(PLUGINPROJECTS_HDRS
 )
 
 set(PLUGINPROJECTS_RESOURCE_IN
-  Resource.qrc
+  PluginProjectsResource.qrc
 )
 
 qt5_add_resources(PLUGINPROJECTS_RESOURCE_OUT ${PLUGINPROJECTS_RESOURCE_IN})
