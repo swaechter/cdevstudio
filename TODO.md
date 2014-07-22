@@ -5,18 +5,19 @@ Documentation
 -------------
 
 General
+* Update the documentation
 
 Codebase
 --------
-* Dialog Create Project: Add  a navigate button to select a directory and validate input on the fly
 
 General
-* Use smart pointers
+* Ability to close tab widget tabs
 
 Packages
 --------
 
 Linux
+* Update all packages
 
 Unix
 * Create a package
@@ -25,4 +26,4 @@ OS X
 * Create a package
 
 Windows
-* Create menu entry
+* Improve the current package

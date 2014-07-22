@@ -32,6 +32,7 @@ QWizardPage *CreateProjectDialog::getWelcomePage()
 	wizardpage->setTitle("Create Project");
 	
 	QLabel *label = new QLabel(tr("This wizard will guide you through the project creation."), wizardpage);
+	label->setWordWrap(true);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
 	gridlayout->addWidget(label, 0, 0, 1, 1);
@@ -47,6 +48,7 @@ QWizardPage *CreateProjectDialog::getTemplatePage(QList<ProjectTemplate> templat
 	wizardpage->setTitle("Select a Template");
 	
 	QLabel *label = new QLabel(tr("Please select a project template from the list."), wizardpage);
+	label->setWordWrap(true);
 	m_Template = new QComboBox(wizardpage);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
@@ -69,6 +71,7 @@ QWizardPage *CreateProjectDialog::getNamePage()
 	wizardpage->setTitle("Select a Name");
 	
 	QLabel *label = new QLabel(tr("Please insert a name for your project."), wizardpage);
+	label->setWordWrap(true);
 	m_Name = new QLineEdit(wizardpage);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
@@ -86,14 +89,17 @@ QWizardPage *CreateProjectDialog::getLocationPage()
 	wizardpage->setTitle("Select a Location");
 	
 	QLabel *label = new QLabel(tr("Please select a directory for your project. The project directory will be created inside this directory."), wizardpage);
+	label->setWordWrap(true);
 	m_Location = new QLineEdit(wizardpage);
 	m_Location->setReadOnly(true);
 	QPushButton *button = new QPushButton(tr("Navigate"), wizardpage);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
-	gridlayout->addWidget(label, 0, 0, 1, 1);
+	gridlayout->addWidget(label, 0, 0, 1, 2);
 	gridlayout->addWidget(m_Location, 1, 0, 1, 1);
-	gridlayout->addWidget(button, 2, 0, 1, 1);
+	gridlayout->addWidget(button, 1, 1, 1, 1);
+	gridlayout->setColumnStretch(0, 8);
+	gridlayout->setColumnStretch(1, 2);
 	
 	wizardpage->setLayout(gridlayout);
 	
@@ -108,6 +114,7 @@ QWizardPage *CreateProjectDialog::getFinishPage()
 	wizardpage->setTitle("Create Project");
 	
 	QLabel *label = new QLabel(tr("The project creation is nearly finished. Please continue to finish the new project."), wizardpage);
+	label->setWordWrap(true);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
 	gridlayout->addWidget(label, 0, 0, 1, 1);
