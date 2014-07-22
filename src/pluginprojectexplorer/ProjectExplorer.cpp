@@ -11,7 +11,7 @@ ProjectExplorer::ProjectExplorer(QWidget *parent) : QDockWidget(parent)
 	setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetFloatable);
 	setWidget(m_TreeView);
 	
-	connect(m_TreeView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(fileClick(const QModelIndex &)));
+	connect(m_TreeView, SIGNAL(doubleClicked(const QModelIndex &)), this, SLOT(fileClick()));
 }
 
 void ProjectExplorer::openView(QString directory)
@@ -29,7 +29,20 @@ void ProjectExplorer::clearView()
 	m_TreeView->setModel(nullptr);
 }
 
-void ProjectExplorer::fileClick(QModelIndex modelindex)
+void ProjectExplorer::fileClick()
 {
-	emit fileClicked(modelindex.data().toString());
+	int row = -1;
+	QString rootpath = m_FileSystemModel->rootPath() + QString("/");
+	QModelIndexList indexlist = m_TreeView->selectionModel()->selectedIndexes();
+	foreach(QModelIndex index, indexlist)
+	{
+		if(index.row() != row && index.column() == 0)
+		{
+			QFileInfo fileInfo = m_FileSystemModel->fileInfo(index);
+			QString absoultepath = fileInfo.filePath();
+			QString file = absoultepath.remove(rootpath);
+			row = index.row();
+			emit fileClicked(file);
+		}
+	}
 }

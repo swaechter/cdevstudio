@@ -14,7 +14,7 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 {
 	if(!getProject())
 	{
-		directory = directory.append(QDir::separator()) + name + QDir::separator();
+		directory = directory.append(QString("/")) + name + QString("/");
 		
 		m_Project->setName(name);
 		m_Project->setLocation(directory);
@@ -43,7 +43,7 @@ Project *ProjectManager::loadProject(QString projectfile)
 {
 	if(!getProject())
 	{
-		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QDir::separator();
+		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QString("/");
 		QString projectname = Backend::readFile(projectfile);
 		m_Project->setName(projectname);
 		m_Project->setLocation(projectdirectory);
@@ -74,8 +74,12 @@ void ProjectManager::openFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
 	{
-		m_Project->addFile(file);
-		emit fileOpened(file);
+		QFileInfo fileinfo(m_Project->getLocation() + file);
+		if(!fileinfo.isDir())
+		{
+			m_Project->addFile(file);
+			emit fileOpened(file);
+		}
 	}
 }
 

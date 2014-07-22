@@ -85,14 +85,19 @@ QWizardPage *CreateProjectDialog::getLocationPage()
 	QWizardPage *wizardpage = new QWizardPage(this);
 	wizardpage->setTitle("Select a Location");
 	
-	QLabel *label = new QLabel(tr("Please select a location for the project."), wizardpage);
+	QLabel *label = new QLabel(tr("Please select a directory for your project. The project directory will be created inside this directory."), wizardpage);
 	m_Location = new QLineEdit(wizardpage);
+	m_Location->setReadOnly(true);
+	QPushButton *button = new QPushButton(tr("Navigate"), wizardpage);
 	QGridLayout *gridlayout = new QGridLayout(wizardpage);
 	
 	gridlayout->addWidget(label, 0, 0, 1, 1);
 	gridlayout->addWidget(m_Location, 1, 0, 1, 1);
+	gridlayout->addWidget(button, 2, 0, 1, 1);
 	
 	wizardpage->setLayout(gridlayout);
+	
+	connect(button, SIGNAL(clicked()), this, SLOT(navigateClick()));
 	
 	return wizardpage;
 }
@@ -110,4 +115,13 @@ QWizardPage *CreateProjectDialog::getFinishPage()
 	wizardpage->setLayout(gridlayout);
 	
 	return wizardpage;
+}
+
+void CreateProjectDialog::navigateClick()
+{
+	QString directory = QFileDialog::getExistingDirectory(this, tr("Select a directory"), QDir::homePath());
+	if(!directory.isEmpty())
+	{
+		m_Location->setText(directory);
+	}
 }

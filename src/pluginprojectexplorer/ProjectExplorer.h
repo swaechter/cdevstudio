@@ -19,7 +19,7 @@ public:
 	void clearView();
 	
 private slots:
-    void fileClick(QModelIndex modelindex);
+	void fileClick();
 	
 private:
 	QTreeView *m_TreeView;

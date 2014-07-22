@@ -6,6 +6,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QFileDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtCore/QList>
@@ -32,6 +33,9 @@ private:
 	QWizardPage *getNamePage();
 	QWizardPage *getLocationPage();
 	QWizardPage *getFinishPage();
+	
+private slots:
+	void navigateClick();
 };
 
 #endif // CREATEPROJECTDIALOG_H
