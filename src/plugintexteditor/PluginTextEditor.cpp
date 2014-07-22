@@ -31,6 +31,7 @@ void PluginTextEditor::openFile(QString file)
 		QTextEdit *textedit = new QTextEdit(tabwidget);
 		textedit->setText(Backend::readFile(project->getLocation() + file));
 		tabwidget->addTab(textedit, file);
+		tabwidget->setCurrentWidget(textedit);
 	}
 }
 
