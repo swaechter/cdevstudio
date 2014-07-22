@@ -14,10 +14,11 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 {
 	if(!getProject())
 	{
+		directory = directory.append(QString("/") + name + QString("/"));
+		
 		m_Project->setName(name);
 		m_Project->setLocation(directory);
 		
-		directory = directory.append(QString("/") + name + QString("/"));
 		Backend::createDirectory(directory);
 		Backend::createFile(directory + QString("Project.cdev"));
 		Backend::writeFile(directory + QString("Project.cdev"), name);
