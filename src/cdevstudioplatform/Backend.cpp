@@ -16,48 +16,41 @@ bool Backend::createFile(QString filepath)
 
 bool Backend::deleteFile(QString filepath)
 {
+	bool flag = false;
 	QFile file(filepath);
 	if(file.exists())
 	{
 		file.remove();
-		return true;
+		flag = true;
 	}
-	else
-	{
-		return false;
-	}
+	return flag;
 }
 
 bool Backend::writeFile(QString filepath, QString text)
 {
+	bool flag = false;
 	QFile file(filepath);
 	if(file.open(QFile::WriteOnly))
 	{
 		QTextStream stream(&file);
 		stream << text;
 		file.close();
-		return true;
+		flag = true;
 	}
-	else
-	{
-		return false;
-	}
+	return flag;
 }
 
 QString Backend::readFile(QString filepath)
 {
+	QString text;
 	QFile file(filepath);
 	if(file.open(QFile::ReadOnly))
 	{
 		QTextStream stream(&file);
-		QString text = stream.readAll();
+		text = stream.readAll();
 		file.close();
-		return text;
 	}
-	else
-	{
-		return QString();
-	}
+	return text;
 }
 
 QString Backend::getDirectoryOfFile(QString filepath)
