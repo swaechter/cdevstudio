@@ -16,3 +16,7 @@ build/
 *.rpm
 *.tar.xz
 *.exe
+
+# Temporary files
+*.kate-swp
+*.DS_STORE
