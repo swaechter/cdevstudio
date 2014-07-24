@@ -29,11 +29,21 @@ private:
 	QAction *m_ActionCreateProject;
 	QAction *m_ActionLoadProject;
 	QAction *m_ActionCloseProject;
+	QAction *m_ActionCreateFile;
+	QAction *m_ActionDeleteFile;
+	QAction *m_ActionRenameFile;
+	QAction *m_ActionSaveFile;
+	QAction *m_ActionCloseFile;
 	
 private slots:
-	void actionProjectCreateTrigger();
-	void actionProjectLoadTrigger();
-	void actionProjectCloseTrigger();
+	void actionCreateProjectTrigger();
+	void actionLoadProjectTrigger();
+	void actionCloseProjectTrigger();
+	void actionCreateFileTrigger();
+	void actionDeleteFileTrigger();
+	void actionRenameFileTrigger();
+	void actionSaveFileTrigger();
+	void actionCloseFileTrigger();
 };
 
 #endif // PLUGINPROJECTS_H
