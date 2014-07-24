@@ -14,6 +14,8 @@
 enum MenuTypes
 {
 	MenuProject,
+	MenuFile,
+	MenuEdit,
 	MenuView,
 	MenuSettings,
 	MenuHelp
@@ -32,6 +34,8 @@ public:
 	
 private:
 	QMenu *m_MenuProject;
+	QMenu *m_MenuFile;
+	QMenu *m_MenuEdit;
 	QMenu *m_MenuView;
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;
