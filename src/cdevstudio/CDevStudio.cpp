@@ -60,6 +60,7 @@ void CDevStudio::initWindow()
 	
 	m_ActionExit = new QAction(tr("Exit"), window->menuBar());
 	
+	window->getMenu(MenuProject)->addSeparator();
 	window->getMenu(MenuProject)->addAction(m_ActionExit);
 	
 	connect(m_ActionExit, SIGNAL(triggered(bool)), this, SLOT(actionExitTrigger()));
