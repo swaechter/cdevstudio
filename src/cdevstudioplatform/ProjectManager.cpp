@@ -70,6 +70,41 @@ Project *ProjectManager::getProject()
 	}
 }
 
+void ProjectManager::closeProject()
+{
+	if(getProject())
+	{
+		foreach(QString file, m_Project->getFiles())
+		{
+			closeFile(file);
+		}
+		m_Project->setName(QString());
+		m_Project->setLocation(QString());
+		emit projectClosed();
+	}
+}
+
+void ProjectManager::createFile(QString file)
+{
+	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
+	{
+	}
+}
+
+void ProjectManager::renameFile(QString oldfile, QString newfile)
+{
+	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && m_Project->getFiles().contains(oldfile) && !m_Project->getFiles().contains(newfile))
+	{
+	}
+}
+
+void ProjectManager::deleteFile(QString file)
+{
+	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
+	{
+	}
+}
+
 void ProjectManager::openFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
@@ -83,25 +118,18 @@ void ProjectManager::openFile(QString file)
 	}
 }
 
+void ProjectManager::writeFile(QString file, QString text)
+{
+	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
+	{
+	}
+}
+
 void ProjectManager::closeFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
 	{
 		m_Project->removeFile(file);
 		emit fileClosed(file);
-	}
-}
-
-void ProjectManager::closeProject()
-{
-	if(getProject())
-	{
-		foreach(QString file, m_Project->getFiles())
-		{
-			closeFile(file);
-		}
-		m_Project->setName(QString());
-		m_Project->setLocation(QString());
-		emit projectClosed();
 	}
 }

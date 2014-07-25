@@ -17,9 +17,13 @@ public:
 	Project *createProject(QString name, QString directory, QStringList files);
 	Project *loadProject(QString projectfile);
 	Project *getProject();
-	void openFile(QString file);
-	void closeFile(QString file);
 	void closeProject();
+	void createFile(QString file);
+	void renameFile(QString oldfile, QString newfile);
+	void deleteFile(QString file);
+	void openFile(QString file);
+	void writeFile(QString file, QString text);
+	void closeFile(QString file);
 	
 private:
 	Project *m_Project;
