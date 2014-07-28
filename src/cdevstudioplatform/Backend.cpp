@@ -1,5 +1,10 @@
 #include "Backend.h"
 
+bool Backend::doesPathExist(QString path)
+{
+	return QFile(path).exists();
+}
+
 bool Backend::createDirectory(QString directorypath)
 {
 	bool flag = false;
@@ -24,6 +29,17 @@ bool Backend::deleteFile(QString filepath)
 	{
 		file.remove();
 		flag = true;
+	}
+	return flag;
+}
+
+bool Backend::renameFile(QString filepath, QString newfilename)
+{
+	bool flag = false;
+	QFile file(filepath);
+	if(file.exists())
+	{
+		flag = file.rename(newfilename);
 	}
 	return flag;
 }
@@ -57,14 +73,12 @@ QString Backend::readFile(QString filepath)
 
 QString Backend::getDirectoryOfFile(QString filepath)
 {
-	QFileInfo fileinfo(filepath);
-	return fileinfo.absolutePath();
+	return QFileInfo(filepath).absolutePath();
 }
 
 QString Backend::getNameOfFile(QString filepath)
 {
-	QFileInfo fileinfo(filepath);
-	return fileinfo.fileName();
+	return QFileInfo(filepath).fileName();
 }
 
 QStringList Backend::getFilesInDirectory(QString directorypath)

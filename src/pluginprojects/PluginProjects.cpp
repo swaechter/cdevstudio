@@ -29,7 +29,7 @@ PluginProjects::PluginProjects()
 	window->getMenu(MenuFile)->addSeparator();
 	window->getMenu(MenuFile)->addAction(m_ActionCloseFile);
 	
-	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionCloseProjectTrigger()));
+	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionCreateProjectTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionLoadProjectTrigger()));
 	connect(m_ActionCloseProject, SIGNAL(triggered(bool)), this, SLOT(actionCloseProjectTrigger()));
 	connect(m_ActionCreateFile, SIGNAL(triggered(bool)), this, SLOT(actionCreateFileTrigger()));

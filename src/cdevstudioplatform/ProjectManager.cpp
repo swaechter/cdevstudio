@@ -33,10 +33,7 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 		
 		return m_Project;
 	}
-	else
-	{
-		return nullptr;
-	}
+	return nullptr;
 }
 
 Project *ProjectManager::loadProject(QString projectfile)
@@ -45,17 +42,15 @@ Project *ProjectManager::loadProject(QString projectfile)
 	{
 		QString projectdirectory = Backend::getDirectoryOfFile(projectfile) + QString("/");
 		QString projectname = Backend::readFile(projectfile);
-		m_Project->setName(projectname);
-		m_Project->setLocation(projectdirectory);
-		
-		emit projectOpened();
-		
-		return m_Project;
+		if(!projectdirectory.isEmpty() && !projectname.isEmpty())
+		{
+			m_Project->setName(projectname);
+			m_Project->setLocation(projectdirectory);
+			emit projectOpened();
+			return m_Project;
+		}
 	}
-	else
-	{
-		return nullptr;
-	}
+	return nullptr;
 }
 
 Project *ProjectManager::getProject()
@@ -64,13 +59,10 @@ Project *ProjectManager::getProject()
 	{
 		return m_Project;
 	}
-	else
-	{
-		return nullptr;
-	}
+	return nullptr;
 }
 
-void ProjectManager::closeProject()
+bool ProjectManager::closeProject()
 {
 	if(getProject())
 	{
@@ -82,30 +74,37 @@ void ProjectManager::closeProject()
 		m_Project->setLocation(QString());
 		emit projectClosed();
 	}
+	return true;
 }
 
-void ProjectManager::createFile(QString file)
+bool ProjectManager::createFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
 	{
+		return Backend::createFile(m_Project->getLocation() + file);
 	}
+	return false;
 }
 
-void ProjectManager::renameFile(QString oldfile, QString newfile)
+bool ProjectManager::renameFile(QString oldfile, QString newfile)
 {
 	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && m_Project->getFiles().contains(oldfile) && !m_Project->getFiles().contains(newfile))
 	{
+		return Backend::renameFile(m_Project->getLocation() + oldfile, newfile);
 	}
+	return false;
 }
 
-void ProjectManager::deleteFile(QString file)
+bool ProjectManager::deleteFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
 	{
+		return Backend::deleteFile(m_Project->getLocation() + file);
 	}
+	return false;
 }
 
-void ProjectManager::openFile(QString file)
+bool ProjectManager::openFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
 	{
@@ -114,22 +113,33 @@ void ProjectManager::openFile(QString file)
 		{
 			m_Project->addFile(file);
 			emit fileOpened(file);
+			return true;
 		}
 	}
+	return false;
 }
 
-void ProjectManager::writeFile(QString file, QString text)
+bool ProjectManager::writeFile(QString file, QString text)
 {
 	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
 	{
+		return Backend::writeFile(m_Project->getLocation() + file, text);
 	}
+	return false;
 }
 
-void ProjectManager::closeFile(QString file)
+bool ProjectManager::closeFile(QString file)
 {
 	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
 	{
 		m_Project->removeFile(file);
 		emit fileClosed(file);
+		return true;
 	}
+	return false;
+}
+
+bool ProjectManager::isFileInProject(QString file)
+{
+	return Backend::doesPathExist(m_Project->getLocation() + file);
 }

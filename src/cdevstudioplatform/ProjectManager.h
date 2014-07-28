@@ -17,13 +17,14 @@ public:
 	Project *createProject(QString name, QString directory, QStringList files);
 	Project *loadProject(QString projectfile);
 	Project *getProject();
-	void closeProject();
-	void createFile(QString file);
-	void renameFile(QString oldfile, QString newfile);
-	void deleteFile(QString file);
-	void openFile(QString file);
-	void writeFile(QString file, QString text);
-	void closeFile(QString file);
+	bool closeProject();
+	bool createFile(QString file);
+	bool renameFile(QString oldfile, QString newfile);
+	bool deleteFile(QString file);
+	bool openFile(QString file);
+	bool writeFile(QString file, QString text);
+	bool closeFile(QString file);
+	bool isFileInProject(QString file);
 	
 private:
 	Project *m_Project;
