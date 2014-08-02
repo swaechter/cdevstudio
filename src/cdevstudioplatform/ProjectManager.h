@@ -24,7 +24,7 @@ public:
 	bool openFile(QString file);
 	bool writeFile(QString file, QString text);
 	bool closeFile(QString file);
-	bool isFileInProject(QString file);
+	bool isFilepathInProject(QString filepath);
 	
 private:
 	Project *m_Project;

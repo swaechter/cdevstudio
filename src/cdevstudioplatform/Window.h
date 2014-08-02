@@ -9,6 +9,7 @@
 #include <QtWidgets/QTextEdit>
 
 #include "PlatformExport.h"
+#include "TabWidget.h"
 #include "Settings.h"
 
 enum MenuTypes
@@ -28,7 +29,7 @@ public:
 	Window();
 	virtual ~Window();
 	QMenu *getMenu(MenuTypes type);
-	QTabWidget *getTabWidget();
+	TabWidget *getTabWidget();
 	Settings *getSettingsDialog();
 	
 private:
@@ -37,7 +38,7 @@ private:
 	QMenu *m_MenuView;
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;
-	QTabWidget *m_TabWidget;
+    TabWidget *m_TabWidget;
 	Settings *m_Settings;
 	
 	void initWindow();

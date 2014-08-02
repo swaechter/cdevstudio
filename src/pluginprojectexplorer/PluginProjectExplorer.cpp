@@ -2,46 +2,33 @@
 
 PluginProjectExplorer::PluginProjectExplorer()
 {
-	IPlatform *platform = IPlatform::getInstance();
-	Window *window = platform->getWindowManager()->getWindow();
+	m_Platform = IPlatform::getInstance();
+	
+	Window *window = m_Platform->getWindowManager()->getWindow();
+	PluginPage *pluginpage = new PluginPage(window->getSettingsDialog());
+	window->getSettingsDialog()->addSettingsPage(pluginpage);
+	
+	m_ProjectExplorer = new ProjectExplorer(window);
+	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
 	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window->menuBar());
 	m_ActionProjectExplorer->setCheckable(true);
 	m_ActionProjectExplorer->setChecked(true);
 	window->getMenu(MenuView)->addAction(m_ActionProjectExplorer);
 	
-	m_ProjectExplorer = new ProjectExplorer(window);
-	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
-	
+	connect(m_Platform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
+	connect(m_Platform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
 	connect(m_ProjectExplorer, SIGNAL(fileClicked(QString)), this, SLOT(fileOpen(QString)));
-	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTriggered()));
-	connect(platform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
-	connect(platform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));
-	
-	Settings *settings = window->getSettingsDialog();
-	PluginPage *pluginpage = new PluginPage(settings);
-	settings->addSettingsPage(pluginpage);
+	connect(m_ActionProjectExplorer, SIGNAL(triggered(bool)), this, SLOT(actionProjectExplorerTrigger()));
 }
 
 PluginProjectExplorer::~PluginProjectExplorer()
 {
 }
 
-void PluginProjectExplorer::actionProjectExplorerTriggered()
-{
-	if(m_ActionProjectExplorer->isChecked())
-	{
-		m_ProjectExplorer->show();
-	}
-	else
-	{
-		m_ProjectExplorer->hide();
-	}
-}
-
 void PluginProjectExplorer::projectOpen()
 {
-	Project *project = IPlatform::getInstance()->getProjectManager()->getProject();
+	Project *project = m_Platform->getProjectManager()->getProject();
 	m_ProjectExplorer->openView(project->getLocation());
 }
 
@@ -54,6 +41,18 @@ void PluginProjectExplorer::fileOpen(QString file)
 {
 	if(!file.isEmpty())
 	{
-		IPlatform::getInstance()->getProjectManager()->openFile(file);
+		m_Platform->getProjectManager()->openFile(file);
+	}
+}
+
+void PluginProjectExplorer::actionProjectExplorerTrigger()
+{
+	if(m_ActionProjectExplorer->isChecked())
+	{
+		m_ProjectExplorer->show();
+	}
+	else
+	{
+		m_ProjectExplorer->hide();
 	}
 }

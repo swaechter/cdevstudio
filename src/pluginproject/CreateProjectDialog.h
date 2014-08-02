@@ -11,9 +11,10 @@
 #include <QtWidgets/QGridLayout>
 #include <QtCore/QList>
 
+#include "PluginProjectExport.h"
 #include "ProjectTemplate.h"
 
-class CreateProjectDialog : public QWizard
+class PLUGINPROJECT_EXPORT CreateProjectDialog : public QWizard
 {
 	Q_OBJECT
 	

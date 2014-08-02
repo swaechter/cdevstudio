@@ -79,7 +79,7 @@ bool ProjectManager::closeProject()
 
 bool ProjectManager::createFile(QString file)
 {
-	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
+	if(getProject() && !file.isEmpty() && !Backend::doesPathExist(m_Project->getLocation() + file))
 	{
 		return Backend::createFile(m_Project->getLocation() + file);
 	}
@@ -88,28 +88,33 @@ bool ProjectManager::createFile(QString file)
 
 bool ProjectManager::renameFile(QString oldfile, QString newfile)
 {
-	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && m_Project->getFiles().contains(oldfile) && !m_Project->getFiles().contains(newfile))
+	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + oldfile))
 	{
-		return Backend::renameFile(m_Project->getLocation() + oldfile, newfile);
+		if(closeFile(oldfile) && Backend::renameFile(m_Project->getLocation() + oldfile, newfile) && openFile(newfile))
+		{
+			return true;
+		}
 	}
 	return false;
 }
 
 bool ProjectManager::deleteFile(QString file)
 {
-	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
+	if(getProject() && !file.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + file))
 	{
-		return Backend::deleteFile(m_Project->getLocation() + file);
+		if(closeFile(file) && Backend::deleteFile(m_Project->getLocation() + file))
+		{
+			return true;
+		}
 	}
 	return false;
 }
 
 bool ProjectManager::openFile(QString file)
 {
-	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file))
+	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file) && Backend::doesPathExist(m_Project->getLocation() + file))
 	{
-		QFileInfo fileinfo(m_Project->getLocation() + file);
-		if(!fileinfo.isDir())
+		if(!Backend::isPathADirectory(m_Project->getLocation() + file))
 		{
 			m_Project->addFile(file);
 			emit fileOpened(file);
@@ -121,7 +126,7 @@ bool ProjectManager::openFile(QString file)
 
 bool ProjectManager::writeFile(QString file, QString text)
 {
-	if(getProject() && !file.isEmpty() && m_Project->getFiles().contains(file))
+	if(getProject() && !file.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + file))
 	{
 		return Backend::writeFile(m_Project->getLocation() + file, text);
 	}
@@ -139,7 +144,7 @@ bool ProjectManager::closeFile(QString file)
 	return false;
 }
 
-bool ProjectManager::isFileInProject(QString file)
+bool ProjectManager::isFilepathInProject(QString filepath)
 {
-	return Backend::doesPathExist(m_Project->getLocation() + file);
+	return filepath.startsWith(m_Project->getLocation());
 }

@@ -1,8 +1,9 @@
-#ifndef PLUGINPROJECTS_H
-#define PLUGINPROJECTS_H
+#ifndef PLUGINPROJECT_H
+#define PLUGINPROJECT_H
 
 #include <QtWidgets/QAction>
 #include <QtWidgets/QMessageBox>
+#include <QtWidgets/QInputDialog>
 #include <QtWidgets/QFileDialog>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
@@ -10,22 +11,23 @@
 #include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
 
-#include "PluginProjectsExport.h"
+#include "PluginProjectExport.h"
 #include "ProjectTemplate.h"
 #include "PluginPage.h"
 #include "CreateProjectDialog.h"
 
-class PLUGINPROJECTS_EXPORT PluginProjects : public IPlugin
+class PLUGINPROJECT_EXPORT PluginProject : public IPlugin
 {
 	Q_OBJECT
 	Q_INTERFACES(IPlugin)
-	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin" FILE "PluginProjects.json")
+	Q_PLUGIN_METADATA(IID "ch.swaechter.cdevstudioplatform.IPlugin" FILE "PluginProject.json")
 	
 public:
-	PluginProjects();
-	~PluginProjects();
+	PluginProject();
+	~PluginProject();
 	
 private:
+	IPlatform *m_Platform;
 	QAction *m_ActionCreateProject;
 	QAction *m_ActionLoadProject;
 	QAction *m_ActionCloseProject;
@@ -46,4 +48,4 @@ private slots:
 	void actionCloseFileTrigger();
 };
 
-#endif // PLUGINPROJECTS_H
+#endif // PLUGINPROJECT_H

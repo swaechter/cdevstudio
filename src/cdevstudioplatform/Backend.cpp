@@ -5,6 +5,11 @@ bool Backend::doesPathExist(QString path)
 	return QFile(path).exists();
 }
 
+bool Backend::isPathADirectory(QString path)
+{
+	return QFileInfo(path).isDir();
+}
+
 bool Backend::createDirectory(QString directorypath)
 {
 	bool flag = false;
@@ -37,9 +42,10 @@ bool Backend::renameFile(QString filepath, QString newfilename)
 {
 	bool flag = false;
 	QFile file(filepath);
+	QFileInfo fileinfo(file);
 	if(file.exists())
 	{
-		flag = file.rename(newfilename);
+		flag = file.rename(filepath , fileinfo.absolutePath() + QString("/") + newfilename);
 	}
 	return flag;
 }

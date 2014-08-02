@@ -4,9 +4,9 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-#include "PluginProjectsExport.h"
+#include "PluginProjectExport.h"
 
-class PLUGINPROJECTS_EXPORT ProjectTemplate
+class PLUGINPROJECT_EXPORT ProjectTemplate
 {
 public:
 	ProjectTemplate(QString name, QString description, QStringList files);

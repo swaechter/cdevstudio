@@ -6,9 +6,9 @@
 #include <QtWidgets/QGridLayout>
 #include <cdevstudioplatform/SettingsPage.h>
 
-#include "PluginTextEditorExport.h"
+#include "PluginEditorExport.h"
 
-class PLUGINTEXTEDITOR_EXPORT PluginPage : public SettingsPage
+class PLUGINEDITOR_EXPORT PluginPage : public SettingsPage
 {
 	Q_OBJECT
 	

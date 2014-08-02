@@ -43,15 +43,14 @@ Settings *Window::getSettingsDialog()
 	return m_Settings;
 }
 
-QTabWidget *Window::getTabWidget()
+TabWidget *Window::getTabWidget()
 {
 	return m_TabWidget;
 }
 
 void Window::initWindow()
 {
-	m_TabWidget = new QTabWidget(this);
-	m_TabWidget->setTabsClosable(true);
+	m_TabWidget = new TabWidget(this);
 	setCentralWidget(m_TabWidget);
 	
 	connect(m_TabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));

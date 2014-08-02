@@ -24,14 +24,15 @@ public:
 	~PluginProjectExplorer();
 	
 private:
+	IPlatform *m_Platform;
 	ProjectExplorer *m_ProjectExplorer;
 	QAction *m_ActionProjectExplorer;
 	
 private slots:
-	void actionProjectExplorerTriggered();
 	void projectOpen();
 	void projectClose();
 	void fileOpen(QString file);
+	void actionProjectExplorerTrigger();
 };
 
 #endif // PLUGINPROJECTEXPLORER_H

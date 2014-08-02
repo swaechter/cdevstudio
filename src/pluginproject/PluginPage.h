@@ -6,9 +6,9 @@
 #include <QtWidgets/QGridLayout>
 #include <cdevstudioplatform/SettingsPage.h>
 
-#include "PluginProjectsExport.h"
+#include "PluginProjectExport.h"
 
-class PLUGINPROJECTS_EXPORT PluginPage : public SettingsPage
+class PLUGINPROJECT_EXPORT PluginPage : public SettingsPage
 {
 	Q_OBJECT
 	
