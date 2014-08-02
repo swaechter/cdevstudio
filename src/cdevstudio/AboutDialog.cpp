@@ -7,4 +7,7 @@ AboutDialog::AboutDialog(QWidget *parent, QString abouttext, QString licensetext
 	textBrowserAbout->setText(abouttext);
 	textBrowserLicense->setText(licensetext);
 	textBrowserThanksTo->setText(thankstotext);
+	
+	connect(buttonBox, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttonBox, SIGNAL(rejected()), this, SLOT(reject()));
 }
