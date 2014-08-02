@@ -12,6 +12,7 @@ PluginProjectExplorer::PluginProjectExplorer()
 	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
 	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window->menuBar());
+	m_ActionProjectExplorer->setShortcut(Qt::Key_F9);
 	m_ActionProjectExplorer->setCheckable(true);
 	m_ActionProjectExplorer->setChecked(true);
 	window->getMenu(MenuView)->addAction(m_ActionProjectExplorer);

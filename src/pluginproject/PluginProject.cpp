@@ -17,6 +17,15 @@ PluginProject::PluginProject()
 	m_ActionSaveFile = new QAction(tr("Save File"), window->menuBar());
 	m_ActionCloseFile = new QAction(tr("Close File"), window->menuBar());
 	
+	m_ActionCreateProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_N);
+	m_ActionLoadProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	m_ActionCloseProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Q);
+	m_ActionCreateFile->setShortcut(Qt::CTRL | Qt::Key_N);
+	m_ActionDeleteFile->setShortcut(Qt::CTRL | Qt::Key_D);
+	m_ActionRenameFile->setShortcut(Qt::CTRL | Qt::Key_R);
+	m_ActionSaveFile->setShortcut(Qt::CTRL | Qt::Key_S);
+	m_ActionCloseFile->setShortcut(Qt::CTRL | Qt::Key_Q);
+	
 	window->getMenu(MenuProject)->addAction(m_ActionCreateProject);
 	window->getMenu(MenuProject)->addAction(m_ActionLoadProject);
 	window->getMenu(MenuProject)->addAction(m_ActionCloseProject);

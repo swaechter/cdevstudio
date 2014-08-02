@@ -28,6 +28,11 @@ void CDevStudio::preinitWindow()
 	m_ActionHelp = new QAction(tr("Help"), window->menuBar());
 	m_ActionAbout = new QAction(tr("About"), window->menuBar());
 	
+	m_ActionSettings->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
+	m_ActionPlugins->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_P);
+	m_ActionHelp->setShortcut(Qt::Key_F1);
+	m_ActionAbout->setShortcut(Qt::Key_F2);
+	
 	window->getMenu(MenuSettings)->addAction(m_ActionSettings);
 	window->getMenu(MenuSettings)->addAction(m_ActionPlugins);
 	window->getMenu(MenuHelp)->addAction(m_ActionHelp);
@@ -59,6 +64,8 @@ void CDevStudio::initWindow()
 	Window *window = m_Platform->getWindowManager()->getWindow();
 	
 	m_ActionExit = new QAction(tr("Exit"), window->menuBar());
+	
+	m_ActionExit->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_X);
 	
 	window->getMenu(MenuProject)->addSeparator();
 	window->getMenu(MenuProject)->addAction(m_ActionExit);
