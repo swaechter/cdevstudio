@@ -25,7 +25,7 @@ SetCompressor "lzma"
 
 ; ===== Pages =====
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "..\..\LICENSE.txt"
+!insertmacro MUI_PAGE_LICENSE "..\..\LICENSE.md"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_NOAUTOCLOSE
@@ -46,7 +46,7 @@ SetCompressor "lzma"
 Section ""
 	SetOutPath $INSTDIR
 	
-	File ${PROJECT_ROOT}\LICENSE.txt
+	File ${PROJECT_ROOT}\LICENSE.md
 	
 	!ifdef MINGW-MAKE
 		File ${PROJECT_ROOT}\build\output\cdevstudio.exe
@@ -88,7 +88,7 @@ Section "Uninstall"
 	Delete $INSTDIR\*.exe
 	Delete $INSTDIR\*.dll
 	Delete $INSTDIR\platforms\*.dll
-	Delete $INSTDIR\LICENSE.txt
+	Delete $INSTDIR\LICENSE.md
 	Delete $INSTDIR\uninstall.exe
 	RMDir $INSTDIR\platforms
 	RMDir $INSTDIR

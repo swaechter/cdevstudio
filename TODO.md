@@ -4,20 +4,11 @@ TODO list
 Documentation
 -------------
 
-General
-* Update the documentation
-
 Codebase
 --------
 
-General
-* Ability to close tab widget tabs
-
 Packages
 --------
-
-Linux
-* Update all packages
 
 Unix
 * Create a package
