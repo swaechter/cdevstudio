@@ -36,6 +36,6 @@ make install DESTDIR="%{buildroot}"
 /usr/include/cdevstudioplatform/Settings.h
 /usr/include/cdevstudioplatform/SettingsPage.h
 /usr/include/cdevstudioplatform/Backend.h
-/usr/lib/libpluginprojects.so*
+/usr/lib/libpluginproject.so*
 /usr/lib/libpluginprojectexplorer.so*
-/usr/lib/libplugintexteditor.so*
+/usr/lib/libplugineditor.so*

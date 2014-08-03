@@ -51,18 +51,18 @@ Section ""
 	!ifdef MINGW-MAKE
 		File ${PROJECT_ROOT}\build\output\cdevstudio.exe
 		File ${PROJECT_ROOT}\build\output\libcdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\output\libpluginprojects.dll
+		File ${PROJECT_ROOT}\build\output\libpluginproject.dll
 		File ${PROJECT_ROOT}\build\output\libpluginprojectexplorer.dll
-		File ${PROJECT_ROOT}\build\output\libplugintexteditor.dll
+		File ${PROJECT_ROOT}\build\output\libplugineditor.dll
 		File ${QT_BINARY_DIR}\libgcc_s_dw2-1.dll
 		File ${QT_BINARY_DIR}\libstdc++-6.dll
 		File ${QT_BINARY_DIR}\libwinpthread-1.dll
 	!else ifdef MSVC-MSBUILD
 		File ${PROJECT_ROOT}\build\output\Release\cdevstudio.exe
 		File ${PROJECT_ROOT}\build\output\Release\cdevstudioplatform.dll
-		File ${PROJECT_ROOT}\build\output\Release\pluginprojects.dll
+		File ${PROJECT_ROOT}\build\output\Release\pluginproject.dll
 		File ${PROJECT_ROOT}\build\output\Release\pluginprojectexplorer.dll
-		File ${PROJECT_ROOT}\build\output\Release\plugintexteditor.dll
+		File ${PROJECT_ROOT}\build\output\Release\plugineditor.dll
 	!else
 		!error "The compiler platform is not defined. Please run the batch file for your compiler platform"
 	!endif

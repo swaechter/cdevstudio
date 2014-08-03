@@ -1,4 +1,4 @@
 {
 	"name": "ProjectExplorer",
-	"description": "The plugin ProjectExplorer adds a project explorer to CDevStudio."
+	"description": "The plugin ProjectExplorer provides a basic project explorer for opening files."
 }
