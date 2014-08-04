@@ -23,6 +23,7 @@ private:
 	
 private slots:
 	void openFile(QString file);
+	void reopenFile(QString file);
 	void closeFile(QString file);
 	void closeFileRequest(QString file);
 };

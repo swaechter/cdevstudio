@@ -112,14 +112,18 @@ bool ProjectManager::deleteFile(QString file)
 
 bool ProjectManager::openFile(QString file)
 {
-	if(getProject() && !file.isEmpty() && !m_Project->getFiles().contains(file) && Backend::doesPathExist(m_Project->getLocation() + file))
+	if(getProject() && !file.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + file) && !Backend::isPathADirectory(m_Project->getLocation() + file))
 	{
-		if(!Backend::isPathADirectory(m_Project->getLocation() + file))
+		if(!m_Project->getFiles().contains(file))
 		{
 			m_Project->addFile(file);
 			emit fileOpened(file);
-			return true;
 		}
+		else
+		{
+			emit fileReopened(file);
+		}
+		return true;
 	}
 	return false;
 }

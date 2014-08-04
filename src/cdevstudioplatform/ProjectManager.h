@@ -33,6 +33,7 @@ signals:
 	void projectOpened();
 	void projectClosed();
 	void fileOpened(QString file);
+	void fileReopened(QString file);
 	void fileClosed(QString file);
 };
 

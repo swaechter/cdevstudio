@@ -42,14 +42,7 @@ void PluginProjectExplorer::fileOpen(QString file)
 {
 	if(!file.isEmpty())
 	{
-		if(!m_Platform->getProjectManager()->openFile(file))
-		{
-			QTextEdit *textedit = m_Platform->getWindowManager()->getWindow()->getTabWidget()->getTextEdit(file);
-			if(textedit)
-			{
-				m_Platform->getWindowManager()->getWindow()->getTabWidget()->setCurrentWidget(textedit);
-			}
-		}
+		m_Platform->getProjectManager()->openFile(file);
 	}
 }
 

@@ -9,6 +9,7 @@ PluginEditor::PluginEditor()
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
 	connect(m_Platform->getProjectManager(), SIGNAL(fileOpened(QString)), this, SLOT(openFile(QString)));
+	connect(m_Platform->getProjectManager(), SIGNAL(fileReopened(QString)), this, SLOT(reopenFile(QString)));
 	connect(m_Platform->getProjectManager(), SIGNAL(fileClosed(QString)), this, SLOT(closeFile(QString)));
 	connect(window, SIGNAL(closeTabRequested(QString)), this, SLOT(closeFileRequest(QString)));
 }
@@ -22,11 +23,31 @@ void PluginEditor::openFile(QString file)
 	Project *project = m_Platform->getProjectManager()->getProject();
 	if(project)
 	{
-		TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
-		QTextEdit *textedit = new QTextEdit(tabwidget);
-		textedit->setText(Backend::readFile(project->getLocation() + file));
-		tabwidget->addTab(textedit, file);
-		tabwidget->setCurrentWidget(textedit);
+		if(m_Platform->getProjectManager()->getProject()->getFiles().contains(file))
+		{
+			TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+			QTextEdit *textedit = new QTextEdit(tabwidget);
+			textedit->setText(Backend::readFile(project->getLocation() + file));
+			tabwidget->addTab(textedit, file);
+			tabwidget->setCurrentWidget(textedit);
+		}
+	}
+}
+
+void PluginEditor::reopenFile(QString file)
+{
+	Project *project = m_Platform->getProjectManager()->getProject();
+	if(project)
+	{
+		if(m_Platform->getProjectManager()->getProject()->getFiles().contains(file))
+		{
+			TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+			QTextEdit *textedit = tabwidget->getTextEdit(file);
+			if(textedit)
+			{
+				tabwidget->setCurrentWidget(textedit);
+			}
+		}
 	}
 }
 
