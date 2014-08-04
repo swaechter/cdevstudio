@@ -4,7 +4,7 @@ Platform::Platform(Window *window): IPlatform(window)
 {
 	m_PluginManager = new PluginManager(this);
 	m_ProjectManager = new ProjectManager(this);
-	m_WindowManager = new WindowManager(window, this);
+	m_Window = window;
 }
 
 PluginManager *Platform::getPluginManager()
@@ -17,7 +17,7 @@ ProjectManager *Platform::getProjectManager()
 	return m_ProjectManager;
 }
 
-WindowManager *Platform::getWindowManager()
+Window *Platform::getWindow()
 {
-	return m_WindowManager;
+	return m_Window;
 }

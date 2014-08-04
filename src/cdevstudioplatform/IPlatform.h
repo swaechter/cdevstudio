@@ -6,7 +6,7 @@
 #include "PlatformExport.h"
 #include "PluginManager.h"
 #include "ProjectManager.h"
-#include "WindowManager.h"
+#include "Window.h"
 
 class CDEVSTUDIOPLATFORM_EXPORT IPlatform : public QObject
 {
@@ -16,7 +16,7 @@ public:
 	static IPlatform *getInstance();
 	virtual PluginManager *getPluginManager() = 0;
 	virtual ProjectManager *getProjectManager() = 0;
-	virtual WindowManager *getWindowManager() = 0;
+	virtual Window *getWindow() = 0;
 	
 protected:
 	IPlatform(QObject *parent);

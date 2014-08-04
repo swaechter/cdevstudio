@@ -4,7 +4,7 @@ PluginProject::PluginProject()
 {
 	m_Platform = IPlatform::getInstance();
 	
-	Window *window = m_Platform->getWindowManager()->getWindow();
+	Window *window = m_Platform->getWindow();
 	PluginPage *pluginpage = new PluginPage(window->getSettingsDialog());
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
@@ -60,7 +60,7 @@ void PluginProject::actionCreateProjectTrigger()
 		templates.append(ProjectTemplate(tr("C Hello World"), tr("A simple C 'Hello World' example"), QStringList() << ":/data/templatec/CMakeLists.txt" << ":/data/templatec/main.c"));
 		templates.append(ProjectTemplate(tr("C++ Hello World"), tr("A simple C++ 'Hello World' example"), QStringList() << ":/data/templatecplusplus/CMakeLists.txt" << ":/data/templatecplusplus/main.cpp"));
 		
-		CreateProjectDialog *dialog = new CreateProjectDialog(templates, m_Platform->getWindowManager()->getWindow());
+		CreateProjectDialog *dialog = new CreateProjectDialog(templates, m_Platform->getWindow());
 		if(dialog->exec() == QDialog::Accepted)
 		{
 			if(!dialog->getProjectName().isEmpty() && !dialog->getProjectName().isEmpty() && !dialog->getProjectLocation().isEmpty())
@@ -71,7 +71,7 @@ void PluginProject::actionCreateProjectTrigger()
 					{
 						if(!m_Platform->getProjectManager()->createProject(dialog->getProjectName(), dialog->getProjectLocation(), projecttemplate.getFiles()))
 						{
-							QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to create the project."));
+							QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to create the project."));
 						}
 						break;
 					}
@@ -81,7 +81,7 @@ void PluginProject::actionCreateProjectTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please close the current project before you create a new one."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please close the current project before you create a new one."));
 	}
 }
 
@@ -89,18 +89,18 @@ void PluginProject::actionLoadProjectTrigger()
 {
 	if(!m_Platform->getProjectManager()->getProject())
 	{
-		QString projectfile = QFileDialog::getOpenFileName(m_Platform->getWindowManager()->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
+		QString projectfile = QFileDialog::getOpenFileName(m_Platform->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
 		if(!projectfile.isEmpty())
 		{
 			if(!m_Platform->getProjectManager()->loadProject(projectfile))
 			{
-				QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to load the project."));
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to load the project."));
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please close the current project before you open a new one."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please close the current project before you open a new one."));
 	}
 }
 
@@ -112,7 +112,7 @@ void PluginProject::actionCloseProjectTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("There is no active project to close."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("There is no active project to close."));
 	}
 }
 
@@ -120,19 +120,19 @@ void PluginProject::actionCreateFileTrigger()
 {
 	if(m_Platform->getProjectManager()->getProject())
 	{
-		QString filepath = QFileDialog::getSaveFileName(m_Platform->getWindowManager()->getWindow(), tr("Create a new file"), m_Platform->getProjectManager()->getProject()->getLocation());
+		QString filepath = QFileDialog::getSaveFileName(m_Platform->getWindow(), tr("Create a new file"), m_Platform->getProjectManager()->getProject()->getLocation());
 		if(!filepath.isEmpty() && m_Platform->getProjectManager()->isFilepathInProject(filepath))
 		{
 			QString file = filepath.remove(m_Platform->getProjectManager()->getProject()->getLocation());
 			if(!m_Platform->getProjectManager()->createFile(file))
 			{
-				QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to create the file."));
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to create the file."));
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
 	}
 }
 
@@ -140,22 +140,22 @@ void PluginProject::actionDeleteFileTrigger()
 {
 	if(m_Platform->getProjectManager()->getProject())
 	{
-		int index = m_Platform->getWindowManager()->getWindow()->getTabWidget()->currentIndex();
+		int index = m_Platform->getWindow()->getTabWidget()->currentIndex();
 		if(index != -1)
 		{
-			QString file = m_Platform->getWindowManager()->getWindow()->getTabWidget()->tabText(index);
-			if(QMessageBox::question(m_Platform->getWindowManager()->getWindow(), tr("Delete"), tr("Do you want to delete the current file?")) == QMessageBox::Yes)
+			QString file = m_Platform->getWindow()->getTabWidget()->tabText(index);
+			if(QMessageBox::question(m_Platform->getWindow(), tr("Delete"), tr("Do you want to delete the current file?")) == QMessageBox::Yes)
 			{
 				if(!m_Platform->getProjectManager()->deleteFile(file))
 				{
-						QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to delete the current file."));
+						QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to delete the current file."));
 				}
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
 	}
 }
 
@@ -163,15 +163,15 @@ void PluginProject::actionRenameFileTrigger()
 {
 	if(m_Platform->getProjectManager()->getProject())
 	{
-		int index = m_Platform->getWindowManager()->getWindow()->getTabWidget()->currentIndex();
+		int index = m_Platform->getWindow()->getTabWidget()->currentIndex();
 		if(index != -1)
 		{
 			bool result = false;
-			QString file = m_Platform->getWindowManager()->getWindow()->getTabWidget()->tabText(index);
+			QString file = m_Platform->getWindow()->getTabWidget()->tabText(index);
 			QString filepath = m_Platform->getProjectManager()->getProject()->getLocation() + file;
 			QStringList fileparts = filepath.split("/");
 			QString text = fileparts.at(fileparts.count() - 1);
-			QString newtext = QInputDialog::getText(m_Platform->getWindowManager()->getWindow(), tr("Rename"), tr("New file name"), QLineEdit::Normal, text, &result);
+			QString newtext = QInputDialog::getText(m_Platform->getWindow(), tr("Rename"), tr("New file name"), QLineEdit::Normal, text, &result);
 			if(result && !newtext.isEmpty())
 			{
 				fileparts.removeLast();
@@ -180,14 +180,14 @@ void PluginProject::actionRenameFileTrigger()
 				QString newfile = newfilepath.remove(m_Platform->getProjectManager()->getProject()->getLocation());
 				if(!m_Platform->getProjectManager()->renameFile(file, newfile))
 				{
-					QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to rename the current file."));
+					QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to rename the current file."));
 				}
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
 	}
 }
 
@@ -195,24 +195,24 @@ void PluginProject::actionSaveFileTrigger()
 {
 	if(m_Platform->getProjectManager()->getProject())
 	{
-		int index = m_Platform->getWindowManager()->getWindow()->getTabWidget()->currentIndex();
+		int index = m_Platform->getWindow()->getTabWidget()->currentIndex();
 		if(index != -1)
 		{
-			QString file = m_Platform->getWindowManager()->getWindow()->getTabWidget()->tabText(index);
-			QTextEdit *textedit = m_Platform->getWindowManager()->getWindow()->getTabWidget()->getTextEdit(file);
+			QString file = m_Platform->getWindow()->getTabWidget()->tabText(index);
+			QTextEdit *textedit = m_Platform->getWindow()->getTabWidget()->getTextEdit(file);
 			if(textedit)
 			{
 				QString text = textedit->toPlainText();
 				if(!m_Platform->getProjectManager()->writeFile(file, text))
 				{
-					QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to write the current file."));
+					QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to write the current file."));
 				}
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
 	}
 }
 
@@ -220,18 +220,18 @@ void PluginProject::actionCloseFileTrigger()
 {
 	if(m_Platform->getProjectManager()->getProject())
 	{
-		int index = m_Platform->getWindowManager()->getWindow()->getTabWidget()->currentIndex();
+		int index = m_Platform->getWindow()->getTabWidget()->currentIndex();
 		if(index != -1)
 		{
-			QString file = m_Platform->getWindowManager()->getWindow()->getTabWidget()->tabText(index);
+			QString file = m_Platform->getWindow()->getTabWidget()->tabText(index);
 			if(!m_Platform->getProjectManager()->closeFile(file))
 			{
-				QMessageBox::critical(m_Platform->getWindowManager()->getWindow(), tr("Error"), tr("The system was unable to close the current file."));
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to close the current file."));
 			}
 		}
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindowManager()->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
 	}
 }

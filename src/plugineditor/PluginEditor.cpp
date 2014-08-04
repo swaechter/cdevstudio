@@ -4,7 +4,7 @@ PluginEditor::PluginEditor()
 {
 	m_Platform = IPlatform::getInstance();
 	
-	Window *window = m_Platform->getWindowManager()->getWindow();
+	Window *window = m_Platform->getWindow();
 	PluginPage *pluginpage = new PluginPage(window->getSettingsDialog());
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
@@ -25,7 +25,7 @@ void PluginEditor::openFile(QString file)
 	{
 		if(m_Platform->getProjectManager()->getProject()->getFiles().contains(file))
 		{
-			TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+			TabWidget *tabwidget = m_Platform->getWindow()->getTabWidget();
 			QTextEdit *textedit = new QTextEdit(tabwidget);
 			textedit->setText(Backend::readFile(project->getLocation() + file));
 			tabwidget->addTab(textedit, file);
@@ -41,7 +41,7 @@ void PluginEditor::reopenFile(QString file)
 	{
 		if(m_Platform->getProjectManager()->getProject()->getFiles().contains(file))
 		{
-			TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+			TabWidget *tabwidget = m_Platform->getWindow()->getTabWidget();
 			QTextEdit *textedit = tabwidget->getTextEdit(file);
 			if(textedit)
 			{
@@ -53,7 +53,7 @@ void PluginEditor::reopenFile(QString file)
 
 void PluginEditor::closeFile(QString file)
 {
-	TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+	TabWidget *tabwidget = m_Platform->getWindow()->getTabWidget();
 	for(int i = 0; i < tabwidget->count(); i++)
 	{
 		if(file.compare(tabwidget->tabText(i)) == 0)
@@ -67,7 +67,7 @@ void PluginEditor::closeFile(QString file)
 
 void PluginEditor::closeFileRequest(QString file)
 {
-	TabWidget *tabwidget = m_Platform->getWindowManager()->getWindow()->getTabWidget();
+	TabWidget *tabwidget = m_Platform->getWindow()->getTabWidget();
 	for(int i = 0; i < tabwidget->count(); i++)
 	{
 		if(file.compare(tabwidget->tabText(i)) == 0)

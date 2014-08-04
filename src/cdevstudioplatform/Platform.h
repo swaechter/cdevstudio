@@ -8,7 +8,7 @@
 #include "IPlatform.h"
 #include "PluginManager.h"
 #include "ProjectManager.h"
-#include "WindowManager.h"
+#include "Window.h"
 #include "Window.h"
 
 class CDEVSTUDIOPLATFORM_EXPORT Platform : public IPlatform
@@ -19,12 +19,12 @@ public:
 	Platform(Window *window);
 	PluginManager *getPluginManager();
 	ProjectManager *getProjectManager();
-	WindowManager *getWindowManager();
+	Window *getWindow();
 	
 private:
 	PluginManager *m_PluginManager;
 	ProjectManager *m_ProjectManager;
-	WindowManager *m_WindowManager;
+	Window *m_Window;
 };
 
 #endif // PLATFORM_H

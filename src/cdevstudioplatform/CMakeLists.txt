@@ -12,7 +12,6 @@ set(CDEVSTUDIOPLATFORM_SRCS
   IPlugin.cpp
   ProjectManager.cpp
   Project.cpp
-  WindowManager.cpp
   Window.cpp
   TabWidget.cpp
   Settings.cpp
@@ -29,7 +28,6 @@ set(CDEVSTUDIOPLATFORM_HDRS
   IPlugin.h
   ProjectManager.h
   Project.h
-  WindowManager.h
   Window.h
   TabWidget.h
   Settings.h

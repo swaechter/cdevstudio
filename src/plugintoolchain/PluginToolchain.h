@@ -4,7 +4,6 @@
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPlugin.h>
-#include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
 
 #include "PluginToolchainExport.h"

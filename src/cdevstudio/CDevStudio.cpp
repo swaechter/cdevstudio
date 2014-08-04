@@ -21,7 +21,7 @@ void CDevStudio::initPlatform()
 
 void CDevStudio::preinitWindow()
 {
-	Window *window = m_Platform->getWindowManager()->getWindow();
+	Window *window = m_Platform->getWindow();
 	
 	m_ActionSettings = new QAction(tr("Settings"), window->menuBar());
 	m_ActionPlugins = new QAction(tr("Plugins"), window->menuBar());
@@ -49,7 +49,7 @@ void CDevStudio::preinitWindow()
 
 void CDevStudio::initSettings()
 {
-	Settings *settings = m_Platform->getWindowManager()->getWindow()->getSettingsDialog();
+	Settings *settings = m_Platform->getWindow()->getSettingsDialog();
 	GeneralPage *generalpage = new GeneralPage(settings);
 	settings->addSettingsPage(generalpage);
 }
@@ -61,7 +61,7 @@ void CDevStudio::loadPlugins()
 
 void CDevStudio::initWindow()
 {
-	Window *window = m_Platform->getWindowManager()->getWindow();
+	Window *window = m_Platform->getWindow();
 	
 	m_ActionExit = new QAction(tr("Exit"), window->menuBar());
 	
@@ -79,7 +79,7 @@ void CDevStudio::actionExitTrigger()
 
 void CDevStudio::actionSettingsTrigger()
 {
-	Settings *settings = m_Platform->getWindowManager()->getWindow()->getSettingsDialog();
+	Settings *settings = m_Platform->getWindow()->getSettingsDialog();
 	if(settings->exec() == QDialog::Accepted)
 	{
 	}

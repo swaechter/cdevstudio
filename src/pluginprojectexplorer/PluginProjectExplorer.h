@@ -6,7 +6,6 @@
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPlugin.h>
 #include <cdevstudioplatform/Project.h>
-#include <cdevstudioplatform/WindowManager.h>
 #include <cdevstudioplatform/Window.h>
 
 #include "PluginProjectExplorerExport.h"
