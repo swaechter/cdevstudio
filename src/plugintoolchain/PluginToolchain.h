@@ -4,6 +4,8 @@
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPlugin.h>
+#include <cdevstudioplatform/WindowManager.h>
+#include <cdevstudioplatform/Window.h>
 
 #include "PluginToolchainExport.h"
 #include "PluginPage.h"
@@ -20,6 +22,14 @@ public:
 	
 private:
 	IPlatform *m_Platform;
+	QAction *m_ActionRun;
+	QAction *m_ActionBuild;
+	QAction *m_ActionBuildAndRun;
+	
+private slots:
+	void actionBuildTrigger();
+	void actionRunTrigger();
+	void actionBuldAndRunTrigger();
 };
 
 #endif // PLUGINTOOLCHAIN_H
