@@ -16,6 +16,7 @@ enum MenuTypes
 {
 	MenuProject,
 	MenuFile,
+	MenuCode,
 	MenuView,
 	MenuSettings,
 	MenuHelp
@@ -35,10 +36,11 @@ public:
 private:
 	QMenu *m_MenuProject;
 	QMenu *m_MenuFile;
+	QMenu *m_MenuCode;
 	QMenu *m_MenuView;
 	QMenu *m_MenuSettings;
 	QMenu *m_MenuHelp;
-    TabWidget *m_TabWidget;
+	TabWidget *m_TabWidget;
 	Settings *m_Settings;
 	
 	void initWindow();
