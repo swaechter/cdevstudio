@@ -11,7 +11,7 @@ PluginEditor::PluginEditor()
 	connect(m_Platform->getProjectManager(), SIGNAL(fileOpened(QString)), this, SLOT(openFile(QString)));
 	connect(m_Platform->getProjectManager(), SIGNAL(fileReopened(QString)), this, SLOT(reopenFile(QString)));
 	connect(m_Platform->getProjectManager(), SIGNAL(fileClosed(QString)), this, SLOT(closeFile(QString)));
-	connect(window, SIGNAL(closeTabRequested(QString)), this, SLOT(closeFileRequest(QString)));
+	connect(window->getTabWidget(), SIGNAL(closeTabRequested(QString)), this, SLOT(closeFileRequest(QString)));
 }
 
 PluginEditor::~PluginEditor()

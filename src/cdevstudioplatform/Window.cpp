@@ -42,22 +42,20 @@ QMenu *Window::getMenu(MenuTypes type)
 	return nullptr;
 }
 
-Settings *Window::getSettingsDialog()
-{
-	return m_Settings;
-}
-
 TabWidget *Window::getTabWidget()
 {
 	return m_TabWidget;
+}
+
+Settings *Window::getSettingsDialog()
+{
+	return m_Settings;
 }
 
 void Window::initWindow()
 {
 	m_TabWidget = new TabWidget(this);
 	setCentralWidget(m_TabWidget);
-	
-	connect(m_TabWidget, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 }
 
 void Window::initMenues()
@@ -78,12 +76,4 @@ void Window::initMenues()
 	
 	m_Settings = new Settings(this);
 	m_Settings->hide();
-}
-
-void Window::closeTab(int index)
-{
-	if(index >= 0)
-	{
-		emit closeTabRequested(m_TabWidget->tabText(index));
-	}
 }

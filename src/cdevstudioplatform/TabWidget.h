@@ -17,6 +17,12 @@ public:
 	void removeTextEdit(QString title);
 	QTextEdit *getTextEdit(QString title);
 	QList<QTextEdit *> getTextEdits();
+	
+private slots:
+	void closeTab(int index);
+	
+signals:
+	void closeTabRequested(QString name);
 };
 
 #endif // TABWIDGET_H

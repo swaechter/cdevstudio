@@ -3,6 +3,8 @@
 TabWidget::TabWidget(QWidget *parent) : QTabWidget(parent)
 {
 	setTabsClosable(true);
+	
+	connect(this, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 }
 
 void TabWidget::addTextEdit(QTextEdit *textedit, QString title)
@@ -50,4 +52,12 @@ QList<QTextEdit *> TabWidget::getTextEdits()
 		}
 	}
 	return textedits;
+}
+
+void TabWidget::closeTab(int index)
+{
+	if(index >= 0)
+	{
+		emit closeTabRequested(tabText(index));
+	}
 }

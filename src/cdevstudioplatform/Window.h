@@ -45,12 +45,6 @@ private:
 	
 	void initWindow();
 	void initMenues();
-	
-private slots:
-	void closeTab(int index);
-	
-signals:
-	void closeTabRequested(QString name);
 };
 
 #endif // WINDOW_H
