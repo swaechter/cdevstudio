@@ -13,6 +13,7 @@ set(CDEVSTUDIOPLATFORM_SRCS
   ProjectManager.cpp
   Project.cpp
   Window.cpp
+  MenuBar.cpp
   TabWidget.cpp
   Settings.cpp
   SettingsPage.cpp
@@ -29,6 +30,7 @@ set(CDEVSTUDIOPLATFORM_HDRS
   ProjectManager.h
   Project.h
   Window.h
+  MenuBar.h
   TabWidget.h
   Settings.h
   SettingsPage.h

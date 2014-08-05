@@ -8,14 +8,14 @@ PluginProject::PluginProject()
 	PluginPage *pluginpage = new PluginPage(window->getSettingsDialog());
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
-	m_ActionCreateProject = new QAction(tr("Create Project"), window->menuBar());
-	m_ActionLoadProject = new QAction(tr("Load Project"), window->menuBar());
-	m_ActionCloseProject = new QAction(tr("Close Project"), window->menuBar());
-	m_ActionCreateFile = new QAction(tr("Create File"), window->menuBar());
-	m_ActionDeleteFile = new QAction(tr("Delete File"), window->menuBar());
-	m_ActionRenameFile = new QAction(tr("Rename File"), window->menuBar());
-	m_ActionSaveFile = new QAction(tr("Save File"), window->menuBar());
-	m_ActionCloseFile = new QAction(tr("Close File"), window->menuBar());
+	m_ActionCreateProject = new QAction(tr("Create Project"), window->getMenuBar());
+	m_ActionLoadProject = new QAction(tr("Load Project"), window->getMenuBar());
+	m_ActionCloseProject = new QAction(tr("Close Project"), window->getMenuBar());
+	m_ActionCreateFile = new QAction(tr("Create File"), window->getMenuBar());
+	m_ActionDeleteFile = new QAction(tr("Delete File"), window->getMenuBar());
+	m_ActionRenameFile = new QAction(tr("Rename File"), window->getMenuBar());
+	m_ActionSaveFile = new QAction(tr("Save File"), window->getMenuBar());
+	m_ActionCloseFile = new QAction(tr("Close File"), window->getMenuBar());
 	
 	m_ActionCreateProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_N);
 	m_ActionLoadProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
@@ -26,16 +26,16 @@ PluginProject::PluginProject()
 	m_ActionSaveFile->setShortcut(Qt::CTRL | Qt::Key_S);
 	m_ActionCloseFile->setShortcut(Qt::CTRL | Qt::Key_Q);
 	
-	window->getMenu(MenuProject)->addAction(m_ActionCreateProject);
-	window->getMenu(MenuProject)->addAction(m_ActionLoadProject);
-	window->getMenu(MenuProject)->addAction(m_ActionCloseProject);
-	window->getMenu(MenuFile)->addAction(m_ActionCreateFile);
-	window->getMenu(MenuFile)->addAction(m_ActionDeleteFile);
-	window->getMenu(MenuFile)->addAction(m_ActionRenameFile);
-	window->getMenu(MenuFile)->addSeparator();
-	window->getMenu(MenuFile)->addAction(m_ActionSaveFile);
-	window->getMenu(MenuFile)->addSeparator();
-	window->getMenu(MenuFile)->addAction(m_ActionCloseFile);
+	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionCreateProject);
+	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionLoadProject);
+	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionCloseProject);
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionCreateFile);
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionDeleteFile);
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionRenameFile);
+	window->getMenuBar()->getMenu(tr("File"))->addSeparator();
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionSaveFile);
+	window->getMenuBar()->getMenu(tr("File"))->addSeparator();
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionCloseFile);
 	
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionCreateProjectTrigger()));
 	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionLoadProjectTrigger()));

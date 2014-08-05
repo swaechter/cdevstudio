@@ -11,11 +11,11 @@ PluginProjectExplorer::PluginProjectExplorer()
 	m_ProjectExplorer = new ProjectExplorer(window);
 	window->addDockWidget(Qt::LeftDockWidgetArea, m_ProjectExplorer);
 	
-	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window->menuBar());
+	m_ActionProjectExplorer = new QAction(tr("Project Explorer"), window->getMenuBar());
 	m_ActionProjectExplorer->setShortcut(Qt::Key_F9);
 	m_ActionProjectExplorer->setCheckable(true);
 	m_ActionProjectExplorer->setChecked(true);
-	window->getMenu(MenuView)->addAction(m_ActionProjectExplorer);
+	window->getMenuBar()->getMenu(tr("View"))->addAction(m_ActionProjectExplorer);
 	
 	connect(m_Platform->getProjectManager(), SIGNAL(projectOpened()), this, SLOT(projectOpen()));
 	connect(m_Platform->getProjectManager(), SIGNAL(projectClosed()), this, SLOT(projectClose()));

@@ -1,6 +1,7 @@
 #ifndef PLUGINTOOLCHAIN_H
 #define PLUGINTOOLCHAIN_H
 
+#include <QtWidgets/QMessageBox>
 #include <QtCore/QObject>
 #include <cdevstudioplatform/IPlatform.h>
 #include <cdevstudioplatform/IPlugin.h>

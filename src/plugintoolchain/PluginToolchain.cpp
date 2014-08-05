@@ -8,17 +8,17 @@ PluginToolchain::PluginToolchain()
 	PluginPage *pluginpage = new PluginPage(window->getSettingsDialog());
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
-	m_ActionBuild = new QAction(tr("Build"), window->menuBar());
-	m_ActionRun = new QAction(tr("Run"), window->menuBar());
-	m_ActionBuildAndRun = new QAction(tr("Build & Run"), window->menuBar());
+	m_ActionBuild = new QAction(tr("Build"), window->getMenuBar());
+	m_ActionRun = new QAction(tr("Run"), window->getMenuBar());
+	m_ActionBuildAndRun = new QAction(tr("Build and Run"), window->getMenuBar());
 	
 	m_ActionBuild->setShortcut(Qt::Key_F5);
 	m_ActionRun->setShortcut(Qt::Key_F6);
 	m_ActionBuildAndRun->setShortcut(Qt::Key_F7);
 	
-	window->getMenu(MenuCode)->addAction(m_ActionBuild);
-	window->getMenu(MenuCode)->addAction(m_ActionRun);
-	window->getMenu(MenuCode)->addAction(m_ActionBuildAndRun);
+	window->getMenuBar()->getMenu(tr("Code"))->addAction(m_ActionBuild);
+	window->getMenuBar()->getMenu(tr("Code"))->addAction(m_ActionRun);
+	window->getMenuBar()->getMenu(tr("Code"))->addAction(m_ActionBuildAndRun);
 	
 	connect(m_ActionBuild, SIGNAL(triggered(bool)), this, SLOT(actionBuildTrigger()));
 	connect(m_ActionRun, SIGNAL(triggered(bool)), this, SLOT(actionRunTrigger()));
@@ -31,15 +31,15 @@ PluginToolchain::~PluginToolchain()
 
 void PluginToolchain::actionBuildTrigger()
 {
-
+	QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Feature not implemented yet."));
 }
 
 void PluginToolchain::actionRunTrigger()
 {
-
+	QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Feature not implemented yet."));
 }
 
 void PluginToolchain::actionBuldAndRunTrigger()
 {
-
+	QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Feature not implemented yet."));
 }

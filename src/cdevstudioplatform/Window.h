@@ -2,25 +2,14 @@
 #define WINDOW_H
 
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QMenu>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 
 #include "PlatformExport.h"
+#include "MenuBar.h"
 #include "TabWidget.h"
 #include "Settings.h"
-
-enum MenuTypes
-{
-	MenuProject,
-	MenuFile,
-	MenuCode,
-	MenuView,
-	MenuSettings,
-	MenuHelp
-};
 
 class CDEVSTUDIOPLATFORM_EXPORT Window : public QMainWindow
 {
@@ -28,23 +17,14 @@ class CDEVSTUDIOPLATFORM_EXPORT Window : public QMainWindow
 	
 public:
 	Window();
-	virtual ~Window();
-	QMenu *getMenu(MenuTypes type);
+	MenuBar *getMenuBar();
 	TabWidget *getTabWidget();
 	Settings *getSettingsDialog();
 	
 private:
-	QMenu *m_MenuProject;
-	QMenu *m_MenuFile;
-	QMenu *m_MenuCode;
-	QMenu *m_MenuView;
-	QMenu *m_MenuSettings;
-	QMenu *m_MenuHelp;
+	MenuBar *m_Menubar;
 	TabWidget *m_TabWidget;
 	Settings *m_Settings;
-	
-	void initWindow();
-	void initMenues();
 };
 
 #endif // WINDOW_H

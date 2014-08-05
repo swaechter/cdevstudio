@@ -23,28 +23,39 @@ void CDevStudio::preinitWindow()
 {
 	Window *window = m_Platform->getWindow();
 	
-	m_ActionSettings = new QAction(tr("Settings"), window->menuBar());
-	m_ActionPlugins = new QAction(tr("Plugins"), window->menuBar());
-	m_ActionHelp = new QAction(tr("Help"), window->menuBar());
-	m_ActionAbout = new QAction(tr("About"), window->menuBar());
+	QMenu *menuproject = new QMenu(tr("Project"), window->getMenuBar());
+	QMenu *menufile = new QMenu(tr("File"), window->getMenuBar());
+	QMenu *menucode = new QMenu(tr("Code"), window->getMenuBar());
+	QMenu *menuview = new QMenu(tr("View"), window->getMenuBar());
+	QMenu *menusettings = new QMenu(tr("Settings"), window->getMenuBar());
+	QMenu *menuhelp = new QMenu(tr("Help"), window->getMenuBar());
+	
+	window->getMenuBar()->addMenu(menuproject);
+	window->getMenuBar()->addMenu(menufile);
+	window->getMenuBar()->addMenu(menucode);
+	window->getMenuBar()->addMenu(menuview);
+	window->getMenuBar()->addMenu(menusettings);
+	window->getMenuBar()->addMenu(menuhelp);
+	
+	m_ActionSettings = new QAction(tr("Settings"), window->getMenuBar());
+	m_ActionPlugins = new QAction(tr("Plugins"), window->getMenuBar());
+	m_ActionHelp = new QAction(tr("Help"), window->getMenuBar());
+	m_ActionAbout = new QAction(tr("About"), window->getMenuBar());
 	
 	m_ActionSettings->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_S);
 	m_ActionPlugins->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_P);
 	m_ActionHelp->setShortcut(Qt::Key_F1);
 	m_ActionAbout->setShortcut(Qt::Key_F2);
 	
-	window->getMenu(MenuSettings)->addAction(m_ActionSettings);
-	window->getMenu(MenuSettings)->addAction(m_ActionPlugins);
-	window->getMenu(MenuHelp)->addAction(m_ActionHelp);
-	window->getMenu(MenuHelp)->addAction(m_ActionAbout);
+	window->getMenuBar()->getMenu(tr("Settings"))->addAction(m_ActionSettings);
+	window->getMenuBar()->getMenu(tr("Settings"))->addAction(m_ActionPlugins);
+	window->getMenuBar()->getMenu(tr("Help"))->addAction(m_ActionHelp);
+	window->getMenuBar()->getMenu(tr("Help"))->addAction(m_ActionAbout);
 	
 	connect(m_ActionSettings, SIGNAL(triggered(bool)), this, SLOT(actionSettingsTrigger()));
 	connect(m_ActionPlugins, SIGNAL(triggered(bool)), this, SLOT(actionPluginsTrigger()));
 	connect(m_ActionHelp, SIGNAL(triggered(bool)), this, SLOT(actionHelpTrigger()));
 	connect(m_ActionAbout, SIGNAL(triggered(bool)), this, SLOT(actionAboutTrigger()));
-	
-	setWindowTitle(tr("CDevStudio"));
-	resize(1100, 700);
 }
 
 void CDevStudio::initSettings()
@@ -62,16 +73,19 @@ void CDevStudio::loadPlugins()
 void CDevStudio::initWindow()
 {
 	Window *window = m_Platform->getWindow();
+	window->setWindowTitle(tr("CDevStudio"));
+	window->resize(1100, 700);
 	
-	m_ActionExit = new QAction(tr("Exit"), window->menuBar());
+	m_ActionExit = new QAction(tr("Exit"), window->getMenuBar());
 	
 	m_ActionExit->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_X);
 	
-	window->getMenu(MenuProject)->addSeparator();
-	window->getMenu(MenuProject)->addAction(m_ActionExit);
+	window->getMenuBar()->getMenu(tr("Project"))->addSeparator();
+	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionExit);
 	
 	connect(m_ActionExit, SIGNAL(triggered(bool)), this, SLOT(actionExitTrigger()));
 }
+
 void CDevStudio::actionExitTrigger()
 {
 	exit(EXIT_SUCCESS);
