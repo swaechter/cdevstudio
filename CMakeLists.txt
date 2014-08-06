@@ -4,7 +4,6 @@ project(cdevstudio-workspace)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 find_package(C++Utils REQUIRED)
-find_package(Platform REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 
 set(VERSION_NUMBER 0.0.8)
