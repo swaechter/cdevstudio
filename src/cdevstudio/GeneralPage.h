@@ -5,7 +5,7 @@
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QGridLayout>
 
-#include <cdevstudioplatform/SettingsPage.h>
+#include <ui/SettingsPage.h>
 
 class GeneralPage : public SettingsPage
 {

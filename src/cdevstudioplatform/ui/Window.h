@@ -6,10 +6,10 @@
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QTextEdit>
 
-#include "PlatformExport.h"
-#include "MenuBar.h"
-#include "TabWidget.h"
-#include "Settings.h"
+#include <PlatformExport.h>
+#include <ui/MenuBar.h>
+#include <ui/TabWidget.h>
+#include <ui/Settings.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT Window : public QMainWindow
 {

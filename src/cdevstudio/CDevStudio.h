@@ -1,10 +1,10 @@
 #ifndef CDEVSTUDIO_H
 #define CDEVSTUDIO_H
 
-#include <cdevstudioplatform/Platform.h>
-#include <cdevstudioplatform/Window.h>
-#include <cdevstudioplatform/Settings.h>
-#include <cdevstudioplatform/Backend.h>
+#include <Platform.h>
+#include <ui/Window.h>
+#include <ui/Settings.h>
+#include <utils/Backend.h>
 
 #include "PluginDialog.h"
 #include "HelpDialog.h"

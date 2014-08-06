@@ -3,7 +3,7 @@
 
 #include <QtWidgets/QMenuBar>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT MenuBar : public QMenuBar
 {

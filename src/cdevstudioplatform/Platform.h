@@ -4,12 +4,11 @@
 #include <QtCore/QObject>
 #include <QtCore/QList>
 
-#include "PlatformExport.h"
-#include "IPlatform.h"
-#include "PluginManager.h"
-#include "ProjectManager.h"
-#include "Window.h"
-#include "Window.h"
+#include <PlatformExport.h>
+#include <IPlatform.h>
+#include <plugin/PluginManager.h>
+#include <project/ProjectManager.h>
+#include <ui/Window.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT Platform : public IPlatform
 {

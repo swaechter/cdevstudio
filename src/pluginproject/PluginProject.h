@@ -6,9 +6,10 @@
 #include <QtWidgets/QInputDialog>
 #include <QtWidgets/QFileDialog>
 #include <QtCore/QObject>
-#include <cdevstudioplatform/IPlatform.h>
-#include <cdevstudioplatform/IPlugin.h>
-#include <cdevstudioplatform/Window.h>
+
+#include <IPlatform.h>
+#include <plugin/IPlugin.h>
+#include <ui/Window.h>
 
 #include "PluginProjectExport.h"
 #include "ProjectTemplate.h"

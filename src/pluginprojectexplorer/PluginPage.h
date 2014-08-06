@@ -4,7 +4,8 @@
 #include <QtWidgets/QWidget>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QGridLayout>
-#include <cdevstudioplatform/SettingsPage.h>
+
+#include <ui/SettingsPage.h>
 
 #include "PluginProjectExplorerExport.h"
 

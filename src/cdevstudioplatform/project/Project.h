@@ -4,7 +4,7 @@
 #include <QtCore/QString>
 #include <QtCore/QStringList>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT Project
 {

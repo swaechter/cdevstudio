@@ -3,9 +3,9 @@
 
 #include <QtCore/QObject>
 
-#include "PlatformExport.h"
-#include "Project.h"
-#include "Backend.h"
+#include <PlatformExport.h>
+#include <project/Project.h>
+#include <utils/Backend.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT ProjectManager : public QObject
 {

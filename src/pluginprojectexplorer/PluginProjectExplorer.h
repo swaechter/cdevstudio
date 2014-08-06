@@ -3,10 +3,11 @@
 
 #include <QtWidgets/QAction>
 #include <QtCore/QObject>
-#include <cdevstudioplatform/IPlatform.h>
-#include <cdevstudioplatform/IPlugin.h>
-#include <cdevstudioplatform/Project.h>
-#include <cdevstudioplatform/Window.h>
+
+#include <IPlatform.h>
+#include <plugin/IPlugin.h>
+#include <project/Project.h>
+#include <ui/Window.h>
 
 #include "PluginProjectExplorerExport.h"
 #include "ProjectExplorer.h"

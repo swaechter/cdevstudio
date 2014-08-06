@@ -10,9 +10,9 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDebug>
 
-#include "PlatformExport.h"
-#include "PluginContainer.h"
-#include "Backend.h"
+#include <PlatformExport.h>
+#include <plugin/PluginContainer.h>
+#include <utils/Backend.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT PluginManager : public QObject
 {

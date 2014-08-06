@@ -2,8 +2,9 @@
 #define PLUGINEDITOR_H
 
 #include <QtCore/QObject>
-#include <cdevstudioplatform/IPlatform.h>
-#include <cdevstudioplatform/IPlugin.h>
+
+#include <IPlatform.h>
+#include <plugin/IPlugin.h>
 
 #include "PluginEditorExport.h"
 #include "PluginPage.h"

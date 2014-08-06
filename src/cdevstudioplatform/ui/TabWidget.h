@@ -5,7 +5,7 @@
 #include <QtWidgets/QTextEdit>
 #include <QtCore/QList>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT TabWidget : public QTabWidget
 {

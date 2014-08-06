@@ -3,7 +3,7 @@
 
 #include <QtWidgets/QWidget>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT SettingsPage : public QWidget
 {

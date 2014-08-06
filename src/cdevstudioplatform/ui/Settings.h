@@ -7,8 +7,8 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QGridLayout>
 
-#include "PlatformExport.h"
-#include "SettingsPage.h"
+#include <PlatformExport.h>
+#include <ui/SettingsPage.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT Settings : public QDialog
 {

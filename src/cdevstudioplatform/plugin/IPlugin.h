@@ -3,7 +3,7 @@
 
 #include <QtCore/QObject>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT IPlugin : public QObject
 {

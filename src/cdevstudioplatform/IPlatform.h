@@ -3,10 +3,10 @@
 
 #include <QtCore/QObject>
 
-#include "PlatformExport.h"
-#include "PluginManager.h"
-#include "ProjectManager.h"
-#include "Window.h"
+#include <PlatformExport.h>
+#include <plugin/PluginManager.h>
+#include <project/ProjectManager.h>
+#include <ui/Window.h>
 
 class CDEVSTUDIOPLATFORM_EXPORT IPlatform : public QObject
 {

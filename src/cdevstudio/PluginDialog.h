@@ -5,8 +5,9 @@
 #include <QtWidgets/QTableWidget>
 #include <QtWidgets/QHeaderView>
 #include <QtCore/QList>
-#include <cdevstudioplatform/PluginContainer.h>
-#include <cdevstudioplatform/IPlugin.h>
+
+#include <plugin/PluginContainer.h>
+#include <plugin/IPlugin.h>
 
 #include "ui_PluginDialog.h"
 

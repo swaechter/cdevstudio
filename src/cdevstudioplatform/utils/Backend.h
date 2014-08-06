@@ -6,7 +6,7 @@
 #include <QtCore/QDir>
 #include <QtCore/QTextStream>
 
-#include "PlatformExport.h"
+#include <PlatformExport.h>
 
 namespace Backend
 {
