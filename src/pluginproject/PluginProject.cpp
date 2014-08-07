@@ -128,9 +128,9 @@ void PluginProject::actionCreateFileTrigger()
 		if(!filepath.isEmpty() && m_Platform->getProjectManager()->isFilepathInProject(filepath))
 		{
 			QString file = filepath.remove(m_Platform->getProjectManager()->getProject()->getLocation());
-			if(!m_Platform->getProjectManager()->createFile(file))
+			if(!m_Platform->getProjectManager()->createFile(file) || !m_Platform->getProjectManager()->openFile(file))
 			{
-				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to create the file."));
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to create and open the file."));
 			}
 		}
 	}
