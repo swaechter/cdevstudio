@@ -29,9 +29,10 @@ public:
 private:
 	IPlatform *m_Platform;
 	QAction *m_ActionCreateProject;
-	QAction *m_ActionLoadProject;
+	QAction *m_ActionOpenProject;
 	QAction *m_ActionCloseProject;
 	QAction *m_ActionCreateFile;
+	QAction *m_ActionOpenFile;
 	QAction *m_ActionDeleteFile;
 	QAction *m_ActionRenameFile;
 	QAction *m_ActionSaveFile;
@@ -39,9 +40,10 @@ private:
 	
 private slots:
 	void actionCreateProjectTrigger();
-	void actionLoadProjectTrigger();
+	void actionOpenProjectTrigger();
 	void actionCloseProjectTrigger();
 	void actionCreateFileTrigger();
+	void actionOpenFileTrigger();
 	void actionDeleteFileTrigger();
 	void actionRenameFileTrigger();
 	void actionSaveFileTrigger();

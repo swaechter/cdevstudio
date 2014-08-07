@@ -9,27 +9,30 @@ PluginProject::PluginProject()
 	window->getSettingsDialog()->addSettingsPage(pluginpage);
 	
 	m_ActionCreateProject = new QAction(tr("Create Project"), window->getMenuBar());
-	m_ActionLoadProject = new QAction(tr("Load Project"), window->getMenuBar());
+	m_ActionOpenProject = new QAction(tr("Open Project"), window->getMenuBar());
 	m_ActionCloseProject = new QAction(tr("Close Project"), window->getMenuBar());
 	m_ActionCreateFile = new QAction(tr("Create File"), window->getMenuBar());
+	m_ActionOpenFile = new QAction(tr("Open File"), window->getMenuBar());
 	m_ActionDeleteFile = new QAction(tr("Delete File"), window->getMenuBar());
 	m_ActionRenameFile = new QAction(tr("Rename File"), window->getMenuBar());
 	m_ActionSaveFile = new QAction(tr("Save File"), window->getMenuBar());
 	m_ActionCloseFile = new QAction(tr("Close File"), window->getMenuBar());
 	
 	m_ActionCreateProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_N);
-	m_ActionLoadProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
+	m_ActionOpenProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_O);
 	m_ActionCloseProject->setShortcut(Qt::CTRL | Qt::SHIFT | Qt::Key_Q);
 	m_ActionCreateFile->setShortcut(Qt::CTRL | Qt::Key_N);
+	m_ActionOpenFile->setShortcut(Qt::CTRL | Qt::Key_O);
 	m_ActionDeleteFile->setShortcut(Qt::CTRL | Qt::Key_D);
 	m_ActionRenameFile->setShortcut(Qt::CTRL | Qt::Key_R);
 	m_ActionSaveFile->setShortcut(Qt::CTRL | Qt::Key_S);
 	m_ActionCloseFile->setShortcut(Qt::CTRL | Qt::Key_Q);
 	
 	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionCreateProject);
-	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionLoadProject);
+	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionOpenProject);
 	window->getMenuBar()->getMenu(tr("Project"))->addAction(m_ActionCloseProject);
 	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionCreateFile);
+	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionOpenFile);
 	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionDeleteFile);
 	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionRenameFile);
 	window->getMenuBar()->getMenu(tr("File"))->addSeparator();
@@ -38,9 +41,10 @@ PluginProject::PluginProject()
 	window->getMenuBar()->getMenu(tr("File"))->addAction(m_ActionCloseFile);
 	
 	connect(m_ActionCreateProject, SIGNAL(triggered(bool)), this, SLOT(actionCreateProjectTrigger()));
-	connect(m_ActionLoadProject, SIGNAL(triggered(bool)), this, SLOT(actionLoadProjectTrigger()));
+	connect(m_ActionOpenProject, SIGNAL(triggered(bool)), this, SLOT(actionOpenProjectTrigger()));
 	connect(m_ActionCloseProject, SIGNAL(triggered(bool)), this, SLOT(actionCloseProjectTrigger()));
 	connect(m_ActionCreateFile, SIGNAL(triggered(bool)), this, SLOT(actionCreateFileTrigger()));
+	connect(m_ActionOpenFile, SIGNAL(triggered(bool)), this, SLOT(actionOpenFileTrigger()));
 	connect(m_ActionDeleteFile, SIGNAL(triggered(bool)), this, SLOT(actionDeleteFileTrigger()));
 	connect(m_ActionRenameFile, SIGNAL(triggered(bool)), this, SLOT(actionRenameFileTrigger()));
 	connect(m_ActionSaveFile, SIGNAL(triggered(bool)), this, SLOT(actionSaveFileTrigger()));
@@ -85,16 +89,16 @@ void PluginProject::actionCreateProjectTrigger()
 	}
 }
 
-void PluginProject::actionLoadProjectTrigger()
+void PluginProject::actionOpenProjectTrigger()
 {
 	if(!m_Platform->getProjectManager()->getProject())
 	{
-		QString projectfile = QFileDialog::getOpenFileName(m_Platform->getWindow(), tr("Load project"), QDir::homePath(), tr("Project (*.cdev)"));
+		QString projectfile = QFileDialog::getOpenFileName(m_Platform->getWindow(), tr("Open project"), QDir::homePath(), tr("Project (*.cdev)"));
 		if(!projectfile.isEmpty())
 		{
-			if(!m_Platform->getProjectManager()->loadProject(projectfile))
+			if(!m_Platform->getProjectManager()->openProject(projectfile))
 			{
-				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to load the project."));
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to open the project."));
 			}
 		}
 	}
@@ -132,7 +136,27 @@ void PluginProject::actionCreateFileTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
+	}
+}
+
+void PluginProject::actionOpenFileTrigger()
+{
+	if(m_Platform->getProjectManager()->getProject())
+	{
+		QString filepath = QFileDialog::getOpenFileName(m_Platform->getWindow(), tr("Open a file"), m_Platform->getProjectManager()->getProject()->getLocation());
+		if(!filepath.isEmpty() && m_Platform->getProjectManager()->isFilepathInProject(filepath))
+		{
+			QString file = filepath.remove(m_Platform->getProjectManager()->getProject()->getLocation());
+			if(!m_Platform->getProjectManager()->openFile(file))
+			{
+				QMessageBox::critical(m_Platform->getWindow(), tr("Error"), tr("The system was unable to open the file."));
+			}
+		}
+	}
+	else
+	{
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
 	}
 }
 
@@ -155,7 +179,7 @@ void PluginProject::actionDeleteFileTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
 	}
 }
 
@@ -187,7 +211,7 @@ void PluginProject::actionRenameFileTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
 	}
 }
 
@@ -212,7 +236,7 @@ void PluginProject::actionSaveFileTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
 	}
 }
 
@@ -232,6 +256,6 @@ void PluginProject::actionCloseFileTrigger()
 	}
 	else
 	{
-		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or load a project."));
+		QMessageBox::information(m_Platform->getWindow(), tr("Information"), tr("Please create or open a project."));
 	}
 }

@@ -36,7 +36,7 @@ Project *ProjectManager::createProject(QString name, QString directory, QStringL
 	return nullptr;
 }
 
-Project *ProjectManager::loadProject(QString projectfile)
+Project *ProjectManager::openProject(QString projectfile)
 {
 	if(!getProject())
 	{
@@ -86,14 +86,20 @@ bool ProjectManager::createFile(QString file)
 	return false;
 }
 
-bool ProjectManager::renameFile(QString oldfile, QString newfile)
+bool ProjectManager::openFile(QString file)
 {
-	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + oldfile))
+	if(getProject() && !file.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + file) && !Backend::isPathADirectory(m_Project->getLocation() + file))
 	{
-		if(closeFile(oldfile) && Backend::renameFile(m_Project->getLocation() + oldfile, newfile) && openFile(newfile))
+		if(!m_Project->getFiles().contains(file))
 		{
-			return true;
+			m_Project->addFile(file);
+			emit fileOpened(file);
 		}
+		else
+		{
+			emit fileReopened(file);
+		}
+		return true;
 	}
 	return false;
 }
@@ -110,20 +116,14 @@ bool ProjectManager::deleteFile(QString file)
 	return false;
 }
 
-bool ProjectManager::openFile(QString file)
+bool ProjectManager::renameFile(QString oldfile, QString newfile)
 {
-	if(getProject() && !file.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + file) && !Backend::isPathADirectory(m_Project->getLocation() + file))
+	if(getProject() && !oldfile.isEmpty() && !newfile.isEmpty() && Backend::doesPathExist(m_Project->getLocation() + oldfile))
 	{
-		if(!m_Project->getFiles().contains(file))
+		if(closeFile(oldfile) && Backend::renameFile(m_Project->getLocation() + oldfile, newfile) && openFile(newfile))
 		{
-			m_Project->addFile(file);
-			emit fileOpened(file);
+			return true;
 		}
-		else
-		{
-			emit fileReopened(file);
-		}
-		return true;
 	}
 	return false;
 }

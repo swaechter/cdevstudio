@@ -15,13 +15,13 @@ public:
 	ProjectManager(QObject *parent);
 	~ProjectManager();
 	Project *createProject(QString name, QString directory, QStringList files);
-	Project *loadProject(QString projectfile);
+	Project *openProject(QString projectfile);
 	Project *getProject();
 	bool closeProject();
 	bool createFile(QString file);
-	bool renameFile(QString oldfile, QString newfile);
-	bool deleteFile(QString file);
 	bool openFile(QString file);
+	bool deleteFile(QString file);
+	bool renameFile(QString oldfile, QString newfile);
 	bool writeFile(QString file, QString text);
 	bool closeFile(QString file);
 	bool isFilepathInProject(QString filepath);
