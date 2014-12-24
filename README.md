@@ -39,3 +39,14 @@ The following package systems are supported. For more information read the instr
 ## Notes
 Important notes
 * The platform API is not binary compatible
+
+## TODO
+
+### Documentation
+
+### Codebase
+
+### Packages
+* Unix: Create a package
+* OS X: Create a package
+* Windows: Improve the current package
