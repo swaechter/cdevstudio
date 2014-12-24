@@ -1,20 +1,16 @@
-TODO list
-=========
+# TODO list
 
-Documentation
--------------
+## Documentation
 
-Codebase
---------
+## Codebase
 
-Packages
---------
+## Packages
 
-Unix
+### Unix
 * Create a package
 
-OS X
+### OS X
 * Create a package
 
-Windows
+### Windows
 * Improve the current package

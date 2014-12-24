@@ -1,11 +1,9 @@
-CDevStudio
-==========
+# CDevStudio
 
+## Introduction
 A C/C++ IDE based on Qt5. CDevStudio is cross compatible and runs under Linux, Unix, OS X and Windows. The functionality is given by a plugin system.
 
-Install build environment
--------------------------
-
+## Install build environment
 Required
 * Setup a C/C++ toolchain and add it to the system path. C++11 features are required
 * Setup Qt5 and add it to the system path. Version 5.2.0 or higher is required
@@ -14,9 +12,7 @@ Required
 Optional
 * Setup doxygen and add it to the system path
 
-Prepare CDevStudio
-------------------
-
+## Prepare CDevStudio
 Download and prepare CDevStudio
 * git clone https://github.com/swaechter/cdevstudio
 * cd cdevstudio
@@ -26,17 +22,13 @@ Download and prepare CDevStudio
 For development switch to the develop branch. A typical Git workflow (master/develop/feature/bugfix) is used
 * git checkout -b develop origin/develop
 
-Compile CDevStudio
-------------------
-
+## Compile CDevStudio
 Normal build
 * cmake ..
 * make
 * ./src/cdevstudio/cdevstudio
 
-Packaging/Installing CDevStudio
--------------------------------
-
+## Packaging/Installing CDevStudio
 The following package systems are supported. For more information read the instructions.txt in each package system directory
 * Linux: Make for all distributions via a pure 'make install'
 * Linux: DEB for Debian via debuild
@@ -44,8 +36,6 @@ The following package systems are supported. For more information read the instr
 * Linux: TAR.XZ for Arch Linux via makepkg
 * Windows: EXE for Windows Vista, 7 and 8 via NSIS
 
-Notes
------
-
+## Notes
 Important notes
 * The platform API is not binary compatible
